@@ -1,12 +1,15 @@
 {
-  "FolderOrderSettings":[],
-  "ResourceOrderSettings":[
-    {"name":"obj_player","order":2,"path":"objects/obj_player/obj_player.yy",},
-    {"name":"spr_player","order":1,"path":"sprites/spr_player/spr_player.yy",},
   "FolderOrderSettings":[
-    {"name":"Backgrounds","order":3,"path":"folders/Backgrounds.yy",},
-    {"name":"group1","order":4,"path":"folders/group1.yy",},
-    {"name":"Sprites","order":2,"path":"folders/Sprites.yy",},
+    {"name":"space_rocks","order":4,"path":"folders/space_rocks.yy",},
   ],
-  "ResourceOrderSettings":[],
+  "ResourceOrderSettings":[
+    {"name":"obj_asteroid","order":5,"path":"objects/obj_asteroid/obj_asteroid.yy",},
+    {"name":"obj_bullet","order":4,"path":"objects/obj_bullet/obj_bullet.yy",},
+    {"name":"obj_debris","order":1,"path":"objects/obj_debris/obj_debris.yy",},
+    {"name":"room_island","order":1,"path":"rooms/room_island/room_island.yy",},
+    {"name":"room_space_rocks","order":3,"path":"rooms/room_space_rocks/room_space_rocks.yy",},
+    {"name":"room_spot_the_difference","order":2,"path":"rooms/room_spot_the_difference/room_spot_the_difference.yy",},
+    {"name":"spr_bullet","order":3,"path":"sprites/spr_bullet/spr_bullet.yy",},
+    {"name":"spr_debris","order":2,"path":"sprites/spr_debris/spr_debris.yy",},
+  ],
 }
