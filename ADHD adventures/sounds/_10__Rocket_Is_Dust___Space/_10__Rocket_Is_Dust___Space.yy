@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"_10__Rocket_Is_Dust___Space",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":376.60898,
+  "exportDir":"",
+  "name":"_10__Rocket_Is_Dust___Space",
+  "parent":{
+    "name":"Music",
+    "path":"folders/Music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":22050,
+  "soundFile":"_10__Rocket_Is_Dust___Space.mp3",
+  "volume":1.0,
+}

@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"_1_55__Nimbasa_City",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":118.98778,
+  "exportDir":"",
+  "name":"_1_55__Nimbasa_City",
+  "parent":{
+    "name":"Music",
+    "path":"folders/Music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":32000,
+  "soundFile":"_1_55__Nimbasa_City.mp3",
+  "volume":1.0,
+}
