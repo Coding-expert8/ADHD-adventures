@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"extremely_loud_incorrect_buzzer_0cDaG20",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":1.08,
+  "exportDir":"",
+  "name":"extremely_loud_incorrect_buzzer_0cDaG20",
+  "parent":{
+    "name":"Sound Effects",
+    "path":"folders/Sound Effects.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":32000,
+  "soundFile":"extremely_loud_incorrect_buzzer_0cDaG20.mp3",
+  "volume":1.0,
+}

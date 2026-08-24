@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"_1_07__Lake",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":73.093346,
+  "exportDir":"",
+  "name":"_1_07__Lake",
+  "parent":{
+    "name":"Music",
+    "path":"folders/Music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":32000,
+  "soundFile":"_1_07__Lake.mp3",
+  "volume":1.0,
+}

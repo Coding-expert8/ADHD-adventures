@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"_1_46__Victory_Against_Gym_Leader_",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":80.483284,
+  "exportDir":"",
+  "name":"_1_46__Victory_Against_Gym_Leader_",
+  "parent":{
+    "name":"Sound Effects",
+    "path":"folders/Sound Effects.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":32000,
+  "soundFile":"_1_46__Victory_Against_Gym_Leader_.mp3",
+  "volume":1.0,
+}

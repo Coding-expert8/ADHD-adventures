@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"deltarune_chapter_2_ost_03_my_castle_town",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":126.130844,
+  "exportDir":"",
+  "name":"deltarune_chapter_2_ost_03_my_castle_town",
+  "parent":{
+    "name":"Music",
+    "path":"folders/Music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":32000,
+  "soundFile":"deltarune_chapter_2_ost_03_my_castle_town.mp3",
+  "volume":1.0,
+}
