@@ -8,7 +8,7 @@
     "children":[],
     "name":"Default",
   },
-  "defaultScriptType":0,
+  "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"Backgrounds","folderPath":"folders/Backgrounds.yy","name":"Backgrounds","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"group1","folderPath":"folders/group1.yy","name":"group1","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -25,6 +25,7 @@
   },
   "name":"ADHD adventures",
   "resources":[
+    {"id":{"name":"obj_snd_control","path":"objects/obj_snd_control/obj_snd_control.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"_1_04__Twinleaf_Town__Day_","path":"sounds/_1_04__Twinleaf_Town__Day_/_1_04__Twinleaf_Town__Day_.yy",},},
     {"id":{"name":"_1_07__Lake","path":"sounds/_1_07__Lake/_1_07__Lake.yy",},},
