@@ -27,7 +27,6 @@
   },
   "name":"ADHD adventures",
   "resources":[
-    {"id":{"name":"obj_snd_control","path":"objects/obj_snd_control/obj_snd_control.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"_1_04__Twinleaf_Town__Day_","path":"sounds/_1_04__Twinleaf_Town__Day_/_1_04__Twinleaf_Town__Day_.yy",},},
