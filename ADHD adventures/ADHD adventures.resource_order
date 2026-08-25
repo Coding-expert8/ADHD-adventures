@@ -26,4 +26,6 @@
     {"name":"gravel2_step","order":3,"path":"sounds/gravel2_step/gravel2_step.yy",},
     {"name":"snd_select","order":4,"path":"sounds/snd_select/snd_select.yy",},
   ],
+  "FolderOrderSettings":[],
+  "ResourceOrderSettings":[],
 }
