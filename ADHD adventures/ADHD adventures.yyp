@@ -24,13 +24,35 @@
   "name":"ADHD adventures",
   "resources":[
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
+<<<<<<< Updated upstream
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+=======
+    {"id":{"name":"room_setup","path":"rooms/room_setup/room_setup.yy",},},
+    {"id":{"name":"_1_04__Twinleaf_Town__Day_","path":"sounds/_1_04__Twinleaf_Town__Day_/_1_04__Twinleaf_Town__Day_.yy",},},
+    {"id":{"name":"_1_07__Lake","path":"sounds/_1_07__Lake/_1_07__Lake.yy",},},
+    {"id":{"name":"_1_46__Victory_Against_Gym_Leader_","path":"sounds/_1_46__Victory_Against_Gym_Leader_/_1_46__Victory_Against_Gym_Leader_.yy",},},
+    {"id":{"name":"_1_55__Nimbasa_City","path":"sounds/_1_55__Nimbasa_City/_1_55__Nimbasa_City.yy",},},
+    {"id":{"name":"_10__Rocket_Is_Dust___Space","path":"sounds/_10__Rocket_Is_Dust___Space/_10__Rocket_Is_Dust___Space.yy",},},
+    {"id":{"name":"_12__Lava_Is_Hot___Cavern","path":"sounds/_12__Lava_Is_Hot___Cavern/_12__Lava_Is_Hot___Cavern.yy",},},
+    {"id":{"name":"_2_10__Ice","path":"sounds/_2_10__Ice/_2_10__Ice.yy",},},
+    {"id":{"name":"_4_03__Space_Day","path":"sounds/_4_03__Space_Day/_4_03__Space_Day.yy",},},
+    {"id":{"name":"_4_07__Desert","path":"sounds/_4_07__Desert/_4_07__Desert.yy",},},
+    {"id":{"name":"_49__Goldenrod_Game_Corner","path":"sounds/_49__Goldenrod_Game_Corner/_49__Goldenrod_Game_Corner.yy",},},
+    {"id":{"name":"_51__Goldenrod_Game_Corner__Retire_","path":"sounds/_51__Goldenrod_Game_Corner__Retire_/_51__Goldenrod_Game_Corner__Retire_.yy",},},
+    {"id":{"name":"_79__Pok_athlon___Finals_","path":"sounds/_79__Pok_athlon___Finals_/_79__Pok_athlon___Finals_.yy",},},
+    {"id":{"name":"clock_tick","path":"sounds/clock_tick/clock_tick.yy",},},
+    {"id":{"name":"deltarune_chapter_2_ost_03_my_castle_town","path":"sounds/deltarune_chapter_2_ost_03_my_castle_town/deltarune_chapter_2_ost_03_my_castle_town.yy",},},
+    {"id":{"name":"ding_sound_effect_1","path":"sounds/ding_sound_effect_1/ding_sound_effect_1.yy",},},
+    {"id":{"name":"extremely_loud_incorrect_buzzer_0cDaG20","path":"sounds/extremely_loud_incorrect_buzzer_0cDaG20/extremely_loud_incorrect_buzzer_0cDaG20.yy",},},
+    {"id":{"name":"gravel2_step","path":"sounds/gravel2_step/gravel2_step.yy",},},
+    {"id":{"name":"snd_select","path":"sounds/snd_select/snd_select.yy",},},
+>>>>>>> Stashed changes
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"roomId":{"name":"room_setup","path":"rooms/room_setup/room_setup.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

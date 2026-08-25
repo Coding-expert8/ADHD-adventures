@@ -1,5 +1,6 @@
 {
   "FolderOrderSettings":[],
+<<<<<<< Updated upstream
   "ResourceOrderSettings":[
     {"name":"obj_player","order":2,"path":"objects/obj_player/obj_player.yy",},
     {"name":"spr_player","order":1,"path":"sprites/spr_player/spr_player.yy",},
@@ -8,5 +9,7 @@
     {"name":"group1","order":4,"path":"folders/group1.yy",},
     {"name":"Sprites","order":2,"path":"folders/Sprites.yy",},
   ],
+=======
+>>>>>>> Stashed changes
   "ResourceOrderSettings":[],
 }
