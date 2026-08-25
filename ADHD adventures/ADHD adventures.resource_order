@@ -1,4 +1,15 @@
 {
   "FolderOrderSettings":[],
-  "ResourceOrderSettings":[],
+  "ResourceOrderSettings":[
+    {"name":"Attack_1","order":9,"path":"sprites/Attack_1/Attack_1.yy",},
+    {"name":"Attack_2","order":10,"path":"sprites/Attack_2/Attack_2.yy",},
+    {"name":"Attack_3","order":1,"path":"sprites/Attack_3/Attack_3.yy",},
+    {"name":"Dead","order":2,"path":"sprites/Dead/Dead.yy",},
+    {"name":"Hurt","order":3,"path":"sprites/Hurt/Hurt.yy",},
+    {"name":"Idle","order":4,"path":"sprites/Idle/Idle.yy",},
+    {"name":"Jump","order":5,"path":"sprites/Jump/Jump.yy",},
+    {"name":"Run","order":6,"path":"sprites/Run/Run.yy",},
+    {"name":"Shield","order":7,"path":"sprites/Shield/Shield.yy",},
+    {"name":"Walk","order":8,"path":"sprites/Walk/Walk.yy",},
+  ],
 }
