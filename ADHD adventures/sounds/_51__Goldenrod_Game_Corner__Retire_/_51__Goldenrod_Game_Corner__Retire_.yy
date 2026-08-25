@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"_51__Goldenrod_Game_Corner__Retire_",
   "parent":{
-    "name":"Music",
-    "path":"folders/Music.yy",
+    "name":"Sound Effects",
+    "path":"folders/Sound Effects.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

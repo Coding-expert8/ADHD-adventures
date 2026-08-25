@@ -27,6 +27,7 @@
   },
   "name":"ADHD adventures",
   "resources":[
+    {"id":{"name":"obj_snd_control","path":"objects/obj_snd_control/obj_snd_control.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"room_map","path":"rooms/room_map/room_map.yy",},},
     {"id":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
