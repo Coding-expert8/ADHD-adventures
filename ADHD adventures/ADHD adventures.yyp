@@ -29,8 +29,7 @@
   "resources":[
     {"id":{"name":"obj_snd_control","path":"objects/obj_snd_control/obj_snd_control.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
-    {"id":{"name":"room_map","path":"rooms/room_map/room_map.yy",},},
-    {"id":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
+    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"_1_04__Twinleaf_Town__Day_","path":"sounds/_1_04__Twinleaf_Town__Day_/_1_04__Twinleaf_Town__Day_.yy",},},
     {"id":{"name":"_1_07__Lake","path":"sounds/_1_07__Lake/_1_07__Lake.yy",},},
     {"id":{"name":"_1_46__Victory_Against_Gym_Leader_","path":"sounds/_1_46__Victory_Against_Gym_Leader_/_1_46__Victory_Against_Gym_Leader_.yy",},},
@@ -64,8 +63,7 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"room_map","path":"rooms/room_map/room_map.yy",},},
-    {"roomId":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
+    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

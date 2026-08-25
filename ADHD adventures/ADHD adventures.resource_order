@@ -27,7 +27,5 @@
     {"name":"snd_select","order":4,"path":"sounds/snd_select/snd_select.yy",},
   ],
   "FolderOrderSettings":[],
-  "ResourceOrderSettings":[
-    {"name":"Room2","order":1,"path":"rooms/Room2/Room2.yy",},
-  ],
+  "ResourceOrderSettings":[],
 }
