@@ -9,8 +9,8 @@
   "name":"obj_player",
   "overriddenProperties":[],
   "parent":{
-    "name":"ADHD adventures",
-    "path":"ADHD adventures.yyp",
+    "name":"character sprite",
+    "path":"folders/Sprites/character sprite.yy",
   },
   "parentObjectId":null,
   "persistent":false,
