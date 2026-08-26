@@ -1,10 +1,15 @@
 {
   "FolderOrderSettings":[
+    {"name":"Rooms","order":2,"path":"folders/Rooms.yy",},
+    {"name":"Objects","order":1,"path":"folders/Objects.yy",},
     {"name":"character sprite","order":3,"path":"folders/Sprites/character sprite.yy",},
     {"name":"npc sprite","order":4,"path":"folders/Sprites/npc sprite.yy",},
+    {"name":"other sprites","order":5,"path":"folders/Sprites/other sprites.yy",},
   ],
   "ResourceOrderSettings":[
-    {"name":"obj_player","order":7,"path":"objects/obj_player/obj_player.yy",},
+    {"name":"obj_controller","order":1,"path":"objects/obj_controller/obj_controller.yy",},
+    {"name":"obj_player","order":2,"path":"objects/obj_player/obj_player.yy",},
+    {"name":"room_answer","order":1,"path":"rooms/room_answer/room_answer.yy",},
     {"name":"_1_04__Twinleaf_Town__Day_","order":7,"path":"sounds/_1_04__Twinleaf_Town__Day_/_1_04__Twinleaf_Town__Day_.yy",},
     {"name":"_1_07__Lake","order":3,"path":"sounds/_1_07__Lake/_1_07__Lake.yy",},
     {"name":"_1_55__Nimbasa_City","order":4,"path":"sounds/_1_55__Nimbasa_City/_1_55__Nimbasa_City.yy",},

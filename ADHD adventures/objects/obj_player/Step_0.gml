@@ -33,3 +33,5 @@ if (keyboard_check(vk_up)){
 } else {
 	sprite_index = spr_player_idle
 }
+
+room_goto_next()
