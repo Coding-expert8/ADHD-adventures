@@ -3,7 +3,8 @@
     {"name":"Tilesets","order":1,"path":"folders/Tilesets.yy",},
   ],
   "ResourceOrderSettings":[
-    {"name":"_05___Tileset___Transparent","order":1,"path":"sprites/_05___Tileset___Transparent/_05___Tileset___Transparent.yy",},
-    {"name":"_10___Tileset___Transparent","order":2,"path":"sprites/_10___Tileset___Transparent/_10___Tileset___Transparent.yy",},
+    {"name":"_02___Tileset___Transparent","order":1,"path":"sprites/_02___Tileset___Transparent/_02___Tileset___Transparent.yy",},
+    {"name":"_03___Tileset___Transparent","order":2,"path":"sprites/_03___Tileset___Transparent/_03___Tileset___Transparent.yy",},
+    {"name":"_04___Tileset___Transparent","order":3,"path":"sprites/_04___Tileset___Transparent/_04___Tileset___Transparent.yy",},
   ],
 }
