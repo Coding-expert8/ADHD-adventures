@@ -30,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_asteroid_medium",
+    "path":"sprites/spr_asteroid_medium/spr_asteroid_medium.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
