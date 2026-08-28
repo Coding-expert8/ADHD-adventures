@@ -1,22 +1,13 @@
 {
   "FolderOrderSettings":[
-    {"name":"Tilesets","order":1,"path":"folders/Tilesets.yy",},
-  ],
-  "ResourceOrderSettings":[
-    {"name":"_02___Tileset___Transparent","order":1,"path":"sprites/_02___Tileset___Transparent/_02___Tileset___Transparent.yy",},
-    {"name":"_03___Tileset___Transparent","order":2,"path":"sprites/_03___Tileset___Transparent/_03___Tileset___Transparent.yy",},
-    {"name":"_04___Tileset___Transparent","order":3,"path":"sprites/_04___Tileset___Transparent/_04___Tileset___Transparent.yy",},
-    {"name":"_07___Tileset___Transparent","order":4,"path":"sprites/_07___Tileset___Transparent/_07___Tileset___Transparent.yy",},
-    {"name":"_09___Tileset___Transparent","order":5,"path":"sprites/_09___Tileset___Transparent/_09___Tileset___Transparent.yy",},
-    {"name":"_10___Tileset___Transparent","order":6,"path":"sprites/_10___Tileset___Transparent/_10___Tileset___Transparent.yy",},
-    {"name":"_11___Tileset___Transparent","order":7,"path":"sprites/_11___Tileset___Transparent/_11___Tileset___Transparent.yy",},
-    {"name":"Rooms","order":2,"path":"folders/Rooms.yy",},
     {"name":"Objects","order":1,"path":"folders/Objects.yy",},
+    {"name":"Rooms","order":2,"path":"folders/Rooms.yy",},
     {"name":"character sprite","order":3,"path":"folders/Sprites/character sprite.yy",},
     {"name":"npc sprite","order":4,"path":"folders/Sprites/npc sprite.yy",},
     {"name":"other sprites","order":5,"path":"folders/Sprites/other sprites.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"fnt_default","order":3,"path":"fonts/fnt_default/fnt_default.yy",},
     {"name":"obj_controller","order":1,"path":"objects/obj_controller/obj_controller.yy",},
     {"name":"obj_player","order":2,"path":"objects/obj_player/obj_player.yy",},
     {"name":"room_answer","order":1,"path":"rooms/room_answer/room_answer.yy",},
@@ -39,5 +30,6 @@
     {"name":"spr_player_walk_up","order":5,"path":"sprites/spr_player_walk_up/spr_player_walk_up.yy",},
     {"name":"spr_player_walk","order":4,"path":"sprites/spr_player_walk/spr_player_walk.yy",},
     {"name":"spr_player","order":8,"path":"sprites/spr_player/spr_player.yy",},
+    {"name":"Sprite12","order":1,"path":"sprites/Sprite12/Sprite12.yy",},
   ],
 }

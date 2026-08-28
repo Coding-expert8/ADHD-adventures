@@ -34,4 +34,16 @@ if (keyboard_check(vk_up)){
 	sprite_index = spr_player_idle
 }
 
-room_goto_next()
+if room = room_answer  {
+	if keyboard_check(vk_right){
+	image_xscale = 1
+	x = x + 5
+}
+
+if keyboard_check(vk_left){
+	image_xscale = -1
+	x = x-5
+}
+}
+	
+room_goto(room_answer)
