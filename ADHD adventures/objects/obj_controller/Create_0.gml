@@ -1,6 +1,6 @@
 block_spacing = 64
 bridge_start_x = 100
-bridge_y = 300
+bridge_y = 200
 blocks_placed = 0
 block_list = ds_list_create()
 min_word_length = 3
@@ -43,4 +43,4 @@ function submit_word() {
 	round_timer = round_time
 }
 
-spawn_block() // starting block so player has ground to stand on
+spawn_block()
