@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"_4_03__Space_Day",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":83.13578,
+  "exportDir":"",
+  "name":"_4_03__Space_Day",
+  "parent":{
+    "name":"Music",
+    "path":"folders/Music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":32000,
+  "soundFile":"_4_03__Space_Day.mp3",
+  "volume":1.0,
+}

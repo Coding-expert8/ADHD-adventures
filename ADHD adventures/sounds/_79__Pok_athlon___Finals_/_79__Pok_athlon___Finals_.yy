@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"_79__Pok_athlon___Finals_",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":140.0,
+  "exportDir":"",
+  "name":"_79__Pok_athlon___Finals_",
+  "parent":{
+    "name":"Music",
+    "path":"folders/Music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":32000,
+  "soundFile":"_79__Pok_athlon___Finals_.mp3",
+  "volume":1.0,
+}
