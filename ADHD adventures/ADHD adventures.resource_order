@@ -1,7 +1,29 @@
 {
+<<<<<<< HEAD
+  "FolderOrderSettings":[
+    {"name":"space_rocks","order":4,"path":"folders/space_rocks.yy",},
+  ],
+  "ResourceOrderSettings":[
+    {"name":"obj_asteroid","order":5,"path":"objects/obj_asteroid/obj_asteroid.yy",},
+    {"name":"obj_bullet","order":4,"path":"objects/obj_bullet/obj_bullet.yy",},
+    {"name":"obj_debris","order":1,"path":"objects/obj_debris/obj_debris.yy",},
+    {"name":"obj_game","order":7,"path":"objects/obj_game/obj_game.yy",},
+    {"name":"obj_ship","order":6,"path":"objects/obj_ship/obj_ship.yy",},
+    {"name":"obj_space_rocks","order":11,"path":"objects/obj_space_rocks/obj_space_rocks.yy",},
+    {"name":"room_island","order":1,"path":"rooms/room_island/room_island.yy",},
+    {"name":"room_space_rocks","order":3,"path":"rooms/room_space_rocks/room_space_rocks.yy",},
+    {"name":"room_spot_the_difference","order":2,"path":"rooms/room_spot_the_difference/room_spot_the_difference.yy",},
+    {"name":"spr_asteroid_large","order":9,"path":"sprites/spr_asteroid_large/spr_asteroid_large.yy",},
+    {"name":"spr_asteroid_medium","order":8,"path":"sprites/spr_asteroid_medium/spr_asteroid_medium.yy",},
+    {"name":"spr_asteroid_small","order":10,"path":"sprites/spr_asteroid_small/spr_asteroid_small.yy",},
+    {"name":"spr_bullet","order":3,"path":"sprites/spr_bullet/spr_bullet.yy",},
+    {"name":"spr_debris","order":2,"path":"sprites/spr_debris/spr_debris.yy",},
+    {"name":"spr_space","order":1,"path":"sprites/spr_space/spr_space.yy",},
+=======
   "FolderOrderSettings":[],
   "ResourceOrderSettings":[
     {"name":"room_map","order":1,"path":"rooms/room_map/room_map.yy",},
     {"name":"_15___Tileset___Transparent","order":1,"path":"sprites/_15___Tileset___Transparent/_15___Tileset___Transparent.yy",},
+>>>>>>> main
   ],
 }
