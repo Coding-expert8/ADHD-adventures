@@ -45,5 +45,4 @@ if keyboard_check(vk_left){
 	x = x-5
 }
 }
-	
-room_goto(room_answer)
+room_goto(room_snake)	
