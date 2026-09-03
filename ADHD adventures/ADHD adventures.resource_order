@@ -1,7 +1,7 @@
 {
-<<<<<<< HEAD
   "FolderOrderSettings":[
     {"name":"space_rocks","order":4,"path":"folders/space_rocks.yy",},
+    {"name":"Characters","order":1,"path":"folders/Sprites/Characters.yy",},
   ],
   "ResourceOrderSettings":[
     {"name":"obj_asteroid","order":5,"path":"objects/obj_asteroid/obj_asteroid.yy",},
@@ -19,13 +19,7 @@
     {"name":"spr_bullet","order":3,"path":"sprites/spr_bullet/spr_bullet.yy",},
     {"name":"spr_debris","order":2,"path":"sprites/spr_debris/spr_debris.yy",},
     {"name":"spr_space","order":1,"path":"sprites/spr_space/spr_space.yy",},
-=======
-  "FolderOrderSettings":[
-    {"name":"Characters","order":1,"path":"folders/Sprites/Characters.yy",},
-  ],
-  "ResourceOrderSettings":[
     {"name":"room_map","order":1,"path":"rooms/room_map/room_map.yy",},
     {"name":"_15___Tileset___Transparent","order":1,"path":"sprites/_15___Tileset___Transparent/_15___Tileset___Transparent.yy",},
->>>>>>> main
   ],
 }
