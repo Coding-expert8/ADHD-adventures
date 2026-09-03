@@ -3,16 +3,16 @@ if (game_over) exit;
 
 // handle input buffering (prevents reversing into self)
 if (keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"))) {
-    if (direction_move != "down") next_direction = "up";
+next_direction = "up";
 }
 if (keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S"))) {
-    if (direction_move != "up") next_direction = "down";
+next_direction = "down";
 }
 if (keyboard_check_pressed(vk_left) || keyboard_check_pressed(ord("A"))) {
-    if (direction_move != "right") next_direction = "left";
+ next_direction = "left";
 }
 if (keyboard_check_pressed(vk_right) || keyboard_check_pressed(ord("D"))) {
-    if (direction_move != "left") next_direction = "right";
+ next_direction = "right";
 }
 
 // power-up timer countdown

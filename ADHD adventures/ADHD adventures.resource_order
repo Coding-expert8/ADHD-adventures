@@ -1,8 +1,8 @@
 {
   "FolderOrderSettings":[
-    {"name":"Scripts","order":4,"path":"folders/Scripts.yy",},
     {"name":"Objects","order":1,"path":"folders/Objects.yy",},
     {"name":"Rooms","order":2,"path":"folders/Rooms.yy",},
+    {"name":"Scripts","order":4,"path":"folders/Scripts.yy",},
     {"name":"character sprite","order":3,"path":"folders/Sprites/character sprite.yy",},
     {"name":"npc sprite","order":4,"path":"folders/Sprites/npc sprite.yy",},
     {"name":"other sprites","order":5,"path":"folders/Sprites/other sprites.yy",},
@@ -16,7 +16,7 @@
     {"name":"room_snake","order":3,"path":"rooms/room_snake/room_snake.yy",},
     {"name":"Room3","order":2,"path":"rooms/Room3/Room3.yy",},
     {"name":"scr_dir_to_angle","order":1,"path":"scripts/scr_dir_to_angle/scr_dir_to_angle.yy",},
-    {"name":"scr_handle_food_eaten","order":3,"path":"scripts/scr_handle_food_eaten/scr_handle_food_eaten.yy",},
+    {"name":"scr_handle_fruit_eaten","order":3,"path":"scripts/scr_handle_fruit_eaten/scr_handle_fruit_eaten.yy",},
     {"name":"scr_move_snake","order":5,"path":"scripts/scr_move_snake/scr_move_snake.yy",},
     {"name":"scr_power_type_to_frame","order":4,"path":"scripts/scr_power_type_to_frame/scr_power_type_to_frame.yy",},
     {"name":"scr_spawn_fruit","order":2,"path":"scripts/scr_spawn_fruit/scr_spawn_fruit.yy",},

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_handle_food_eaten",
+  "%Name":"scr_handle_fruit_eaten",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_handle_food_eaten",
+  "name":"scr_handle_fruit_eaten",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",
