@@ -6,7 +6,7 @@
   "inheritCreationOrder":false,
   "inheritLayers":false,
   "instanceCreationOrder":[
-    {"name":"inst_20B28E7C","path":"rooms/Room1/Room1.yy",},
+    {"name":"inst_20B28E7C","path":"rooms/room_island/room_island.yy",},
   ],
   "isDnd":false,
   "layers":[
