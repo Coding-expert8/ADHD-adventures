@@ -1,5 +1,7 @@
 {
-  "FolderOrderSettings":[],
+  "FolderOrderSettings":[
+    {"name":"Characters","order":1,"path":"folders/Sprites/Characters.yy",},
+  ],
   "ResourceOrderSettings":[
     {"name":"room_map","order":1,"path":"rooms/room_map/room_map.yy",},
     {"name":"_15___Tileset___Transparent","order":1,"path":"sprites/_15___Tileset___Transparent/_15___Tileset___Transparent.yy",},
