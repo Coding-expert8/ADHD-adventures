@@ -111,11 +111,11 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"room_map","path":"rooms/room_map/room_map.yy",},},
     {"roomId":{"name":"room_start","path":"rooms/room_start/room_start.yy",},},
     {"roomId":{"name":"room_island","path":"rooms/room_island/room_island.yy",},},
     {"roomId":{"name":"room_spot_the_difference","path":"rooms/room_spot_the_difference/room_spot_the_difference.yy",},},
     {"roomId":{"name":"room_space_rocks","path":"rooms/room_space_rocks/room_space_rocks.yy",},},
-    {"roomId":{"name":"room_map","path":"rooms/room_map/room_map.yy",},},
     {"roomId":{"name":"room_answer","path":"rooms/room_answer/room_answer.yy",},},
   ],
   "templateType":"game",
