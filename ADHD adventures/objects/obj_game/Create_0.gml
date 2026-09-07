@@ -6,9 +6,14 @@ cell_size = 64;
 game_speed = 4;          // moves per second (base)
 base_speed = 4;
 move_timer = 0;
-
+panel_w = 160;
+board_offset_x = panel_w; // board starts right after the left panel
+room_w_target = panel_w + (grid_w*cell_size) + panel_w; // 160 + 512 + 160 = 832
 score = 0;
 game_over = false;
+panel_w = 160;
+board_offset_x = panel_w;
+head_angle_offset = 180;
 
 // active power-up state
 active_powerup = "none"; // "none", "slow", "fast", "double_score", "ghost"

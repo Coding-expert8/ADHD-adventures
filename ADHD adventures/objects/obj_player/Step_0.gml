@@ -44,5 +44,4 @@ if keyboard_check(vk_left){
 	image_xscale = -1
 	x = x-5
 }
-}
-room_goto(room_snake)	
+}	
