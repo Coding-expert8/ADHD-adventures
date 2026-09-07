@@ -1,3 +1,4 @@
+//make a maze or something like that
 
 if (keyboard_check(vk_left))
 {
