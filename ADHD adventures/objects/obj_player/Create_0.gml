@@ -1,3 +1,4 @@
+//window_set_size(window_get_width() * 2, window_get_height() * 2)
 image_speed = 0.4
 image_xscale = 0.4
 image_yscale = 0.4

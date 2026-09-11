@@ -1,4 +1,4 @@
-#macro T_GRASS  0
+/*#macro T_GRASS  0
 #macro T_PATH   1
 #macro T_WATER  2
 
