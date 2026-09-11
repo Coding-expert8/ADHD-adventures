@@ -49,17 +49,17 @@ if (id == global.controller_instance) {
 			}
 		}
 
-if (_is_correct) {
-	var _letters = string_length(global.word_input)
-	var i = 1
-	repeat (_letters) {
-		var _inst = instance_create_layer(spawn_x + global.spacing, spawn_y, "Instances", obj_block)
-		_inst.can_fall = false
-		_inst.alarm[0] = i * 10
-		global.spacing = global.spacing + 16
-		i += 1
-	}
-}
+		if (_is_correct) {
+			var _letters = string_length(global.word_input)
+			var i = 1
+			repeat (_letters) {
+				var _inst = instance_create_layer(spawn_x + global.spacing, spawn_y, "Instances", obj_block)
+				_inst.can_fall = false
+				_inst.alarm[0] = i * 10
+				global.spacing = global.spacing + 16
+				i += 1
+			}
+		}
 
 		global.current_q += 1
 		if (global.current_q >= array_length(global.questions)) global.current_q = 0
