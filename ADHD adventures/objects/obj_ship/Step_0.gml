@@ -14,11 +14,7 @@ image_angle = image_angle - 5;
 if (keyboard_check(vk_up))
 {
 motion_add(image_angle+90, 0.05);
+moving = true;
 }
 
 
-if (keyboard_check_pressed(vk_space))
-{
-	var inst = instance_create_layer(x, y, "Instances", obj_bullet);
-	inst.direction = image_angle;
-}
