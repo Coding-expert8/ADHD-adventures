@@ -22,3 +22,4 @@ if (collapse_timer > 0) {
 		instance_deactivate_object(id)
 	}
 }
+

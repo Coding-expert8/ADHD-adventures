@@ -6,7 +6,7 @@ if (choose(0, 1) == 0)
 }
 else
 {
-	var xx = irandom_range(max(0,obj_ship.x-683), obj_ship.x+683);
+	var xx = irandom_range((0), (room_width));
 	var yy = choose(0, room_height);
 }
 instance_create_layer(xx, yy, "Instances", obj_asteroid);
