@@ -1,0 +1,22 @@
+[
+  {
+    "tileset": "_01___Tileset___Transparent",
+    "props": [
+      {"name": "village_bush", "rect": [0, 64, 64, 64]},
+      {"name": "village_bush_yellow", "rect": [64, 64, 64, 64]},
+      {"name": "village_bush_white", "rect": [128, 64, 64, 64]},
+      {"name": "village_bush_pink", "rect": [192, 64, 64, 64]},
+      {"name": "village_mushroom_red", "rect": [0, 128, 64, 64]},
+      {"name": "village_mushroom_green", "rect": [64, 128, 64, 64]},
+      {"name": "village_mushroom_blue", "rect": [128, 128, 64, 64]},
+      {"name": "village_rock", "rect": [192, 128, 64, 64]},
+      {"name": "village_tree", "rect": [128, 192, 128, 160], "footprint": [52, 138, 76, 153]},
+      {"name": "village_pot_flower", "rect": [160, 1056, 32, 64]},
+      {"name": "village_pot", "rect": [160, 1120, 32, 32]},
+      {"name": "village_hedge", "rect": [0, 1152, 96, 96], "footprint": [2, 52, 93, 77]},
+      {"name": "village_hedge_yellow", "rect": [96, 1152, 96, 96], "footprint": [2, 52, 93, 77]},
+      {"name": "village_hedge_white", "rect": [0, 1248, 96, 96], "footprint": [2, 52, 93, 77]},
+      {"name": "village_house_red", "rect": [96, 1248, 160, 192], "footprint": [6, 150, 151, 181]}
+    ]
+  }
+]

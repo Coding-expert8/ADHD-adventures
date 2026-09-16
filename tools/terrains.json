@@ -1,0 +1,19 @@
+{
+  "terrains": [
+    {"name": "village_grass", "tileset": "_01___Tileset___Transparent", "tile": [4, 16]},
+    {"name": "village_sand", "tileset": "_01___Tileset___Transparent", "tile": [1, 16]},
+    {"name": "village_sand_pale", "tileset": "_01___Tileset___Transparent", "tile": [1, 19]},
+    {"name": "village_dirt", "tileset": "_01___Tileset___Transparent", "tile": [1, 22]},
+    {"name": "village_mud", "tileset": "_01___Tileset___Transparent", "tile": [1, 31]},
+    {"name": "village_water", "tileset": "_01___Tileset___Transparent", "tile": [1, 25], "solid": true},
+    {"name": "village_water_pale", "tileset": "_01___Tileset___Transparent", "tile": [1, 28], "solid": true}
+  ],
+  "pairs": [
+    {"a": "village_grass", "b": "village_sand", "tileset": "_01___Tileset___Transparent", "hole3": [0, 15], "island3": [3, 15]},
+    {"a": "village_grass", "b": "village_sand_pale", "tileset": "_01___Tileset___Transparent", "hole3": [0, 18], "island3": [3, 18]},
+    {"a": "village_grass", "b": "village_dirt", "tileset": "_01___Tileset___Transparent", "hole3": [0, 21], "island3": [3, 21]},
+    {"a": "village_sand", "b": "village_water", "tileset": "_01___Tileset___Transparent", "hole3": [0, 24], "island3": [3, 24]},
+    {"a": "village_sand_pale", "b": "village_water_pale", "tileset": "_01___Tileset___Transparent", "hole3": [0, 27], "island3": [3, 27]},
+    {"a": "village_dirt", "b": "village_mud", "tileset": "_01___Tileset___Transparent", "hole3": [0, 30], "island3": [3, 30]}
+  ]
+}
