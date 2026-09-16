@@ -1,23 +1,36 @@
+//make a maze or something like that
 
-if (keyboard_check(vk_left))
+if (keyboard_check(vk_left) or keyboard_check(ord("A")))
 {
 image_angle = image_angle + 5;
 }
 
 
-if (keyboard_check(vk_right))
+if (keyboard_check(vk_right) or keyboard_check(ord("D")))
 {
 image_angle = image_angle - 5;
 }
 
-if (keyboard_check(vk_up))
+if (keyboard_check(vk_up) or keyboard_check(ord("W")))
 {
-motion_add(image_angle+90, 0.05);
+motion_add(image_angle, 0.05);
+moving = true;
 }
 
 
-if (keyboard_check_pressed(vk_space))
+angle = image_angle mod 360;
+image_angle = angle;
+
+if angle > 90 and angle < 270
 {
-	var inst = instance_create_layer(x, y, "Instances", obj_bullet);
-	inst.direction = image_angle;
+	image_yscale = -1;
+		
+}
+else
+{
+
+	image_yscale = 1;
+}
+if image_angle < 0 {
+	image_angle = 360;
 }

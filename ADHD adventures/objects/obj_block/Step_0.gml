@@ -67,3 +67,4 @@ if (_is_correct) {
 		global.round_timer = global.round_time
 	}
 }
+
