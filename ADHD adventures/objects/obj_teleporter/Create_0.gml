@@ -1,1 +1,0 @@
-full_screen = false;

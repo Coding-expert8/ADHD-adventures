@@ -2,7 +2,6 @@
 
 /// @description for collision with asteroid
 score += 10;
-global.shots_landed++;
 instance_destroy();
 with (other)
 {
