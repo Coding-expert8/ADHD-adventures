@@ -37,7 +37,9 @@
     {"$GMFolder":"","%Name":"World","folderPath":"folders/Sprites/World.yy","name":"World","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Tilesets","folderPath":"folders/Tilesets.yy","name":"Tilesets","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
-  "ForcedPrefabProjectReferences":[],
+  "ForcedPrefabProjectReferences":[
+    {"link":"io.gamemaker.gm_effect_windblown_particles-1.0.0","name":"io.gamemaker.gm_effect_windblown_particles-1.0.0","path":"io.gamemaker.gm_effect_windblown_particles-1.0.0.yyp",},
+  ],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"supersoft.ttf","CopyToMask":-1,"filePath":"datafiles","name":"supersoft.ttf","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
@@ -62,6 +64,7 @@
     {"id":{"name":"obj_spawn","path":"objects/obj_spawn/obj_spawn.yy",},},
     {"id":{"name":"obj_terrain","path":"objects/obj_terrain/obj_terrain.yy",},},
     {"id":{"name":"obj_warp","path":"objects/obj_warp/obj_warp.yy",},},
+    {"id":{"name":"obj_weather_control","path":"objects/obj_weather_control/obj_weather_control.yy",},},
     {"id":{"name":"obj_world","path":"objects/obj_world/obj_world.yy",},},
     {"id":{"name":"par_trigger","path":"objects/par_trigger/par_trigger.yy",},},
     {"id":{"name":"par_ysort","path":"objects/par_ysort/par_ysort.yy",},},
