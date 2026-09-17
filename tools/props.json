@@ -1,6 +1,7 @@
 [
   {
     "tileset": "_01___Tileset___Transparent",
+    "folder": "Village",
     "props": [
       {"name": "village_bush", "rect": [0, 64, 64, 64]},
       {"name": "village_bush_yellow", "rect": [64, 64, 64, 64]},
@@ -21,6 +22,7 @@
   },
   {
     "tileset": "_02___Tileset___Transparent",
+    "folder": "Town",
     "props": [
       {"name": "town_sign", "rect": [0, 64, 32, 64], "footprint": [9, 42, 22, 61]},
       {"name": "town_lamp", "rect": [0, 128, 32, 96], "footprint": [6, 72, 25, 93]},
@@ -35,6 +37,7 @@
   },
   {
     "tileset": "_03___Tileset___Transparent",
+    "folder": "Forest",
     "props": [
       {"name": "forest_stump_small", "rect": [64, 32, 32, 32]},
       {"name": "forest_log", "rect": [96, 32, 96, 32], "footprint": [2, 10, 93, 31]},
@@ -62,6 +65,7 @@
   },
   {
     "tileset": "_04___Tileset___Transparent",
+    "folder": "Desert",
     "props": [
       {"name": "desert_bush_dry", "rect": [96, 0, 64, 64]},
       {"name": "desert_bush_dry_small", "rect": [160, 0, 32, 32]},
@@ -86,6 +90,7 @@
   },
   {
     "tileset": "_07___Tileset___Transparent",
+    "folder": "Cloud",
     "props": [
       {"name": "cloud_cup", "rect": [32, 0, 32, 32]},
       {"name": "cloud_pipe", "rect": [192, 0, 64, 64]}
@@ -93,6 +98,7 @@
   },
   {
     "tileset": "_09___Tileset___Transparent",
+    "folder": "City",
     "props": [
       {"name": "city_pole", "rect": [224, 0, 32, 96], "footprint": [4, 72, 25, 93]},
       {"name": "city_barrier", "rect": [128, 64, 96, 32], "footprint": [6, 16, 89, 29]},
@@ -127,6 +133,7 @@
   },
   {
     "tileset": "_10___Tileset___Transparent",
+    "folder": "Ice",
     "props": [
       {"name": "ice_rock", "rect": [0, 64, 32, 32]},
       {"name": "ice_crystal", "rect": [32, 32, 32, 64]},
@@ -141,6 +148,7 @@
   },
   {
     "tileset": "_11___Tileset___Transparent",
+    "folder": "Shore",
     "props": [
       {"name": "shore_bush", "rect": [0, 64, 64, 64]},
       {"name": "shore_rock", "rect": [160, 96, 64, 64]},
@@ -174,6 +182,7 @@
   },
   {
     "tileset": "_15___Tileset___Transparent",
+    "folder": "Rock",
     "props": [
       {"name": "rock_boulder", "rect": [192, 0, 64, 64]},
       {"name": "rock_stone_table", "rect": [128, 64, 64, 64]},

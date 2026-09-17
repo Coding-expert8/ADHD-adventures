@@ -715,6 +715,8 @@ def cmd_props(args):
     groups = json.loads((TOOLS / "props.json").read_text(encoding="utf-8"))
     for group in groups:
         source = tileset_source(group["tileset"])
+        # one Props subfolder per source tileset
+        folder = (group["folder"], f"{PROPS_FOLDER[1][:-3]}/{group['folder']}.yy") if "folder" in group else PROPS_FOLDER
         for prop in group["props"]:
             if "parts" in prop:
                 width = max(p["at"][0] + p["rect"][2] for p in prop["parts"])
@@ -744,7 +746,7 @@ def cmd_props(args):
                     print(f"keeping the hitbox of {name} set in GameMaker {list(current)} "
                           f"(props.json says {list(footprint)}; --reset-hitboxes overwrites it)")
                     footprint = current
-            write_sprite(name, img, footprint, PROPS_FOLDER)
+            write_sprite(name, img, footprint, folder)
 
 
 def scan(tileset):

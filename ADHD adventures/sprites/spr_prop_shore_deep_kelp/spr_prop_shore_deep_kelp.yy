@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Props",
-    "path":"folders/Sprites/Props.yy",
+    "name":"Shore",
+    "path":"folders/Sprites/Props/Shore.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

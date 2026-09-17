@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Props",
-    "path":"folders/Sprites/Props.yy",
+    "name":"Forest",
+    "path":"folders/Sprites/Props/Forest.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
