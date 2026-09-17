@@ -713,7 +713,7 @@ def cmd_props(args):
             else:
                 left, top, right, bottom = body_bbox(img)
                 body_w, body_h = right - left, bottom - top
-                footprint = (left + round(body_w * 0.2), bottom - max(4, round(body_h * 0.25)),
+                footprint = (left + round(body_w * 0.2), bottom - max(8, round(body_h * 0.5)),
                              right - 1 - round(body_w * 0.2), bottom - 1)
             write_sprite(f"spr_prop_{prop['name']}", img, footprint, PROPS_FOLDER)
 
