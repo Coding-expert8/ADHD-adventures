@@ -50,6 +50,7 @@
     {"id":{"name":"obj_enemy","path":"objects/obj_enemy/obj_enemy.yy",},},
     {"id":{"name":"obj_enemyspawn","path":"objects/obj_enemyspawn/obj_enemyspawn.yy",},},
     {"id":{"name":"obj_game","path":"objects/obj_game/obj_game.yy",},},
+    {"id":{"name":"obj_larper_ice_maze","path":"objects/obj_larper_ice_maze/obj_larper_ice_maze.yy",},},
     {"id":{"name":"obj_map","path":"objects/obj_map/obj_map.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_portal_space_rocks_1","path":"objects/obj_portal_space_rocks_1/obj_portal_space_rocks_1.yy",},},
