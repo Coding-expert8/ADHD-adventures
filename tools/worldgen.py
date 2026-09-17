@@ -366,6 +366,8 @@ COLLISION_WALKABLE = 22  # empty "walkable" tile: like every painted Collision t
 # 14-21 carry at their own slope too, so a ramp section moves the walker the same amount in every row.
 COLLISION_RAMP_TILES = {23: -0.5, 24: 0.5, 25: -1.0, 26: 1.0}
 COLLISION_RAMPS = {**COLLISION_RAMP_TILES, 14: -0.5, 15: -0.5, 16: 0.5, 17: 0.5, 18: 0.5, 19: 0.5, 20: -0.5, 21: -0.5}
+# Slow tiles: non-solid; a walker whose feet touch one moves at this fraction of its speed (27 = vertical stairs).
+COLLISION_SLOW_TILES = {27: 0.7}
 
 
 def collision_shapes():
@@ -400,6 +402,7 @@ def collision_shapes():
         shapes.append(lambda x, y, fn=fn: fn(x + n, y))
     shapes.append(lambda x, y: False)  # 22 walkable marker
     shapes += [lambda x, y: False] * len(COLLISION_RAMP_TILES)  # 23-26 ramps
+    shapes += [lambda x, y: False] * len(COLLISION_SLOW_TILES)  # 27 slow (stairs)
     return shapes
 
 
@@ -432,6 +435,12 @@ def cmd_basic(_args):
             for x in range(n):
                 stripe = int(y - rate * x) % (n // 2) < 2
                 img.putpixel((ox + x, oy + y), (60, 120, 255, 220 if stripe else 80))
+    for index in COLLISION_SLOW_TILES:
+        # orange, with horizontal stripes like steps
+        ox, oy = (index % 8) * n, (index // 8) * n
+        for y in range(n):
+            for x in range(n):
+                img.putpixel((ox + x, oy + y), (255, 150, 30, 220 if y % 4 == 3 else 80))
     write_sprite("spr_collision_tiles", img, (0, 0, img.width - 1, img.height - 1), WORLD_FOLDER)
     write_tileset("ts_collision", "spr_collision_tiles", img, n, n)
 
@@ -448,6 +457,10 @@ def cmd_basic(_args):
               "// Blue tiles 23-26 are ramps; the half-slope wall tiles 14-21 carry at their slope too.",
               "global.collision_ramp = array_create(array_length(global.collision_shape), 0);"]
     lines += [f"global.collision_ramp[{index}] = {rate};" for index, rate in sorted(COLLISION_RAMPS.items())]
+    lines += ["",
+              "// Speed: fraction of normal speed while the feet touch the tile. Orange tile 27 (stairs) = 70%.",
+              "global.collision_speed = array_create(array_length(global.collision_shape), 1);"]
+    lines += [f"global.collision_speed[{index}] = {rate};" for index, rate in sorted(COLLISION_SLOW_TILES.items())]
     script = PROJECT / "scripts" / "scr_collision_data"
     write_text(script / "scr_collision_data.gml", "\n".join(lines) + "\n")
     write_text(script / "scr_collision_data.yy", SCRIPT_YY.substitute(name="scr_collision_data"))

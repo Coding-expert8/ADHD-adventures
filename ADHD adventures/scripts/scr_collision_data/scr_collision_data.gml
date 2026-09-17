@@ -28,6 +28,7 @@ global.collision_shape = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
 // Tile 22 (green) has no solid pixels: paint it to make solid terrain such as water walkable.
@@ -47,3 +48,7 @@ global.collision_ramp[23] = -0.5;
 global.collision_ramp[24] = 0.5;
 global.collision_ramp[25] = -1.0;
 global.collision_ramp[26] = 1.0;
+
+// Speed: fraction of normal speed while the feet touch the tile. Orange tile 27 (stairs) = 70%.
+global.collision_speed = array_create(array_length(global.collision_shape), 1);
+global.collision_speed[27] = 0.7;

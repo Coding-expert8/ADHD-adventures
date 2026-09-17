@@ -82,6 +82,26 @@ function collision_rect_solid(_l, _t, _r, _b) {
     return false;
 }
 
+/// @func collision_speed_rect(left, top, right, bottom)
+/// @desc Slowest speed fraction of the Collision tiles a rectangle touches (1 = normal speed).
+///       Orange tile 27 (vertical stairs) gives 0.7.
+function collision_speed_rect(_l, _t, _r, _b) {
+    var _tm = global.tm_collision;
+    if (_tm == -1) return 1;
+    var _cx0 = max(floor(_l / COLLISION_CELL), 0);
+    var _cy0 = max(floor(_t / COLLISION_CELL), 0);
+    var _cx1 = min(floor(_r / COLLISION_CELL), tilemap_get_width(_tm) - 1);
+    var _cy1 = min(floor(_b / COLLISION_CELL), tilemap_get_height(_tm) - 1);
+    var _speed = 1;
+    for (var _cy = _cy0; _cy <= _cy1; _cy++) {
+        for (var _cx = _cx0; _cx <= _cx1; _cx++) {
+            var _tile = tile_get_index(tilemap_get(_tm, _cx, _cy));
+            if (_tile > 0 and _tile < array_length(global.collision_speed)) _speed = min(_speed, global.collision_speed[_tile]);
+        }
+    }
+    return _speed;
+}
+
 /// @func world_terrain_blocks(x, y)
 /// @desc True if solid terrain (water) is under a room position. A painted Collision tile replaces the
 ///       terrain for its cell, so bridges and docks over water are walkable wherever their shapes allow
@@ -111,8 +131,26 @@ function world_blocked(_x, _y) {
 ///       - Walking sideways over ramp tiles (bridge decks, side stairs) also moves it up or down.
 ///       - When moving along one axis only, a blocked step may shift one pixel sideways instead, so
 ///         sloped walls are followed rather than stopping the walk.
+///       - While the feet touch a slow tile (stairs), the move is scaled down to that tile's speed.
 function world_move(_dx, _dy) {
     if (!variable_instance_exists(id, "ramp_carry")) ramp_carry = 0; // fraction of a pixel still to climb
+    if (!variable_instance_exists(id, "slow_carry_x")) {
+        slow_carry_x = 0; // fractions of a pixel left over from slowed moves
+        slow_carry_y = 0;
+    }
+    var _speed = collision_speed_rect(bbox_left, bbox_top, bbox_right, bbox_bottom);
+    if (_speed < 1) {
+        slow_carry_x += _dx * _speed;
+        slow_carry_y += _dy * _speed;
+        _dx = (slow_carry_x < 0) ? ceil(slow_carry_x) : floor(slow_carry_x);
+        _dy = (slow_carry_y < 0) ? ceil(slow_carry_y) : floor(slow_carry_y);
+        slow_carry_x -= _dx;
+        slow_carry_y -= _dy;
+    } else {
+        slow_carry_x = 0;
+        slow_carry_y = 0;
+    }
+
     var _sx = sign(_dx);
     var _sy = sign(_dy);
     repeat (abs(_dx)) {
