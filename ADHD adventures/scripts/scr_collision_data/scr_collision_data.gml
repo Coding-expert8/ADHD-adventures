@@ -24,6 +24,26 @@ global.collision_shape = [
     [65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 65534, 65528, 65504, 65408, 65024, 63488, 57344, 32768],
     [65535, 65535, 65535, 65535, 65535, 65535, 65535, 65535, 32767, 8191, 2047, 511, 127, 31, 7, 1],
     [32767, 8191, 2047, 511, 127, 31, 7, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
 // Tile 22 (green) has no solid pixels: paint it to make solid terrain such as water walkable.
+
+// Ramps: pixels moved down (negative = up) per pixel walked to the right while standing on the tile.
+// Blue tiles 23-26 are ramps; the half-slope wall tiles 14-21 carry at their slope too.
+global.collision_ramp = array_create(array_length(global.collision_shape), 0);
+global.collision_ramp[14] = -0.5;
+global.collision_ramp[15] = -0.5;
+global.collision_ramp[16] = 0.5;
+global.collision_ramp[17] = 0.5;
+global.collision_ramp[18] = 0.5;
+global.collision_ramp[19] = 0.5;
+global.collision_ramp[20] = -0.5;
+global.collision_ramp[21] = -0.5;
+global.collision_ramp[23] = -0.5;
+global.collision_ramp[24] = 0.5;
+global.collision_ramp[25] = -1.0;
+global.collision_ramp[26] = 1.0;

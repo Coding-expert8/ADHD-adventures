@@ -12,10 +12,11 @@
   "isDnd":false,
   "layers":[
     {"$GMRTileLayer":"","%Name":"Collision","depth":0,"effectEnabled":true,"effectType":null,"gridX":16,"gridY":16,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Collision","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":900,"SerialiseWidth":1600,"TileCompressedData":[
-          -474118,-2147483648,-16,1,-1584,-2147483648,-16,1,-1584,-2147483648,-16,1,-1584,-2147483648,-16,1,-1584,
-          -2147483648,4,12,1,20,21,-8,22,4,18,19,1,13,-1584,-2147483648,-16,22,-1584,-2147483648,-2,22,2,14,15,
-          -8,1,4,16,17,22,22,-1584,-2147483648,1,10,-14,1,1,11,-1584,-2147483648,-16,1,-1584,-2147483648,-16,1,
-          -1584,-2147483648,-16,1,-1584,-2147483648,-16,1,-948266,-2147483648,
+          -474118,-2147483648,-16,1,-1584,-2147483648,-16,1,-1584,-2147483648,-16,1,-1584,-2147483648,-16,1,-1584,-2147483648,4,12,
+          20,21,23,-8,22,4,24,18,19,13,-1584,-2147483648,4,22,22,23,23,-8,22,4,
+          24,24,22,22,-1584,-2147483648,5,22,22,23,14,15,-6,1,5,16,17,24,22,22,
+          -1584,-2147483648,1,10,-14,1,1,11,-1584,-2147483648,-16,1,-1584,-2147483648,-16,1,-1584,-2147483648,-16,1,
+          -1584,-2147483648,-16,1,-948266,-2147483648,
         ],"TileDataFormat":1,},"tilesetId":{"name":"ts_collision","path":"tilesets/ts_collision/ts_collision.yy",},"userdefinedDepth":false,"visible":false,"x":0,"y":0,},
     {"$GMRTileLayer":"","%Name":"Above","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Above","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":450,"SerialiseWidth":800,"TileCompressedData":[-360000,-2147483648,],"TileDataFormat":1,},"tilesetId":{"name":"ts_world","path":"tilesets/ts_world/ts_world.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":200,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[

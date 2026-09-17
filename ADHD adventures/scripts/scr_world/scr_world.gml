@@ -26,6 +26,20 @@ function collision_tile_at(_px, _py) {
     return (_data == -1) ? 0 : tile_get_index(_data);
 }
 
+/// @func collision_ramp_at(x, y)
+/// @desc How far a ramp tile under a room position moves a walker down (negative = up) per pixel walked
+///       to the right. 0 when there is no ramp. Mirrored or flipped ramp tiles slope the other way.
+function collision_ramp_at(_px, _py) {
+    if (global.tm_collision == -1) return 0;
+    var _data = tilemap_get_at_pixel(global.tm_collision, _px, _py);
+    if (_data == -1) return 0;
+    var _tile = tile_get_index(_data);
+    if (_tile >= array_length(global.collision_ramp)) return 0;
+    var _rate = global.collision_ramp[_tile];
+    if (tile_get_mirror(_data) != tile_get_flip(_data)) _rate = -_rate;
+    return _rate;
+}
+
 /// @func collision_rect_solid(left, top, right, bottom)
 /// @desc True if a solid pixel of a Collision tile shape lies inside the rectangle (inclusive room
 ///       coordinates). Mirrored and flipped tiles work; rotated ones are treated as unrotated.
@@ -93,14 +107,26 @@ function world_blocked(_x, _y) {
 }
 
 /// @func world_move(dx, dy)
-/// @desc Moves the calling instance pixel by pixel, stopping at solids. When moving along one axis only,
-///       a blocked step may shift one pixel sideways instead, so slopes such as bridge arches and
-///       diagonal walls are followed rather than stopping the walk.
+/// @desc Moves the calling instance pixel by pixel, stopping at solids.
+///       - Walking sideways over ramp tiles (bridge decks, side stairs) also moves it up or down.
+///       - When moving along one axis only, a blocked step may shift one pixel sideways instead, so
+///         sloped walls are followed rather than stopping the walk.
 function world_move(_dx, _dy) {
+    if (!variable_instance_exists(id, "ramp_carry")) ramp_carry = 0; // fraction of a pixel still to climb
     var _sx = sign(_dx);
     var _sy = sign(_dy);
     repeat (abs(_dx)) {
-        if (!world_blocked(x + _sx, y)) {
+        var _rate = collision_ramp_at(x, bbox_bottom);
+        ramp_carry = (_rate == 0) ? 0 : ramp_carry + _rate * _sx;
+        var _lift = 0;
+        if (ramp_carry >= 1) _lift = 1;
+        if (ramp_carry <= -1) _lift = -1;
+        ramp_carry -= _lift;
+
+        if (_lift != 0 and !world_blocked(x + _sx, y + _lift)) {
+            x += _sx;
+            y += _lift;
+        } else if (!world_blocked(x + _sx, y)) {
             x += _sx;
         } else if (_dy == 0 and !world_blocked(x + _sx, y - 1)) {
             x += _sx;

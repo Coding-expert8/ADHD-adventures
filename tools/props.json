@@ -23,7 +23,7 @@
     "tileset": "_03___Tileset___Transparent",
     "props": [
       {"name": "forest_stump_small", "rect": [64, 32, 32, 32]},
-      {"name": "forest_log", "rect": [96, 32, 96, 32], "footprint": [2, 0, 93, 31]},
+      {"name": "forest_log", "rect": [96, 32, 96, 32], "footprint": [2, 10, 93, 31]},
       {"name": "forest_rock_gray", "rect": [192, 32, 32, 32]},
       {"name": "forest_rocks_gray", "rect": [224, 32, 32, 32]},
       {"name": "forest_rock_brown", "rect": [32, 64, 32, 32]},

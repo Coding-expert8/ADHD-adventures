@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_collision_tiles",
   "bboxMode":2,
-  "bbox_bottom":47,
+  "bbox_bottom":63,
   "bbox_left":0,
   "bbox_right":127,
   "bbox_top":0,
@@ -16,7 +16,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":48,
+  "height":64,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"824d29cf-069b-507f-a1bf-2ac004d574bd","blendMode":0,"displayName":"default","isLocked":false,"name":"824d29cf-069b-507f-a1bf-2ac004d574bd","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},

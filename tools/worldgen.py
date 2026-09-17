@@ -6,7 +6,8 @@ Close GameMaker before running: the IDE overwrites .yy files it has open.
     python tools/worldgen.py basic     collision shape tiles + scr_collision_data, player mask, trigger/spawn markers
     python tools/worldgen.py world     ts_world: every tileset in tools/world.json combined into one tileset
     python tools/worldgen.py terrain   ts_terrain atlas + scr_terrain_data from tools/terrains.json
-    python tools/worldgen.py props     spr_prop_* sprites from tools/props.json
+    python tools/worldgen.py props     spr_prop_* sprites from tools/props.json (keeps hitboxes edited in GameMaker
+                                       unless --reset-hitboxes is given)
     python tools/worldgen.py props --scan _01___Tileset___Transparent
                                        list the separate image regions of a tileset (helps write props.json)
 
@@ -360,6 +361,11 @@ def write_tileset(name, sprite_name, img, tile_w, tile_h, no_export=False, brush
 
 COLLISION_CELL = 16
 COLLISION_WALKABLE = 22  # empty "walkable" tile: like every painted Collision tile it replaces solid terrain in its cell
+# Ramps: pixels moved up (negative) or down per pixel walked to the right while the feet are on the tile.
+# 23-26 are non-solid ramp tiles (gentle rising right/left, steep rising right/left). The half-slope wall tiles
+# 14-21 carry at their own slope too, so a ramp section moves the walker the same amount in every row.
+COLLISION_RAMP_TILES = {23: -0.5, 24: 0.5, 25: -1.0, 26: 1.0}
+COLLISION_RAMPS = {**COLLISION_RAMP_TILES, 14: -0.5, 15: -0.5, 16: 0.5, 17: 0.5, 18: 0.5, 19: 0.5, 20: -0.5, 21: -0.5}
 
 
 def collision_shapes():
@@ -393,6 +399,7 @@ def collision_shapes():
         shapes.append(lambda x, y, fn=fn: fn(x, y))
         shapes.append(lambda x, y, fn=fn: fn(x + n, y))
     shapes.append(lambda x, y: False)  # 22 walkable marker
+    shapes += [lambda x, y: False] * len(COLLISION_RAMP_TILES)  # 23-26 ramps
     return shapes
 
 
@@ -418,6 +425,13 @@ def cmd_basic(_args):
     ImageDraw.Draw(img).rectangle(((COLLISION_WALKABLE % 8) * n, (COLLISION_WALKABLE // 8) * n,
                                    (COLLISION_WALKABLE % 8) * n + n - 1, (COLLISION_WALKABLE // 8) * n + n - 1),
                                   fill=(40, 200, 80, 90), outline=(40, 200, 80, 220))
+    for index, rate in COLLISION_RAMP_TILES.items():
+        # blue, with stripes running along the slope the walker follows
+        ox, oy = (index % 8) * n, (index // 8) * n
+        for y in range(n):
+            for x in range(n):
+                stripe = int(y - rate * x) % (n // 2) < 2
+                img.putpixel((ox + x, oy + y), (60, 120, 255, 220 if stripe else 80))
     write_sprite("spr_collision_tiles", img, (0, 0, img.width - 1, img.height - 1), WORLD_FOLDER)
     write_tileset("ts_collision", "spr_collision_tiles", img, n, n)
 
@@ -428,7 +442,12 @@ def cmd_basic(_args):
         "global.collision_shape = [",
     ]
     lines.append(",\n".join("    [" + ", ".join(str(r) for r in rows) + "]" for rows in masks))
-    lines += ["];", f"// Tile {COLLISION_WALKABLE} (green) has no solid pixels: paint it to make solid terrain such as water walkable."]
+    lines += ["];", f"// Tile {COLLISION_WALKABLE} (green) has no solid pixels: paint it to make solid terrain such as water walkable.",
+              "",
+              "// Ramps: pixels moved down (negative = up) per pixel walked to the right while standing on the tile.",
+              "// Blue tiles 23-26 are ramps; the half-slope wall tiles 14-21 carry at their slope too.",
+              "global.collision_ramp = array_create(array_length(global.collision_shape), 0);"]
+    lines += [f"global.collision_ramp[{index}] = {rate};" for index, rate in sorted(COLLISION_RAMPS.items())]
     script = PROJECT / "scripts" / "scr_collision_data"
     write_text(script / "scr_collision_data.gml", "\n".join(lines) + "\n")
     write_text(script / "scr_collision_data.yy", SCRIPT_YY.substitute(name="scr_collision_data"))
@@ -715,7 +734,17 @@ def cmd_props(args):
                 body_w, body_h = right - left, bottom - top
                 footprint = (left + round(body_w * 0.2), bottom - max(8, round(body_h * 0.5)),
                              right - 1 - round(body_w * 0.2), bottom - 1)
-            write_sprite(f"spr_prop_{prop['name']}", img, footprint, PROPS_FOLDER)
+            name = f"spr_prop_{prop['name']}"
+            existing = PROJECT / "sprites" / name / f"{name}.yy"
+            if existing.exists() and not args.reset_hitboxes:
+                yy = existing.read_text(encoding="utf-8")
+                current = tuple(int(re.search(rf'"{k}":(\d+)', yy).group(1))
+                                for k in ("bbox_left", "bbox_top", "bbox_right", "bbox_bottom"))
+                if current != footprint:
+                    print(f"keeping the hitbox of {name} set in GameMaker {list(current)} "
+                          f"(props.json says {list(footprint)}; --reset-hitboxes overwrites it)")
+                    footprint = current
+            write_sprite(name, img, footprint, PROPS_FOLDER)
 
 
 def scan(tileset):
@@ -764,6 +793,8 @@ def main():
     sub.add_parser("terrain").set_defaults(run=cmd_terrain)
     props = sub.add_parser("props")
     props.add_argument("--scan", metavar="TILESET_SPRITE")
+    props.add_argument("--reset-hitboxes", action="store_true",
+                       help="overwrite hitboxes edited in GameMaker with the footprints from props.json")
     props.set_defaults(run=cmd_props)
     args = parser.parse_args()
     args.run(args)
