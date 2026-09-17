@@ -23,7 +23,6 @@
     {"name":"obj_space_rocks_spawner","order":16,"path":"objects/obj_space_rocks_spawner/obj_space_rocks_spawner.yy",},
     {"name":"obj_space_rocks_wall","order":15,"path":"objects/obj_space_rocks_wall/obj_space_rocks_wall.yy",},
     {"name":"obj_space_rocks","order":11,"path":"objects/obj_space_rocks/obj_space_rocks.yy",},
-    {"name":"obj_weather_control","order":1,"path":"objects/obj_weather_control/obj_weather_control.yy",},
     {"name":"obj_spawner","order":6,"path":"objects/obj_spawner/obj_spawner.yy",},
     {"name":"obj_teleporter","order":8,"path":"objects/obj_teleporter/obj_teleporter.yy",},
     {"name":"obj_title","order":7,"path":"objects/obj_title/obj_title.yy",},
