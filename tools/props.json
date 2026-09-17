@@ -20,6 +20,20 @@
     ]
   },
   {
+    "tileset": "_02___Tileset___Transparent",
+    "props": [
+      {"name": "town_sign", "rect": [0, 64, 32, 64], "footprint": [9, 42, 22, 61]},
+      {"name": "town_lamp", "rect": [0, 128, 32, 96], "footprint": [6, 72, 25, 93]},
+      {"name": "town_mound", "rect": [32, 160, 64, 64]},
+      {"name": "town_pole", "rect": [192, 416, 64, 128], "footprint": [22, 100, 41, 123]},
+      {"name": "town_crate", "rect": [192, 544, 64, 96], "footprint": [2, 48, 61, 95]},
+      {"name": "town_crate_worn", "rect": [192, 640, 64, 96], "footprint": [2, 48, 61, 95]},
+      {"name": "town_bollard", "rect": [0, 1120, 32, 64]},
+      {"name": "town_block_question", "rect": [0, 1264, 32, 48]},
+      {"name": "town_block_brick", "rect": [0, 1312, 32, 64]}
+    ]
+  },
+  {
     "tileset": "_03___Tileset___Transparent",
     "props": [
       {"name": "forest_stump_small", "rect": [64, 32, 32, 32]},
@@ -44,6 +58,133 @@
       {"name": "forest_boulder_mossy", "rect": [128, 224, 64, 64], "footprint": [8, 18, 55, 61]},
       {"name": "forest_lamp", "rect": [192, 288, 64, 192], "footprint": [8, 164, 23, 187]},
       {"name": "forest_sign", "rect": [0, 384, 64, 64], "footprint": [42, 46, 53, 61]}
+    ]
+  },
+  {
+    "tileset": "_04___Tileset___Transparent",
+    "props": [
+      {"name": "desert_bush_dry", "rect": [96, 0, 64, 64]},
+      {"name": "desert_bush_dry_small", "rect": [160, 0, 32, 32]},
+      {"name": "desert_rock_red", "rect": [192, 0, 32, 32]},
+      {"name": "desert_table", "rect": [160, 64, 64, 64]},
+      {"name": "desert_chair", "rect": [224, 64, 32, 32]},
+      {"name": "desert_stall", "rect": [128, 160, 64, 64], "footprint": [6, 24, 57, 47]},
+      {"name": "desert_parasol", "rect": [0, 192, 64, 96], "footprint": [22, 52, 41, 75]},
+      {"name": "desert_post", "parts": [{"rect": [0, 320, 64, 32], "at": [0, 0]}, {"rect": [0, 352, 32, 128], "at": [0, 32]}], "footprint": [4, 132, 27, 155]},
+      {"name": "desert_lamp", "rect": [32, 384, 32, 96], "footprint": [10, 70, 23, 93]},
+      {"name": "desert_cactus_pot_tall", "rect": [0, 480, 64, 96]},
+      {"name": "desert_cactus_pot", "rect": [0, 576, 64, 64]},
+      {"name": "desert_pot", "rect": [0, 640, 64, 64]},
+      {"name": "desert_rock", "rect": [96, 2112, 32, 32]},
+      {"name": "desert_palm", "rect": [0, 2784, 64, 96], "footprint": [18, 60, 45, 87]},
+      {"name": "desert_palm_tall", "rect": [0, 2880, 64, 128], "footprint": [18, 92, 45, 119]},
+      {"name": "desert_cactus_round_flower", "rect": [128, 3008, 32, 32]},
+      {"name": "desert_cactus_round", "rect": [128, 3040, 32, 32]},
+      {"name": "desert_cactus_flower", "rect": [0, 3072, 64, 96]},
+      {"name": "desert_cactus", "rect": [64, 3072, 64, 96]}
+    ]
+  },
+  {
+    "tileset": "_07___Tileset___Transparent",
+    "props": [
+      {"name": "cloud_cup", "rect": [32, 0, 32, 32]},
+      {"name": "cloud_pipe", "rect": [192, 0, 64, 64]}
+    ]
+  },
+  {
+    "tileset": "_09___Tileset___Transparent",
+    "props": [
+      {"name": "city_pole", "rect": [224, 0, 32, 96], "footprint": [4, 72, 25, 93]},
+      {"name": "city_barrier", "rect": [128, 64, 96, 32], "footprint": [6, 16, 89, 29]},
+      {"name": "city_barrier_red", "rect": [128, 96, 96, 32], "footprint": [6, 16, 89, 29]},
+      {"name": "city_ac_unit", "rect": [128, 640, 96, 96], "footprint": [2, 42, 91, 83]},
+      {"name": "city_bush", "rect": [64, 672, 64, 64]},
+      {"name": "city_hedge", "rect": [0, 736, 96, 96], "footprint": [2, 40, 93, 79]},
+      {"name": "city_planter", "rect": [0, 832, 96, 96], "footprint": [2, 48, 93, 79]},
+      {"name": "city_stool", "rect": [192, 896, 32, 32]},
+      {"name": "city_table_orange", "rect": [32, 976, 64, 48]},
+      {"name": "city_parasol", "rect": [128, 928, 64, 96], "footprint": [22, 56, 41, 79]},
+      {"name": "city_chairs", "rect": [192, 928, 32, 64]},
+      {"name": "city_table_black", "rect": [192, 992, 64, 64]},
+      {"name": "city_table_green", "rect": [192, 1056, 64, 64]},
+      {"name": "city_tree_small", "rect": [0, 1152, 32, 64]},
+      {"name": "city_tree", "rect": [32, 1144, 96, 136], "footprint": [18, 104, 77, 135]},
+      {"name": "city_water_tower", "rect": [128, 1120, 64, 136]},
+      {"name": "city_bench", "rect": [192, 1120, 64, 48], "footprint": [4, 24, 59, 47]},
+      {"name": "city_bin_green", "rect": [192, 1184, 32, 64]},
+      {"name": "city_bin_blue", "rect": [224, 1184, 32, 64]},
+      {"name": "city_bin_gray", "rect": [192, 1248, 32, 54]},
+      {"name": "city_hydrant", "rect": [224, 1248, 32, 52]},
+      {"name": "city_bollard", "rect": [0, 1216, 32, 64]},
+      {"name": "city_taxi", "rect": [0, 1280, 160, 96], "footprint": [10, 58, 149, 91]},
+      {"name": "city_clock", "rect": [160, 1280, 32, 96], "footprint": [8, 70, 25, 93]},
+      {"name": "city_barrel", "rect": [192, 1312, 64, 90]},
+      {"name": "city_sign_post", "rect": [192, 1408, 64, 128], "footprint": [40, 88, 57, 111]},
+      {"name": "city_dumpster", "rect": [0, 1696, 96, 64], "footprint": [2, 32, 77, 63]},
+      {"name": "city_lamp_double", "rect": [96, 1696, 96, 96], "footprint": [40, 70, 57, 93]},
+      {"name": "city_traffic_barrel", "rect": [192, 1696, 32, 64]}
+    ]
+  },
+  {
+    "tileset": "_10___Tileset___Transparent",
+    "props": [
+      {"name": "ice_rock", "rect": [0, 64, 32, 32]},
+      {"name": "ice_crystal", "rect": [32, 32, 32, 64]},
+      {"name": "ice_pipe", "rect": [0, 640, 64, 64]},
+      {"name": "ice_scarecrow", "rect": [64, 640, 64, 64]},
+      {"name": "ice_furnace", "rect": [160, 640, 64, 96]},
+      {"name": "ice_topiary_small", "rect": [96, 704, 56, 64]},
+      {"name": "ice_topiary", "rect": [0, 800, 64, 128]},
+      {"name": "ice_pot", "rect": [64, 832, 64, 96]},
+      {"name": "ice_well", "rect": [0, 1472, 96, 128], "footprint": [2, 66, 93, 119]}
+    ]
+  },
+  {
+    "tileset": "_11___Tileset___Transparent",
+    "props": [
+      {"name": "shore_bush", "rect": [0, 64, 64, 64]},
+      {"name": "shore_rock", "rect": [160, 96, 64, 64]},
+      {"name": "shore_rock_small", "rect": [224, 96, 32, 32]},
+      {"name": "shore_pillar", "rect": [0, 2880, 32, 96]},
+      {"name": "shore_pillar_tall", "rect": [32, 2880, 32, 128]},
+      {"name": "shore_parasol", "rect": [96, 2976, 64, 96], "footprint": [22, 56, 41, 79]},
+      {"name": "shore_reef_stone", "rect": [0, 4672, 32, 32]},
+      {"name": "shore_reef_pool", "rect": [0, 4704, 64, 80], "footprint": [2, 47, 61, 77]},
+      {"name": "shore_reef_pools", "rect": [64, 4672, 128, 112], "footprint": [4, 55, 125, 109]},
+      {"name": "shore_reef_pool_rock", "rect": [192, 4672, 64, 64], "footprint": [2, 40, 61, 63]},
+      {"name": "shore_reef_seaweed_purple", "rect": [192, 4736, 32, 64]},
+      {"name": "shore_reef_seaweed_green", "rect": [224, 4736, 32, 64]},
+      {"name": "shore_reef_coral", "rect": [0, 4800, 64, 64]},
+      {"name": "shore_reef_coral_red", "rect": [64, 4800, 64, 64]},
+      {"name": "shore_reef_kelp", "rect": [128, 4800, 50, 64]},
+      {"name": "shore_reef_leaf_teal", "rect": [192, 4800, 32, 64]},
+      {"name": "shore_reef_leaf_olive", "rect": [224, 4800, 32, 64]},
+      {"name": "shore_deep_stone", "rect": [0, 6848, 32, 32]},
+      {"name": "shore_deep_pool", "rect": [0, 6880, 64, 80], "footprint": [2, 48, 61, 79]},
+      {"name": "shore_deep_pools", "rect": [64, 6848, 128, 112], "footprint": [4, 56, 125, 111]},
+      {"name": "shore_deep_pool_rock", "rect": [192, 6848, 64, 64], "footprint": [2, 40, 61, 63]},
+      {"name": "shore_deep_seaweed_purple", "rect": [192, 6912, 32, 64]},
+      {"name": "shore_deep_seaweed_teal", "rect": [224, 6912, 32, 64]},
+      {"name": "shore_deep_coral", "rect": [0, 6976, 64, 64]},
+      {"name": "shore_deep_coral_purple", "rect": [64, 6976, 64, 64]},
+      {"name": "shore_deep_kelp", "rect": [128, 6976, 50, 64]},
+      {"name": "shore_deep_leaf_teal", "rect": [192, 6976, 32, 64]},
+      {"name": "shore_deep_leaf_green", "rect": [224, 6976, 32, 64]}
+    ]
+  },
+  {
+    "tileset": "_15___Tileset___Transparent",
+    "props": [
+      {"name": "rock_boulder", "rect": [192, 0, 64, 64]},
+      {"name": "rock_stone_table", "rect": [128, 64, 64, 64]},
+      {"name": "rock_rock", "rect": [192, 64, 32, 32]},
+      {"name": "rock_rock_small", "rect": [224, 64, 32, 32]},
+      {"name": "rock_rocks", "rect": [192, 96, 32, 32]},
+      {"name": "rock_pebble", "rect": [224, 96, 32, 32]},
+      {"name": "rock_pipe", "rect": [128, 608, 64, 64]},
+      {"name": "rock_pipe_top", "rect": [192, 608, 64, 64]},
+      {"name": "rock_bin", "rect": [0, 768, 64, 64]},
+      {"name": "rock_bin_b", "rect": [64, 768, 64, 64]}
     ]
   }
 ]
