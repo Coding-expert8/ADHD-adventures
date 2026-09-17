@@ -1,22 +1,15 @@
-
-if (choose(0, 1) == 0)
-{
-	var xx = choose((0), (room_width));
-	var yy = irandom_range(0, room_height);
+if the_time = 4 mod 5 { 
+	number = choose(1,2);
+	if number = 1 {
+		var xx = choose(obj_ship.x-offset, obj_ship.x+offset);
+		var yy = irandom_range(obj_ship.y-offset, obj_ship.y+offset);
+	}
+	else {
+		var yy = choose(obj_ship.y-offset, obj_ship.y+offset);
+		var xx = irandom_range(obj_ship.x-offset, obj_ship.x+offset);
+	}
+	instance_create_layer(xx, yy, "Instances", obj_asteroid);
 }
-else
-{
-	var xx = irandom_range((0), (room_width));
-	var yy = choose(0, room_height);
-}
-instance_create_layer(xx, yy, "Instances", obj_asteroid);
-alarm[0] = 4 * 60
+alarm[0] = 60;
+the_time++;
 
-//choose((0), (room_width));
-//irandom_range((0), (room_width));
-//create wall object, check solid
-
-//choose((obj_ship.x-683), (obj_ship+683));
-//irandom_range((obj_ship.x-683), (obj_ship+683));
-
-//var xx = choose(max(0,obj_ship.x-683), obj_ship+683);
