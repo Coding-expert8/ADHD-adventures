@@ -3,9 +3,14 @@
   "%Name":"ts_collision",
   "autoTileSets":[],
   "macroPageTiles":{
-    "SerialiseHeight":0,
-    "SerialiseWidth":0,
-    "TileSerialiseData":[],
+    "SerialiseHeight":15,
+    "SerialiseWidth":20,
+    "TileCompressedData":[
+      -64,0,-16,3,-4,0,-16,1,-4,0,-16,1,-4,0,-16,1,-4,0,4,12,20,21,23,-8,22,4,24,18,19,13,-4,0,-2,22,-2,23,
+      -8,22,-2,24,-2,22,-4,0,-2,22,-2,23,-8,22,-2,24,-2,22,-4,0,-2,22,3,23,14,15,-6,1,5,16,17,24,22,22,-4,
+      0,1,10,-14,1,1,11,-4,0,-16,1,-4,0,-7,1,2,13,12,-7,1,-4,0,-6,1,4,13,0,0,12,-6,1,
+    ],
+    "TileDataFormat":1,
   },
   "name":"ts_collision",
   "out_columns":6,
