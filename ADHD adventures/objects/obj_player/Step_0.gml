@@ -14,11 +14,8 @@ var _up    = keyboard_check(vk_up);
 var _down  = keyboard_check(vk_down);
 var _spd   = keyboard_check(vk_shift) ? 6 : 4;
 
-// movement: one pixel at a time per axis, so the player stops flush against anything solid
-var _dx = (_right - _left) * _spd;
-var _dy = (_down - _up) * _spd;
-repeat (abs(_dx)) { if (world_blocked(x + sign(_dx), y)) break; x += sign(_dx); }
-repeat (abs(_dy)) { if (world_blocked(x, y + sign(_dy))) break; y += sign(_dy); }
+// movement: stops flush against solids and slides along slopes (bridge arches, diagonal walls)
+world_move((_right - _left) * _spd, (_down - _up) * _spd);
 
 // state: walk if ANY arrow key is held, otherwise idle
 global.walking = (_up or _down or _left or _right) ? "walk" : "idle";

@@ -1,0 +1,4 @@
+{
+  "column_rows": 120,
+  "tilesets": ["ts_01_village", "ts_02_town", "ts_03_forest", "ts_04_desert", "ts_07_cloud", "ts_09_city", "ts_10_ice", "ts_11_shore", "ts_15_rock"]
+}

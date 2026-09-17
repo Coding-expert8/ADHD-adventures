@@ -3,7 +3,8 @@
 
 Close GameMaker before running: the IDE overwrites .yy files it has open.
 
-    python tools/worldgen.py basic     collision tiles, player mask, trigger/spawn markers
+    python tools/worldgen.py basic     collision shape tiles + scr_collision_data, player mask, trigger/spawn markers
+    python tools/worldgen.py world     ts_world: every tileset in tools/world.json combined into one tileset
     python tools/worldgen.py terrain   ts_terrain atlas + scr_terrain_data from tools/terrains.json
     python tools/worldgen.py props     spr_prop_* sprites from tools/props.json
     python tools/worldgen.py props --scan _01___Tileset___Transparent
@@ -39,6 +40,10 @@ TILESETS_FOLDER = ("Tilesets", "folders/Tilesets.yy")
 SCRIPTS_FOLDER = ("Scripts", "folders/Scripts.yy")
 
 MISSING_COLOUR = (255, 0, 255, 255)
+
+EMPTY_TILE = -2147483648   # "no tile" in room and brush tile data
+TILE_INDEX_MASK = 0x7FFFF  # the rest of a tile value holds mirror/flip/rotate flags
+MAX_TEXTURE = 4096         # texture page size set in options_windows.yy
 
 # Transition layouts: (col, row) inside the block -> mask of the corners that are terrain b
 # (TL 1, TR 2, BL 4, BR 8). "hole" = a surrounds a patch of b, "island" = b surrounds a patch of a.
@@ -91,6 +96,62 @@ def register(kind_dir, name, folder):
         i = text.index(anchor)
         text = text[:i] + entry + text[i:]
     write_text(YYP, text)
+
+
+def decode_tiles(text):
+    """Expands TileCompressedData (format 1): negative n repeats the next value, positive n = n literals."""
+    values = [int(v) for v in text.replace("\n", "").split(",") if v.strip()]
+    cells, i = [], 0
+    while i < len(values):
+        n = values[i]
+        if n < 0:
+            cells += [values[i + 1]] * -n
+            i += 2
+        else:
+            cells += values[i + 1:i + 1 + n]
+            i += 1 + n
+    return cells
+
+
+def encode_tiles(cells, indent):
+    """Compresses tile values into TileCompressedData lines (20 values per line)."""
+    out, literal, i = [], [], 0
+    while i < len(cells):
+        j = i
+        while j < len(cells) and cells[j] == cells[i]:
+            j += 1
+        if j - i >= 3:
+            if literal:
+                out += [len(literal)] + literal
+                literal = []
+            out += [-(j - i), cells[i]]
+        else:
+            literal += cells[i:j]
+        i = j
+    if literal:
+        out += [len(literal)] + literal
+    return "\n".join(" " * indent + ",".join(str(v) for v in out[k:k + 20]) + "," for k in range(0, len(out), 20))
+
+
+def remap_tile(value, remap_index):
+    """Applies remap_index to the tile index inside a tile value, keeping its flags."""
+    if value in (0, EMPTY_TILE):
+        return value
+    unsigned = value & 0xFFFFFFFF
+    new = (unsigned & ~TILE_INDEX_MASK & 0xFFFFFFFF) | remap_index(unsigned & TILE_INDEX_MASK)
+    return new - (1 << 32) if new & 0x80000000 else new
+
+
+def tileset_info(tileset_name):
+    """Returns (source sprite name, brush page as (width, height, cells) or None) of a tileset asset."""
+    yy = (PROJECT / "tilesets" / tileset_name / f"{tileset_name}.yy").read_text(encoding="utf-8")
+    sprite = re.search(r'"spriteId":\{\s*"name":"([^"]+)"', yy).group(1)
+    page = re.search(r'"macroPageTiles":\{\s*"SerialiseHeight":(\d+),\s*"SerialiseWidth":(\d+),\s*'
+                     r'"TileCompressedData":\[(.*?)\]', yy, re.S)
+    brushes = None
+    if page and int(page.group(1)) > 0:
+        brushes = (int(page.group(2)), int(page.group(1)), decode_tiles(page.group(3)))
+    return sprite, brushes
 
 
 def tileset_source(sprite_name):
@@ -199,9 +260,7 @@ TILESET_YY = string.Template("""{
   "%Name":"$name",
   "autoTileSets":[],
   "macroPageTiles":{
-    "SerialiseHeight":0,
-    "SerialiseWidth":0,
-    "TileSerialiseData":[],
+$brushes
   },
   "name":"$name",
   "out_columns":$out_columns,
@@ -217,7 +276,7 @@ TILESET_YY = string.Template("""{
     "name":"$sprite",
     "path":"sprites/$sprite/$sprite.yy",
   },
-  "spriteNoExport":false,
+  "spriteNoExport":$no_export,
   "textureGroupId":{
     "name":"Default",
     "path":"texturegroups/Default",
@@ -252,17 +311,25 @@ def write_sprite(name, img, bbox, folder, centre_origin=False):
     register("sprites", name, folder)
 
 
-def write_tileset(name, sprite_name, img, tile_w, tile_h):
-    """Writes a tileset over an existing sprite, including the IDE's padded output_tileset.png preview."""
+def write_tileset(name, sprite_name, img, tile_w, tile_h, no_export=False, brushes=None):
+    """Writes a tileset over an existing sprite, including the IDE's padded output_tileset.png preview.
+
+    no_export: don't also pack the source sprite into texture pages (for big atlases).
+    brushes: the tileset editor's brush page as (width, height, tile values), or None.
+    """
     columns, rows = img.width // tile_w, img.height // tile_h
     tile_count = columns * rows
     out_columns = round(math.sqrt(tile_count))
     out_rows = math.ceil(tile_count / out_columns)
     cell_w, cell_h = tile_w + 4, tile_h + 4
+    if max(out_columns * cell_w, out_rows * cell_h) > MAX_TEXTURE:
+        raise SystemExit(f"{name}: compiled tileset texture would be larger than {MAX_TEXTURE}px")
     out = Image.new("RGBA", (out_columns * cell_w, out_rows * cell_h), (0, 0, 0, 0))
     for i in range(1, tile_count):  # tile 0 is always empty
         sx, sy = (i % columns) * tile_w, (i // columns) * tile_h
         tile = img.crop((sx, sy, sx + tile_w, sy + tile_h))
+        if tile.getchannel("A").getbbox() is None:
+            continue
         ox, oy = (i % out_columns) * cell_w, (i // out_columns) * cell_h
         # 2px border made by stretching the edge pixels outwards, like the IDE does
         stretch = lambda box, size, at: out.paste(tile.crop(box).resize(size, Image.NEAREST), (ox + at[0], oy + at[1]))
@@ -274,23 +341,98 @@ def write_tileset(name, sprite_name, img, tile_w, tile_h):
                                (0, tile_h - 1, 0, tile_h + 2), (tile_w - 1, tile_h - 1, tile_w + 2, tile_h + 2)):
             stretch((cx, cy, cx + 1, cy + 1), (2, 2), (px, py))
         out.paste(tile, (ox + 2, oy + 2))
+    if brushes:
+        width, height, cells = brushes
+        brush_text = (f'    "SerialiseHeight":{height},\n    "SerialiseWidth":{width},\n    "TileCompressedData":[\n'
+                      f'{encode_tiles(cells, 6)}\n    ],\n    "TileDataFormat":1,')
+    else:
+        brush_text = '    "SerialiseHeight":0,\n    "SerialiseWidth":0,\n    "TileSerialiseData":[],'
     directory = PROJECT / "tilesets" / name
     write_bytes(directory / "output_tileset.png", png_bytes(out))
     write_text(directory / f"{name}.yy", TILESET_YY.substitute(
-        name=name, sprite=sprite_name, out_columns=out_columns, tile_w=tile_w, tile_h=tile_h, tile_count=tile_count))
+        name=name, sprite=sprite_name, out_columns=out_columns, tile_w=tile_w, tile_h=tile_h, tile_count=tile_count,
+        no_export="true" if no_export else "false", brushes=brush_text))
     register("tilesets", name, TILESETS_FOLDER)
 
 
 # ---------------------------------------------------------------------------------------------
 # basic
 
+COLLISION_CELL = 16
+COLLISION_WALKABLE = 22  # empty "walkable" tile: like every painted Collision tile it replaces solid terrain in its cell
+
+
+def collision_shapes():
+    """Solid-pixel tests for the Collision tiles, in tile order (tile 0 = empty)."""
+    n = COLLISION_CELL
+    h = n // 2
+    shapes = [
+        lambda x, y: False,           # 0 empty
+        lambda x, y: True,            # 1 full
+        lambda x, y: y < h,           # 2 top half
+        lambda x, y: y >= h,          # 3 bottom half
+        lambda x, y: x < h,           # 4 left half
+        lambda x, y: x >= h,          # 5 right half
+        lambda x, y: x < h and y < h,     # 6 quarter top-left
+        lambda x, y: x >= h and y < h,    # 7 quarter top-right
+        lambda x, y: x < h and y >= h,    # 8 quarter bottom-left
+        lambda x, y: x >= h and y >= h,   # 9 quarter bottom-right
+        lambda x, y: x + y >= n - 1,      # 10 45° slope, solid bottom-right
+        lambda x, y: y >= x,              # 11 45° slope, solid bottom-left
+        lambda x, y: y <= x,              # 12 45° slope, solid top-right
+        lambda x, y: x + y <= n - 1,      # 13 45° slope, solid top-left
+    ]
+    # 22.5° slopes span two tiles; X runs over both tiles (0..2n-1), surface falls n px over 2n px.
+    rising = lambda X: n - (X + 1) // 2        # solid-bottom surface rising to the right
+    for first, fn in (
+        (14, lambda X, y: y >= rising(X)),                    # 14,15 solid bottom, rising right
+        (16, lambda X, y: y >= rising(2 * n - 1 - X)),        # 16,17 solid bottom, rising left
+        (18, lambda X, y: y < n - rising(X)),                 # 18,19 solid top, hanging lower to the right
+        (20, lambda X, y: y < n - rising(2 * n - 1 - X)),     # 20,21 solid top, hanging lower to the left
+    ):
+        shapes.append(lambda x, y, fn=fn: fn(x, y))
+        shapes.append(lambda x, y, fn=fn: fn(x + n, y))
+    shapes.append(lambda x, y: False)  # 22 walkable marker
+    return shapes
+
+
 def cmd_basic(_args):
-    # Collision tiles: 16px, tile 0 empty, tile 1 solid.
-    img = Image.new("RGBA", (32, 16), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(img)
-    draw.rectangle((16, 0, 31, 15), fill=(230, 40, 40, 110), outline=(230, 40, 40, 220))
-    write_sprite("spr_collision_tiles", img, (0, 0, 31, 15), WORLD_FOLDER)
-    write_tileset("ts_collision", "spr_collision_tiles", img, 16, 16)
+    # Collision shape tiles (16px) and their row bitmasks for GML.
+    n = COLLISION_CELL
+    shapes = collision_shapes()
+    img = Image.new("RGBA", (8 * n, math.ceil(len(shapes) / 8) * n), (0, 0, 0, 0))
+    masks = []
+    for i, solid in enumerate(shapes):
+        ox, oy = (i % 8) * n, (i // 8) * n
+        rows = []
+        for y in range(n):
+            bits = 0
+            for x in range(n):
+                if solid(x, y):
+                    bits |= 1 << x
+                    edge = any(not (0 <= x + dx < n and 0 <= y + dy < n) or not solid(x + dx, y + dy)
+                               for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+                    img.putpixel((ox + x, oy + y), (230, 40, 40, 230 if edge else 110))
+            rows.append(bits)
+        masks.append(rows)
+    ImageDraw.Draw(img).rectangle(((COLLISION_WALKABLE % 8) * n, (COLLISION_WALKABLE // 8) * n,
+                                   (COLLISION_WALKABLE % 8) * n + n - 1, (COLLISION_WALKABLE // 8) * n + n - 1),
+                                  fill=(40, 200, 80, 90), outline=(40, 200, 80, 220))
+    write_sprite("spr_collision_tiles", img, (0, 0, img.width - 1, img.height - 1), WORLD_FOLDER)
+    write_tileset("ts_collision", "spr_collision_tiles", img, n, n)
+
+    lines = [
+        "// GENERATED by tools/worldgen.py basic - do not edit by hand.",
+        "",
+        "// Shapes of the ts_collision tiles: 16 rows per tile, bit x set = pixel x of that row is solid.",
+        "global.collision_shape = [",
+    ]
+    lines.append(",\n".join("    [" + ", ".join(str(r) for r in rows) + "]" for rows in masks))
+    lines += ["];", f"// Tile {COLLISION_WALKABLE} (green) has no solid pixels: paint it to make solid terrain such as water walkable."]
+    script = PROJECT / "scripts" / "scr_collision_data"
+    write_text(script / "scr_collision_data.gml", "\n".join(lines) + "\n")
+    write_text(script / "scr_collision_data.yy", SCRIPT_YY.substitute(name="scr_collision_data"))
+    register("scripts", "scr_collision_data", SCRIPTS_FOLDER)
 
     # Player feet mask: same 190x190 canvas and centre origin as the spr_char_* sprites.
     feet = (65, 150, 124, 179)
@@ -305,6 +447,139 @@ def cmd_basic(_args):
     img = Image.new("RGBA", (32, 32), (0, 0, 0, 0))
     ImageDraw.Draw(img).ellipse((4, 4, 27, 27), fill=(60, 220, 90, 120), outline=(60, 220, 90, 240), width=2)
     write_sprite("spr_spawn", img, (0, 0, 31, 31), WORLD_FOLDER, centre_origin=True)
+
+
+# ---------------------------------------------------------------------------------------------
+# world
+
+WORLD_LAYOUT = TOOLS / "ts_world_layout.json"
+
+
+def cut_cost(img, row):
+    """How many of the 8 tile columns have art crossing the boundary above tile row `row`."""
+    y = row * TILE
+    above = img.crop((0, y - 1, img.width, y)).getchannel("A").tobytes()
+    below = img.crop((0, y, img.width, y + 1)).getchannel("A").tobytes()
+    return sum(1 for c in range(ATLAS_COLUMNS)
+               if any(above[c * TILE:(c + 1) * TILE]) and any(below[c * TILE:(c + 1) * TILE]))
+
+
+def world_layout(spec, images):
+    """Cuts each tileset into strips of at most `column_rows` rows, then stacks the strips in order into
+    8-tile-wide atlas columns of that height. Cuts trade strip length against art they split: each tile column
+    of art crossing the cut costs as much as 12 rows of strip."""
+    column_rows = spec["column_rows"]
+    strips, group, top = [], -1, column_rows
+    for tileset in spec["tilesets"]:
+        img = images[tileset]
+        total = img.height // TILE
+        row = 0
+        while row < total:
+            end = min(row + column_rows, total)
+            if end < total:
+                end = min(range(row + column_rows // 2, end + 1), key=lambda k: cut_cost(img, k) * 12 - k)
+            rows = end - row
+            if top + rows > column_rows:
+                group, top = group + 1, 0
+            strips.append({"tileset": tileset, "row": row, "rows": rows, "column": group * ATLAS_COLUMNS, "top": top})
+            top += rows
+            row = end
+    return {"columns": (group + 1) * ATLAS_COLUMNS, "rows": column_rows, "strips": strips}
+
+
+def world_index_mapper(layout):
+    """Returns f(tileset, source tile index) -> ts_world tile index."""
+    columns = layout["columns"]
+    by_tileset = {}
+    for strip in layout["strips"]:
+        by_tileset.setdefault(strip["tileset"], []).append(strip)
+
+    def mapper(tileset, index):
+        if index == 0:
+            return 0
+        col, row = index % ATLAS_COLUMNS, index // ATLAS_COLUMNS
+        for strip in by_tileset[tileset]:
+            if strip["row"] <= row < strip["row"] + strip["rows"]:
+                return (strip["top"] + row - strip["row"]) * columns + strip["column"] + col
+        raise ValueError(f"{tileset} tile {index} is outside the tileset")
+    return mapper
+
+
+def world_source_of(layout, index):
+    """ts_world tile index -> (tileset, source tile index), or None for an unused part of the atlas."""
+    columns = layout["columns"]
+    col, row = index % columns, index // columns
+    for strip in layout["strips"]:
+        if strip["column"] <= col < strip["column"] + ATLAS_COLUMNS and strip["top"] <= row < strip["top"] + strip["rows"]:
+            return strip["tileset"], (strip["row"] + row - strip["top"]) * ATLAS_COLUMNS + col - strip["column"]
+    return None
+
+
+def remap_world_rooms(old, new):
+    """Keeps painted ts_world tiles pointing at the same art after the atlas layout changed."""
+    to_new = world_index_mapper(new)
+    kept = {s["tileset"] for s in new["strips"]}
+
+    def remap_index(index):
+        source = world_source_of(old, index)
+        if source is None:
+            return 0
+        if source[0] not in kept:
+            raise SystemExit(f"a room uses tiles from {source[0]}, which is no longer in world.json")
+        return to_new(*source)
+
+    pattern = re.compile(r'("TileCompressedData":\[)([^\]]*)(\],"TileDataFormat":1,\},"tilesetId":\{"name":"ts_world")')
+    for room in sorted((PROJECT / "rooms").glob("*/*.yy")):
+        text = room.read_text(encoding="utf-8")
+        new_text = pattern.sub(lambda m: m.group(1) + "\n" + encode_tiles(
+            [remap_tile(v, remap_index) for v in decode_tiles(m.group(2))], 10) + "\n        " + m.group(3), text)
+        if new_text != text:
+            write_text(room, new_text)
+
+
+def cmd_world(_args):
+    spec = json.loads((TOOLS / "world.json").read_text(encoding="utf-8"))
+    info = {tileset: tileset_info(tileset) for tileset in spec["tilesets"]}
+    images = {tileset: tileset_source(sprite) for tileset, (sprite, _) in info.items()}
+    layout = world_layout(spec, images)
+
+    atlas = Image.new("RGBA", (layout["columns"] * TILE, layout["rows"] * TILE), (0, 0, 0, 0))
+    for strip in layout["strips"]:
+        top = strip["row"] * TILE
+        piece = images[strip["tileset"]].crop((0, top, ATLAS_COLUMNS * TILE, top + strip["rows"] * TILE))
+        atlas.paste(piece, (strip["column"] * TILE, strip["top"] * TILE))
+
+    # Brush pages of the source tilesets, side by side with one empty column between them.
+    to_world = world_index_mapper(layout)
+    pages = []
+    for tileset, (_, brushes) in info.items():
+        if brushes:
+            width, height, cells = brushes
+            pages.append((width, height, [remap_tile(v, lambda i, t=tileset: to_world(t, i)) for v in cells]))
+    brush_page = None
+    if pages:
+        width = sum(p[0] for p in pages) + len(pages) - 1
+        height = max(p[1] for p in pages)
+        cells = [0] * (width * height)
+        left = 0
+        for page_w, page_h, page in pages:
+            for y in range(page_h):
+                cells[y * width + left:y * width + left + page_w] = page[y * page_w:(y + 1) * page_w]
+            left += page_w + 1
+        brush_page = (width, height, cells)
+
+    write_sprite("spr_world_atlas", atlas, (0, 0, atlas.width - 1, atlas.height - 1), WORLD_FOLDER)
+    write_tileset("ts_world", "spr_world_atlas", atlas, TILE, TILE, no_export=True, brushes=brush_page)
+    if WORLD_LAYOUT.exists():
+        old = json.loads(WORLD_LAYOUT.read_text(encoding="utf-8"))
+        if old != layout:
+            remap_world_rooms(old, layout)
+    write_text(WORLD_LAYOUT, json.dumps(layout, indent=2) + "\n")
+
+    for strip in layout["strips"]:
+        print(f"{strip['tileset']} rows {strip['row']}-{strip['row'] + strip['rows'] - 1}: "
+              f"atlas column {strip['column']}, row {strip['top']}")
+    print(f"ts_world: {layout['columns']}x{layout['rows']} tiles ({atlas.width}x{atlas.height}px)")
 
 
 # ---------------------------------------------------------------------------------------------
@@ -485,6 +760,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("basic").set_defaults(run=cmd_basic)
+    sub.add_parser("world").set_defaults(run=cmd_world)
     sub.add_parser("terrain").set_defaults(run=cmd_terrain)
     props = sub.add_parser("props")
     props.add_argument("--scan", metavar="TILESET_SPRITE")

@@ -1,4 +1,5 @@
 {
+  "_note": "Append new terrains at the end only: a terrain's position is its palette tile, which is what the map stores.",
   "terrains": [
     {"name": "village_grass", "tileset": "_01___Tileset___Transparent", "tile": [4, 16]},
     {"name": "village_sand", "tileset": "_01___Tileset___Transparent", "tile": [1, 16]},
@@ -6,7 +7,11 @@
     {"name": "village_dirt", "tileset": "_01___Tileset___Transparent", "tile": [1, 22]},
     {"name": "village_mud", "tileset": "_01___Tileset___Transparent", "tile": [1, 31]},
     {"name": "village_water", "tileset": "_01___Tileset___Transparent", "tile": [1, 25], "solid": true},
-    {"name": "village_water_pale", "tileset": "_01___Tileset___Transparent", "tile": [1, 28], "solid": true}
+    {"name": "village_water_pale", "tileset": "_01___Tileset___Transparent", "tile": [1, 28], "solid": true},
+    {"name": "forest_grass", "tileset": "_03___Tileset___Transparent", "tile": [4, 10]},
+    {"name": "forest_sand", "tileset": "_03___Tileset___Transparent", "tile": [1, 10]},
+    {"name": "forest_water", "tileset": "_03___Tileset___Transparent", "tile": [7, 16], "solid": true},
+    {"name": "forest_soil", "tileset": "_03___Tileset___Transparent", "tile": [6, 24]}
   ],
   "pairs": [
     {"a": "village_grass", "b": "village_sand", "tileset": "_01___Tileset___Transparent", "hole3": [0, 15], "island3": [3, 15]},
@@ -14,6 +19,7 @@
     {"a": "village_grass", "b": "village_dirt", "tileset": "_01___Tileset___Transparent", "hole3": [0, 21], "island3": [3, 21]},
     {"a": "village_sand", "b": "village_water", "tileset": "_01___Tileset___Transparent", "hole3": [0, 24], "island3": [3, 24]},
     {"a": "village_sand_pale", "b": "village_water_pale", "tileset": "_01___Tileset___Transparent", "hole3": [0, 27], "island3": [3, 27]},
-    {"a": "village_dirt", "b": "village_mud", "tileset": "_01___Tileset___Transparent", "hole3": [0, 30], "island3": [3, 30]}
+    {"a": "village_dirt", "b": "village_mud", "tileset": "_01___Tileset___Transparent", "hole3": [0, 30], "island3": [3, 30]},
+    {"a": "forest_grass", "b": "forest_sand", "tileset": "_03___Tileset___Transparent", "hole3": [0, 9], "island3": [3, 9]}
   ]
 }

@@ -2,39 +2,43 @@
 // Change the JSON, then run `python tools/worldgen.py terrain` with GameMaker closed.
 
 // Terrain ids are their palette tile index in ts_terrain (0 = unpainted cell).
-global.terrain_count = 7;
-global.terrain_names = ["", "village_grass", "village_sand", "village_sand_pale", "village_dirt", "village_mud", "village_water", "village_water_pale"];
-global.terrain_solid = [false, false, false, false, false, false, true, true];
+global.terrain_count = 11;
+global.terrain_names = ["", "village_grass", "village_sand", "village_sand_pale", "village_dirt", "village_mud", "village_water", "village_water_pale", "forest_grass", "forest_sand", "forest_water", "forest_soil"];
+global.terrain_solid = [false, false, false, false, false, false, true, true, false, false, true, false];
 
 // terrain_pair[a][b]: first of the 16 atlas tiles for cell corners holding terrains a and b,
 // ordered by a mask of the corners that are b (TL 1, TR 2, BL 4, BR 8).
 // flip means the tiles were stored for the reverse pair, so use 15 - mask.
-global.terrain_pair = array_create(8);
-for (var _i = 0; _i < 8; _i++) global.terrain_pair[_i] = array_create(8, undefined);
-global.terrain_pair[1][2] = { base: 8, flip: false };
-global.terrain_pair[2][1] = { base: 8, flip: true };
-global.terrain_pair[1][3] = { base: 24, flip: false };
-global.terrain_pair[3][1] = { base: 24, flip: true };
-global.terrain_pair[1][4] = { base: 40, flip: false };
-global.terrain_pair[4][1] = { base: 40, flip: true };
-global.terrain_pair[2][6] = { base: 56, flip: false };
-global.terrain_pair[6][2] = { base: 56, flip: true };
-global.terrain_pair[3][7] = { base: 72, flip: false };
-global.terrain_pair[7][3] = { base: 72, flip: true };
-global.terrain_pair[4][5] = { base: 88, flip: false };
-global.terrain_pair[5][4] = { base: 88, flip: true };
+global.terrain_pair = array_create(12);
+for (var _i = 0; _i < 12; _i++) global.terrain_pair[_i] = array_create(12, undefined);
+global.terrain_pair[1][2] = { base: 12, flip: false };
+global.terrain_pair[2][1] = { base: 12, flip: true };
+global.terrain_pair[1][3] = { base: 28, flip: false };
+global.terrain_pair[3][1] = { base: 28, flip: true };
+global.terrain_pair[1][4] = { base: 44, flip: false };
+global.terrain_pair[4][1] = { base: 44, flip: true };
+global.terrain_pair[2][6] = { base: 60, flip: false };
+global.terrain_pair[6][2] = { base: 60, flip: true };
+global.terrain_pair[3][7] = { base: 76, flip: false };
+global.terrain_pair[7][3] = { base: 76, flip: true };
+global.terrain_pair[4][5] = { base: 92, flip: false };
+global.terrain_pair[5][4] = { base: 92, flip: true };
+global.terrain_pair[8][9] = { base: 108, flip: false };
+global.terrain_pair[9][8] = { base: 108, flip: true };
 
 // Atlas tiles with no art (drawn as the plain terrain and flagged in debug view).
-global.terrain_missing = array_create(104, false);
-global.terrain_missing[14] = true;
-global.terrain_missing[17] = true;
-global.terrain_missing[30] = true;
-global.terrain_missing[33] = true;
-global.terrain_missing[46] = true;
-global.terrain_missing[49] = true;
-global.terrain_missing[62] = true;
-global.terrain_missing[65] = true;
-global.terrain_missing[78] = true;
-global.terrain_missing[81] = true;
-global.terrain_missing[94] = true;
-global.terrain_missing[97] = true;
+global.terrain_missing = array_create(124, false);
+global.terrain_missing[18] = true;
+global.terrain_missing[21] = true;
+global.terrain_missing[34] = true;
+global.terrain_missing[37] = true;
+global.terrain_missing[50] = true;
+global.terrain_missing[53] = true;
+global.terrain_missing[66] = true;
+global.terrain_missing[69] = true;
+global.terrain_missing[82] = true;
+global.terrain_missing[85] = true;
+global.terrain_missing[98] = true;
+global.terrain_missing[101] = true;
+global.terrain_missing[114] = true;
+global.terrain_missing[117] = true;

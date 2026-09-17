@@ -18,5 +18,32 @@
       {"name": "village_hedge_white", "rect": [0, 1248, 96, 96], "footprint": [2, 52, 93, 77]},
       {"name": "village_house_red", "rect": [96, 1248, 160, 192], "footprint": [6, 150, 151, 181]}
     ]
+  },
+  {
+    "tileset": "_03___Tileset___Transparent",
+    "props": [
+      {"name": "forest_stump_small", "rect": [64, 32, 32, 32]},
+      {"name": "forest_log", "rect": [96, 32, 96, 32], "footprint": [2, 16, 93, 31]},
+      {"name": "forest_rock_gray", "rect": [192, 32, 32, 32]},
+      {"name": "forest_rocks_gray", "rect": [224, 32, 32, 32]},
+      {"name": "forest_rock_brown", "rect": [32, 64, 32, 32]},
+      {"name": "forest_rocks_brown", "rect": [64, 64, 32, 32]},
+      {"name": "forest_rock_mossy", "rect": [128, 64, 32, 32]},
+      {"name": "forest_rocks_mossy", "rect": [192, 64, 32, 32]},
+      {"name": "forest_fern", "rect": [0, 96, 64, 64], "footprint": [20, 44, 43, 58]},
+      {"name": "forest_fern_sprout", "rect": [64, 96, 64, 64], "footprint": [20, 44, 43, 58]},
+      {"name": "forest_bush", "rect": [128, 96, 64, 64]},
+      {"name": "forest_bush_blue", "rect": [192, 96, 64, 64]},
+      {"name": "forest_bush_red", "rect": [0, 160, 64, 64]},
+      {"name": "forest_stump", "rect": [64, 160, 64, 64]},
+      {"name": "forest_crate", "rect": [128, 160, 32, 64], "footprint": [1, 44, 30, 63]},
+      {"name": "forest_crates", "rect": [160, 160, 32, 64], "footprint": [1, 44, 30, 63]},
+      {"name": "forest_oven", "rect": [192, 160, 64, 64], "footprint": [10, 44, 53, 59]},
+      {"name": "forest_boulder_gray", "rect": [0, 224, 64, 64], "footprint": [8, 40, 55, 61]},
+      {"name": "forest_boulder_brown", "rect": [64, 224, 64, 64], "footprint": [8, 40, 55, 61]},
+      {"name": "forest_boulder_mossy", "rect": [128, 224, 64, 64], "footprint": [8, 40, 55, 61]},
+      {"name": "forest_lamp", "rect": [192, 288, 64, 192], "footprint": [8, 176, 23, 187]},
+      {"name": "forest_sign", "rect": [0, 384, 64, 64], "footprint": [42, 54, 53, 61]}
+    ]
   }
 ]
