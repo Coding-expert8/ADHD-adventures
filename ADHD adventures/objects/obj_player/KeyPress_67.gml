@@ -1,1 +1,0 @@
-global.character = string((int64(global.character)) mod 6 + 1) 

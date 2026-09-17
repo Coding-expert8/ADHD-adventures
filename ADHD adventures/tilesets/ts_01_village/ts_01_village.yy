@@ -1,20 +1,11 @@
 {
   "$GMTileSet":"v1",
   "%Name":"ts_01_village",
-  "autoTileSets":[
-    {"$GMAutoTileSet":"","%Name":"autotile_1","closed_edge":false,"name":"autotile_1","resourceType":"GMAutoTileSet","resourceVersion":"2.0","tiles":[132,138,136,137,122,130,115,123,120,116,128,125,121,139,141,117,],},
-    {"$GMAutoTileSet":"","%Name":"autotile_2","closed_edge":false,"name":"autotile_2","resourceType":"GMAutoTileSet","resourceVersion":"2.0","tiles":[204,210,208,209,194,202,115,195,192,116,200,197,193,211,213,117,],},
-    {"$GMAutoTileSet":"","%Name":"autotile_3","closed_edge":false,"name":"autotile_3","resourceType":"GMAutoTileSet","resourceVersion":"2.0","tiles":[273,276,275,265,268,272,336,264,267,337,274,266,281,280,282,338,],},
-  ],
+  "autoTileSets":[],
   "macroPageTiles":{
-    "SerialiseHeight":8,
-    "SerialiseWidth":9,
-    "TileCompressedData":[
-      -19,0,53,118,119,166,167,214,215,262,263,0,126,127,174,175,222,223,270,271,0,134,135,182,183,230,231,
-      278,279,0,142,143,190,191,238,239,286,287,0,150,151,198,199,246,247,294,295,0,158,159,206,207,254,255,
-      302,303,
-    ],
-    "TileDataFormat":1,
+    "SerialiseHeight":0,
+    "SerialiseWidth":0,
+    "TileSerialiseData":[],
   },
   "name":"ts_01_village",
   "out_columns":19,
