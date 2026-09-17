@@ -1,4 +1,4 @@
-var _grid = create_town_grid();
+/*var _grid = create_town_grid();
 
 var _grass_at = build_autotile(AT_GRASS_COL, AT_GRASS_ROW);
 var _water_at = build_autotile(AT_WATER_COL, AT_WATER_ROW);
