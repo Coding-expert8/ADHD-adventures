@@ -1,0 +1,125 @@
+{
+  "columns": 104,
+  "rows": 120,
+  "strips": [
+    {
+      "tileset": "ts_01_village",
+      "row": 0,
+      "rows": 45,
+      "column": 0,
+      "top": 0
+    },
+    {
+      "tileset": "ts_02_town",
+      "row": 0,
+      "rows": 44,
+      "column": 0,
+      "top": 45
+    },
+    {
+      "tileset": "ts_03_forest",
+      "row": 0,
+      "rows": 26,
+      "column": 0,
+      "top": 89
+    },
+    {
+      "tileset": "ts_04_desert",
+      "row": 0,
+      "rows": 115,
+      "column": 8,
+      "top": 0
+    },
+    {
+      "tileset": "ts_04_desert",
+      "row": 115,
+      "rows": 17,
+      "column": 16,
+      "top": 0
+    },
+    {
+      "tileset": "ts_07_cloud",
+      "row": 0,
+      "rows": 37,
+      "column": 16,
+      "top": 17
+    },
+    {
+      "tileset": "ts_09_city",
+      "row": 0,
+      "rows": 112,
+      "column": 24,
+      "top": 0
+    },
+    {
+      "tileset": "ts_09_city",
+      "row": 112,
+      "rows": 117,
+      "column": 32,
+      "top": 0
+    },
+    {
+      "tileset": "ts_09_city",
+      "row": 229,
+      "rows": 120,
+      "column": 40,
+      "top": 0
+    },
+    {
+      "tileset": "ts_09_city",
+      "row": 349,
+      "rows": 101,
+      "column": 48,
+      "top": 0
+    },
+    {
+      "tileset": "ts_09_city",
+      "row": 450,
+      "rows": 33,
+      "column": 56,
+      "top": 0
+    },
+    {
+      "tileset": "ts_10_ice",
+      "row": 0,
+      "rows": 51,
+      "column": 56,
+      "top": 33
+    },
+    {
+      "tileset": "ts_11_shore",
+      "row": 0,
+      "rows": 93,
+      "column": 64,
+      "top": 0
+    },
+    {
+      "tileset": "ts_11_shore",
+      "row": 93,
+      "rows": 69,
+      "column": 72,
+      "top": 0
+    },
+    {
+      "tileset": "ts_11_shore",
+      "row": 162,
+      "rows": 71,
+      "column": 80,
+      "top": 0
+    },
+    {
+      "tileset": "ts_15_rock",
+      "row": 0,
+      "rows": 120,
+      "column": 88,
+      "top": 0
+    },
+    {
+      "tileset": "ts_15_rock",
+      "row": 120,
+      "rows": 96,
+      "column": 96,
+      "top": 0
+    }
+  ]
+}
