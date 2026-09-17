@@ -8,3 +8,5 @@ repeat(6)
 	}
 alarm[0] = 60;
 }
+the_time = 0;
+offset = 500;
