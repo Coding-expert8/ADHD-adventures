@@ -6,6 +6,8 @@ Close GameMaker before running: the IDE overwrites .yy files it has open.
     python tools/worldgen.py basic     collision shape tiles + scr_collision_data, player mask, trigger/spawn markers
     python tools/worldgen.py world     ts_world: every tileset in tools/world.json combined into one tileset
     python tools/worldgen.py terrain   ts_terrain atlas + scr_terrain_data from tools/terrains.json
+                                       (a pair with "blend": "dither" is generated from the two plain
+                                       tiles, for terrains of different tilesets that have no shared art)
     python tools/worldgen.py props     spr_prop_* sprites from tools/props.json (keeps hitboxes edited in GameMaker
                                        unless --reset-hitboxes is given)
     python tools/worldgen.py props --scan _01___Tileset___Transparent
@@ -54,6 +56,39 @@ LAYOUTS = {
     "hole2": {(0, 0): 8, (1, 0): 4, (0, 1): 2, (1, 1): 1},
     "island2": {(0, 0): 7, (1, 0): 11, (0, 1): 13, (1, 1): 14},
 }
+
+# Ordered 8x8 dither matrix, used to blend two terrains that have no hand-drawn transition art.
+BAYER8 = [[0, 32, 8, 40, 2, 34, 10, 42], [48, 16, 56, 24, 50, 18, 58, 26],
+          [12, 44, 4, 36, 14, 46, 6, 38], [60, 28, 52, 20, 62, 30, 54, 22],
+          [3, 35, 11, 43, 1, 33, 9, 41], [51, 19, 59, 27, 49, 17, 57, 25],
+          [15, 47, 7, 39, 13, 45, 5, 37], [63, 31, 55, 23, 61, 29, 53, 21]]
+
+
+def blend_tiles(tile_a, tile_b, band):
+    """All 16 transition tiles between two plain terrain tiles, as a checkered band (masks 1-14 are used).
+
+    A drawn tile is centred on a cell corner, so its own corners sit at the centres of the four cells that
+    share that corner: local (0,0) is the top-left cell, (TILE,0) the top-right, and so on. Interpolating
+    the corner terrains over the tile gives a field that neighbouring tiles agree on along their shared
+    edge, so the band runs across tiles without a seam, and both textures stay in phase with the plain
+    terrain around them because the pixels are taken at the same offsets.
+    """
+    pixels_a, pixels_b = tile_a.load(), tile_b.load()
+    tiles = {}
+    for mask in range(16):
+        corners = (mask & 1, (mask & 2) != 0, (mask & 4) != 0, (mask & 8) != 0)  # TL, TR, BL, BR: 1 = b
+        img = Image.new("RGBA", (TILE, TILE), (0, 0, 0, 0))
+        out = img.load()
+        for y in range(TILE):
+            v = (y + 0.5) / TILE
+            for x in range(TILE):
+                u = (x + 0.5) / TILE
+                weight = ((1 - u) * (1 - v) * corners[0] + u * (1 - v) * corners[1]
+                          + (1 - u) * v * corners[2] + u * v * corners[3])
+                share = min(max((weight - 0.5) / band + 0.5, 0), 1)
+                out[x, y] = pixels_b[x, y] if share > (BAYER8[y % 8][x % 8] + 0.5) / 64 else pixels_a[x, y]
+        tiles[mask] = img
+    return tiles
 
 
 # ---------------------------------------------------------------------------------------------
@@ -641,6 +676,13 @@ def cmd_terrain(_args):
     for pair in spec["pairs"]:
         a, b = ids[pair["a"]], ids[pair["b"]]
         by_mask = {}
+        if "blend" in pair:
+            if pair["blend"] != "dither":
+                raise SystemExit(f"{pair['a']}/{pair['b']}: unknown blend {pair['blend']}")
+            if any(key in pair for key in ("tileset", "tiles", *LAYOUTS)):
+                raise SystemExit(f"{pair['a']}/{pair['b']}: a blend pair cannot also name tileset art")
+            by_mask = blend_tiles(tiles[a], tiles[b], pair.get("band", 0.6))
+            print(f"note: {pair['a']}/{pair['b']} is a generated dither blend")
         for layout, positions in LAYOUTS.items():
             if layout in pair:
                 col, row = pair[layout]

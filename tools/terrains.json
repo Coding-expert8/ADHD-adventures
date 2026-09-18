@@ -1,5 +1,6 @@
 {
   "_note": "Append new terrains at the end only: a terrain's position is its palette tile, which is what the map stores.",
+  "_note_pairs": "A pair either names hand-drawn art (tileset + hole3/island3/...) or is generated: {\"a\": .., \"b\": .., \"blend\": \"dither\"} fades one plain tile into the other with a checkered band, which is how terrains from different tilesets meet. Optional \"band\" (default 0.6) is how wide the band is, as a fraction of a tile.",
   "terrains": [
     {"name": "village_grass", "tileset": "_01___Tileset___Transparent", "tile": [4, 16]},
     {"name": "village_sand", "tileset": "_01___Tileset___Transparent", "tile": [1, 16]},
@@ -47,6 +48,7 @@
     {"a": "shore_grass", "b": "shore_sand", "tileset": "_11___Tileset___Transparent", "hole3": [2, 0], "island3": [5, 0]},
     {"a": "shore_sand", "b": "shore_water", "tileset": "_11___Tileset___Transparent", "hole2": [0, 4], "island3": [2, 3]},
     {"a": "shore_reef_sand", "b": "shore_reef_floor", "tileset": "_11___Tileset___Transparent", "hole2": [3, 140], "island3": [0, 140]},
-    {"a": "shore_deep_sand", "b": "shore_deep_floor", "tileset": "_11___Tileset___Transparent", "hole2": [3, 208], "island3": [0, 208]}
+    {"a": "shore_deep_sand", "b": "shore_deep_floor", "tileset": "_11___Tileset___Transparent", "hole2": [3, 208], "island3": [0, 208]},
+    {"a": "village_grass", "b": "forest_grass", "blend": "dither"}
   ]
 }

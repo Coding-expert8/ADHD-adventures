@@ -54,6 +54,8 @@
     {"id":{"name":"fnt_default","path":"fonts/fnt_default/fnt_default.yy",},},
     {"id":{"name":"fnt_score","path":"fonts/fnt_score/fnt_score.yy",},},
     {"id":{"name":"obj_accuracy","path":"objects/obj_accuracy/obj_accuracy.yy",},},
+    {"id":{"name":"obj_area_control","path":"objects/obj_area_control/obj_area_control.yy",},},
+    {"id":{"name":"obj_area","path":"objects/obj_area/obj_area.yy",},},
     {"id":{"name":"obj_arena_shooter_bullet","path":"objects/obj_arena_shooter_bullet/obj_arena_shooter_bullet.yy",},},
     {"id":{"name":"obj_arena_shooter_player","path":"objects/obj_arena_shooter_player/obj_arena_shooter_player.yy",},},
     {"id":{"name":"obj_asteroid","path":"objects/obj_asteroid/obj_asteroid.yy",},},
