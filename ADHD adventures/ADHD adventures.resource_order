@@ -1,4 +1,7 @@
 {
   "FolderOrderSettings":[],
-  "ResourceOrderSettings":[],
+  "ResourceOrderSettings":[
+    {"name":"obj_larper_space_rocks","order":1,"path":"objects/obj_larper_space_rocks/obj_larper_space_rocks.yy",},
+    {"name":"TileSet13","order":2,"path":"tilesets/TileSet13/TileSet13.yy",},
+  ],
 }
