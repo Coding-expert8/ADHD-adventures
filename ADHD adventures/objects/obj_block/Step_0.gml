@@ -1,17 +1,38 @@
 if (can_fall) {
 	if (y < 350) {
-		y += 4
+		y += 2.5
 	} else {
 		is_landed = true
 	}
 }
 
-// --- Re-elect controller every frame if the current one no longer exists ---
+if (collapse_timer > 0) {
+	collapse_timer -= 1
+	image_blend = merge_color(c_white, c_red, 1 - (collapse_timer / 60))
+	if (collapse_timer <= 0) {
+		is_landed = false
+		instance_deactivate_object(id)
+		alarm[1] = 1
+	}
+}
+
 if (!instance_exists(global.controller_instance)) {
 	global.controller_instance = id
 }
 
 if (id == global.controller_instance) {
+
+	// --- ADDED: pause state setup + gate ---
+	if (!variable_global_exists("paused")) global.paused = false
+	if (!variable_global_exists("pause_timer")) global.pause_timer = 0
+	if (!variable_global_exists("rounds_passed")) global.rounds_passed = 0
+
+	if (global.paused) {
+		global.pause_timer -= 1
+		if (global.pause_timer <= 0) {
+			global.paused = false
+		}
+	} else {
 
 	var _key = keyboard_lastchar
 	if (_key != "" && string_length(global.word_input) < 30) {
@@ -67,5 +88,33 @@ if (id == global.controller_instance) {
 		if (global.current_q >= array_length(global.questions)) global.current_q = 0
 		global.word_input = ""
 		global.round_timer = global.round_time
+
+	global.rounds_passed += 1
+		if (global.rounds_passed > 2) {
+			var _collapse_count = irandom_range(2,4)
+			var _landed_blocks = []
+			with (obj_block) {
+				if (is_landed && collapse_timer == -1) {
+					array_push(_landed_blocks, id)
+				}
+			}
+			var _available = array_length(_landed_blocks)
+			if (_available > 0) {
+				repeat (min(_collapse_count, _available)) {
+					var _pick = irandom(array_length(_landed_blocks) - 1)
+					var _target = _landed_blocks[_pick]
+					if (instance_exists(_target)) {
+						_target.collapse_timer = 60
+					}
+					array_delete(_landed_blocks, _pick, 1)
+				}
+			}
+		}
+
+		// --- ADDED: 2 second pause before next question becomes active ---
+		global.paused = true
+		global.pause_timer = 120
+	}
+
 	}
 }

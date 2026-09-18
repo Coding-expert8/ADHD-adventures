@@ -2,7 +2,6 @@ image_speed = 0
 var _shift = keyboard_check(vk_shift)
 var _spd = _shift ? 12 : 4
 
-// --- Horizontal movement (all rooms) ---
 if keyboard_check(vk_right) {
 	image_xscale = 1
 	x += _spd
@@ -12,7 +11,6 @@ if keyboard_check(vk_left) {
 	x -= _spd
 }
 
-// --- Vertical movement (top-down room only) ---
 if (room == room_main) {
 	if keyboard_check(vk_up) {
 		y -= _spd
@@ -22,7 +20,6 @@ if (room == room_main) {
 	}
 }
 
-// --- Sprite selection ---
 if (room == room_main) {
 	if (keyboard_check(vk_up)) {
 		image_speed = 1
@@ -45,13 +42,20 @@ if (room == room_main) {
 	}
 }
 if (room == room_answer) {
-	var _below = instance_place(x, y + 20, obj_block)
-	
-	if (!_below || !_below.is_landed) {
+	var _below_block = instance_place(x, y + 20, obj_block)
+	var _below_rock = instance_place(x, y + 20, obj_rock)
+
+	var _on_block = (_below_block && _below_block.is_landed)
+	var _on_rock = (_below_rock != noone)
+
+	if (!_on_block && !_on_rock) {
 		is_dead = true
 	}
 }
 
 if (is_dead) {
-	y = y+10
+	if y < room_height-50
+	y += 4
+	else
+	room_goto(room_main)
 }
