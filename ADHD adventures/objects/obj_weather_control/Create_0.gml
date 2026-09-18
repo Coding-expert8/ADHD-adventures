@@ -16,11 +16,11 @@ part_type_size(rain_pt_drop, 0.08, 0.14, 0, 0);
 part_type_scale(rain_pt_drop, 1, 1.25);   // x = streak length, y = streak width
 // pt_shape_line is drawn horizontally, so the streak points along rain_dir as-is.
 part_type_orientation(rain_pt_drop, rain_dir, rain_dir, 0, 0, false);
-part_type_colour2(rain_pt_drop, c_ltgrey, c_aqua);
-part_type_alpha2(rain_pt_drop, 0.9, 0.55);
+part_type_colour2(rain_pt_drop, c_ltgray, c_blue);
+part_type_alpha2(rain_pt_drop, 0.8, 0.6);
 part_type_speed(rain_pt_drop, 16, 22, 0, 0);
 part_type_direction(rain_pt_drop, rain_dir - 2, rain_dir + 2, 0, 0);
-part_type_gravity(rain_pt_drop, 0.5, 270);
+part_type_gravity(rain_pt_drop, 0.4, 270);
 part_type_life(rain_pt_drop, 35, 55);
 
 // Splashes are sprinkled over the visible ground rather than spawned where a
@@ -58,9 +58,9 @@ part_type_life(snow_pt_flake, 200, 280);
 snow_em_flakes = part_emitter_create(weather_ps);
 
 // --- Sandstorm ----------------------------------------------------------
-sand_dir      = 184;  // wind direction (180 = dead sideways to the left)
-sand_density  = 22;   // grains spawned per step
-sand_gusts    = 2;    // haze clouds spawned per step
+sand_dir      = 190;  // wind direction (180 = dead sideways to the left)
+sand_density  = 1;   // grains spawned per step
+sand_gusts    = 1;    // haze clouds spawned per step
 
 // Grains: tiny dashes stretched along the wind, moving fast enough to read as
 // a blur rather than as individual specks.

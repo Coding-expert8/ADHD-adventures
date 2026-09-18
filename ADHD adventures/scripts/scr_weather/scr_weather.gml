@@ -5,4 +5,4 @@
 #macro WEATHER_SNOW      2
 #macro WEATHER_SANDSTORM 3
 
-global.weather = WEATHER_NONE;
+global.weather = WEATHER_SANDSTORM;
