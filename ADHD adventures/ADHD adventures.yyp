@@ -106,6 +106,7 @@
     {"id":{"name":"scr_spawn_fruit","path":"scripts/scr_spawn_fruit/scr_spawn_fruit.yy",},},
     {"id":{"name":"scr_terrain_data","path":"scripts/scr_terrain_data/scr_terrain_data.yy",},},
     {"id":{"name":"scr_terrain","path":"scripts/scr_terrain/scr_terrain.yy",},},
+    {"id":{"name":"scr_weather","path":"scripts/scr_weather/scr_weather.yy",},},
     {"id":{"name":"scr_world","path":"scripts/scr_world/scr_world.yy",},},
     {"id":{"name":"_1_04__Twinleaf_Town__Day_","path":"sounds/_1_04__Twinleaf_Town__Day_/_1_04__Twinleaf_Town__Day_.yy",},},
     {"id":{"name":"_1_07__Lake","path":"sounds/_1_07__Lake/_1_07__Lake.yy",},},
