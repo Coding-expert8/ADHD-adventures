@@ -2,6 +2,7 @@ has_spawned_next = false;
 spawn_x = 100
 spawn_y = 50
 can_fall = true
+is_landed = false
 
 if !variable_global_exists("spacing")
 	global.spacing = 0

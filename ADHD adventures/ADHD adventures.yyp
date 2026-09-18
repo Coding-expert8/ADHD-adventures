@@ -88,9 +88,9 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"room_main","path":"rooms/room_main/room_main.yy",},},
-    {"roomId":{"name":"room_answer","path":"rooms/room_answer/room_answer.yy",},},
     {"roomId":{"name":"Room3","path":"rooms/Room3/Room3.yy",},},
     {"roomId":{"name":"room_snake","path":"rooms/room_snake/room_snake.yy",},},
+    {"roomId":{"name":"room_answer","path":"rooms/room_answer/room_answer.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

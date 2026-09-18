@@ -1,6 +1,8 @@
 if (can_fall) {
-	if y < 600 {
-		y = y+4
+	if (y < 350) {
+		y += 4
+	} else {
+		is_landed = true
 	}
 }
 
