@@ -1,4 +1,5 @@
-if (!variable_global_exists("collapse_chunk_size")) global.collapse_chunk_size = 4
+if (!variable_global_exists("collapse_chunk_size"))
+global.collapse_chunk_size = 4
 
 var _removed = 0
 while (_removed < global.collapse_chunk_size && ds_list_size(global.block_order) > 0) {

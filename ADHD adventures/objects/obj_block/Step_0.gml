@@ -93,7 +93,7 @@ if (id == global.controller_instance) {
 
 		global.rounds_passed += 1
 		if (global.rounds_passed > 2) {
-			var _fall_delay = (_letters * 10) + 30
+			var _fall_delay = (_letters * 10) + 130
 			alarm[2] = _fall_delay
 		}
 
