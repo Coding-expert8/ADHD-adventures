@@ -111,8 +111,7 @@ if (id == global.controller_instance) {
 			}
 		}
 
-		// --- ADDED: 2 second pause before next question becomes active ---
-		global.paused = true
+	global.paused = true
 		global.pause_timer = 120
 	}
 

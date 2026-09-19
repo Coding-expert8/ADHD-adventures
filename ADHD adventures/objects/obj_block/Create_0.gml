@@ -1,5 +1,5 @@
 has_spawned_next = false; 
-spawn_x = 20
+spawn_x = 80
 spawn_y = 24
 can_fall = true
 is_landed = false
@@ -82,5 +82,5 @@ if !variable_global_exists("questions") {
 	global.answers[18] = ["dog","cat","fish","hamster","rabbit","bird","parrot","turtle","guineapig","lizard","snake","ferret","gerbil","chinchilla","mouse","rat","canary","goldfish","tortoise","hedgehog","cockatiel","parakeet","budgie"]
 
 	global.questions[19] = "Name something cold you eat."
-	global.answers[19] = ["icecream","popsicle","sorbet","gelato","slushie","frozenyogurt","sherbet","icedcream","icepop","milkshake","frappe","icedcoffee","icedtea","snowcone","freezepop","fudgesicle","frozengrapes","sundae"]
+	global.answers[19] = ["icecream","popsicle","sorbet","gelato","slushie","frozen yogurt","sherbet","icepop","milkshake","frappe","icedcoffee","icedtea","snowcone","freezepop","fudgesicle","frozengrapes","sundae"]
 }

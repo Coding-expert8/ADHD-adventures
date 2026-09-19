@@ -10,9 +10,11 @@
   "ResourceOrderSettings":[
     {"name":"fnt_default","order":3,"path":"fonts/fnt_default/fnt_default.yy",},
     {"name":"obj_block","order":3,"path":"objects/obj_block/obj_block.yy",},
+    {"name":"obj_help_answer","order":6,"path":"objects/obj_help_answer/obj_help_answer.yy",},
     {"name":"obj_player","order":2,"path":"objects/obj_player/obj_player.yy",},
     {"name":"obj_portal","order":4,"path":"objects/obj_portal/obj_portal.yy",},
     {"name":"obj_rock","order":5,"path":"objects/obj_rock/obj_rock.yy",},
+    {"name":"room_answer_help","order":5,"path":"rooms/room_answer_help/room_answer_help.yy",},
     {"name":"room_answer","order":4,"path":"rooms/room_answer/room_answer.yy",},
     {"name":"room_snake","order":3,"path":"rooms/room_snake/room_snake.yy",},
     {"name":"Room3","order":2,"path":"rooms/Room3/Room3.yy",},
