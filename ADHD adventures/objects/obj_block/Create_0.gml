@@ -84,3 +84,8 @@ if !variable_global_exists("questions") {
 	global.questions[19] = "Name something cold you eat."
 	global.answers[19] = ["icecream","popsicle","sorbet","gelato","slushie","frozen yogurt","sherbet","icepop","milkshake","frappe","icedcoffee","icedtea","snowcone","freezepop","fudgesicle","frozengrapes","sundae"]
 }
+if !variable_global_exists("block_order")
+	global.block_order = ds_list_create()
+
+if !variable_global_exists("collapse_chunk_size")
+	global.collapse_chunk_size = 4

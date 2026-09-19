@@ -9,6 +9,7 @@
   ],
   "ResourceOrderSettings":[
     {"name":"fnt_default","order":3,"path":"fonts/fnt_default/fnt_default.yy",},
+    {"name":"fnt_title","order":5,"path":"fonts/fnt_title/fnt_title.yy",},
     {"name":"obj_block","order":3,"path":"objects/obj_block/obj_block.yy",},
     {"name":"obj_help_answer","order":6,"path":"objects/obj_help_answer/obj_help_answer.yy",},
     {"name":"obj_player","order":2,"path":"objects/obj_player/obj_player.yy",},

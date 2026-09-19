@@ -1,1 +1,1 @@
-text_alpha = 0.02
+text = 0.02

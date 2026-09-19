@@ -73,12 +73,13 @@ if (room == room_answer) {
 		is_dead = true
 	}
 }
-
 if (is_dead) {
 	if y < room_height-50
 	y += 4
 	else {
 	global.spacing = 0
+	ds_list_clear(global.block_order)
+	global.collapse_chunk_size = 4
 	room_goto(room_main)
 	}
 }

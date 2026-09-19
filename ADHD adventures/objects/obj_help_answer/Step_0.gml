@@ -1,3 +1,3 @@
-if (text_alpha < 1) {
-	text_alpha += 0.01
+if (text < 1) {
+	text += 0.01
 }

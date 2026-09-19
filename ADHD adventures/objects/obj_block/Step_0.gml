@@ -22,7 +22,6 @@ if (!instance_exists(global.controller_instance)) {
 
 if (id == global.controller_instance) {
 
-	// --- ADDED: pause state setup + gate ---
 	if (!variable_global_exists("paused")) global.paused = false
 	if (!variable_global_exists("pause_timer")) global.pause_timer = 0
 	if (!variable_global_exists("rounds_passed")) global.rounds_passed = 0
@@ -72,8 +71,10 @@ if (id == global.controller_instance) {
 			}
 		}
 
+		var _letters = 0
+
 		if (_is_correct) {
-			var _letters = string_length(global.word_input)
+			_letters = string_length(global.word_input)
 			var i = 1
 			repeat (_letters) {
 				var _inst = instance_create_layer(spawn_x + global.spacing, spawn_y, "Instances", obj_block)
@@ -81,6 +82,7 @@ if (id == global.controller_instance) {
 				_inst.alarm[0] = i * 10
 				global.spacing = global.spacing + 16
 				i += 1
+				ds_list_add(global.block_order, _inst)
 			}
 		}
 
@@ -89,26 +91,10 @@ if (id == global.controller_instance) {
 		global.word_input = ""
 		global.round_timer = global.round_time
 
-	global.rounds_passed += 1
+		global.rounds_passed += 1
 		if (global.rounds_passed > 2) {
-			var _collapse_count = irandom_range(2,4)
-			var _landed_blocks = []
-			with (obj_block) {
-				if (is_landed && collapse_timer == -1) {
-					array_push(_landed_blocks, id)
-				}
-			}
-			var _available = array_length(_landed_blocks)
-			if (_available > 0) {
-				repeat (min(_collapse_count, _available)) {
-					var _pick = irandom(array_length(_landed_blocks) - 1)
-					var _target = _landed_blocks[_pick]
-					if (instance_exists(_target)) {
-						_target.collapse_timer = 60
-					}
-					array_delete(_landed_blocks, _pick, 1)
-				}
-			}
+			var _fall_delay = (_letters * 10) + 30
+			alarm[2] = _fall_delay
 		}
 
 	global.paused = true
