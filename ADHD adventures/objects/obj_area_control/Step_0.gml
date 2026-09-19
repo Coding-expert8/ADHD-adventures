@@ -1,9 +1,13 @@
 // Find the area the player is standing in (noone = open world), and react only
-// when it changes. Polling the player's position directly (rather than the
-// par_trigger loop) is what lets us also notice leaving every area.
+// when it changes. Polling the player's position is what lets us also notice
+// leaving every area -- the par_trigger loop can only tell us about entering one.
+//
+// instance_position (not instance_place): instance_place tests the CALLING
+// instance's mask, and this controller has no sprite, so it would never hit
+// anything. instance_position tests the point against obj_area's own mask.
 if (!instance_exists(obj_player)) exit;
 
-var _area = instance_place(obj_player.x, obj_player.y, obj_area);
+var _area = instance_position(obj_player.x, obj_player.y, obj_area);
 if (_area == global.current_area) exit;
 
 // --- weather: open world allows rain; otherwise take the area's profile -------
@@ -12,6 +16,11 @@ global.weather_profile = _profile;
 
 // Stop weather the new area forbids so it doesn't linger across the boundary.
 if (!weather_allowed(global.weather, _profile)) global.weather = WEATHER_NONE;
+
+// Give the new area an immediate chance at its own weather, then restart the
+// timer so the next roll is a full interval away.
+weather_roll();
+with (obj_weather_control) alarm[0] = WEATHER_ROLL_FRAMES;
 
 // --- music: swap themes, fading the old one out and the new one in ------------
 var _theme = (_area != noone) ? _area.area_theme : noone;

@@ -6,6 +6,7 @@ if (!variable_instance_exists(id, "area_theme"))   area_theme = noone;
 if (!variable_instance_exists(id, "area_profile")) area_profile = WEATHER_PROFILE_RAIN;
 if (!variable_instance_exists(id, "area_name"))    area_name = "";
 
-// The Asset property leaves area_theme as -1 / "" when no sound is chosen; treat
-// anything that isn't a real sound as "no theme".
-if (!audio_exists(area_theme)) area_theme = noone;
+// An Asset property with nothing chosen can arrive as "", undefined or -1, so
+// anything that isn't a real sound counts as "no theme".
+if (!is_real(area_theme) or !audio_exists(area_theme)) area_theme = noone;
+if (!is_real(area_profile) or area_profile < 0 or area_profile > 3) area_profile = WEATHER_PROFILE_RAIN;
