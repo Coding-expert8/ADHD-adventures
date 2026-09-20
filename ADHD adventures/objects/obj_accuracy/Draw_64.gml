@@ -10,7 +10,7 @@ if global.time <= 60 {
 	draw_text(x-125,y+50,"Time elapsed: " + string(global.time) + " seconds");
 }
 else {
-	word = "Time elapsed: " + string(floor(global.time/60)) + " minutes and " + string(global.time - floor(time/60) * 60) + " seconds"
+	word = "Time elapsed: " + string(floor(global.time/60)) + " minutes and " + string(global.time - floor(global.time/60) * 60) + " seconds"
 	draw_text(x-380,y+50,word)
 }
 
