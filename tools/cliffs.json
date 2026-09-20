@@ -1,0 +1,24 @@
+{
+  "_note": "Append new kits at the end only: a kit's position is its palette tile, which is what the map stores.",
+  "_note_kit": "A kit is one plateau stamp read off a tileset. cols = [left cap, middle, right cap] tile columns; top = the row drawn on the plateau's top edge; middle = the repeatable surface row; face = the rows drawn BELOW the plateau (the wall), top to bottom. rim = pixels of drawn edge inside the top/left/right of a border cell, used for collision.",
+  "kits": [
+    {
+      "name": "forest_cliff",
+      "tileset": "_03___Tileset___Transparent",
+      "cols": [0, 1, 3],
+      "top": 17,
+      "middle": 18,
+      "face": [19, 20],
+      "rim": {"top": 22, "left": 12, "right": 14}
+    },
+    {
+      "name": "rock_cliff",
+      "tileset": "_15___Tileset___Transparent",
+      "cols": [0, 1, 3],
+      "top": 2,
+      "middle": 3,
+      "face": [4, 5, 6],
+      "rim": {"top": 2, "left": 2, "right": 2}
+    }
+  ]
+}

@@ -62,10 +62,10 @@ function daylight_smooth(_e0, _e1, _v) {
 function daylight_darkness() {
     var _p = global.daylight_phase;
     var _a = DAYLIGHT_ALPHA_NIGHT;
-    _a = lerp(_a, DAYLIGHT_ALPHA_DAWN,  daylight_smooth(0.17, 0.25, _p));
-    _a = lerp(_a, DAYLIGHT_ALPHA_DAY,   daylight_smooth(0.27, 0.36, _p));
-    _a = lerp(_a, DAYLIGHT_ALPHA_DUSK,  daylight_smooth(0.66, 0.78, _p));
-    _a = lerp(_a, DAYLIGHT_ALPHA_NIGHT, daylight_smooth(0.82, 0.92, _p));
+    _a = lerp(_a, DAYLIGHT_ALPHA_DAWN,  daylight_smooth(0.15, 0.24, _p));
+    _a = lerp(_a, DAYLIGHT_ALPHA_DAY,   daylight_smooth(0.29, 0.38, _p));
+    _a = lerp(_a, DAYLIGHT_ALPHA_DUSK,  daylight_smooth(0.63, 0.75, _p));
+    _a = lerp(_a, DAYLIGHT_ALPHA_NIGHT, daylight_smooth(0.81, 0.93, _p));
     return (_a / DAYLIGHT_ALPHA_NIGHT) * global.daylight_strength;
 }
 

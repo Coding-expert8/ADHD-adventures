@@ -6,6 +6,7 @@
 
 global.tm_collision = -1;
 global.tm_terrain = -1;
+global.tm_cliff = -1;
 
 var _collision_layer = layer_get_id("Collision");
 if (_collision_layer != -1) {
@@ -18,6 +19,13 @@ if (_terrain_layer != -1) {
     global.tm_terrain = layer_tilemap_get_id(_terrain_layer);
     layer_set_visible(_terrain_layer, false);
     instance_create_depth(0, 0, layer_get_depth(_terrain_layer) - 1, obj_terrain);
+}
+
+var _cliff_layer = layer_get_id("Cliff");
+if (_cliff_layer != -1) {
+    global.tm_cliff = layer_tilemap_get_id(_cliff_layer);
+    layer_set_visible(_cliff_layer, false);
+    instance_create_depth(0, 0, layer_get_depth(_cliff_layer) - 1, obj_cliff);
 }
 
 var _props_layer = layer_get_id("Props");

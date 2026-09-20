@@ -112,7 +112,7 @@ function world_terrain_blocks(_px, _py) {
 
 /// @func world_blocked(x, y)
 /// @desc True if the calling instance's collision mask would touch something solid at (x, y):
-///       a Collision tile shape, a prop footprint or solid terrain.
+///       a Collision tile shape, a cliff wall, a prop footprint or solid terrain.
 function world_blocked(_x, _y) {
     var _dx = _x - x;
     var _dy = _y - y;
@@ -121,6 +121,7 @@ function world_blocked(_x, _y) {
     var _r = bbox_right + _dx;
     var _b = bbox_bottom + _dy;
     if (collision_rect_solid(_l, _t, _r, _b)) return true;
+    if (cliff_blocks_rect(_l, _t, _r, _b)) return true;
     if (place_meeting(_x, _y, obj_prop)) return true;
     return world_terrain_blocks(_l, _t) or world_terrain_blocks(_r, _t)
         or world_terrain_blocks(_l, _b) or world_terrain_blocks(_r, _b);
