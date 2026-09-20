@@ -18,7 +18,7 @@
     {"name":"obj_rock","order":5,"path":"objects/obj_rock/obj_rock.yy",},
     {"name":"room_answer_help","order":5,"path":"rooms/room_answer_help/room_answer_help.yy",},
     {"name":"room_answer","order":4,"path":"rooms/room_answer/room_answer.yy",},
-    {"name":"room_snake","order":3,"path":"rooms/room_snake/room_snake.yy",},
+    {"name":"room_snake","order":6,"path":"rooms/room_snake/room_snake.yy",},
     {"name":"Room3","order":2,"path":"rooms/Room3/Room3.yy",},
     {"name":"scr_dir_to_angle","order":1,"path":"scripts/scr_dir_to_angle/scr_dir_to_angle.yy",},
     {"name":"scr_handle_fruit_eaten","order":3,"path":"scripts/scr_handle_fruit_eaten/scr_handle_fruit_eaten.yy",},

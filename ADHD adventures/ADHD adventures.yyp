@@ -48,7 +48,6 @@
     {"id":{"name":"Room3","path":"rooms/Room3/Room3.yy",},},
     {"id":{"name":"scr_dir_to_angle","path":"scripts/scr_dir_to_angle/scr_dir_to_angle.yy",},},
     {"id":{"name":"scr_handle_fruit_eaten","path":"scripts/scr_handle_fruit_eaten/scr_handle_fruit_eaten.yy",},},
-    {"id":{"name":"scr_move_script","path":"scripts/scr_move_script/scr_move_script.yy",},},
     {"id":{"name":"scr_move_snake","path":"scripts/scr_move_snake/scr_move_snake.yy",},},
     {"id":{"name":"scr_power_type_to_frame","path":"scripts/scr_power_type_to_frame/scr_power_type_to_frame.yy",},},
     {"id":{"name":"scr_spawn_fruit","path":"scripts/scr_spawn_fruit/scr_spawn_fruit.yy",},},
@@ -99,9 +98,9 @@
   "RoomOrderNodes":[
     {"roomId":{"name":"room_main","path":"rooms/room_main/room_main.yy",},},
     {"roomId":{"name":"Room3","path":"rooms/Room3/Room3.yy",},},
-    {"roomId":{"name":"room_snake","path":"rooms/room_snake/room_snake.yy",},},
     {"roomId":{"name":"room_answer","path":"rooms/room_answer/room_answer.yy",},},
     {"roomId":{"name":"room_answer_help","path":"rooms/room_answer_help/room_answer_help.yy",},},
+    {"roomId":{"name":"room_snake","path":"rooms/room_snake/room_snake.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
