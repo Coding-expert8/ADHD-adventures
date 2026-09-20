@@ -1,17 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"obj_snow_monster",
+  "%Name":"obj_tinyhouse_help",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_bullet","path":"objects/obj_bullet/obj_bullet.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":81,"eventType":9,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_snow_monster",
+  "name":"obj_tinyhouse_help",
   "overriddenProperties":[],
   "parent":{
-    "name":"space_rocks",
-    "path":"folders/space_rocks.yy",
+    "name":"Tinyhouse",
+    "path":"folders/Tinyhouse.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -31,10 +30,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_snow_monster",
-    "path":"sprites/spr_snow_monster/spr_snow_monster.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }
