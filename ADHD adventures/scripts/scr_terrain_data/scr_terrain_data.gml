@@ -41,9 +41,15 @@ global.terrain_pair[24][25] = { base: 240, flip: false };
 global.terrain_pair[25][24] = { base: 240, flip: true };
 global.terrain_pair[1][8] = { base: 256, flip: false };
 global.terrain_pair[8][1] = { base: 256, flip: true };
+global.terrain_pair[2][9] = { base: 272, flip: false };
+global.terrain_pair[9][2] = { base: 272, flip: true };
+global.terrain_pair[8][15] = { base: 288, flip: false };
+global.terrain_pair[15][8] = { base: 288, flip: true };
+global.terrain_pair[1][19] = { base: 304, flip: false };
+global.terrain_pair[19][1] = { base: 304, flip: true };
 
 // Atlas tiles with no art (drawn as the plain terrain and flagged in debug view).
-global.terrain_missing = array_create(272, false);
+global.terrain_missing = array_create(320, false);
 global.terrain_missing[38] = true;
 global.terrain_missing[41] = true;
 global.terrain_missing[54] = true;

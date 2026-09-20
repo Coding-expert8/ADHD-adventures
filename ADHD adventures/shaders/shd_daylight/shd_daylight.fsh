@@ -20,13 +20,18 @@ uniform float u_strength;  // 0 = no tint at all, 1 = the full cycle
 const float PI = 3.14159265;
 
 // Tint colours. Alpha is how much of the world the tint covers, so day is clear.
-const vec4 COL_NIGHT = vec4(0.11, 0.17, 0.42, 0.62);
-const vec4 COL_DAWN  = vec4(0.98, 0.57, 0.33, 0.36);
+//
+// The alpha-blended result is tint.rgb * a + world * (1 - a), which splits into
+// two separate jobs: (1 - a) is how much darker everything gets, and tint.rgb * a
+// is a flat veil laid over it. That veil is what reads as haze, so dark times of
+// day keep their colours low and lean on alpha for the darkness instead.
+const vec4 COL_NIGHT = vec4(0.05, 0.08, 0.22, 0.66);
+const vec4 COL_DAWN  = vec4(0.72, 0.55, 0.48, 0.22);
 const vec4 COL_DAY   = vec4(1.00, 0.98, 0.88, 0.00);
-const vec4 COL_DUSK  = vec4(0.95, 0.40, 0.29, 0.40);
+const vec4 COL_DUSK  = vec4(0.62, 0.42, 0.44, 0.26);
 
-const vec3 GLOW_SUN  = vec3(1.00, 0.86, 0.60);
-const vec3 GLOW_MOON = vec3(0.72, 0.82, 1.00);
+const vec3 GLOW_SUN  = vec3(0.98, 0.90, 0.78);
+const vec3 GLOW_MOON = vec3(0.55, 0.66, 0.92);
 
 void main()
 {
@@ -52,9 +57,10 @@ void main()
     float dist  = distance(v_pos * vec2(u_aspect, 1.0), light * vec2(u_aspect, 1.0));
     float glow  = 1.0 - smoothstep(0.0, 0.85, dist);
 
-    // A low sun throws long warm light over everything; overhead there is barely
-    // anything to see, because the daytime tint is already clear.
-    glow *= mix(0.90, 0.20, high);
+    // A low sun throws long light over everything; overhead there is barely
+    // anything to see, because the daytime tint is already clear. Kept well under
+    // half strength so the pool colours the light rather than fogging the view.
+    glow *= mix(0.55, 0.12, high);
 
     // Fade the light in as it clears the horizon and out again as it sets, so the
     // hand-over between sun and moon never pops.
@@ -63,13 +69,13 @@ void main()
     // Warm while the sun is up, cool while the moon is.
     float moon = step(0.75, u_phase) + (1.0 - step(0.25, u_phase));
     tint.rgb = mix(tint.rgb, mix(GLOW_SUN, GLOW_MOON, moon), glow);
-    tint.a   = mix(tint.a, tint.a * 0.65 + 0.10, glow * 0.8);
+    tint.a   = mix(tint.a, tint.a * 0.80 + 0.04, glow * 0.7);
 
     // --- vignette ------------------------------------------------------------
     // Corners fall off into the dark. Scaled by the tint's own alpha, so midday
     // stays completely flat.
     float edge = smoothstep(0.35, 0.85, distance(v_pos, vec2(0.5, 0.5)));
-    tint.a += edge * tint.a * 0.45;
+    tint.a += edge * tint.a * 0.30;
 
     gl_FragColor = vec4(tint.rgb, clamp(tint.a, 0.0, 1.0) * u_strength);
 }

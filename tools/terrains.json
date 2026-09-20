@@ -49,6 +49,9 @@
     {"a": "shore_sand", "b": "shore_water", "tileset": "_11___Tileset___Transparent", "hole2": [0, 4], "island3": [2, 3]},
     {"a": "shore_reef_sand", "b": "shore_reef_floor", "tileset": "_11___Tileset___Transparent", "hole2": [3, 140], "island3": [0, 140]},
     {"a": "shore_deep_sand", "b": "shore_deep_floor", "tileset": "_11___Tileset___Transparent", "hole2": [3, 208], "island3": [0, 208]},
-    {"a": "village_grass", "b": "forest_grass", "blend": "dither"}
+    {"a": "village_grass", "b": "forest_grass", "blend": "dither"},
+    {"a": "village_sand", "b": "forest_sand", "blend": "dither"},
+    {"a": "forest_grass", "b": "desert_grass", "blend": "dither"},
+    {"a": "village_grass", "b": "shore_grass", "blend": "dither"}
   ]
 }
