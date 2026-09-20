@@ -8,7 +8,16 @@
 if (!instance_exists(obj_player)) exit;
 
 var _area = instance_position(obj_player.x, obj_player.y, obj_area);
-if (_area == global.current_area) exit;
+
+// An area is identified by area_name, not by instance, so one area can be built
+// out of several overlapping boxes of any shape: crossing an internal seam
+// between two boxes of the same name is not a change and won't restart music.
+// Boxes left unnamed fall back to their own instance, so they stay distinct.
+var _key = "";
+if (_area != noone) {
+    _key = (_area.area_name != "") ? _area.area_name : "#" + string(_area);
+}
+if (_key == global.current_area_key) exit;
 
 // --- weather: open world allows rain; otherwise take the area's profile -------
 var _profile = (_area != noone) ? _area.area_profile : WEATHER_PROFILE_RAIN;
@@ -46,4 +55,5 @@ if (_theme != global.current_theme) {
     global.current_theme = _theme;
 }
 
-global.current_area = _area;
+global.current_area     = _area;
+global.current_area_key = _key;
