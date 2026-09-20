@@ -1,6 +1,7 @@
 // World controller: place one on the "Instances" layer of every room the player walks around in.
 // - Finds the "Collision" and "Terrain" tile layers and hides them (F1 shows collision).
-// - Turns sprites on the "Props" asset layer into obj_prop instances.
+// - Turns sprites on the "Props" asset layer into prop instances -- obj_prop, or obj_lamp
+//   for the lamp sprites (see prop_object_for).
 // - Draws every par_ysort instance in order of its base, so things lower on screen are in front.
 
 global.tm_collision = -1;
@@ -25,8 +26,9 @@ if (_props_layer != -1) {
     for (var _i = 0; _i < array_length(_elements); _i++) {
         var _element = _elements[_i];
         if (layer_get_element_type(_element) != layerelementtype_sprite) continue;
-        instance_create_layer(layer_sprite_get_x(_element), layer_sprite_get_y(_element), layer, obj_prop, {
-            sprite_index: layer_sprite_get_sprite(_element),
+        var _sprite = layer_sprite_get_sprite(_element);
+        instance_create_layer(layer_sprite_get_x(_element), layer_sprite_get_y(_element), layer, prop_object_for(_sprite), {
+            sprite_index: _sprite,
             image_index: layer_sprite_get_index(_element),
             image_xscale: layer_sprite_get_xscale(_element),
             image_yscale: layer_sprite_get_yscale(_element),

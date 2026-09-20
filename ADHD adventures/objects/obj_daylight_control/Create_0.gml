@@ -12,5 +12,4 @@ depth = 16000;
 // this runs every frame.
 u_view     = shader_get_uniform(shd_daylight, "u_view");
 u_phase    = shader_get_uniform(shd_daylight, "u_phase");
-u_aspect   = shader_get_uniform(shd_daylight, "u_aspect");
 u_strength = shader_get_uniform(shd_daylight, "u_strength");

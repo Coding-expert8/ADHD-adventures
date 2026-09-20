@@ -33,9 +33,47 @@ function daylight_hour() {
     return global.daylight_phase * 24;
 }
 
+// Alpha of each colour in shd_daylight's tint chain. That alpha is literally how much
+// of the world the tint covers, so it is the honest answer to "how dark is it out" --
+// 0.66 is as dark as the night ever gets. Keep these in step with the COL_* constants
+// in shd_daylight.fsh.
+#macro DAYLIGHT_ALPHA_NIGHT 0.66
+#macro DAYLIGHT_ALPHA_DAWN  0.22
+#macro DAYLIGHT_ALPHA_DAY   0.00
+#macro DAYLIGHT_ALPHA_DUSK  0.26
+
+/// @func daylight_smooth(edge0, edge1, value)
+/// @desc GLSL's smoothstep, which GML does not have: 0 below edge0, 1 above edge1, and an
+///       S-curve between them so both ends meet the flats without a kink. shd_daylight's
+///       tint chain is built out of these, so anything that has to fade at the same moment
+///       has to be built out of the same ones.
+function daylight_smooth(_e0, _e1, _v) {
+    var _t = clamp((_v - _e0) / (_e1 - _e0), 0, 1);
+    return _t * _t * (3 - 2 * _t);
+}
+
+/// @func daylight_darkness()
+/// @desc How dark the world is right now, 0 (broad daylight) to 1 (deep night). This walks
+///       the same four mixes at the same four thresholds as shd_daylight's tint chain and
+///       divides by the night alpha, so a light scaling its brightness by this comes up
+///       exactly as the tint comes down instead of switching on at some hour of its own.
+///       daylight_strength is folded in on purpose: at 0 the tint is not drawn at all, and
+///       lights added over an undarkened world would just be glowing blobs in daylight.
+function daylight_darkness() {
+    var _p = global.daylight_phase;
+    var _a = DAYLIGHT_ALPHA_NIGHT;
+    _a = lerp(_a, DAYLIGHT_ALPHA_DAWN,  daylight_smooth(0.17, 0.25, _p));
+    _a = lerp(_a, DAYLIGHT_ALPHA_DAY,   daylight_smooth(0.27, 0.36, _p));
+    _a = lerp(_a, DAYLIGHT_ALPHA_DUSK,  daylight_smooth(0.66, 0.78, _p));
+    _a = lerp(_a, DAYLIGHT_ALPHA_NIGHT, daylight_smooth(0.82, 0.92, _p));
+    return (_a / DAYLIGHT_ALPHA_NIGHT) * global.daylight_strength;
+}
+
 /// @func daylight_is_night()
 /// @desc True between sunset and sunrise -- i.e. while the moon, not the sun, is
-///       the light source shd_daylight draws.
+///       the light source shd_daylight draws. This is a hard clock boundary; for anything
+///       that should fade rather than flip, like a lamp coming up at dusk, use
+///       daylight_darkness() instead.
 function daylight_is_night() {
     return (global.daylight_phase < 0.25 or global.daylight_phase >= 0.75);
 }

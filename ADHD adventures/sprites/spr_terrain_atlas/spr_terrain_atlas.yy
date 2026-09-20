@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_terrain_atlas",
   "bboxMode":2,
-  "bbox_bottom":1279,
+  "bbox_bottom":2879,
   "bbox_left":0,
   "bbox_right":255,
   "bbox_top":0,
@@ -16,7 +16,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":1280,
+  "height":2880,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"d10933c2-2588-5467-b52a-d8a5e8ced1c2","blendMode":0,"displayName":"default","isLocked":false,"name":"d10933c2-2588-5467-b52a-d8a5e8ced1c2","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},

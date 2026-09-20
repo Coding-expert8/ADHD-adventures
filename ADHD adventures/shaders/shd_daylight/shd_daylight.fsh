@@ -8,13 +8,12 @@
 // answer, per pixel, "what colour is the light right now and how much of the
 // world does it cover?". Three things decide that:
 //   - a base tint that walks night -> dawn -> day -> dusk -> night
-//   - a pool of light around the sun (or the moon) as it arcs across the view
+//   - a wash of light coming in from the side the sun (or the moon) is on
 //   - a vignette that only shows up once the tint is dark anyway
 //
 varying vec2 v_pos;        // 0..1 across the view
 
 uniform float u_phase;     // 0..1 through the day
-uniform float u_aspect;    // view width / height, so the light pool stays round
 uniform float u_strength;  // 0 = no tint at all, 1 = the full cycle
 
 const float PI = 3.14159265;
@@ -46,30 +45,54 @@ void main()
     tint = mix(tint, COL_NIGHT, smoothstep(0.82, 0.92, u_phase));
 
     // --- sun / moon ----------------------------------------------------------
-    // The sun crosses the view left to right between sunrise (0.25) and sunset
-    // (0.75); the moon does the same over the other half of the day, which is
-    // what fract() wraps to. arc is 0 as it rises and 1 as it sets.
+    // The sun is up between sunrise (0.25) and sunset (0.75); the moon has the
+    // other half of the day, which is what fract() wraps to. arc is 0 as it rises
+    // and 1 as it sets.
     float arc  = fract((u_phase - 0.25) * 2.0);
     float high = sin(arc * PI);                        // 0 at the horizon, 1 overhead
 
-    // Just under the bottom edge at the horizon, near the top at its peak.
-    vec2  light = vec2(arc, 1.05 - 0.95 * high);
-    float dist  = distance(v_pos * vec2(u_aspect, 1.0), light * vec2(u_aspect, 1.0));
-    float glow  = 1.0 - smoothstep(0.0, 0.85, dist);
+    // This is a map seen from above, so there is no sky on screen to put the sun
+    // in: screen Y is ground running north to south, not height. What a low sun
+    // does to a top-down view is light one side of it and leave the other in
+    // shade, so that is what this draws -- a wash coming in from the side the
+    // light is on. East is the left-hand edge of this map, so the light starts
+    // there at sunrise and walks right across the day.
+    float across = abs(v_pos.x - arc);                 // 0 on the sun's side, 1 at the far edge
+
+    // Low, the light rakes in from one side and falls away across the view. As it
+    // climbs the two sides even out. Overhead it settles to a low even level rather
+    // than lighting the whole view at full strength: a flat wash over everything is
+    // just haze, and the midday tint is meant to be clear.
+    float glow = mix(1.0 - smoothstep(0.0, 0.9, across), 0.35, high);
 
     // A low sun throws long light over everything; overhead there is barely
     // anything to see, because the daytime tint is already clear. Kept well under
-    // half strength so the pool colours the light rather than fogging the view.
+    // half strength so the wash colours the light rather than fogging the view.
     glow *= mix(0.55, 0.12, high);
 
     // Fade the light in as it clears the horizon and out again as it sets, so the
-    // hand-over between sun and moon never pops.
-    glow *= smoothstep(0.0, 0.06, arc) * (1.0 - smoothstep(0.94, 1.0, arc));
+    // hand-over between sun and moon never pops. At that moment the light jumps
+    // from one edge of the view to the other, so everything that depends on which
+    // side it is on has to be faded out by this, not just the wash.
+    float risen = smoothstep(0.0, 0.06, arc) * (1.0 - smoothstep(0.94, 1.0, arc));
+    glow *= risen;
 
     // Warm while the sun is up, cool while the moon is.
     float moon = step(0.75, u_phase) + (1.0 - step(0.25, u_phase));
     tint.rgb = mix(tint.rgb, mix(GLOW_SUN, GLOW_MOON, moon), glow);
     tint.a   = mix(tint.a, tint.a * 0.80 + 0.04, glow * 0.7);
+
+    // The side the light never reached is the shaded one. The wash above lifts the
+    // lit side, but on its own that is only visible when the tint is already strong,
+    // which is to say at dawn and dusk -- through the middle of the day the tint is
+    // clear and there is nothing to lift. So the far side gets its own shade rather
+    // than a share of the tint's: a darker version of whatever colour the light is,
+    // laid on a little more thickly. That is what carries the direction
+    // through the morning and afternoon. It closes up as the sun climbs, because
+    // overhead there is no side for the light to come from.
+    float shade = across * (1.0 - high) * risen;
+    tint.rgb = mix(tint.rgb, tint.rgb * 0.45, shade);
+    tint.a  += shade * 0.10;
 
     // --- vignette ------------------------------------------------------------
     // Corners fall off into the dark. Scaled by the tint's own alpha, so midday
