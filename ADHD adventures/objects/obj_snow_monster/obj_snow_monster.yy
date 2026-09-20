@@ -1,14 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_bullet",
+  "%Name":"obj_snow_monster",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_asteroid","path":"objects/obj_asteroid/obj_asteroid.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_larper_space_rocks","path":"objects/obj_larper_space_rocks/obj_larper_space_rocks.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_bullet",
+  "name":"obj_snow_monster",
   "overriddenProperties":[],
   "parent":{
     "name":"space_rocks",
@@ -33,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_bullet",
-    "path":"sprites/spr_bullet/spr_bullet.yy",
+    "name":"spr_snow_monster",
+    "path":"sprites/spr_snow_monster/spr_snow_monster.yy",
   },
   "spriteMaskId":null,
   "visible":true,
