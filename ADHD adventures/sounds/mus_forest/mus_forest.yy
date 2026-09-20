@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"_4_03__Space_Day",
+  "%Name":"mus_forest",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":83.13578,
+  "duration":81.10669,
   "exportDir":"",
-  "name":"_4_03__Space_Day",
+  "name":"mus_forest",
   "parent":{
     "name":"Music",
     "path":"folders/Music.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":32000,
-  "soundFile":"_4_03__Space_Day.mp3",
+  "soundFile":"mus_forest.mp3",
   "volume":1.0,
 }

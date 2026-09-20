@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"_49__Goldenrod_Game_Corner",
+  "%Name":"mus_lake",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":151.0,
+  "duration":73.093346,
   "exportDir":"",
-  "name":"_49__Goldenrod_Game_Corner",
+  "name":"mus_lake",
   "parent":{
     "name":"Music",
     "path":"folders/Music.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":32000,
-  "soundFile":"_49__Goldenrod_Game_Corner.mp3",
+  "soundFile":"mus_lake.mp3",
   "volume":1.0,
 }

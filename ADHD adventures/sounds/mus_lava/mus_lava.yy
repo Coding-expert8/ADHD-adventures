@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"_4_07__Desert",
+  "%Name":"mus_lava",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":89.53578,
+  "duration":384.673,
   "exportDir":"",
-  "name":"_4_07__Desert",
+  "name":"mus_lava",
   "parent":{
     "name":"Music",
     "path":"folders/Music.yy",
@@ -20,7 +20,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":32000,
-  "soundFile":"_4_07__Desert.mp3",
+  "sampleRate":22050,
+  "soundFile":"mus_lava.mp3",
   "volume":1.0,
 }

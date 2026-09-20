@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"_1_07__Lake",
+  "%Name":"mus_ice",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":73.093346,
+  "duration":94.8214,
   "exportDir":"",
-  "name":"_1_07__Lake",
+  "name":"mus_ice",
   "parent":{
     "name":"Music",
     "path":"folders/Music.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":32000,
-  "soundFile":"_1_07__Lake.mp3",
+  "soundFile":"mus_ice.mp3",
   "volume":1.0,
 }

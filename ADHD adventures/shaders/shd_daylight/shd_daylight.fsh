@@ -25,23 +25,28 @@ const float PI = 3.14159265;
 // is a flat veil laid over it. That veil is what reads as haze, so dark times of
 // day keep their colours low and lean on alpha for the darkness instead.
 const vec4 COL_NIGHT = vec4(0.05, 0.08, 0.22, 0.66);
-const vec4 COL_DAWN  = vec4(0.72, 0.55, 0.48, 0.22);
+const vec4 COL_DAWN  = vec4(0.78, 0.55, 0.42, 0.22);
 const vec4 COL_DAY   = vec4(1.00, 0.98, 0.88, 0.00);
-const vec4 COL_DUSK  = vec4(0.62, 0.42, 0.44, 0.26);
+const vec4 COL_DUSK  = vec4(0.70, 0.44, 0.39, 0.26);
 
 // The colour of being out of the light. Darker than any of the tints above, so that
 // laying it over the world darkens it at any hour -- including midday, when the tint
 // itself has faded to nothing and there would otherwise be no shade left to cast.
-const vec3 COL_SHADE = vec3(0.03, 0.05, 0.12);
+// Not much darker, though: shade is the absence of direct light, not a hole.
+const vec3 COL_SHADE = vec3(0.08, 0.10, 0.18);
 
-const vec3 GLOW_SUN  = vec3(0.98, 0.90, 0.78);
+const vec3 GLOW_SUN  = vec3(0.99, 0.88, 0.72);
 const vec3 GLOW_MOON = vec3(0.40, 0.50, 0.75);   // moonlight, not daylight in blue
 
 const float LIGHT_REACH      = 1.6;    // how far across the view the split runs
+const float LIGHT_SHARE      = 0.68;   // how much of the view the lit side takes (0.5 = even)
 const float LIGHT_PEAK_SLANT = 0.70;   // how much of the split survives at the light's peak
-const float LIGHT_WARMTH     = 0.40;   // how much of its own colour the lit side takes
+const float LIGHT_LOW_SLANT  = 0.80;   // ...and how much of it there is with the light low
+const float LIGHT_WARMTH     = 0.50;   // how much of its own colour the lit side takes
+const float LIGHT_HAZE       = 0.10;   // cover the lit side takes on -- the sun's own haze
 const float MOON_POWER       = 0.45;   // the moon splits the sides this much less than the sun
-const float SHADE_COVER      = 0.28;   // cover the shaded side takes on of its own
+const float SHADE_DEPTH      = 0.90;   // how far towards COL_SHADE the shaded side goes
+const float SHADE_COVER      = 0.24;   // cover the shaded side takes on of its own
 
 void main()
 {
@@ -73,26 +78,39 @@ void main()
     vec2 bearing = vec2(-cos(arc * PI), sin(arc * PI));
 
     // How far into the light this pixel is: 1 facing it, 0 with its back to it.
-    float lit = clamp(0.5 + dot(v_pos - vec2(0.5, 0.5), bearing) * LIGHT_REACH, 0.0, 1.0);
+    // LIGHT_SHARE is where the line between the two falls. At 0.5 it runs through
+    // the middle of the view and the sides come out even; pushing it up walks that
+    // line back towards the far corner, so the light the sun is throwing accounts
+    // for more of what is on screen and the shade is what is left over. The corner
+    // it is thrown from keeps its full depth either way -- this moves the line, not
+    // the ends of the gradient.
+    float lit = clamp(LIGHT_SHARE + dot(v_pos - vec2(0.5, 0.5), bearing) * LIGHT_REACH, 0.0, 1.0);
 
-    // How far apart the two sides are held. Widest with the light low on the
-    // horizon; at its peak the split narrows but never closes, because the sun
-    // stands south of you rather than straight overhead. Fade it in as the light
-    // clears the horizon and out again as it sets, so the hand-over from sun to
-    // moon -- which swaps the bearing end for end -- never pops.
+    // Fade the light in as it clears the horizon and out again as it sets, so the
+    // hand-over from sun to moon -- which swaps the bearing end for end -- never
+    // pops. The moon is a far weaker light than the sun and parts the two sides
+    // much less.
     float moon  = step(0.75, u_phase) + (1.0 - step(0.25, u_phase));
     float risen = smoothstep(0.0, 0.10, arc) * (1.0 - smoothstep(0.90, 1.0, arc));
-    float slant = mix(LIGHT_PEAK_SLANT, 1.0, 1.0 - high) * risen * mix(1.0, MOON_POWER, moon);
+    float power = risen * mix(1.0, MOON_POWER, moon);
 
-    // The side facing the light takes its colour and gives up some of the tint's
-    // cover; the side away from it goes to COL_SHADE and takes on cover of its own.
-    // Giving the shaded side a colour and an alpha of its own, rather than a share
-    // of the tint's, is what keeps the light readable through the middle of the
-    // day, when the tint has faded to nothing for it to borrow from.
+    // The two sides get their own curves, because they do not grow together. Light
+    // rakes in hardest when it is low, so the lit side swells towards the horizon.
+    // Shade does not: a long shadow is longer, not blacker, and running the shade
+    // up to full strength at dawn is what turns the far side of a sunrise into a
+    // dark wall. So it stays near enough level all day.
+    float slant = mix(LIGHT_PEAK_SLANT, 1.0,              1.0 - high) * power;
+    float shade = mix(LIGHT_PEAK_SLANT, LIGHT_LOW_SLANT,  1.0 - high) * power;
+
+    // The side facing the light takes its colour and a haze of its own; the side
+    // away from it goes towards COL_SHADE and takes on cover instead. Giving each
+    // side its own colour and its own alpha, rather than a share of the tint's, is
+    // what keeps the light readable through the middle of the day, when the tint
+    // has faded to nothing for either of them to borrow from.
     tint.rgb = mix(tint.rgb, mix(GLOW_SUN, GLOW_MOON, moon), lit * slant * LIGHT_WARMTH);
-    tint.rgb = mix(tint.rgb, COL_SHADE, (1.0 - lit) * slant);
-    tint.a   = mix(tint.a, tint.a * 0.80 + 0.04, lit * slant * 0.5);
-    tint.a  += (1.0 - lit) * slant * SHADE_COVER;
+    tint.rgb = mix(tint.rgb, COL_SHADE, (1.0 - lit) * shade * SHADE_DEPTH);
+    tint.a  += lit * slant * LIGHT_HAZE;
+    tint.a  += (1.0 - lit) * shade * SHADE_COVER;
 
     // --- vignette ------------------------------------------------------------
     // Corners fall off into the dark. Scaled by the tint's own alpha, so it is the

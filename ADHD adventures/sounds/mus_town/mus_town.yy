@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"_1_55__Nimbasa_City",
+  "%Name":"mus_town",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":118.98778,
+  "duration":126.130844,
   "exportDir":"",
-  "name":"_1_55__Nimbasa_City",
+  "name":"mus_town",
   "parent":{
     "name":"Music",
     "path":"folders/Music.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":32000,
-  "soundFile":"_1_55__Nimbasa_City.mp3",
+  "soundFile":"mus_town.mp3",
   "volume":1.0,
 }

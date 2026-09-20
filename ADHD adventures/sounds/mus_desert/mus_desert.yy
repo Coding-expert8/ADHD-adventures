@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"_12__Lava_Is_Hot___Cavern",
+  "%Name":"mus_desert",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":384.673,
+  "duration":89.53578,
   "exportDir":"",
-  "name":"_12__Lava_Is_Hot___Cavern",
+  "name":"mus_desert",
   "parent":{
     "name":"Music",
     "path":"folders/Music.yy",
@@ -20,7 +20,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":22050,
-  "soundFile":"_12__Lava_Is_Hot___Cavern.mp3",
+  "sampleRate":32000,
+  "soundFile":"mus_desert.mp3",
   "volume":1.0,
 }

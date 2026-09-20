@@ -6,8 +6,8 @@ part_system_depth(weather_ps, -10000);   // in front of the world and its Y-sort
 
 // --- Rain ---------------------------------------------------------------
 rain_dir      = 262;  // direction the drops fall (270 = straight down, less = blown left)
-rain_density  = 4;    // drops spawned per step
-rain_splashes = 2;    // ground splashes spawned per step
+rain_density  = 4;    // drops per step on screen (weather_emit scales for the padding)
+rain_splashes = 2;    // ground splashes per step on screen
 
 // A drop is a short streak leaning the way it falls.
 rain_pt_drop = part_type_create();
@@ -17,7 +17,8 @@ part_type_scale(rain_pt_drop, 1, 1.25);   // x = streak length, y = streak width
 // pt_shape_line is drawn horizontally, so the streak points along rain_dir as-is.
 part_type_orientation(rain_pt_drop, rain_dir, rain_dir, 0, 0, false);
 part_type_colour2(rain_pt_drop, c_ltgray, c_blue);
-part_type_alpha2(rain_pt_drop, 0.8, 0.6);
+part_type_alpha3(rain_pt_drop, 0.6, 0.95, 0.8);   // more opaque, and eased in so
+                                                  // drops born on screen do not pop
 part_type_speed(rain_pt_drop, 16, 22, 0, 0);
 part_type_direction(rain_pt_drop, rain_dir - 2, rain_dir + 2, 0, 0);
 part_type_gravity(rain_pt_drop, 0.4, 270);
@@ -29,7 +30,7 @@ rain_pt_splash = part_type_create();
 part_type_shape(rain_pt_splash, pt_shape_disk);
 part_type_size(rain_pt_splash, 0.04, 0.09, -0.004, 0);
 part_type_colour2(rain_pt_splash, c_aqua, c_white);
-part_type_alpha2(rain_pt_splash, 0.5, 0);
+part_type_alpha2(rain_pt_splash, 0.65, 0);
 part_type_speed(rain_pt_splash, 0.6, 1.6, -0.06, 0);
 part_type_direction(rain_pt_splash, 200, 340, 0, 0);
 part_type_gravity(rain_pt_splash, 0.3, 270);
@@ -40,7 +41,7 @@ rain_em_splashes = part_emitter_create(weather_ps);
 
 // --- Snow ---------------------------------------------------------------
 snow_dir     = 268;   // flakes drift almost straight down
-snow_density = 2;     // flakes spawned per step -- they live a long time, so a
+snow_density = 2;     // flakes per step on screen -- they live a long time, so a
                       // trickle is enough to keep the screen filled
 
 // Flakes fall slowly and wander: the wiggle on direction makes each one flutter
@@ -59,8 +60,8 @@ snow_em_flakes = part_emitter_create(weather_ps);
 
 // --- Sandstorm ----------------------------------------------------------
 sand_dir      = 190;  // wind direction (180 = dead sideways to the left)
-sand_density  = 1;   // grains spawned per step
-sand_gusts    = 1;    // haze clouds spawned per step
+sand_density  = 1;   // grains per step on screen
+sand_gusts    = 1;    // haze clouds per step on screen
 
 // Grains: tiny dashes stretched along the wind, moving fast enough to read as
 // a blur rather than as individual specks.

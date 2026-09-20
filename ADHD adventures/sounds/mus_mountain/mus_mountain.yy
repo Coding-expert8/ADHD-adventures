@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"_51__Goldenrod_Game_Corner__Retire_",
+  "%Name":"mus_mountain",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":5.0,
+  "duration":83.13578,
   "exportDir":"",
-  "name":"_51__Goldenrod_Game_Corner__Retire_",
+  "name":"mus_mountain",
   "parent":{
     "name":"Music",
     "path":"folders/Music.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":32000,
-  "soundFile":"_51__Goldenrod_Game_Corner__Retire_.mp3",
+  "soundFile":"mus_mountain.mp3",
   "volume":1.0,
 }

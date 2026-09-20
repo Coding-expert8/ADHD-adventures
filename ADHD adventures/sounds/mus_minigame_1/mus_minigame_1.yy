@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"_1_04__Twinleaf_Town__Day_",
+  "%Name":"mus_minigame_1",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":81.10669,
+  "duration":151.0,
   "exportDir":"",
-  "name":"_1_04__Twinleaf_Town__Day_",
+  "name":"mus_minigame_1",
   "parent":{
     "name":"Music",
     "path":"folders/Music.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":32000,
-  "soundFile":"_1_04__Twinleaf_Town__Day_.mp3",
+  "soundFile":"mus_minigame_1.mp3",
   "volume":1.0,
 }

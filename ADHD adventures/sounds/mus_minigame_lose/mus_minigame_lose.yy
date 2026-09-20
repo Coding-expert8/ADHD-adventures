@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"deltarune_chapter_2_ost_03_my_castle_town",
+  "%Name":"mus_minigame_lose",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":126.130844,
+  "duration":5.0,
   "exportDir":"",
-  "name":"deltarune_chapter_2_ost_03_my_castle_town",
+  "name":"mus_minigame_lose",
   "parent":{
     "name":"Music",
     "path":"folders/Music.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":32000,
-  "soundFile":"deltarune_chapter_2_ost_03_my_castle_town.mp3",
+  "soundFile":"mus_minigame_lose.mp3",
   "volume":1.0,
 }

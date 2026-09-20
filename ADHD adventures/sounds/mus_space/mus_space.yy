@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"_2_10__Ice",
+  "%Name":"mus_space",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":94.8214,
+  "duration":376.60898,
   "exportDir":"",
-  "name":"_2_10__Ice",
+  "name":"mus_space",
   "parent":{
     "name":"Music",
     "path":"folders/Music.yy",
@@ -20,7 +20,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":32000,
-  "soundFile":"_2_10__Ice.mp3",
+  "sampleRate":22050,
+  "soundFile":"mus_space.mp3",
   "volume":1.0,
 }
