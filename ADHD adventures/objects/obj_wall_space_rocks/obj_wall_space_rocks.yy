@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_wall",
+  "%Name":"obj_wall_space_rocks",
   "eventList":[],
   "managed":true,
-  "name":"obj_wall",
+  "name":"obj_wall_space_rocks",
   "overriddenProperties":[],
   "parent":{
     "name":"space_rocks",
@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":true,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_block",
+    "path":"sprites/spr_block/spr_block.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

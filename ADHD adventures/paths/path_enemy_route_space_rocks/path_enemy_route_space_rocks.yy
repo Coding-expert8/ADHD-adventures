@@ -1,0 +1,23 @@
+{
+  "$GMPath":"",
+  "%Name":"path_enemy_route_space_rocks",
+  "closed":false,
+  "kind":0,
+  "name":"path_enemy_route_space_rocks",
+  "parent":{
+    "name":"space_rocks",
+    "path":"folders/space_rocks.yy",
+  },
+  "points":[
+    {"speed":100.0,"x":8480.0,"y":5152.0,},
+    {"speed":100.0,"x":8480.0,"y":2944.0,},
+    {"speed":100.0,"x":2048.0,"y":2944.0,},
+    {"speed":100.0,"x":1984.0,"y":3008.0,},
+    {"speed":100.0,"x":2048.0,"y":8544.0,},
+    {"speed":100.0,"x":14720.0,"y":8544.0,},
+    {"speed":100.0,"x":14688.0,"y":3552.0,},
+  ],
+  "precision":4,
+  "resourceType":"GMPath",
+  "resourceVersion":"2.0",
+}
