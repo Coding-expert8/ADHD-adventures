@@ -73,7 +73,14 @@ if (room == room_answer) {
 		is_dead = true
 	}
 }
-if (is_dead) {
+if (floating_up) {
+	y -= 3
+	if (y <= float_target_y) {
+		y = float_target_y
+		floating_up = false
+	}
+}
+if (is_dead and !floating_up) {
 	if y < room_height-50
 	y += 4
 	else {

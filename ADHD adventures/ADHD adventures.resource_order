@@ -12,6 +12,7 @@
     {"name":"fnt_title","order":5,"path":"fonts/fnt_title/fnt_title.yy",},
     {"name":"obj_block","order":3,"path":"objects/obj_block/obj_block.yy",},
     {"name":"obj_help_answer","order":6,"path":"objects/obj_help_answer/obj_help_answer.yy",},
+    {"name":"obj_lifejacket","order":7,"path":"objects/obj_lifejacket/obj_lifejacket.yy",},
     {"name":"obj_player","order":2,"path":"objects/obj_player/obj_player.yy",},
     {"name":"obj_portal","order":4,"path":"objects/obj_portal/obj_portal.yy",},
     {"name":"obj_rock","order":5,"path":"objects/obj_rock/obj_rock.yy",},
@@ -51,8 +52,9 @@
     {"name":"spr_rock","order":10,"path":"sprites/spr_rock/spr_rock.yy",},
     {"name":"spr_snake_body","order":4,"path":"sprites/spr_snake_body/spr_snake_body.yy",},
     {"name":"spr_snake_head","order":3,"path":"sprites/spr_snake_head/spr_snake_head.yy",},
-    {"name":"spr_snake_tail","order":6,"path":"sprites/spr_snake_tail/spr_snake_tail.yy",},
+    {"name":"spr_snake_tail","order":13,"path":"sprites/spr_snake_tail/spr_snake_tail.yy",},
     {"name":"spr_snake_turn","order":5,"path":"sprites/spr_snake_turn/spr_snake_turn.yy",},
     {"name":"Sprite12","order":1,"path":"sprites/Sprite12/Sprite12.yy",},
+    {"name":"Sprite23","order":12,"path":"sprites/Sprite23/Sprite23.yy",},
   ],
 }
