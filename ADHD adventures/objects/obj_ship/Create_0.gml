@@ -1,2 +1,2 @@
-moving = false
-image_xscale = -1
+moving = false;
+image_xscale = -1;
