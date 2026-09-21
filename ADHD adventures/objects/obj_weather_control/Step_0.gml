@@ -1,5 +1,4 @@
-// Each effect spawns across a padded box around the view (see weather_emit),
-// so the weather travels with the player instead of being left behind.
+
 switch (global.weather) {
 
     case WEATHER_RAIN:

@@ -1,4 +1,6 @@
 {
   "FolderOrderSettings":[],
-  "ResourceOrderSettings":[],
+  "ResourceOrderSettings":[
+    {"name":"mus_desert_town","order":1,"path":"sounds/mus_desert_town/mus_desert_town.yy",},
+  ],
 }
