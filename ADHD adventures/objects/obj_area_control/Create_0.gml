@@ -1,7 +1,6 @@
-// Tracks which area the player is standing in and drives its theme + weather.
-global.current_area     = noone; // the obj_area instance the player is inside (or noone)
-global.current_area_key = "";    // its area_name -- "" means open world
-global.current_theme = noone;   // the sound asset currently playing as the theme
+global.current_area     = noone
+global.current_area_key = ""
+global.current_theme = noone
 
-fade_snd = noone;               // a theme fading out, waiting to be stopped
-FADE_MS  = 600;                 // theme fade in/out length
+fade_snd = noone
+FADE_MS  = 600

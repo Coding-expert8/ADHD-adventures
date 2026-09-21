@@ -1,5 +1,5 @@
-image_alpha = image_alpha - 0.01;
+image_alpha = image_alpha - 0.01
 if (image_alpha <= 0)
 {
-	instance_destroy();
+	instance_destroy()
 }

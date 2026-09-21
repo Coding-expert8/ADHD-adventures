@@ -1,4 +1,3 @@
-// Ice area: ice theme, snow may fall. Reposition/resize me.
-area_name    = "ice";
-area_theme   = mus_ice;
-area_profile = WEATHER_PROFILE_SNOW;
+area_name    = "ice"
+area_theme   = mus_ice
+area_profile = WEATHER_PROFILE_SNOW

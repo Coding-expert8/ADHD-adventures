@@ -1,1 +1,1 @@
-room_goto(room_arena_shooter);
+room_goto(room_arena_shooter)

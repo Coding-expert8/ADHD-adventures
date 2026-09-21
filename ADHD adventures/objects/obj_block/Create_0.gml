@@ -1,4 +1,4 @@
-has_spawned_next = false; 
+has_spawned_next = false
 spawn_x = 100
 spawn_y = 50
 can_fall = true

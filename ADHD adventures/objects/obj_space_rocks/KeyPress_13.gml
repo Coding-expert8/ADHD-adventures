@@ -1,1 +1,1 @@
-room_goto(room_space_rocks);
+room_goto(room_space_rocks)

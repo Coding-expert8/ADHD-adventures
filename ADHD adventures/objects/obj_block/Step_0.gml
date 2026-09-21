@@ -4,7 +4,6 @@ if (can_fall) {
 	}
 }
 
-// --- Re-elect controller every frame if the current one no longer exists ---
 if (!instance_exists(global.controller_instance)) {
 	global.controller_instance = id
 }
@@ -67,4 +66,3 @@ if (_is_correct) {
 		global.round_timer = global.round_time
 	}
 }
-

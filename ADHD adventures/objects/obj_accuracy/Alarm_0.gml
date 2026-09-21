@@ -1,3 +1,2 @@
-
-alarm[0] = 60;
-global.time++;
+alarm[0] = 60
+global.time++
