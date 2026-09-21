@@ -36,6 +36,8 @@
     {"name":"_51__Goldenrod_Game_Corner__Retire_","order":5,"path":"sounds/_51__Goldenrod_Game_Corner__Retire_/_51__Goldenrod_Game_Corner__Retire_.yy",},
     {"name":"_79__Pok_athlon___Finals_","order":6,"path":"sounds/_79__Pok_athlon___Finals_/_79__Pok_athlon___Finals_.yy",},
     {"name":"deltarune_chapter_2_ost_03_my_castle_town","order":8,"path":"sounds/deltarune_chapter_2_ost_03_my_castle_town/deltarune_chapter_2_ost_03_my_castle_town.yy",},
+    {"name":"snd_block","order":2,"path":"sounds/snd_block/snd_block.yy",},
+    {"name":"snd_splash","order":1,"path":"sounds/snd_splash/snd_splash.yy",},
     {"name":"spr_answer_portal","order":11,"path":"sprites/spr_answer_portal/spr_answer_portal.yy",},
     {"name":"spr_bg_tile_dark","order":9,"path":"sprites/spr_bg_tile_dark/spr_bg_tile_dark.yy",},
     {"name":"spr_bg_tile_light","order":8,"path":"sprites/spr_bg_tile_light/spr_bg_tile_light.yy",},

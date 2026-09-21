@@ -3,6 +3,8 @@ if (can_fall) {
 		y += 2.5
 	} else {
 		is_landed = true
+		can_fall = false
+		audio_play_sound(snd_splash, 2, false)
 	}
 }
 
@@ -11,8 +13,9 @@ if (collapse_timer > 0) {
 	image_blend = merge_color(c_white, c_red, 1 - (collapse_timer / 60))
 	if (collapse_timer <= 0) {
 		is_landed = false
-		instance_deactivate_object(id)
+		can_fall = false
 		alarm[1] = 1
+		audio_play_sound(snd_block, 1, false)
 	}
 }
 
@@ -73,19 +76,19 @@ if (id == global.controller_instance) {
 
 		var _letters = 0
 
-		if (_is_correct) {
-			_letters = string_length(global.word_input)
-			var i = 1
-			repeat (_letters) {
-				var _inst = instance_create_layer(spawn_x + global.spacing, spawn_y, "Instances", obj_block)
-				_inst.can_fall = false
-				_inst.alarm[0] = i * 10
-				global.spacing = global.spacing + 16
-				i += 1
-				ds_list_add(global.block_order, _inst)
-			}
-		}
-
+if (_is_correct) {
+	audio_play_sound(ding_sound_effect_1, 1, false)
+	_letters = string_length(global.word_input)
+	var i = 1
+	repeat (_letters) {
+		var _inst = instance_create_layer(spawn_x + global.spacing, spawn_y, "Instances", obj_block)
+		_inst.can_fall = false
+		_inst.alarm[0] = i * 10
+		global.spacing = global.spacing + 16
+		i += 1
+		
+	}
+}
 		global.current_q += 1
 		if (global.current_q >= array_length(global.questions)) global.current_q = 0
 		global.word_input = ""

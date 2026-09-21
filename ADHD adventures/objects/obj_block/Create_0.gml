@@ -4,6 +4,11 @@ spawn_y = 24
 can_fall = true
 is_landed = false
 collapse_timer = -1
+if (!variable_global_exists("block_order"))
+	global.block_order = ds_list_create()
+
+ds_list_add(global.block_order, id)
+
 if !variable_global_exists("spacing")
 	global.spacing = 0
 
