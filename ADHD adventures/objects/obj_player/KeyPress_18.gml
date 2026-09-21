@@ -1,1 +1,1 @@
-room_goto(room_snake)
+room_goto(room_answer_snake)
