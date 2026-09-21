@@ -1,7 +1,6 @@
 {
   "FolderOrderSettings":[
     {"name":"Backgrounds","order":4,"path":"folders/Backgrounds.yy",},
-    {"name":"Tinyhouse","order":16,"path":"folders/Tinyhouse.yy",},
     {"name":"Fonts","order":5,"path":"folders/Fonts.yy",},
     {"name":"group1","order":6,"path":"folders/group1.yy",},
     {"name":"Music","order":7,"path":"folders/Music.yy",},
@@ -12,6 +11,7 @@
     {"name":"space_rocks","order":12,"path":"folders/space_rocks.yy",},
     {"name":"Sprites","order":13,"path":"folders/Sprites.yy",},
     {"name":"Tilesets","order":14,"path":"folders/Tilesets.yy",},
+    {"name":"Tinyhouse","order":16,"path":"folders/Tinyhouse.yy",},
   ],
   "ResourceOrderSettings":[
     {"name":"fnt_default","order":1,"path":"fonts/fnt_default/fnt_default.yy",},

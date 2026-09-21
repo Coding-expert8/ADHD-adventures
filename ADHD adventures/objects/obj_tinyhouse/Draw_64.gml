@@ -112,10 +112,14 @@ if (global.game_over) {
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_color(c_white);
-draw_text_transformed(board_x, 24, _status, 1.5, 1.5, 0);
+draw_text_ext_transformed(board_x + 192, 20, _status, 15, 160, 1.5, 1.5, 0);
+
 
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_color(c_white);
 draw_set_alpha(1);
+
+//No stalemate
+//The losing text goes over screen/overlaps with piece bank if you use draw_text_ext_transformed
