@@ -1,4 +1,4 @@
-draw_clear(make_color_rgb(40, 44, 52)); // dark backdrop so text is always readable
+draw_clear(make_color_rgb(40, 44, 52));
 draw_set_font(-1);
 
 var _light = make_color_rgb(240, 217, 181);
@@ -6,7 +6,7 @@ var _dark  = make_color_rgb(181, 136, 99);
 var _me = 1 - global.bot_color;
 var _my_turn = (!global.game_over && global.pending_promotion == noone && global.turn == _me);
 
-// Squares the current selection can move or drop to
+
 var _targets = [];
 if (_my_turn) {
     if (selected_hand_type != PieceType.NONE) {

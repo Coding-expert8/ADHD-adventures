@@ -18,16 +18,16 @@ function scr_init_board() {
     global.hand = [[], []]; // global.hand[COLOR_WHITE], global.hand[COLOR_BLACK]
 
     global.turn = COLOR_WHITE;
-    global.pending_promotion = noone;   // struct {row, col, color} while awaiting a pick
+    global.pending_promotion = noone;
     global.game_over = false;
     global.winner = noone;
-    global.win_reason = "";             // "checkmate" or "stalemate"
+    global.win_reason = "";
 
-    global.bot_color = COLOR_BLACK;     // the human plays White by default
-    global.bot_depth = 3;               // 2 = fast/weak, 4+ = slower/stronger
+    global.bot_color = COLOR_BLACK;//player plays white
+    global.bot_depth = 3;
 }
 
-// --- Piece types ---
+
 enum PieceType {
     NONE,
     KING,
@@ -37,11 +37,11 @@ enum PieceType {
     HORSE
 }
 
-// --- Colors ---
+
 #macro COLOR_WHITE 0
 #macro COLOR_BLACK 1
 
-// --- Movement direction tables (row, col) ---
+
 global.DIR_WAZIR = [[-1,0],[1,0],[0,-1],[0,1]];
 global.DIR_FERZ  = [[-1,-1],[-1,1],[1,-1],[1,1]];
 global.DIR_KING  = [[-1,0],[1,0],[0,-1],[0,1],[-1,-1],[-1,1],[1,-1],[1,1]];
@@ -80,9 +80,7 @@ function scr_step_moves(_row, _col, _dirs) {
 }
 
 function scr_get_horse_moves(_row, _col) {
-    // Xiangqi horse: a (1,2)-leaper that is blocked ("hobbled") if the
-    // orthogonal square it steps over first is occupied — unlike a
-    // standard chess knight, which can never be blocked.
+
     var _piece = global.board[_row][_col];
     var _moves = [];
     for (var i = 0; i < array_length(global.DIR_HORSE); i++) {
@@ -107,7 +105,7 @@ function scr_get_horse_moves(_row, _col) {
 
 function scr_get_pawn_moves(_row, _col) {
     var _piece = global.board[_row][_col];
-    var _dir = (_piece.color == COLOR_WHITE) ? -1 : 1; // white advances toward row 0
+    var _dir = (_piece.color == COLOR_WHITE) ? -1 : 1;
     var _moves = [];
     var _fr = _row + _dir;
 
@@ -123,7 +121,7 @@ function scr_get_pawn_moves(_row, _col) {
             array_push(_moves, [_fr, _c]);
         }
     }
-    return _moves; // no double-step, no en passant — the board is too small for either
+    return _moves;
 }
 
 function scr_get_moves(_row, _col) {
@@ -147,7 +145,7 @@ function scr_find_king(_color) {
             return [r, c];
         }
     }
-    return [-1, -1]; // should never happen — kings can't be dropped or captured legally
+    return [-1, -1]; //kings can't be dropped or captured legally
 }
 
 function scr_is_square_attacked(_row, _col, _by_color) {
@@ -195,15 +193,14 @@ function scr_get_drop_squares(_type, _color) {
         if (global.board[r][c] != noone) continue;
         if (_type == PieceType.PAWN) {
             var _back = (_color == COLOR_WHITE) ? 0 : 3;
-            if (r == _back) continue; // can't drop a pawn onto its own promotion rank
+            if (r == _back) continue; //can't drop pawn onto its own promotion rank
         }
         array_push(_squares, [r, c]);
     }
     return _squares;
 }
 
-// Dropping a friendly piece can never expose your OWN king, but if you're
-// already in check the drop must actually resolve it, so simulate anyway.
+// Dropping a friendly piece can never expose your OWN king, but if you're already in check the drop must actually resolve it
 function scr_get_legal_drop_squares(_type, _color) {
     var _all = scr_get_drop_squares(_type, _color);
     var _legal = [];
@@ -222,7 +219,7 @@ function scr_make_move(_fr, _fc, _tr, _tc) {
     var _captured = global.board[_tr][_tc];
 
     if (_captured != noone) {
-        array_push(global.hand[_mover.color], _captured.type); // Crazyhouse: captured pieces switch sides
+        array_push(global.hand[_mover.color], _captured.type); // Crazyhouse: captured pieces switch sides in tinyhouse
     }
 
     global.board[_tr][_tc] = _mover;
@@ -243,8 +240,7 @@ function scr_make_drop(_type, _color, _r, _c) {
     scr_end_turn();
 }
 
-// Call with PieceType.WAZIR, PieceType.FERZ or PieceType.HORSE only —
-// promotion to a queen/rook/bishop doesn't exist in this variant.
+// Call with PieceType.WAZIR, PieceType.FERZ or PieceType.HORSE only as romotion to a queen/rook/bishop doesn't exist in tinyhouse.
 function scr_promote(_type) {
     var _p = global.pending_promotion;
     global.board[_p.row][_p.col] = scr_make_piece(_type, _p.color);
@@ -283,10 +279,10 @@ function scr_check_game_end() {
 
     global.game_over = true;
     if (scr_in_check(_color)) {
-        global.winner = 1 - _color;     // checkmate — the mated side loses, as usual
+        global.winner = 1 - _color;     // checkmate, the mated side loses, as in chess
         global.win_reason = "checkmate";
     } else {
-        global.winner = _color;         // Tinyhouse's signature reversal
+        global.winner = _color;         // Tinyhouse's reversal
         global.win_reason = "stalemate";
     }
 }
@@ -310,11 +306,11 @@ function scr_piece_value(_type) {
         case PieceType.FERZ:  return 220;
         case PieceType.HORSE: return 300;
     }
-    return 0; // KING isn't scored as material — checkmate is handled separately
+    return 0; // KING isn't scored as material checkmate is handled separately
 }
 
 function scr_evaluate() {
-    // Positive favors White, negative favors Black.
+    // Positive favors White, negative favors Black, eval bar
     var _score = 0;
     for (var r = 0; r < 4; r++)
     for (var c = 0; c < 4; c++) {
@@ -323,7 +319,7 @@ function scr_evaluate() {
         var _v = scr_piece_value(_p.type);
         _score += (_p.color == COLOR_WHITE) ? _v : -_v;
     }
-    // Pieces in hand count for roughly half value — they still need a tempo to drop.
+    // Pieces in hand count for roughly half value, as they still need a tempo to drop.
     for (var i = 0; i < array_length(global.hand[COLOR_WHITE]); i++) {
         _score += scr_piece_value(global.hand[COLOR_WHITE][i]) * 0.5;
     }
@@ -333,7 +329,7 @@ function scr_evaluate() {
     return _score;
 }
 
-// Every legal action for _color, as {kind:"move",...} or {kind:"drop",...}.
+// Function generating every legal action for _color, as {kind:"move",...} or {kind:"drop",...}.
 function scr_generate_all_moves(_color) {
     var _moves = [];
     for (var r = 0; r < 4; r++)
@@ -359,10 +355,9 @@ function scr_generate_all_moves(_color) {
     return _moves;
 }
 
-// Mutates the live board/hand for search purposes only — no turn switching,
-// no UI promotion pause. Promotions during search auto-pick Ferz to keep the
-// branching factor down; only the bot's real, top-level promotion (below)
-// actually compares all three options.
+// Searches the live board/hand for search purposes only, no turn switching,
+// No UI promotion pause. Promotions during search auto-pick Ferz to keep the
+// branching factor down; only the bot's real, top-level promotion compares all options.
 function scr_search_apply_move(_move, _color) {
     if (_move.kind == "move") {
         var _mover = global.board[_move.fr][_move.fc];
@@ -386,7 +381,7 @@ function scr_negamax(_depth, _alpha, _beta, _color) {
     var _moves = scr_generate_all_moves(_color);
     if (array_length(_moves) == 0) {
         // No legal move: checkmate is bad for the side to move, but Tinyhouse's
-        // reversed stalemate rule makes a non-check "stuck" position a big win.
+        // reversed stalemate rule makes a stalemate a big win.
         return scr_in_check(_color) ? (-100000 - _depth) : (100000 + _depth);
     }
     if (_depth == 0) {
@@ -409,7 +404,7 @@ function scr_negamax(_depth, _alpha, _beta, _color) {
 
         if (_score > _best) _best = _score;
         if (_best > _alpha) _alpha = _best;
-        if (_alpha >= _beta) break; // alpha-beta cutoff
+        if (_alpha >= _beta) break;
     }
     return _best;
 }
@@ -441,7 +436,7 @@ function scr_bot_choose_move(_color, _depth) {
     return _best_move;
 }
 
-// Picks the best of the three real promotion pieces, one ply deep.
+// Picks the best of the three real promotion pieces, one play deep.
 function scr_bot_choose_promotion() {
     var _p = global.pending_promotion;
     var _candidates = [PieceType.WAZIR, PieceType.FERZ, PieceType.HORSE];
@@ -459,13 +454,13 @@ function scr_bot_choose_promotion() {
     scr_promote(_best_type);
 }
 
-// Call this once whenever it becomes the bot's turn.
+// Call this whenever it becomes the bot's turn.
 function scr_bot_play_turn(_depth) {
     if (global.game_over || global.pending_promotion != noone) return;
 
     var _color = global.turn;
     var _move = scr_bot_choose_move(_color, _depth);
-    if (_move == noone) return; // scr_check_game_end already caught this case
+    if (_move == noone) return;
 
     if (_move.kind == "move") {
         scr_make_move(_move.fr, _move.fc, _move.tr, _move.tc);

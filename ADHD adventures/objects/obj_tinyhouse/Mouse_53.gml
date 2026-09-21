@@ -2,12 +2,12 @@ if (global.game_over) exit;
 
 var _mx = device_mouse_x_to_gui(0);
 var _my = device_mouse_y_to_gui(0);
-// show_debug_message("click at " + string(_mx) + ", " + string(_my)); // uncomment to test that clicks arrive
+
 
 var _me = 1 - global.bot_color;   // the human's colour
 var _delay = round(game_get_speed(gamespeed_fps) * 0.4);
 
-// --- Promotion menu (must be handled first, or the game locks up) ---
+//Promotion menu must be handled first, or the game locks up
 if (global.pending_promotion != noone) {
     if (global.pending_promotion.color == _me) {
         var _opts = [PieceType.WAZIR, PieceType.FERZ, PieceType.HORSE];
@@ -39,7 +39,7 @@ for (var i = 0; i < array_length(_hand); i++) {
     }
 }
 
-// --- Clicking the board ---
+//board click
 var _col = floor((_mx - board_x) / cell_size);
 var _row = floor((_my - board_y) / cell_size);
 if (_row < 0 || _row > 3 || _col < 0 || _col > 3) {
@@ -82,7 +82,7 @@ if (!_acted) {
     }
 }
 
-// Hand off to the bot once the human's turn is completely finished
+// Hand to the bot
 if (_acted && !global.game_over && global.pending_promotion == noone
     && global.turn == global.bot_color) {
     alarm[0] = _delay;
