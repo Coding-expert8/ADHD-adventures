@@ -2,18 +2,18 @@ function scr_init_board() {
     global.board = array_create(4);
     for (var r = 0; r < 4; r++) global.board[r] = array_create(4, noone);
 
-    global.board[0][0] = scr_make_piece(PieceType.HORSE, COLOR_BLACK);
-    global.board[0][1] = scr_make_piece(PieceType.FERZ,  COLOR_BLACK);
-    global.board[0][2] = scr_make_piece(PieceType.KING,  COLOR_BLACK);
-    global.board[0][3] = scr_make_piece(PieceType.WAZIR, COLOR_BLACK);
+    global.board[0][0] = scr_make_piece(PieceType.FERZ, COLOR_BLACK);
+	global.board[0][1] = scr_make_piece(PieceType.HORSE, COLOR_BLACK);
+	global.board[0][2] = scr_make_piece(PieceType.WAZIR,  COLOR_BLACK);
+	global.board[0][3] = scr_make_piece(PieceType.KING,  COLOR_BLACK);
 
-    global.board[1][2] = scr_make_piece(PieceType.PAWN, COLOR_BLACK);
-    global.board[2][1] = scr_make_piece(PieceType.PAWN, COLOR_WHITE);
+	global.board[1][3] = scr_make_piece(PieceType.PAWN, COLOR_BLACK);
+	global.board[2][0] = scr_make_piece(PieceType.PAWN, COLOR_WHITE);
 
-    global.board[3][0] = scr_make_piece(PieceType.WAZIR, COLOR_WHITE);
-    global.board[3][1] = scr_make_piece(PieceType.KING,  COLOR_WHITE);
-    global.board[3][2] = scr_make_piece(PieceType.FERZ,  COLOR_WHITE);
-    global.board[3][3] = scr_make_piece(PieceType.HORSE, COLOR_WHITE);
+	global.board[3][0] = scr_make_piece(PieceType.KING,  COLOR_WHITE);
+	global.board[3][1] = scr_make_piece(PieceType.WAZIR,  COLOR_WHITE);
+	global.board[3][2] = scr_make_piece(PieceType.HORSE, COLOR_WHITE);
+	global.board[3][3] = scr_make_piece(PieceType.FERZ, COLOR_WHITE);
 
     global.hand = [[], []]; // global.hand[COLOR_WHITE], global.hand[COLOR_BLACK]
 

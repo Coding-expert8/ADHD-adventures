@@ -12,6 +12,7 @@
     {"name":"Sprites","order":13,"path":"folders/Sprites.yy",},
     {"name":"Tilesets","order":14,"path":"folders/Tilesets.yy",},
     {"name":"Tinyhouse","order":16,"path":"folders/Tinyhouse.yy",},
+    {"name":"tinyhouse_sprites","order":8,"path":"folders/Tinyhouse/tinyhouse_sprites.yy",},
   ],
   "ResourceOrderSettings":[
     {"name":"fnt_default","order":1,"path":"fonts/fnt_default/fnt_default.yy",},
@@ -51,6 +52,7 @@
     {"name":"spr_chess_bg","order":7,"path":"sprites/spr_chess_bg/spr_chess_bg.yy",},
     {"name":"spr_debris","order":4,"path":"sprites/spr_debris/spr_debris.yy",},
     {"name":"spr_ice_trophy","order":14,"path":"sprites/spr_ice_trophy/spr_ice_trophy.yy",},
+    {"name":"spr_king_white","order":1,"path":"sprites/spr_king_white/spr_king_white.yy",},
     {"name":"spr_portal_space_rocks","order":23,"path":"sprites/spr_portal_space_rocks/spr_portal_space_rocks.yy",},
     {"name":"spr_ship","order":5,"path":"sprites/spr_ship/spr_ship.yy",},
     {"name":"spr_snow_monster","order":30,"path":"sprites/spr_snow_monster/spr_snow_monster.yy",},

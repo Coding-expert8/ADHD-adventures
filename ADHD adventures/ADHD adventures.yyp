@@ -38,6 +38,7 @@
     {"$GMFolder":"","%Name":"World","folderPath":"folders/Sprites/World.yy","name":"World","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Tilesets","folderPath":"folders/Tilesets.yy","name":"Tilesets","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Tinyhouse","folderPath":"folders/Tinyhouse.yy","name":"Tinyhouse","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"tinyhouse_sprites","folderPath":"folders/Tinyhouse/tinyhouse_sprites.yy","name":"tinyhouse_sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[
     {"link":"io.gamemaker.gm_effect_windblown_particles-1.0.0","name":"io.gamemaker.gm_effect_windblown_particles-1.0.0","path":"io.gamemaker.gm_effect_windblown_particles-1.0.0.yyp",},
@@ -210,6 +211,8 @@
     {"id":{"name":"spr_fruit_normal","path":"sprites/spr_fruit_normal/spr_fruit_normal.yy",},},
     {"id":{"name":"spr_fruit_power","path":"sprites/spr_fruit_power/spr_fruit_power.yy",},},
     {"id":{"name":"spr_ice_trophy","path":"sprites/spr_ice_trophy/spr_ice_trophy.yy",},},
+    {"id":{"name":"spr_king_black","path":"sprites/spr_king_black/spr_king_black.yy",},},
+    {"id":{"name":"spr_king_white","path":"sprites/spr_king_white/spr_king_white.yy",},},
     {"id":{"name":"spr_npc_1","path":"sprites/spr_npc_1/spr_npc_1.yy",},},
     {"id":{"name":"spr_npc","path":"sprites/spr_npc/spr_npc.yy",},},
     {"id":{"name":"spr_player_idle","path":"sprites/spr_player_idle/spr_player_idle.yy",},},

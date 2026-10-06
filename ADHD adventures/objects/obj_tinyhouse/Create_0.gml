@@ -4,9 +4,9 @@ selected_row = -1;
 selected_col = -1;
 selected_hand_type = PieceType.NONE;
 
-cell_size  = 64;
-board_x    = 120;
-board_y    = 110;
-hand_size  = 48;
-hand_gap   = 8;
-promo_size = 56;
+cell_size  = 100;
+board_x    = round((1366 - 4 * cell_size) / 2); // centered horizontally
+board_y    = 220;
+hand_size  = 72;
+hand_gap   = 10;
+promo_size = 84;
