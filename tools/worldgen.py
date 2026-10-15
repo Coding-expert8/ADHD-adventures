@@ -722,7 +722,7 @@ def cmd_terrain(_args):
         f"global.terrain_count = {count};",
         "global.terrain_names = [" + ", ".join(['""'] + [f'"{t["name"]}"' for t in spec["terrains"]]) + "];",
         "global.terrain_solid = [" + ", ".join("true" if s else "false" for s in solid) + "];",
-        "// Plain tiles of these terrains get a random quarter turn per cell (see terrain_draw_view).",
+        "// Plain tiles of these terrains are turned and flipped at random per cell (see terrain_draw_view).",
         "// Set \"rotate\": false on a terrain whose texture has a direction, such as a road.",
         "global.terrain_rotate = [" + ", ".join("true" if r else "false" for r in rotate) + "];",
         "",
