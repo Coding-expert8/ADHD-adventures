@@ -7,8 +7,4 @@ repeat(10) {
 if (hp <= 0) {
 
 	instance_destroy();
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> Tiny_house_branch

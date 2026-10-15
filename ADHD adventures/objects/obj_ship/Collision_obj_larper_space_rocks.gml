@@ -6,7 +6,7 @@ repeat(10)
 
 lives -= 1
 
-with (obj_game_space_rocks)
+with (obj_game)
 {
 	alarm[1] = room_speed;
 }

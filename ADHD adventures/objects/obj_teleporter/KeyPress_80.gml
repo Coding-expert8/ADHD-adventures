@@ -1,4 +1,4 @@
-room_goto(room_space_rocks_help);
+room_goto(room_space_rocks);
 
 score = 0;
 lives = 3;

@@ -2,31 +2,24 @@
   "$GMSprite":"v2",
   "%Name":"spr_snow_monster",
   "bboxMode":0,
-<<<<<<< HEAD
   "bbox_bottom":849,
   "bbox_left":0,
   "bbox_right":947,
   "bbox_top":0,
-=======
-  "bbox_bottom":841,
-  "bbox_left":38,
-  "bbox_right":919,
-  "bbox_top":18,
->>>>>>> Tiny_house_branch
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"7b0d1e91-621b-442f-8dbe-4ae26f6392a1","name":"7b0d1e91-621b-442f-8dbe-4ae26f6392a1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"8c20d883-1a63-43aa-8755-ea54285c7b0a","name":"8c20d883-1a63-43aa-8755-ea54285c7b0a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":850,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"14e34063-04b5-497f-a294-73004ef322f1","blendMode":0,"displayName":"default","isLocked":false,"name":"14e34063-04b5-497f-a294-73004ef322f1","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"ef136c41-ee57-47ea-99d5-9609e1e480c9","blendMode":0,"displayName":"default","isLocked":false,"name":"ef136c41-ee57-47ea-99d5-9609e1e480c9","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_snow_monster",
   "nineSlice":null,
@@ -76,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"7b0d1e91-621b-442f-8dbe-4ae26f6392a1","path":"sprites/spr_snow_monster/spr_snow_monster.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"a50fb9ae-8b56-40d9-8904-3e5b170ea476","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"8c20d883-1a63-43aa-8755-ea54285c7b0a","path":"sprites/spr_snow_monster/spr_snow_monster.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"06b081e1-dc45-45d8-8c9e-58820904093a","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

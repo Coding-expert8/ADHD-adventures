@@ -4,10 +4,5 @@ hp = 50;
 hp_max = 50;
 
 
-<<<<<<< HEAD
 bar_w = 64;
 bar_h = 8;
-=======
-bar_w = 96;
-bar_h = 12;
->>>>>>> Tiny_house_branch
