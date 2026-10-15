@@ -1,0 +1,1 @@
+room_goto(room_lava_parkour);
