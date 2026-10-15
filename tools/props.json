@@ -34,7 +34,8 @@
       {"name": "town_block_question", "rect": [0, 1264, 32, 48]},
       {"name": "town_block_brick", "rect": [0, 1312, 32, 64]},
       {"name": "town_house_dark", "parts": [{"rect": [0, 224, 192, 128], "at": [0, 0]}, {"rect": [0, 736, 192, 192], "at": [0, 128]}]},
-      {"name": "town_house_light", "parts": [{"rect": [0, 352, 192, 128], "at": [0, 0]}, {"rect": [0, 928, 192, 192], "at": [0, 128]}]}
+      {"name": "town_house_light", "parts": [{"rect": [0, 352, 192, 128], "at": [0, 0]}, {"rect": [0, 928, 192, 192], "at": [0, 128]}]},
+      {"name": "town_house_dark_gold", "parts": [{"rect": [0, 480, 192, 128], "at": [0, 0]}, {"rect": [32, 736, 128, 192], "at": [32, 128]}, {"rect": [192, 736, 32, 192], "at": [0, 128]}, {"rect": [224, 736, 32, 192], "at": [160, 128]}]}
     ]
   },
   {
