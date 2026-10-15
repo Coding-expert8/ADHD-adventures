@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"script_tinyhouse",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"script_tinyhouse",
+  "parent":{
+    "name":"Tinyhouse",
+    "path":"folders/Tinyhouse.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
