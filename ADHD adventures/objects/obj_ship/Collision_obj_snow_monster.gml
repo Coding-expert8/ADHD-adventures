@@ -6,7 +6,11 @@ repeat(10)
 
 lives -= 1
 
+<<<<<<< HEAD
 with (obj_game)
+=======
+with (obj_game_space_rocks)
+>>>>>>> Tiny_house_branch
 {
 	alarm[1] = room_speed;
 }

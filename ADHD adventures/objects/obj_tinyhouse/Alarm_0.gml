@@ -1,0 +1,1 @@
+scr_bot_play_turn(global.bot_depth);
