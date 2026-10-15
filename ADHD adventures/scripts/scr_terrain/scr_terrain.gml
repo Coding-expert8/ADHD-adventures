@@ -21,6 +21,17 @@ function terrain_solid_at(_px, _py) {
     return _t > 0 and global.terrain_solid[_t];
 }
 
+/// @func terrain_spin(cell_x, cell_y)
+/// @desc Quarter turns (0-3) for the plain tile drawn at a corner: 1 = 90 degrees, 2 = 180, 3 = 270.
+///       Hashed from the position, so a cell always looks the same and nothing has to be stored.
+function terrain_spin(_cx, _cy) {
+    // Every step stays well inside the 53 bits a GML number holds exactly, so the low bits are real.
+    var _h = (_cx & 0xFFFF) * 73856093 + (_cy & 0xFFFF) * 19349663;
+    _h = (_h ^ (_h >> 15)) & 0xFFFFF;
+    _h = _h * 2654435761;
+    return (_h >> 13) & 3;
+}
+
 /// @func terrain_draw_view()
 /// @desc Draws the terrain visible in the view. With global.world_debug on, marks corners that have
 ///       no transition art (e.g. grass painted straight against water) with a magenta X.
@@ -90,7 +101,19 @@ function terrain_draw_view() {
                 }
             }
 
-            draw_tile(ts_terrain, _tile, 0, _vx * TERRAIN_CELL - _half, _vy * TERRAIN_CELL - _half);
+            // Plain tiles (no transition here) get a fixed random quarter turn, so a field of one
+            // terrain doesn't read as the same tile stamped over and over. Edges, corners and
+            // transitions are never turned: their art has to line up with the cells around them.
+            var _data = _tile;
+            if (_b == _a and global.terrain_rotate[_a]) {
+                var _spin = terrain_spin(_vx, _vy);
+                if (_spin & 1) _data = tile_set_rotate(_data, true);
+                if (_spin & 2) {
+                    _data = tile_set_mirror(_data, true);
+                    _data = tile_set_flip(_data, true);
+                }
+            }
+            draw_tile(ts_terrain, _data, 0, _vx * TERRAIN_CELL - _half, _vy * TERRAIN_CELL - _half);
             if (_bad and global.world_debug) array_push(_bad_corners, _vx * TERRAIN_CELL, _vy * TERRAIN_CELL);
         }
     }

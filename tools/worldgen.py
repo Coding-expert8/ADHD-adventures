@@ -665,12 +665,14 @@ def cmd_terrain(_args):
     ids = {}
     tiles = [Image.new("RGBA", (TILE, TILE), (0, 0, 0, 0))]  # atlas tile 0 is always empty
     solid = [False]
+    rotate = [False]
     for terrain in spec["terrains"]:
         if terrain["name"] in ids:
             raise SystemExit(f"duplicate terrain {terrain['name']}")
         ids[terrain["name"]] = len(tiles)
         tiles.append(source_tile(terrain["tileset"], *terrain["tile"]))
         solid.append(bool(terrain.get("solid", False)))
+        rotate.append(bool(terrain.get("rotate", True)))
 
     pairs = []  # (a id, b id, base index)
     missing = []
@@ -720,6 +722,9 @@ def cmd_terrain(_args):
         f"global.terrain_count = {count};",
         "global.terrain_names = [" + ", ".join(['""'] + [f'"{t["name"]}"' for t in spec["terrains"]]) + "];",
         "global.terrain_solid = [" + ", ".join("true" if s else "false" for s in solid) + "];",
+        "// Plain tiles of these terrains get a random quarter turn per cell (see terrain_draw_view).",
+        "// Set \"rotate\": false on a terrain whose texture has a direction, such as a road.",
+        "global.terrain_rotate = [" + ", ".join("true" if r else "false" for r in rotate) + "];",
         "",
         "// terrain_pair[a][b]: first of the 16 atlas tiles for cell corners holding terrains a and b,",
         "// ordered by a mask of the corners that are b (TL 1, TR 2, BL 4, BR 8).",

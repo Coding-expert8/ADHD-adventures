@@ -5,6 +5,9 @@
 global.terrain_count = 31;
 global.terrain_names = ["", "village_grass", "village_sand", "village_sand_pale", "village_dirt", "village_mud", "village_water", "village_water_pale", "forest_grass", "forest_sand", "forest_water", "forest_soil", "town_gravel", "town_snow", "desert_sand", "desert_grass", "desert_sandstone", "ice_snow", "ice_water", "shore_grass", "shore_sand", "shore_water", "shore_reef_sand", "shore_reef_floor", "shore_deep_sand", "shore_deep_floor", "shore_ocean", "rock_snow", "rock_earth", "city_pavement", "city_road", "city_grass"];
 global.terrain_solid = [false, false, false, false, false, false, true, true, false, false, true, false, false, false, false, false, false, false, true, false, false, true, false, false, false, false, true, false, false, false, false, false];
+// Plain tiles of these terrains get a random quarter turn per cell (see terrain_draw_view).
+// Set "rotate": false on a terrain whose texture has a direction, such as a road.
+global.terrain_rotate = [false, true, true, true, true, true, true, true, true, true, true, true, true, false, true, true, false, true, true, true, true, true, true, true, true, true, true, true, true, false, true, true];
 
 // terrain_pair[a][b]: first of the 16 atlas tiles for cell corners holding terrains a and b,
 // ordered by a mask of the corners that are b (TL 1, TR 2, BL 4, BR 8).
