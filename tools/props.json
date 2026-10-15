@@ -32,7 +32,9 @@
       {"name": "town_crate_worn", "rect": [192, 640, 64, 96], "footprint": [2, 48, 61, 95]},
       {"name": "town_bollard", "rect": [0, 1120, 32, 64]},
       {"name": "town_block_question", "rect": [0, 1264, 32, 48]},
-      {"name": "town_block_brick", "rect": [0, 1312, 32, 64]}
+      {"name": "town_block_brick", "rect": [0, 1312, 32, 64]},
+      {"name": "town_house_dark", "parts": [{"rect": [0, 224, 192, 128], "at": [0, 0]}, {"rect": [0, 736, 192, 192], "at": [0, 128]}]},
+      {"name": "town_house_light", "parts": [{"rect": [0, 352, 192, 128], "at": [0, 0]}, {"rect": [0, 928, 192, 192], "at": [0, 128]}]}
     ]
   },
   {

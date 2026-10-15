@@ -391,6 +391,8 @@
     {"id":{"name":"ts_collision","path":"tilesets/ts_collision/ts_collision.yy",},},
     {"id":{"name":"ts_terrain","path":"tilesets/ts_terrain/ts_terrain.yy",},},
     {"id":{"name":"ts_world","path":"tilesets/ts_world/ts_world.yy",},},
+    {"id":{"name":"spr_prop_town_house_dark","path":"sprites/spr_prop_town_house_dark/spr_prop_town_house_dark.yy",},},
+    {"id":{"name":"spr_prop_town_house_light","path":"sprites/spr_prop_town_house_light/spr_prop_town_house_light.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
