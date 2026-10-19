@@ -1,9 +1,9 @@
 {
   "FolderOrderSettings":[
     {"name":"Backgrounds","order":5,"path":"folders/Backgrounds.yy",},
-    {"name":"lava_parkour","order":17,"path":"folders/lava_parkour.yy",},
     {"name":"Fonts","order":6,"path":"folders/Fonts.yy",},
     {"name":"group1","order":7,"path":"folders/group1.yy",},
+    {"name":"lava_parkour","order":17,"path":"folders/lava_parkour.yy",},
     {"name":"Music","order":8,"path":"folders/Music.yy",},
     {"name":"Objects","order":9,"path":"folders/Objects.yy",},
     {"name":"Rooms","order":10,"path":"folders/Rooms.yy",},
@@ -30,6 +30,7 @@
     {"name":"obj_larper_space_rocks","order":26,"path":"objects/obj_larper_space_rocks/obj_larper_space_rocks.yy",},
     {"name":"obj_lava_parkour_help","order":1,"path":"objects/obj_lava_parkour_help/obj_lava_parkour_help.yy",},
     {"name":"obj_lava","order":3,"path":"objects/obj_lava/obj_lava.yy",},
+    {"name":"obj_platform","order":7,"path":"objects/obj_platform/obj_platform.yy",},
     {"name":"obj_player_larper","order":6,"path":"objects/obj_player_larper/obj_player_larper.yy",},
     {"name":"obj_portal_space_rocks_1","order":24,"path":"objects/obj_portal_space_rocks_1/obj_portal_space_rocks_1.yy",},
     {"name":"obj_portal_space_rocks","order":25,"path":"objects/obj_portal_space_rocks/obj_portal_space_rocks.yy",},

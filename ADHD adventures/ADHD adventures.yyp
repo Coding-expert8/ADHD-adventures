@@ -11,9 +11,9 @@
   "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"Backgrounds","folderPath":"folders/Backgrounds.yy","name":"Backgrounds","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"lava_parkour","folderPath":"folders/lava_parkour.yy","name":"lava_parkour","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Fonts","folderPath":"folders/Fonts.yy","name":"Fonts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"group1","folderPath":"folders/group1.yy","name":"group1","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"lava_parkour","folderPath":"folders/lava_parkour.yy","name":"lava_parkour","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Music","folderPath":"folders/Music.yy","name":"Music","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Objects","folderPath":"folders/Objects.yy","name":"Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"World","folderPath":"folders/Objects/World.yy","name":"World","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -74,6 +74,7 @@
     {"id":{"name":"obj_larper_space_rocks","path":"objects/obj_larper_space_rocks/obj_larper_space_rocks.yy",},},
     {"id":{"name":"obj_lava_parkour_help","path":"objects/obj_lava_parkour_help/obj_lava_parkour_help.yy",},},
     {"id":{"name":"obj_lava","path":"objects/obj_lava/obj_lava.yy",},},
+    {"id":{"name":"obj_platform","path":"objects/obj_platform/obj_platform.yy",},},
     {"id":{"name":"obj_player_larper","path":"objects/obj_player_larper/obj_player_larper.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_portal_space_rocks_1","path":"objects/obj_portal_space_rocks_1/obj_portal_space_rocks_1.yy",},},

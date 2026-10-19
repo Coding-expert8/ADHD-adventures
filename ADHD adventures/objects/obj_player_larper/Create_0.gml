@@ -60,3 +60,4 @@ character_sprites = {
 			}
 		}, 
 }
+gravity = 0.1;
