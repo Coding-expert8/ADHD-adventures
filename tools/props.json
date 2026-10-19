@@ -88,7 +88,15 @@
       {"name": "desert_cactus_round_flower", "rect": [128, 3008, 32, 32]},
       {"name": "desert_cactus_round", "rect": [128, 3040, 32, 32]},
       {"name": "desert_cactus_flower", "rect": [0, 3072, 64, 96]},
-      {"name": "desert_cactus", "rect": [64, 3072, 64, 96]}
+      {"name": "desert_cactus", "rect": [64, 3072, 64, 96]},
+      {"name": "desert_house_small_1", "rect": [64, 224, 192, 192]},
+      {"name": "desert_house_small_2", "rect": [64, 416, 192, 224]},
+      {"name": "desert_house_small_3", "rect": [64, 640, 192, 192]},
+      {"name": "desert_house_small_4", "rect": [64, 832, 192, 288]},
+      {"name": "desert_house_small_5", "rect": [96, 1504, 160, 192]},
+      {"name": "desert_house_small_6", "rect": [128, 1696, 128, 288]},
+      {"name": "desert_house_big_1", "parts": [{"rect": [14, 704, 50, 320], "at": [0, 76]}, {"rect": [0, 1024, 64, 320], "at": [50, 76]}, {"rect": [0, 1364, 96, 396], "at": [114, 0]}, {"rect": [0, 1792, 64, 320], "at": [210, 44]}], "footprint": [2, 336, 271, 395]},
+      {"name": "desert_house_big_2", "rect": [96, 1120, 160, 384]}
     ]
   },
   {
