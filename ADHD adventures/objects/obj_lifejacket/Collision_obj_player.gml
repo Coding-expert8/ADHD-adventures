@@ -8,7 +8,7 @@ if (ds_list_size(global.block_order) > 0) {
 
 if (target_block != noone && instance_exists(target_block)) {
 	other.x = target_block.x
-	other.float_target_y = target_block.y - 84
+	other.float_target_y = target_block.y - 104
 } else {
 	other.float_target_y = other.y
 }

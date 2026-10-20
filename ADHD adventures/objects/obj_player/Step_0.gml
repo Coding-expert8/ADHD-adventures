@@ -72,6 +72,8 @@ if (room == room_answer) {
 	if (!_on_block && !_on_rock) {
 		is_dead = true
 	}
+	else
+	is_dead = false
 }
 if (floating_up) {
 	y -= 3
