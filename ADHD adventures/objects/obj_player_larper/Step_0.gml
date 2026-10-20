@@ -10,7 +10,7 @@ if (!variable_instance_exists(id, "facing")) facing = "down";
 
 var _left  = keyboard_check(vk_left);
 var _right = keyboard_check(vk_right);
-var _up    = keyboard_check(vk_up);
+_up    = keyboard_check(vk_up) or keyboard_check(vk_space);
 var _down  = keyboard_check(vk_down);
 var _spd   = keyboard_check(vk_shift) ? 6 : 4;
 
@@ -31,3 +31,12 @@ sprite_index = character_sprites[$ global.character][$ global.walking][$ facing]
 with (instance_place(x, y, par_trigger)) event_user(0);
 
 
+if not place_meeting(x,y,obj_platform)
+{
+	gravity = 0.3;
+}
+
+if (_up) and (jumped == false) {
+	motion_set(image_angle + 90, jump);
+	jumped = true;
+}

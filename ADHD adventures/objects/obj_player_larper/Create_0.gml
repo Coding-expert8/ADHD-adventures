@@ -1,4 +1,7 @@
 // one-time setup: the player is created again in every room it enters
+jump = 11;
+jumped = false;
+
 if (!variable_global_exists("character"))
 {
 	window_set_size(window_get_width() * 2, window_get_height() * 2)
@@ -9,6 +12,7 @@ image_speed = 0.4
 image_xscale = 0.4
 image_yscale = 0.4
 global.walking = "idle"
+up = false
 
 character_sprites = {
 	"1": {
@@ -60,4 +64,4 @@ character_sprites = {
 			}
 		}, 
 }
-gravity = 0.1;
+gravity = 0.3;
