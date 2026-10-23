@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_lava",
-    "path":"sprites/spr_lava/spr_lava.yy",
+    "name":"spr_lava_1",
+    "path":"sprites/spr_lava_1/spr_lava_1.yy",
   },
   "spriteMaskId":null,
   "visible":true,

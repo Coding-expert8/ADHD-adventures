@@ -38,5 +38,7 @@ if not place_meeting(x,y,obj_platform)
 
 if (_up) and (jumped == false) {
 	motion_set(image_angle + 90, jump);
-	jumped = true;
+	if not place_meeting(x, y, obj_platform) {
+		jumped = true;
+	}
 }
