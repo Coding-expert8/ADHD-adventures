@@ -1,3 +1,5 @@
+// The air's colour trails the area and the weather rather than snapping to them.
+air_tint_step();
 
 switch (global.weather) {
 

@@ -11,5 +11,6 @@ shader_set(shd_daylight);
 shader_set_uniform_f(u_view, _vx, _vy, _vw, _vh);
 shader_set_uniform_f(u_phase, global.daylight_phase);
 shader_set_uniform_f(u_strength, global.daylight_strength);
+shader_set_uniform_f_array(u_air, global.air_tint);
 draw_rectangle(_vx, _vy, _vx + _vw, _vy + _vh, false);
 shader_reset();

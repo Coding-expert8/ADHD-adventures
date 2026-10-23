@@ -10,11 +10,13 @@
 //   - a base tint that walks night -> dawn -> day -> dusk -> night
 //   - a light side and a shaded side, split along the bearing the light is on
 //   - a vignette that only shows up once the tint is dark anyway
+// and then the air's own colour -- the place and its weather -- laid over the lot.
 //
 varying vec2 v_pos;        // 0..1 across the view
 
 uniform float u_phase;     // 0..1 through the day
 uniform float u_strength;  // 0 = no tint at all, 1 = the full cycle
+uniform vec4  u_air;       // the air's own colour, premultiplied (see scr_weather)
 
 const float PI = 3.14159265;
 
@@ -24,10 +26,10 @@ const float PI = 3.14159265;
 // two separate jobs: (1 - a) is how much darker everything gets, and tint.rgb * a
 // is a flat veil laid over it. That veil is what reads as haze, so dark times of
 // day keep their colours low and lean on alpha for the darkness instead.
-const vec4 COL_NIGHT = vec4(0.05, 0.08, 0.22, 0.66);
-const vec4 COL_DAWN  = vec4(0.78, 0.55, 0.42, 0.22);
+const vec4 COL_NIGHT = vec4(0.05, 0.08, 0.22, 0.56);
+const vec4 COL_DAWN  = vec4(0.78, 0.55, 0.42, 0.19);
 const vec4 COL_DAY   = vec4(1.00, 0.98, 0.88, 0.00);
-const vec4 COL_DUSK  = vec4(0.70, 0.44, 0.39, 0.26);
+const vec4 COL_DUSK  = vec4(0.70, 0.44, 0.39, 0.22);
 
 // The colour of being out of the light. Darker than any of the tints above, so that
 // laying it over the world darkens it at any hour -- including midday, when the tint
@@ -116,7 +118,18 @@ void main()
     // Corners fall off into the dark. Scaled by the tint's own alpha, so it is the
     // shaded side of a midday view that picks this up, not the lit one.
     float edge = smoothstep(0.35, 0.85, distance(v_pos, vec2(0.5, 0.5)));
-    tint.a += edge * tint.a * 0.30;
+    tint.a += edge * tint.a * 0.25;
+
+    // --- the air --------------------------------------------------------------
+    // The colour of the air in this place and of the weather hanging in it, laid
+    // OVER the daylight tint rather than mixed into it. That ordering is the whole
+    // point: rain greys out a sunset exactly as much as it greys out noon, because
+    // it hangs between the viewer and the world rather than changing what the sun
+    // is doing. u_air arrives premultiplied, so laying it over is the top one plus
+    // whatever it lets through of the one underneath.
+    float air_a = u_air.a + tint.a * (1.0 - u_air.a);
+    tint.rgb = (u_air.rgb + tint.rgb * tint.a * (1.0 - u_air.a)) / max(air_a, 0.0001);
+    tint.a   = air_a;
 
     gl_FragColor = vec4(tint.rgb, clamp(tint.a, 0.0, 1.0) * u_strength);
 }

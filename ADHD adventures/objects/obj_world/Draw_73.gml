@@ -15,7 +15,7 @@ if (variable_global_exists("current_area")) {
     draw_set_colour(c_lime);
     with (obj_area) draw_text(bbox_left + 4, bbox_top + 4, area_name);
 
-    var _profiles = ["clear", "rain", "desert", "snow"];
+    var _profiles = ["clear", "rain", "desert", "snow", "town"];
     var _weathers = ["clear", "rain", "snow", "sandstorm"];
     var _in    = (global.current_area  != noone) ? global.current_area.area_name : "(open world)";
     var _theme = (global.current_theme != noone) ? audio_get_name(global.current_theme) : "-";
@@ -25,6 +25,7 @@ if (variable_global_exists("current_area")) {
         + "\nprofile: " + _profiles[global.weather_profile]
         + "\nweather: " + _weathers[global.weather]
         + "\ntheme: "   + _theme
+        + "\nair: "     + string(round(global.air_tint[3] * 100)) + "%"
         + "\ntime: "    + daylight_clock_string()
                         + (keyboard_check(DAYLIGHT_FAST_KEY) ? "  x" + string(DAYLIGHT_FAST_SCALE) : "  (hold D)"));
 }

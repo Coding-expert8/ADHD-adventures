@@ -37,10 +37,10 @@ function daylight_hour() {
 // of the world the tint covers, so it is the honest answer to "how dark is it out" --
 // 0.66 is as dark as the night ever gets. Keep these in step with the COL_* constants
 // in shd_daylight.fsh.
-#macro DAYLIGHT_ALPHA_NIGHT 0.66
-#macro DAYLIGHT_ALPHA_DAWN  0.22
+#macro DAYLIGHT_ALPHA_NIGHT 0.56
+#macro DAYLIGHT_ALPHA_DAWN  0.19
 #macro DAYLIGHT_ALPHA_DAY   0.00
-#macro DAYLIGHT_ALPHA_DUSK  0.26
+#macro DAYLIGHT_ALPHA_DUSK  0.22
 
 /// @func daylight_smooth(edge0, edge1, value)
 /// @desc GLSL's smoothstep, which GML does not have: 0 below edge0, 1 above edge1, and an
