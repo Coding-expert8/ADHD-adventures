@@ -11,7 +11,10 @@
     "name":"World",
     "path":"folders/Objects/World.yy",
   },
-  "parentObjectId":{"name":"obj_prop","path":"objects/obj_prop/obj_prop.yy",},
+  "parentObjectId":{
+    "name":"obj_prop",
+    "path":"objects/obj_prop/obj_prop.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

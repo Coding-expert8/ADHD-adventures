@@ -75,6 +75,7 @@
     {"id":{"name":"obj_portal_space_rocks","path":"objects/obj_portal_space_rocks/obj_portal_space_rocks.yy",},},
     {"id":{"name":"obj_prop","path":"objects/obj_prop/obj_prop.yy",},},
     {"id":{"name":"obj_score","path":"objects/obj_score/obj_score.yy",},},
+    {"id":{"name":"obj_shade","path":"objects/obj_shade/obj_shade.yy",},},
     {"id":{"name":"obj_ship","path":"objects/obj_ship/obj_ship.yy",},},
     {"id":{"name":"obj_space_rocks_sign","path":"objects/obj_space_rocks_sign/obj_space_rocks_sign.yy",},},
     {"id":{"name":"obj_space_rocks_spawner","path":"objects/obj_space_rocks_spawner/obj_space_rocks_spawner.yy",},},

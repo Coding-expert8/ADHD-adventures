@@ -27,7 +27,7 @@
 // How much of the world each wash covers at full strength.
 #macro AIR_RAIN_COVER   0.15
 #macro AIR_DESERT_COVER 0.14
-#macro AIR_TOWN_COVER   0.08
+#macro AIR_TOWN_COVER   0.5
 
 // How quickly the air tint eases towards the one it should be, per step. About a
 // second and a half to arrive, which is slow enough to read as walking into
@@ -96,9 +96,12 @@ function weather_roll() {
 // "not there" is all zeroes and means it, and a tint fades up in its own colour
 // from the first frame.
 
-/// @func air_tint(r, g, b, cover)
+/// @func air_tint_make(r, g, b, cover)
 /// @desc A premultiplied tint from a straight colour and how much it covers.
-function air_tint(_r, _g, _b, _a) {
+///       Named _make rather than plain air_tint because a script-level
+///       `function foo()` IS the global variable foo in GML -- declaring
+///       air_tint() here would quietly overwrite global.air_tint with a method.
+function air_tint_make(_r, _g, _b, _a) {
     return [_r * _a, _g * _a, _b * _a, _a];
 }
 
@@ -108,9 +111,9 @@ function weather_profile_tint(_p) {
     switch (_p) {
         // Dust and heat standing in the air: warm, sandy, thin enough to read as
         // air rather than as a filter over the lens.
-        case WEATHER_PROFILE_DESERT: return air_tint(0.85, 0.72, 0.48, AIR_DESERT_COVER);
+        case WEATHER_PROFILE_DESERT: return air_tint_make(0.85, 0.72, 0.48, AIR_DESERT_COVER);
         // Smoke and wet slate. Barely a colour -- mostly a loss of colour.
-        case WEATHER_PROFILE_TOWN:   return air_tint(0.52, 0.53, 0.55, AIR_TOWN_COVER);
+        case WEATHER_PROFILE_TOWN:   return air_tint_make(0.02, 0.03, 0.05, AIR_TOWN_COVER);
         default:                     return [0, 0, 0, 0];
     }
 }
@@ -119,7 +122,7 @@ function weather_profile_tint(_p) {
 /// @desc The colour the running weather adds over its area's own.
 function weather_tint(_w) {
     // Rain draws the warmth out of everything it falls on.
-    if (_w == WEATHER_RAIN) return air_tint(0.42, 0.50, 0.60, AIR_RAIN_COVER);
+    if (_w == WEATHER_RAIN) return air_tint_make(0.42, 0.50, 0.60, AIR_RAIN_COVER);
 
     // Snow and sandstorms have no wash of their own: a SNOW area reads cold from
     // the flakes themselves, and a DESERT one already carries dust in its air.
