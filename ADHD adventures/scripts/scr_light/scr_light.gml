@@ -38,6 +38,19 @@
 // stacking up into a black hole. Set this to 0 to keep shade at full strength round the clock.
 #macro SHADE_NIGHT_FADE 0.70
 
+// --- shade -------------------------------------------------------------------
+// The other half of lighting: ground that the light does not reach. obj_shade
+// marks a region out and darkens it (see objects/obj_shade). These are its
+// defaults; any instance can override them in its creation code.
+#macro SHADE_COVER   0.22   // how much of the world a region covers at its centre
+#macro SHADE_FEATHER 48     // pixels its edges fade over -- the whole look is the edge
+#macro SHADE_COLOUR  make_colour_rgb(22, 30, 54)   // skylight without the sun: cool, not black
+
+// How much of the shade the night takes away. Shade is the absence of direct
+// light, so at midnight there is nothing left for a cliff to stand in the way of
+// and the patch all but disappears.
+
+
 /// @func prop_object_for(sprite)
 /// @desc Which object a sprite on a room's "Props" asset layer should become. Scenery is
 ///       scenery unless the world has to know more about it than where it stands -- a lamp

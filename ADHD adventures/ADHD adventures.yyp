@@ -120,6 +120,7 @@
     {"id":{"name":"scr_weather","path":"scripts/scr_weather/scr_weather.yy",},},
     {"id":{"name":"scr_world","path":"scripts/scr_world/scr_world.yy",},},
     {"id":{"name":"shd_daylight","path":"shaders/shd_daylight/shd_daylight.yy",},},
+    {"id":{"name":"shd_shade","path":"shaders/shd_shade/shd_shade.yy",},},
     {"id":{"name":"_1_46__Victory_Against_Gym_Leader_","path":"sounds/_1_46__Victory_Against_Gym_Leader_/_1_46__Victory_Against_Gym_Leader_.yy",},},
     {"id":{"name":"clock_tick","path":"sounds/clock_tick/clock_tick.yy",},},
     {"id":{"name":"ding_sound_effect_1","path":"sounds/ding_sound_effect_1/ding_sound_effect_1.yy",},},

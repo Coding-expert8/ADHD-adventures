@@ -1,18 +1,27 @@
-// A patch of the map that is simply darker than the daylight says it should be:
-// the foot of a cliff, under a bridge, the inside of a treeline. Drag one into a
-// room and stretch it over the spot -- the box you see in the editor is the extent
-// of the shade, and spr_trigger is only the handle for grabbing it.
+// A patch of ground that sits in shade: the foot of a cliff, under a bridge, the
+// inside of a doorway. Drop one on the "Instances" layer of room_map and stretch
+// it over the ground it should darken. Its sprite is the 32x32 spr_trigger box
+// with its origin at the top left, so the room editor's handles size it in 32px
+// steps and x,y is its top-left corner. It is never drawn and never solid -- the
+// box is only there to be dragged.
 //
-// Set shade_strength per instance in the Variable Definitions panel, or in the
-// instance's creation code. 0 is nothing, 1 is black. These are guards, not
-// defaults you should rely on: they catch an empty field or a typo.
-if (!variable_instance_exists(id, "shade_strength")) shade_strength = SHADE_STRENGTH_DEFAULT;
-if (!is_real(shade_strength)) shade_strength = SHADE_STRENGTH_DEFAULT;
-shade_strength = clamp(shade_strength, 0, 1);
+// Per-instance creation code overrides any of these, the same way obj_area takes
+// its name and profile:
+//     shade_cover   = 0.35;        // deeper shade than the default
+//     shade_feather = 16;          // a harder edge (a doorway, not a cliff)
+//     shade_colour  = c_black;     // a different colour of dark
+if (!variable_instance_exists(id, "shade_cover"))   shade_cover   = SHADE_COVER;
+if (!variable_instance_exists(id, "shade_feather")) shade_feather = SHADE_FEATHER;
+if (!variable_instance_exists(id, "shade_colour"))  shade_colour  = SHADE_COLOUR;
 
-// In front of the ground and of the Y-sorted props and player, so walking in puts
-// the player in the shade too -- but still in the layer pass, which is before
-// every Draw End event. That is what leaves the day/night tint and the lamps on
-// top of it: shade is part of the world, so the sky still has to get at it, and a
-// lamp standing in it still has to be able to light it back up.
-depth = SHADE_DEPTH;
+// Uniform handles are looked up once: shader_get_uniform is a string lookup and
+// the draw runs every frame.
+u_rect    = shader_get_uniform(shd_shade, "u_rect");
+u_colour  = shader_get_uniform(shd_shade, "u_colour");
+u_feather = shader_get_uniform(shd_shade, "u_feather");
+
+// Drawn in Draw End, which runs in depth order: obj_daylight_control sits at
+// 16000 so the day/night tint goes down first, and the lamps sit at the Instances
+// layer depth of 300 so they come after. Landing between the two is the whole
+// point -- shade deepens the daylight, and a lamp standing in it still lights it.
+depth = 8000;

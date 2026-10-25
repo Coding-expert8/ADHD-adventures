@@ -7,14 +7,6 @@ for (var _i = 0; _i < ds_list_size(sort_list); _i++) {
 }
 draw_set_colour(c_aqua);
 with (par_trigger) draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
-
-// Shade boxes, with the ellipse each one actually darkens inside its extent.
-draw_set_colour(c_navy);
-with (obj_shade) {
-    draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
-    draw_ellipse(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
-    draw_text(bbox_left + 4, bbox_top + 4, "shade " + string(shade_strength));
-}
 with (obj_spawn) draw_circle(x, y, 6, true);
 
 // Area boxes: name each one and report the live area / weather state, so it is

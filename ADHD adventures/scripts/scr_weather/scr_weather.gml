@@ -27,7 +27,7 @@
 // How much of the world each wash covers at full strength.
 #macro AIR_RAIN_COVER   0.15
 #macro AIR_DESERT_COVER 0.14
-#macro AIR_TOWN_COVER   0.5
+#macro AIR_TOWN_COVER   0.3
 
 // How quickly the air tint eases towards the one it should be, per step. About a
 // second and a half to arrive, which is slow enough to read as walking into

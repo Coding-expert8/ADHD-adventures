@@ -1,23 +1,10 @@
-// Darken the box, softly, with nothing but a blend mode and a gradient.
+// Nothing is drawn in the ordinary pass. The shade itself goes down in Draw End,
+// after the day/night tint; this event exists to stop the 32x32 box sprite being
+// drawn, while leaving the instance visible so that its Draw End still runs.
 //
-// gpu_set_blendmode_ext(bm_zero, bm_inv_src_colour) makes every pixel drawn here
-// come out as screen * (1 - what_was_drawn). So a grey multiplies the ground down
-// -- it scales the light instead of taking a fixed amount off it, which keeps the
-// detail in the shade rather than crushing it to black -- and pure black changes
-// nothing at all. Drawing the ellipse grey in the middle and black at the rim is
-// therefore all the soft edge needs: the rim multiplies by 1.
-//
-// One soft ellipse per instance. To follow something that is not an oval -- the
-// foot of a cliff that bends -- overlap two or three. Where they overlap the
-// darkening multiplies (0.8 * 0.8 = 0.64), so it deepens rather than banding, but
-// it does deepen: keep each one gentle if you are going to stack them.
-var _s = shade_strength * (1 - SHADE_NIGHT_FADE * daylight_darkness());
-if (_s <= 0) exit;
+// Under F1 the box shows itself, so the regions can be seen and lined up.
+if (!global.world_debug) exit;
 
-// Shade is lit by the sky rather than the sun, so it is cooler than what is around
-// it. Taking more red out than blue is what leaves it blue.
-var _col = make_colour_rgb(_s * 255 * 1.00, _s * 255 * 0.92, _s * 255 * 0.78);
-
-gpu_set_blendmode_ext(bm_zero, bm_inv_src_colour);
-draw_ellipse_colour(bbox_left, bbox_top, bbox_right, bbox_bottom, _col, c_black, false);
-gpu_set_blendmode(bm_normal);
+draw_set_colour(c_navy);
+draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
+draw_set_colour(c_white);
