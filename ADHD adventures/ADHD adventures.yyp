@@ -77,6 +77,7 @@
     {"id":{"name":"obj_larper_space_rocks","path":"objects/obj_larper_space_rocks/obj_larper_space_rocks.yy",},},
     {"id":{"name":"obj_lava_parkour_help","path":"objects/obj_lava_parkour_help/obj_lava_parkour_help.yy",},},
     {"id":{"name":"obj_lava","path":"objects/obj_lava/obj_lava.yy",},},
+    {"id":{"name":"obj_moving_wall","path":"objects/obj_moving_wall/obj_moving_wall.yy",},},
     {"id":{"name":"obj_platform","path":"objects/obj_platform/obj_platform.yy",},},
     {"id":{"name":"obj_player_larper","path":"objects/obj_player_larper/obj_player_larper.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},

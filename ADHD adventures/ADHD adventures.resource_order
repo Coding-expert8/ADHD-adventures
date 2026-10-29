@@ -33,6 +33,7 @@
     {"name":"obj_larper_space_rocks","order":26,"path":"objects/obj_larper_space_rocks/obj_larper_space_rocks.yy",},
     {"name":"obj_lava_parkour_help","order":1,"path":"objects/obj_lava_parkour_help/obj_lava_parkour_help.yy",},
     {"name":"obj_lava","order":3,"path":"objects/obj_lava/obj_lava.yy",},
+    {"name":"obj_moving_wall","order":17,"path":"objects/obj_moving_wall/obj_moving_wall.yy",},
     {"name":"obj_platform","order":7,"path":"objects/obj_platform/obj_platform.yy",},
     {"name":"obj_player_larper","order":6,"path":"objects/obj_player_larper/obj_player_larper.yy",},
     {"name":"obj_portal_space_rocks_1","order":24,"path":"objects/obj_portal_space_rocks_1/obj_portal_space_rocks_1.yy",},

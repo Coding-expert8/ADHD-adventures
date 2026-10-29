@@ -36,3 +36,8 @@ if not place_meeting(x,y,obj_platform)
 	gravity = 0.3;
 }
 
+if (y <=0) y = room_height -1;
+else if (y >= room_height) y = 1;
+
+if (x <= 0) x = room_width -1;
+else if (x >= room_width) x = room_width +1;
