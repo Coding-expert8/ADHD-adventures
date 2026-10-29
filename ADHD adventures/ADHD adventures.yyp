@@ -6,7 +6,7 @@
     {"id":{"name":"fnt_default","path":"fonts/fnt_default/fnt_default.yy",},"order":0,},
     {"id":{"name":"fnt_title","path":"fonts/fnt_title/fnt_title.yy",},"order":0,},
     {"id":{"name":"obj_block","path":"objects/obj_block/obj_block.yy",},"order":0,},
-    {"id":{"name":"obj_game","path":"objects/obj_game/obj_game.yy",},"order":0,},
+    {"id":{"name":"obj_snake","path":"objects/obj_snake/obj_snake.yy",},"order":0,},
     {"id":{"name":"obj_help_answer","path":"objects/obj_help_answer/obj_help_answer.yy",},"order":0,},
     {"id":{"name":"obj_help_snake","path":"objects/obj_help_snake/obj_help_snake.yy",},"order":0,},
     {"id":{"name":"obj_lifejacket","path":"objects/obj_lifejacket/obj_lifejacket.yy",},"order":0,},
