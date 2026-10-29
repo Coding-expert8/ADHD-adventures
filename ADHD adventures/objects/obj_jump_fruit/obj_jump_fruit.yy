@@ -1,9 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"Object45",
-  "eventList":[],
+  "%Name":"obj_jump_fruit",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_player_larper","path":"objects/obj_player_larper/obj_player_larper.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"Object45",
+  "name":"obj_jump_fruit",
   "overriddenProperties":[],
   "parent":{
     "name":"lava_parkour",
@@ -27,7 +29,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_asteroid_medium",
+    "path":"sprites/spr_asteroid_medium/spr_asteroid_medium.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
