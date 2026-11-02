@@ -1,9 +1,11 @@
 {
   "$GMTileSet":"v1",
   "%Name":"ts_world",
-  "autoTileSets":[],
+  "autoTileSets":[
+    {"$GMAutoTileSet":"","%Name":"autotile_1","closed_edge":false,"name":"autotile_1","resourceType":"GMAutoTileSet","resourceVersion":"2.0","tiles":[3537,3540,3539,3433,3436,3536,4368,3432,3435,4369,3538,3434,3641,3640,3642,4370,],},
+  ],
   "macroPageTiles":{
-    "SerialiseHeight":13,
+    "SerialiseHeight":15,
     "SerialiseWidth":54,
     "TileCompressedData":[
       -20,0,10,8150,8151,9496,9497,9498,9499,9500,9501,9502,9503,-3,0,21,6797,6798,6799,8144,8145,8146,8147,

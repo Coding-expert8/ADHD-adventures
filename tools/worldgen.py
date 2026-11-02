@@ -6,6 +6,9 @@ Close GameMaker before running: the IDE overwrites .yy files it has open.
     python tools/worldgen.py basic     collision shape tiles + scr_collision_data, player mask, trigger/spawn markers
     python tools/worldgen.py world     ts_world: every tileset in tools/world.json combined into one tileset
     python tools/worldgen.py terrain   ts_terrain atlas + scr_terrain_data from tools/terrains.json
+                                       (a pair with "blend": "dither" is generated from the two plain
+                                       tiles, for terrains of different tilesets that have no shared art)
+    python tools/worldgen.py cliff     ts_cliff atlas + scr_cliff_data from tools/cliffs.json (plateau kits)
     python tools/worldgen.py props     spr_prop_* sprites from tools/props.json (keeps hitboxes edited in GameMaker
                                        unless --reset-hitboxes is given)
     python tools/worldgen.py props --scan _01___Tileset___Transparent
@@ -54,6 +57,39 @@ LAYOUTS = {
     "hole2": {(0, 0): 8, (1, 0): 4, (0, 1): 2, (1, 1): 1},
     "island2": {(0, 0): 7, (1, 0): 11, (0, 1): 13, (1, 1): 14},
 }
+
+# Ordered 8x8 dither matrix, used to blend two terrains that have no hand-drawn transition art.
+BAYER8 = [[0, 32, 8, 40, 2, 34, 10, 42], [48, 16, 56, 24, 50, 18, 58, 26],
+          [12, 44, 4, 36, 14, 46, 6, 38], [60, 28, 52, 20, 62, 30, 54, 22],
+          [3, 35, 11, 43, 1, 33, 9, 41], [51, 19, 59, 27, 49, 17, 57, 25],
+          [15, 47, 7, 39, 13, 45, 5, 37], [63, 31, 55, 23, 61, 29, 53, 21]]
+
+
+def blend_tiles(tile_a, tile_b, band):
+    """All 16 transition tiles between two plain terrain tiles, as a checkered band (masks 1-14 are used).
+
+    A drawn tile is centred on a cell corner, so its own corners sit at the centres of the four cells that
+    share that corner: local (0,0) is the top-left cell, (TILE,0) the top-right, and so on. Interpolating
+    the corner terrains over the tile gives a field that neighbouring tiles agree on along their shared
+    edge, so the band runs across tiles without a seam, and both textures stay in phase with the plain
+    terrain around them because the pixels are taken at the same offsets.
+    """
+    pixels_a, pixels_b = tile_a.load(), tile_b.load()
+    tiles = {}
+    for mask in range(16):
+        corners = (mask & 1, (mask & 2) != 0, (mask & 4) != 0, (mask & 8) != 0)  # TL, TR, BL, BR: 1 = b
+        img = Image.new("RGBA", (TILE, TILE), (0, 0, 0, 0))
+        out = img.load()
+        for y in range(TILE):
+            v = (y + 0.5) / TILE
+            for x in range(TILE):
+                u = (x + 0.5) / TILE
+                weight = ((1 - u) * (1 - v) * corners[0] + u * (1 - v) * corners[1]
+                          + (1 - u) * v * corners[2] + u * v * corners[3])
+                share = min(max((weight - 0.5) / band + 0.5, 0), 1)
+                out[x, y] = pixels_b[x, y] if share > (BAYER8[y % 8][x % 8] + 0.5) / 64 else pixels_a[x, y]
+        tiles[mask] = img
+    return tiles
 
 
 # ---------------------------------------------------------------------------------------------
@@ -629,18 +665,27 @@ def cmd_terrain(_args):
     ids = {}
     tiles = [Image.new("RGBA", (TILE, TILE), (0, 0, 0, 0))]  # atlas tile 0 is always empty
     solid = [False]
+    rotate = [False]
     for terrain in spec["terrains"]:
         if terrain["name"] in ids:
             raise SystemExit(f"duplicate terrain {terrain['name']}")
         ids[terrain["name"]] = len(tiles)
         tiles.append(source_tile(terrain["tileset"], *terrain["tile"]))
         solid.append(bool(terrain.get("solid", False)))
+        rotate.append(bool(terrain.get("rotate", True)))
 
     pairs = []  # (a id, b id, base index)
     missing = []
     for pair in spec["pairs"]:
         a, b = ids[pair["a"]], ids[pair["b"]]
         by_mask = {}
+        if "blend" in pair:
+            if pair["blend"] != "dither":
+                raise SystemExit(f"{pair['a']}/{pair['b']}: unknown blend {pair['blend']}")
+            if any(key in pair for key in ("tileset", "tiles", *LAYOUTS)):
+                raise SystemExit(f"{pair['a']}/{pair['b']}: a blend pair cannot also name tileset art")
+            by_mask = blend_tiles(tiles[a], tiles[b], pair.get("band", 0.6))
+            print(f"note: {pair['a']}/{pair['b']} is a generated dither blend")
         for layout, positions in LAYOUTS.items():
             if layout in pair:
                 col, row = pair[layout]
@@ -677,6 +722,9 @@ def cmd_terrain(_args):
         f"global.terrain_count = {count};",
         "global.terrain_names = [" + ", ".join(['""'] + [f'"{t["name"]}"' for t in spec["terrains"]]) + "];",
         "global.terrain_solid = [" + ", ".join("true" if s else "false" for s in solid) + "];",
+        "// Plain tiles of these terrains are turned and flipped at random per cell (see terrain_draw_view).",
+        "// Set \"rotate\": false on a terrain whose texture has a direction, such as a road.",
+        "global.terrain_rotate = [" + ", ".join("true" if r else "false" for r in rotate) + "];",
         "",
         "// terrain_pair[a][b]: first of the 16 atlas tiles for cell corners holding terrains a and b,",
         "// ordered by a mask of the corners that are b (TL 1, TR 2, BL 4, BR 8).",
@@ -695,6 +743,67 @@ def cmd_terrain(_args):
     write_text(script / "scr_terrain_data.yy", SCRIPT_YY.substitute(name="scr_terrain_data"))
     register("scripts", "scr_terrain_data", SCRIPTS_FOLDER)
     print(f"{count} terrains, {len(pairs)} pairs, {len(tiles)} atlas tiles ({atlas.width}x{atlas.height})")
+
+
+# ---------------------------------------------------------------------------------------------
+# cliff
+
+def cmd_cliff(_args):
+    """ts_cliff + scr_cliff_data from tools/cliffs.json: one palette tile per kit, then its pieces.
+
+    A kit's block is 3 tiles wide (left cap, middle, right cap) and 2 + len(face) rows tall: the top
+    edge row, the repeatable surface row, then the face rows that are drawn below the plateau.
+    """
+    spec = json.loads((TOOLS / "cliffs.json").read_text(encoding="utf-8"))
+    sources = {}
+
+    def source_tile(tileset, col, row):
+        if tileset not in sources:
+            sources[tileset] = tileset_source(tileset)
+        return sources[tileset].crop((col * TILE, row * TILE, (col + 1) * TILE, (row + 1) * TILE))
+
+    kits = spec["kits"]
+    tiles = [Image.new("RGBA", (TILE, TILE), (0, 0, 0, 0))]  # atlas tile 0 is always empty
+    for kit in kits:  # palette tiles first, so a kit's id is its palette tile index
+        tiles.append(source_tile(kit["tileset"], kit["cols"][1], kit["middle"]))
+    blocks = []
+    for kit in kits:
+        blocks.append(len(tiles))
+        for row in [kit["top"], kit["middle"], *kit["face"]]:
+            for col in kit["cols"]:
+                tiles.append(source_tile(kit["tileset"], col, row))
+
+    rows = math.ceil(len(tiles) / ATLAS_COLUMNS)
+    atlas = Image.new("RGBA", (ATLAS_COLUMNS * TILE, rows * TILE), (0, 0, 0, 0))
+    for i, tile in enumerate(tiles):
+        atlas.paste(tile, ((i % ATLAS_COLUMNS) * TILE, (i // ATLAS_COLUMNS) * TILE))
+    write_sprite("spr_cliff_atlas", atlas, (0, 0, atlas.width - 1, atlas.height - 1), WORLD_FOLDER)
+    write_tileset("ts_cliff", "spr_cliff_atlas", atlas, TILE, TILE)
+
+    lines = [
+        "// GENERATED by tools/worldgen.py from tools/cliffs.json - do not edit by hand.",
+        "// Change the JSON, then run `python tools/worldgen.py cliff` with GameMaker closed.",
+        "",
+        "// Cliff kit ids are their palette tile index in ts_cliff (0 = unpainted cell). Paint the top of a",
+        "// plateau on the \"Cliff\" layer; obj_cliff draws its edges and wall, and the wall blocks walkers.",
+        f"global.cliff_count = {len(kits)};",
+        "global.cliff_names = [" + ", ".join(['""'] + [f'"{k["name"]}"' for k in kits]) + "];",
+        "",
+        "// base: first tile of the kit's block (3 per row: left cap, middle, right cap).",
+        "// Row 0 is the plateau's top edge, row 1 its surface, rows 2.. the face drawn below it.",
+        "// rim_*: pixels of drawn edge inside a border cell, which walkers cannot stand on.",
+        f"global.cliff_kit = array_create({len(kits) + 1}, undefined);",
+        f"global.cliff_face_max = {max(len(k['face']) for k in kits)};  // tallest wall, in cells",
+    ]
+    for i, (kit, base) in enumerate(zip(kits, blocks), start=1):
+        rim = kit["rim"]
+        lines.append(f"global.cliff_kit[{i}] = {{ base: {base}, face_rows: {len(kit['face'])}, "
+                     f"rim_top: {rim['top']}, rim_left: {rim['left']}, rim_right: {rim['right']} }};")
+    script = PROJECT / "scripts" / "scr_cliff_data"
+    write_text(script / "scr_cliff_data.gml", "\n".join(lines) + "\n")
+    write_text(script / "scr_cliff_data.yy", SCRIPT_YY.substitute(name="scr_cliff_data"))
+    register("scripts", "scr_cliff_data", SCRIPTS_FOLDER)
+    print(f"{len(kits)} cliff kits, {len(tiles)} atlas tiles ({atlas.width}x{atlas.height})")
 
 
 SCRIPT_YY = string.Template("""{
@@ -806,6 +915,7 @@ def main():
     sub.add_parser("basic").set_defaults(run=cmd_basic)
     sub.add_parser("world").set_defaults(run=cmd_world)
     sub.add_parser("terrain").set_defaults(run=cmd_terrain)
+    sub.add_parser("cliff").set_defaults(run=cmd_cliff)
     props = sub.add_parser("props")
     props.add_argument("--scan", metavar="TILESET_SPRITE")
     props.add_argument("--reset-hitboxes", action="store_true",

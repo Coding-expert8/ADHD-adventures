@@ -16,6 +16,8 @@
     {"name":"tinyhouse_sprites","order":8,"path":"folders/Tinyhouse/tinyhouse_sprites.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"mus_desert_town","order":1,"path":"sounds/mus_desert_town/mus_desert_town.yy",},
+  
     {"name":"fnt_default","order":2,"path":"fonts/fnt_default/fnt_default.yy",},
     {"name":"fnt_space_rocks_title","order":34,"path":"fonts/fnt_space_rocks_title/fnt_space_rocks_title.yy",},
     {"name":"fnt_space_rocks","order":35,"path":"fonts/fnt_space_rocks/fnt_space_rocks.yy",},

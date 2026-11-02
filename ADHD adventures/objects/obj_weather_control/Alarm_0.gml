@@ -1,2 +1,3 @@
-effect_create_above(ef_ring, x, y, 2, c_blue)
-alarm[0] = 60
+// Periodic chance for the current area's weather to start or stop.
+weather_roll();
+alarm[0] = WEATHER_ROLL_FRAMES;
