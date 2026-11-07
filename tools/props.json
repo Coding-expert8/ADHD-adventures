@@ -139,7 +139,26 @@
       {"name": "city_sign_post", "rect": [192, 1408, 64, 128], "footprint": [40, 88, 57, 111]},
       {"name": "city_dumpster", "rect": [0, 1696, 96, 64], "footprint": [2, 32, 77, 63]},
       {"name": "city_lamp_double", "rect": [96, 1696, 96, 96], "footprint": [40, 70, 57, 93]},
-      {"name": "city_traffic_barrel", "rect": [192, 1696, 32, 64]}
+      {"name": "city_traffic_barrel", "rect": [192, 1696, 32, 64]},
+      {"name": "city_building_1", "parts": [{"rect": [0, 1792, 224, 408], "at": [0, 0]}], "footprint": [2, 352, 221, 407]},
+      {"name": "city_building_2", "parts": [{"rect": [0, 2208, 224, 408], "at": [0, 0]}], "footprint": [2, 352, 221, 407]},
+      {"name": "city_building_3", "parts": [{"rect": [0, 2624, 224, 408], "at": [0, 0]}], "footprint": [2, 352, 221, 407]},
+      {"name": "city_building_4", "parts": [{"rect": [12, 3168, 200, 368], "at": [0, 0]}], "footprint": [2, 312, 197, 367]},
+      {"name": "city_building_5", "parts": [{"rect": [12, 3584, 200, 368], "at": [0, 0]}], "footprint": [2, 312, 197, 367]},
+      {"name": "city_building_6", "parts": [{"rect": [12, 4000, 200, 368], "at": [0, 0]}], "footprint": [2, 312, 197, 367]},
+      {"name": "city_building_7", "parts": [{"rect": [12, 4416, 244, 388], "at": [0, 0]}, {"rect": [0, 4832, 20, 380], "at": [244, 0]}], "footprint": [2, 332, 261, 387]},
+      {"name": "city_building_8", "parts": [{"rect": [76, 4832, 180, 384], "at": [0, 0]}, {"rect": [0, 5248, 52, 384], "at": [180, 0]}], "footprint": [2, 328, 229, 383]},
+      {"name": "city_building_9", "parts": [{"rect": [112, 5248, 144, 388], "at": [0, 0]}, {"rect": [0, 5664, 112, 388], "at": [144, 0]}], "footprint": [2, 332, 253, 387]},
+      {"name": "city_building_10", "parts": [{"rect": [176, 5664, 80, 384], "at": [0, 0]}, {"rect": [0, 6080, 144, 384], "at": [80, 0]}], "footprint": [2, 328, 221, 383]},
+      {"name": "city_building_11", "parts": [{"rect": [208, 6080, 48, 384], "at": [0, 0]}, {"rect": [0, 6496, 208, 384], "at": [48, 0]}], "footprint": [2, 328, 253, 383]},
+      {"name": "city_building_12", "parts": [{"rect": [16, 6912, 240, 384], "at": [0, 0]}, {"rect": [0, 7328, 16, 384], "at": [240, 0]}], "footprint": [2, 328, 253, 383]},
+      {"name": "city_building_13", "parts": [{"rect": [80, 7328, 176, 384], "at": [0, 0]}, {"rect": [0, 7744, 80, 384], "at": [176, 0]}], "footprint": [2, 328, 253, 383]},
+      {"name": "city_building_14", "parts": [{"rect": [16, 8288, 240, 516], "at": [0, 0]}, {"rect": [0, 8832, 16, 512], "at": [240, 0]}], "footprint": [2, 460, 253, 515]},
+      {"name": "city_building_15", "parts": [{"rect": [80, 8832, 176, 512], "at": [0, 0]}, {"rect": [0, 9376, 48, 512], "at": [176, 0]}], "footprint": [2, 456, 221, 511]},
+      {"name": "city_building_16", "parts": [{"rect": [112, 9376, 144, 384], "at": [0, 0]}, {"rect": [0, 9920, 112, 384], "at": [144, 0]}], "footprint": [2, 328, 253, 383]},
+      {"name": "city_building_17", "parts": [{"rect": [176, 9920, 80, 384], "at": [0, 0]}, {"rect": [0, 10336, 176, 384], "at": [80, 0]}], "footprint": [2, 328, 253, 383]},
+      {"name": "city_building_18", "parts": [{"rect": [240, 10336, 16, 384], "at": [0, 0]}, {"rect": [0, 10752, 240, 384], "at": [16, 0]}], "footprint": [2, 328, 253, 383]},
+      {"name": "city_building_19", "parts": [{"rect": [16, 11168, 240, 996], "at": [0, 0]}, {"rect": [0, 12192, 144, 992], "at": [240, 0]}], "footprint": [2, 940, 381, 995]}
     ]
   },
   {
