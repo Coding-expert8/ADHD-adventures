@@ -9,6 +9,7 @@ image_speed = 0.4
 image_xscale = 0.4
 image_yscale = 0.4
 global.walking = "idle"
+global.dialogue_npc = noone // no NPC talking (see obj_npc)
 
 character_sprites = {
 	"1": {

@@ -8,6 +8,15 @@ else
 }
 if (!variable_instance_exists(id, "facing")) facing = "down";
 
+// stand still while an NPC is talking (obj_npc handles the Q key)
+if (instance_exists(global.dialogue_npc))
+{
+	global.walking = "idle";
+	image_speed = 0.1;
+	sprite_index = character_sprites[$ global.character][$ global.walking][$ facing];
+	exit;
+}
+
 var _left  = keyboard_check(vk_left);
 var _right = keyboard_check(vk_right);
 var _up    = keyboard_check(vk_up);
