@@ -1,4 +1,4 @@
 
-area_name    = "desert";
-area_theme   = mus_desert_town;
-area_profile = WEATHER_PROFILE_DESERT;
+area_name    = "city";
+area_theme   = mus_city;
+area_profile = WEATHER_PROFILE_CLEAR;
