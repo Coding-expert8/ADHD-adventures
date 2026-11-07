@@ -1,5 +1,5 @@
 function scr_spawn_fruit() {
-    with (obj_game) {
+    with (obj_snake) {
         var valid = false;
         var tries = 0;
 

@@ -1,5 +1,5 @@
 function scr_move_snake() {
-    with (obj_game) {
+    with (obj_snake) {
         direction_move = next_direction;
 
         var head = grid_snake[| 0];

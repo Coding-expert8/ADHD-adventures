@@ -1,4 +1,5 @@
 draw_clear(c_black);
+draw_set_alpha(1); // the help screen leaves its fade-in alpha set, which would fade the whole board
 
 for (var yy = 0; yy < grid_h; yy++) {
     for (var xx = 0; xx < grid_w; xx++) {

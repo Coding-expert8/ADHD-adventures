@@ -1,5 +1,5 @@
 function scr_handle_fruit_eaten() {
-    with (obj_game) {
+    with (obj_snake) {
         var pts = (active_powerup == "double_score") ? 20 : 10;
 
         switch (fruit_type) {
