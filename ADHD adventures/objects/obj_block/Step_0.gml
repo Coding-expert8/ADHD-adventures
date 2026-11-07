@@ -1,15 +1,40 @@
 if (can_fall) {
-	if y < 600 {
-		y = y+4
+	if (y < 350) {
+		y += 2.5
+	} else {
+		is_landed = true
+		can_fall = false
+		audio_play_sound(snd_splash, 2, false)
 	}
 }
 
-// --- Re-elect controller every frame if the current one no longer exists ---
+if (collapse_timer > 0) {
+	collapse_timer -= 1
+	image_blend = merge_color(c_white, c_red, 1 - (collapse_timer / 60))
+	if (collapse_timer <= 0) {
+		is_landed = false
+		can_fall = false
+		alarm[1] = 1
+		audio_play_sound(snd_block, 1, false)
+	}
+}
+
 if (!instance_exists(global.controller_instance)) {
 	global.controller_instance = id
 }
 
 if (id == global.controller_instance) {
+
+	if (!variable_global_exists("paused")) global.paused = false
+	if (!variable_global_exists("pause_timer")) global.pause_timer = 0
+	if (!variable_global_exists("rounds_passed")) global.rounds_passed = 0
+
+	if (global.paused) {
+		global.pause_timer -= 1
+		if (global.pause_timer <= 0) {
+			global.paused = false
+		}
+	} else {
 
 	var _key = keyboard_lastchar
 	if (_key != "" && string_length(global.word_input) < 30) {
@@ -49,8 +74,11 @@ if (id == global.controller_instance) {
 			}
 		}
 
+		var _letters = 0
+
 if (_is_correct) {
-	var _letters = string_length(global.word_input)
+	audio_play_sound(ding_sound_effect_1, 1, false)
+	_letters = string_length(global.word_input)
 	var i = 1
 	repeat (_letters) {
 		var _inst = instance_create_layer(spawn_x + global.spacing, spawn_y, "Instances", obj_block)
@@ -58,13 +86,24 @@ if (_is_correct) {
 		_inst.alarm[0] = i * 10
 		global.spacing = global.spacing + 16
 		i += 1
+		
 	}
 }
-
 		global.current_q += 1
 		if (global.current_q >= array_length(global.questions)) global.current_q = 0
 		global.word_input = ""
 		global.round_timer = global.round_time
+
+		global.rounds_passed += 1
+		if (global.rounds_passed > 2) {
+			var _fall_delay = (_letters * 10) + 130
+			alarm[2] = _fall_delay
+		}
+
+	global.paused = true
+		global.pause_timer = 120
+	}
+
 	}
 }
 

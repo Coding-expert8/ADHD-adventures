@@ -1,7 +1,13 @@
 has_spawned_next = false; 
-spawn_x = 100
-spawn_y = 50
+spawn_x = 80
+spawn_y = 24
 can_fall = true
+is_landed = false
+collapse_timer = -1
+if (!variable_global_exists("block_order"))
+	global.block_order = ds_list_create()
+
+ds_list_add(global.block_order, id)
 
 if !variable_global_exists("spacing")
 	global.spacing = 0
@@ -81,5 +87,10 @@ if !variable_global_exists("questions") {
 	global.answers[18] = ["dog","cat","fish","hamster","rabbit","bird","parrot","turtle","guineapig","lizard","snake","ferret","gerbil","chinchilla","mouse","rat","canary","goldfish","tortoise","hedgehog","cockatiel","parakeet","budgie"]
 
 	global.questions[19] = "Name something cold you eat."
-	global.answers[19] = ["icecream","popsicle","sorbet","gelato","slushie","frozenyogurt","sherbet","icedcream","icepop","milkshake","frappe","icedcoffee","icedtea","snowcone","freezepop","fudgesicle","frozengrapes","sundae"]
+	global.answers[19] = ["icecream","popsicle","sorbet","gelato","slushie","frozen yogurt","sherbet","icepop","milkshake","frappe","icedcoffee","icedtea","snowcone","freezepop","fudgesicle","frozengrapes","sundae"]
 }
+if !variable_global_exists("block_order")
+	global.block_order = ds_list_create()
+
+if !variable_global_exists("collapse_chunk_size")
+	global.collapse_chunk_size = 4

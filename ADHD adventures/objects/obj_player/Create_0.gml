@@ -61,3 +61,18 @@ character_sprites = {
 			}
 		}, 
 }
+
+// answer-block minigame state (obj_lifejacket, falling off the blocks)
+is_dead = false
+floating_up = false
+float_target_y = 0
+
+// the answer-block minigame rooms still use the original player sprites at full size
+if (room == room_main or room == room_answer)
+{
+	mask_index = -1
+	image_xscale = 1
+	image_yscale = 1
+	sprite_index = spr_player_idle
+	image_speed = 0
+}
