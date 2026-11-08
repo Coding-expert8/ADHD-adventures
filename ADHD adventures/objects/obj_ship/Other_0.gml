@@ -1,5 +1,4 @@
 with (obj_accuracy) {
-	global.time = time;
 	global.space_rocks_beaten = true;
 }
 
