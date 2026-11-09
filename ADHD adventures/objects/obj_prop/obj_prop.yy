@@ -11,7 +11,10 @@
     "name":"World",
     "path":"folders/Objects/World.yy",
   },
-  "parentObjectId":{"name":"par_ysort","path":"objects/par_ysort/par_ysort.yy",},
+  "parentObjectId":{
+    "name":"par_ysort",
+    "path":"objects/par_ysort/par_ysort.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
