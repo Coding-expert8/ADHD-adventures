@@ -114,6 +114,7 @@
     {"id":{"name":"obj_terrain","path":"objects/obj_terrain/obj_terrain.yy",},},
     {"id":{"name":"obj_tinyhouse_help","path":"objects/obj_tinyhouse_help/obj_tinyhouse_help.yy",},},
     {"id":{"name":"obj_tinyhouse_setup","path":"objects/obj_tinyhouse_setup/obj_tinyhouse_setup.yy",},},
+    {"id":{"name":"obj_tinyhouse_transition","path":"objects/obj_tinyhouse_transition/obj_tinyhouse_transition.yy",},},
     {"id":{"name":"obj_tinyhouse","path":"objects/obj_tinyhouse/obj_tinyhouse.yy",},},
     {"id":{"name":"obj_title","path":"objects/obj_title/obj_title.yy",},},
     {"id":{"name":"obj_wall_space_rocks","path":"objects/obj_wall_space_rocks/obj_wall_space_rocks.yy",},},
@@ -142,6 +143,7 @@
     {"id":{"name":"room_start","path":"rooms/room_start/room_start.yy",},},
     {"id":{"name":"room_tinyhouse_help","path":"rooms/room_tinyhouse_help/room_tinyhouse_help.yy",},},
     {"id":{"name":"room_tinyhouse","path":"rooms/room_tinyhouse/room_tinyhouse.yy",},},
+    {"id":{"name":"room_transition","path":"rooms/room_transition/room_transition.yy",},},
     {"id":{"name":"Room3","path":"rooms/Room3/Room3.yy",},},
     {"id":{"name":"scr_cliff_data","path":"scripts/scr_cliff_data/scr_cliff_data.yy",},},
     {"id":{"name":"scr_cliff","path":"scripts/scr_cliff/scr_cliff.yy",},},
@@ -511,6 +513,7 @@
     {"roomId":{"name":"room_lava_parkour_help","path":"rooms/room_lava_parkour_help/room_lava_parkour_help.yy",},},
     {"roomId":{"name":"room_lava_parkour","path":"rooms/room_lava_parkour/room_lava_parkour.yy",},},
     {"roomId":{"name":"room_answer_help","path":"rooms/room_answer_help/room_answer_help.yy",},},
+    {"roomId":{"name":"room_transition","path":"rooms/room_transition/room_transition.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
