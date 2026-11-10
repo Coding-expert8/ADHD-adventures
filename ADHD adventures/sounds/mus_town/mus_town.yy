@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":126.130844,
+  "duration":126.13084,
   "exportDir":"",
   "name":"mus_town",
   "parent":{
@@ -20,7 +20,7 @@
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":32000,
+  "sampleRate":48000,
   "soundFile":"mus_town.mp3",
   "volume":1.0,
 }

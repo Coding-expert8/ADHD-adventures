@@ -26,7 +26,7 @@ const float PI = 3.14159265;
 // two separate jobs: (1 - a) is how much darker everything gets, and tint.rgb * a
 // is a flat veil laid over it. That veil is what reads as haze, so dark times of
 // day keep their colours low and lean on alpha for the darkness instead.
-const vec4 COL_NIGHT = vec4(0.05, 0.08, 0.22, 0.56);
+const vec4 COL_NIGHT = vec4(0.05, 0.08, 0.22, 0.48);
 const vec4 COL_DAWN  = vec4(0.78, 0.55, 0.42, 0.19);
 const vec4 COL_DAY   = vec4(1.00, 0.98, 0.88, 0.00);
 const vec4 COL_DUSK  = vec4(0.70, 0.44, 0.39, 0.22);

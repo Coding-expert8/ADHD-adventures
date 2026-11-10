@@ -3,6 +3,7 @@
   "%Name":"ts_world",
   "autoTileSets":[
     {"$GMAutoTileSet":"","%Name":"autotile_1","closed_edge":false,"name":"autotile_1","resourceType":"GMAutoTileSet","resourceVersion":"2.0","tiles":[3537,3540,3539,3433,3436,3536,4368,3432,3435,4369,3538,3434,3641,3640,3642,4370,],},
+    {"$GMAutoTileSet":"","%Name":"autotile_2","closed_edge":false,"name":"autotile_2","resourceType":"GMAutoTileSet","resourceVersion":"2.0","tiles":[6977,7289,7288,6873,7185,6976,6770,6872,7184,6771,6978,6874,7081,7080,7082,6772,],},
   ],
   "macroPageTiles":{
     "SerialiseHeight":15,
