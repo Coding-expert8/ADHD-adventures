@@ -16,6 +16,10 @@ if (keyboard_check(vk_up) or keyboard_check(ord("W")))
 motion_add(image_angle, 0.05);
 moving = true;
 }
+if (keyboard_check(vk_down) or keyboard_check(ord("S")))
+{
+	motion_add(image_angle, -0.03);
+}
 
 
 angle = image_angle mod 360;

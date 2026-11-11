@@ -10,7 +10,7 @@ if (!variable_instance_exists(id, "facing")) facing = "down";
 
 var _left  = keyboard_check(vk_left);
 var _right = keyboard_check(vk_right);
-_up    = keyboard_check(vk_up) or keyboard_check(vk_space);
+_up    = keyboard_check_pressed(vk_up) or keyboard_check_pressed(vk_space);
 var _down  = keyboard_check(vk_down);
 var _spd   = keyboard_check(vk_shift) ? 6 : 4;
 
@@ -35,4 +35,26 @@ if not place_meeting(x,y,obj_platform)
 {
 	gravity = 0.3;
 }
+
+
+
+
+
+
+if keyboard_check_released(vk_space) or keyboard_check_released(vk_up) {
+	jump_released = true;
+}
+else {
+	jump_released = false;
+}
+
+if place_meeting(x,y,obj_platform) {
+	if (_up) {
+		motion_set(image_angle + 90, jump);
+	}
+	counter = 0;
+	alarm[2] = 1;
+}
+
+
 

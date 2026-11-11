@@ -1,6 +1,6 @@
 // one-time setup: the player is created again in every room it enters
 jump = 11;
-jump = 16;
+jump = 15;
 jumped = false;
 
 if (!variable_global_exists("character"))
