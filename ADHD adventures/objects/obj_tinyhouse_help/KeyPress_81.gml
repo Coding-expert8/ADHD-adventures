@@ -1,1 +1,1 @@
-room_goto(room_tinyhouse);
+room_goto(room_transition);
