@@ -31,10 +31,12 @@ sprite_index = character_sprites[$ global.character][$ global.walking][$ facing]
 with (instance_place(x, y, par_trigger)) event_user(0);
 
 
-if not place_meeting(x,y,obj_platform)
+if not place_meeting(x,y,obj_moving_platform) and not place_meeting(x,y,obj_platform)
 {
 	gravity = 0.3;
 }
+
+
 
 
 
