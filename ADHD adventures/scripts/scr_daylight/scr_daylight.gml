@@ -37,7 +37,7 @@ function daylight_hour() {
 // of the world the tint covers, so it is the honest answer to "how dark is it out" --
 // 0.66 is as dark as the night ever gets. Keep these in step with the COL_* constants
 // in shd_daylight.fsh.
-#macro DAYLIGHT_ALPHA_NIGHT 0.56
+#macro DAYLIGHT_ALPHA_NIGHT 0.48
 #macro DAYLIGHT_ALPHA_DAWN  0.19
 #macro DAYLIGHT_ALPHA_DAY   0.00
 #macro DAYLIGHT_ALPHA_DUSK  0.22

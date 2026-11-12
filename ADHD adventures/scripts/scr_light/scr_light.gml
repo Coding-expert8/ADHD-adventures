@@ -7,16 +7,17 @@
 // to the rim but holds alpha flat, so a single circle falls off in a straight line and reads
 // as a shaded disc. A wide dim one for the spill plus a tight bright one over the bulb add
 // up to a curve that reads as light falling away.
-#macro LAMP_GLOW_RADIUS 120    // pixels of spill at image_yscale 1 -- the view is 640x360
-#macro LAMP_GLOW_ALPHA  0.22   // how much of that spill is added at deep night
-#macro LAMP_CORE_RADIUS 40     // the bright part right around the bulb
-#macro LAMP_CORE_ALPHA  0.30
+#macro LAMP_GLOW_RADIUS 185    // pixels of spill at image_yscale 1 -- the view is 640x360
+#macro LAMP_GLOW_ALPHA  0.30   // how much of that spill is added at deep night
+#macro LAMP_CORE_RADIUS 70     // the bright part right around the bulb
+#macro LAMP_CORE_ALPHA  0.34
 
 // Warm, and nowhere near white. Under bm_add the colour is added straight onto what is
 // already on screen, so anything close to white pushes the pixels under it to flat white
 // instead of lighting them. Holding the blue channel down keeps the pool reading as
-// lamplight, and the two alphas together peak around half, which lifts the night without
-// clipping the ground to a white disc.
+// lamplight, and the two alphas together peak around two thirds. That is as far as they can
+// go before the red channel runs out over the brightest ground and the middle of the pool
+// flattens into a disc -- LAMP_CORE_ALPHA is the one to pull back if that shows up.
 #macro LAMP_GLOW_COLOUR make_colour_rgb(255, 196, 108)
 
 // Where the bulb sits on a lamp sprite, as a fraction of its height down from the top.
@@ -62,6 +63,7 @@ function prop_object_for(_sprite) {
         case spr_prop_forest_lamp:
         case spr_prop_town_lamp:
         case spr_prop_desert_lamp:
+		case spr_prop_city_lamp:
         case spr_prop_city_lamp_double:
             return obj_lamp;
         default:
