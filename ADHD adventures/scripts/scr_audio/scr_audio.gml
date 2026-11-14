@@ -2,7 +2,7 @@
 // long as the thing making it is happening.
 
 // Default playback volume for sound effects and ambience.
-#macro SFX_VOLUME 0.5
+#macro SFX_VOLUME 1
 
 // How long ambience takes to fade in and out. Weather turns on and off in a
 // single frame, so without a fade the rain would arrive and leave as a click.

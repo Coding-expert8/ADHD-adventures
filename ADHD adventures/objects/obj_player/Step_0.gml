@@ -1,10 +1,3 @@
-// Footsteps, read at the top so this runs in every room: the minigame rooms
-// below exit early and do not maintain global.walking, so they stay silent on
-// foot rather than looping whatever the overworld left set. Taking last frame's
-// value costs a frame of latency, which is inaudible on a 0.6s step loop.
-// No fade -- footsteps should cut in and out with the feet.
-sfx_loop_set(snd_walk, global.walking == "walk" and room != room_main and room != room_answer, 0);
-
 // answer-block minigame rooms keep their own movement, sprites and falling logic
 if (room == room_main or room == room_answer)
 {
@@ -143,6 +136,27 @@ else if (_left)  facing = "left";
 else if (_right) facing = "right";
 
 sprite_index = character_sprites[$ global.character][$ global.walking][$ facing];
+
+// Footsteps, fired off the walk animation rather than looped, so each one lands
+// with a foot and keeps pace by itself when shift speeds the cycle up. A cycle
+// plants a foot twice -- a quarter of the way in and three quarters -- and
+// reading that as a fraction keeps it right whatever a character's frame count.
+// Only fire on the frame the animation ARRIVES at a contact frame, or it would
+// retrigger every step the animation sits on one.
+if (global.walking == "walk")
+{
+	var _contact = floor(image_index);
+	if (_contact != last_step_frame)
+	{
+		last_step_frame = _contact;
+		var _cycle = sprite_get_number(sprite_index);
+		if (_contact == floor(_cycle * 0.25) or _contact == floor(_cycle * 0.75))
+		{
+			audio_play_sound(snd_walk, 4, false, SFX_VOLUME);
+		}
+	}
+}
+else last_step_frame = -1;
 
 // doors and other triggers under the player's feet
 with (instance_place(x, y, par_trigger)) event_user(0);

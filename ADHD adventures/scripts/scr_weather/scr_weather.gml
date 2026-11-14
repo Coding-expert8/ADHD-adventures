@@ -38,9 +38,14 @@
 #macro WEATHER_SAND_STOP_CHANCE  0.2
 #macro WEATHER_SAND_MIN_FRAMES   1500   // 25s
 
+// Ambience levels for each weather. Relative to SFX_VOLUME's full scale, so a
+// value above 1 amplifies the clip rather than just un-attenuating it.
+#macro WEATHER_RAIN_VOLUME 0.9
+#macro WEATHER_SAND_VOLUME 1.2
+
 // How much of the world each wash covers at full strength.
 #macro AIR_RAIN_COVER   0.15
-#macro AIR_SAND_COVER   0.13
+#macro AIR_SAND_COVER   0.11
 #macro AIR_DESERT_COVER 0.14
 #macro AIR_TOWN_COVER   0.3
 

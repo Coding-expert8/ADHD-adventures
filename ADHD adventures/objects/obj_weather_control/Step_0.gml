@@ -7,8 +7,8 @@ weather_hold_step();
 // Ambience: one loop per weather that has a sound, running only while it does.
 // Both fade, so a shower starting or breaking up is not an audible click.
 sfx_step();
-sfx_loop_set(snd_rain,      global.weather == WEATHER_RAIN);
-sfx_loop_set(snd_sandstorm, global.weather == WEATHER_SANDSTORM);
+sfx_loop_set(snd_rain,      global.weather == WEATHER_RAIN,      SFX_FADE_MS, WEATHER_RAIN_VOLUME);
+sfx_loop_set(snd_sandstorm, global.weather == WEATHER_SANDSTORM, SFX_FADE_MS, WEATHER_SAND_VOLUME);
 
 switch (global.weather) {
 
