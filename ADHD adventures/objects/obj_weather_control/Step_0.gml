@@ -1,6 +1,15 @@
 // The air's colour trails the area and the weather rather than snapping to them.
 air_tint_step();
 
+// Run down the guaranteed stretch of the current spell (see weather_roll).
+weather_hold_step();
+
+// Ambience: one loop per weather that has a sound, running only while it does.
+// Both fade, so a shower starting or breaking up is not an audible click.
+sfx_step();
+sfx_loop_set(snd_rain,      global.weather == WEATHER_RAIN);
+sfx_loop_set(snd_sandstorm, global.weather == WEATHER_SANDSTORM);
+
 switch (global.weather) {
 
     case WEATHER_RAIN:

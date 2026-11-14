@@ -1,3 +1,10 @@
+// Footsteps, read at the top so this runs in every room: the minigame rooms
+// below exit early and do not maintain global.walking, so they stay silent on
+// foot rather than looping whatever the overworld left set. Taking last frame's
+// value costs a frame of latency, which is inaudible on a 0.6s step loop.
+// No fade -- footsteps should cut in and out with the feet.
+sfx_loop_set(snd_walk, global.walking == "walk" and room != room_main and room != room_answer, 0);
+
 // answer-block minigame rooms keep their own movement, sprites and falling logic
 if (room == room_main or room == room_answer)
 {

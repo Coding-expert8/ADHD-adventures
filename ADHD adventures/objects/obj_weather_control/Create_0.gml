@@ -16,7 +16,7 @@ part_type_scale(rain_pt_drop, 1, 1.25);
 
 part_type_orientation(rain_pt_drop, rain_dir, rain_dir, 0, 0, false);
 part_type_colour2(rain_pt_drop, c_ltgray, c_blue);
-part_type_alpha3(rain_pt_drop, 0.6, 0.95, 0.8); 
+part_type_alpha3(rain_pt_drop, 0.7, 1, 0.9); 
                                                   
 part_type_speed(rain_pt_drop, 16, 22, 0, 0);
 part_type_direction(rain_pt_drop, rain_dir - 2, rain_dir + 2, 0, 0);
@@ -38,14 +38,14 @@ rain_em_splashes = part_emitter_create(weather_ps);
 
 //snow
 snow_dir     = 268;  
-snow_density = 2; 
+snow_density = 3; 
 
 
 snow_pt_flake = part_type_create();
 part_type_shape(snow_pt_flake, pt_shape_snow);
-part_type_size(snow_pt_flake, 0.04, 0.09, 0, 0);
+part_type_size(snow_pt_flake, 0.07, 0.14, 0, 0);
 part_type_colour2(snow_pt_flake, c_white, make_colour_rgb(200, 226, 255));
-part_type_alpha3(snow_pt_flake, 0, 0.9, 0.7); 
+part_type_alpha3(snow_pt_flake, 0, 1, 0.85); 
 part_type_speed(snow_pt_flake, 1.6, 3, 0, 0);
 part_type_direction(snow_pt_flake, snow_dir - 6, snow_dir + 6, 0, 12);
 part_type_orientation(snow_pt_flake, 0, 359, 1.5, 0, false);
@@ -56,7 +56,7 @@ snow_em_flakes = part_emitter_create(weather_ps);
 //sandstorm
 sand_dir      = 190; 
 sand_density  = 1;  
-sand_gusts    = 1;    
+sand_gusts    = 3;    
 
 sand_pt_grain = part_type_create();
 part_type_shape(sand_pt_grain, pt_shape_pixel);
@@ -71,9 +71,9 @@ part_type_life(sand_pt_grain, 40, 70);
 
 sand_pt_gust = part_type_create();
 part_type_shape(sand_pt_gust, pt_shape_cloud);
-part_type_size(sand_pt_gust, 1.5, 3, 0.01, 0);
+part_type_size(sand_pt_gust, 2.2, 4.5, 0.012, 0);
 part_type_colour2(sand_pt_gust, make_colour_rgb(214, 184, 126), make_colour_rgb(190, 158, 104));
-part_type_alpha3(sand_pt_gust, 0, 0.22, 0);
+part_type_alpha3(sand_pt_gust, 0, 0.34, 0);
 part_type_speed(sand_pt_gust, 8, 14, 0, 0);
 part_type_direction(sand_pt_gust, sand_dir - 8, sand_dir + 8, 0, 0);
 part_type_life(sand_pt_gust, 70, 110);
