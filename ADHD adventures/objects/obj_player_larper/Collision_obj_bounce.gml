@@ -1,2 +1,2 @@
 move_bounce_solid(true);
-vspeed *= 2;
+vspeed *= 0.8;
