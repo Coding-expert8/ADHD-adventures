@@ -17,17 +17,44 @@
 #macro WEATHER_PROFILE_DESERT 2   // sandstorms may come and go, never rain; dusty air
 #macro WEATHER_PROFILE_SNOW   3   // snow may come and go
 #macro WEATHER_PROFILE_TOWN   4   // rain that never lets up, over grey air
-#macro WEATHER_PROFILE_LAST   4   // highest profile there is, for obj_area to clamp to
+#macro WEATHER_PROFILE_LAVA   5   // no weather, but the air glows -- see weather_profile_tint
+#macro WEATHER_PROFILE_LAST   5   // highest profile there is, for obj_area to clamp to
 
-// How often the weather re-rolls, and how likely it is to turn on / off.
-#macro WEATHER_ROLL_FRAMES  240    // ~4s at 60fps
-#macro WEATHER_START_CHANCE 0.35
-#macro WEATHER_STOP_CHANCE  0.25
+// How often the weather re-rolls its on/off state.
+#macro WEATHER_ROLL_FRAMES 240    // ~4s at 60fps
+
+// Weather is scheduled per profile, as a spell rather than a coin flip every
+// roll: once it starts it runs for at least its minimum, and only then do the
+// stop rolls begin. Without the minimum, a 4s roll interval means showers that
+// blink on and off every few seconds.
+//
+// Start chances are per roll, so the expected wait for weather to arrive is
+// WEATHER_ROLL_FRAMES / chance -- and the expected spell is the minimum plus
+// WEATHER_ROLL_FRAMES / stop chance.
+#macro WEATHER_RAIN_START_CHANCE 0.09   // ~45s of clear between showers
+#macro WEATHER_RAIN_STOP_CHANCE  0.25
+#macro WEATHER_RAIN_MIN_FRAMES   1800   // 30s before a shower may even start to break up
+
+#macro WEATHER_SAND_START_CHANCE 0.45   // deserts are storm-prone: ~9s of calm between
+#macro WEATHER_SAND_STOP_CHANCE  0.2
+#macro WEATHER_SAND_MIN_FRAMES   1500   // 25s
+
+// Ambience levels for each weather. Relative to SFX_VOLUME's full scale, so a
+// value above 1 amplifies the clip rather than just un-attenuating it.
+#macro WEATHER_RAIN_VOLUME 0.9
+#macro WEATHER_SAND_VOLUME 1.2
 
 // How much of the world each wash covers at full strength.
 #macro AIR_RAIN_COVER   0.15
+#macro AIR_SAND_COVER   0.11
 #macro AIR_DESERT_COVER 0.14
 #macro AIR_TOWN_COVER   0.3
+
+// Lava is the one wash that is a light source rather than something in the way of
+// one, so it gets two covers and slides between them: a warm cast over a lit
+// landscape at noon, and the thing lighting the place at midnight.
+#macro AIR_LAVA_COVER       0.10
+#macro AIR_LAVA_COVER_NIGHT 0.26
 
 // How quickly the air tint eases towards the one it should be, per step. About a
 // second and a half to arrive, which is slow enough to read as walking into
@@ -36,6 +63,10 @@
 
 global.weather         = WEATHER_NONE;
 global.weather_profile = WEATHER_PROFILE_RAIN;
+
+// Frames left of the current spell's guaranteed run. While this is above zero
+// weather_roll will not turn the weather off. Counted down by weather_hold_step.
+global.weather_hold = 0;
 
 // The air tint being drawn right now, premultiplied (see air_tint below). Eased
 // towards air_tint_target() every step by obj_weather_control, and handed to
@@ -57,7 +88,51 @@ function weather_target(_p) {
 /// @desc True if this profile's weather never lets up. weather_roll stops rolling
 ///       for these and just keeps the weather on.
 function weather_profile_permanent(_p) {
-    return (_p == WEATHER_PROFILE_TOWN);
+    return (_p == WEATHER_PROFILE_TOWN) or (_p == WEATHER_PROFILE_SNOW);
+}
+
+/// @func weather_start_chance(profile)
+/// @desc Chance per roll that this profile's weather arrives.
+function weather_start_chance(_p) {
+    switch (_p) {
+        case WEATHER_PROFILE_RAIN:   return WEATHER_RAIN_START_CHANCE;
+        case WEATHER_PROFILE_DESERT: return WEATHER_SAND_START_CHANCE;
+        default:                     return 0;
+    }
+}
+
+/// @func weather_stop_chance(profile)
+/// @desc Chance per roll that a spell breaks up, once past its minimum.
+function weather_stop_chance(_p) {
+    switch (_p) {
+        case WEATHER_PROFILE_RAIN:   return WEATHER_RAIN_STOP_CHANCE;
+        case WEATHER_PROFILE_DESERT: return WEATHER_SAND_STOP_CHANCE;
+        default:                     return 1;   // unscheduled weather stops at the first roll
+    }
+}
+
+/// @func weather_min_frames(profile)
+/// @desc How long a spell is guaranteed to run before it may start breaking up.
+function weather_min_frames(_p) {
+    switch (_p) {
+        case WEATHER_PROFILE_RAIN:   return WEATHER_RAIN_MIN_FRAMES;
+        case WEATHER_PROFILE_DESERT: return WEATHER_SAND_MIN_FRAMES;
+        default:                     return 0;
+    }
+}
+
+/// @func weather_hold_step()
+/// @desc Runs down the current spell's guaranteed stretch. Run every step by
+///       obj_weather_control. Also self-corrects: anything that clears
+///       global.weather directly (obj_area_control does, on an area boundary)
+///       drops the hold with it rather than leaving it to protect a spell that
+///       is no longer running.
+function weather_hold_step() {
+    if (global.weather == WEATHER_NONE) {
+        global.weather_hold = 0;
+        return;
+    }
+    if (global.weather_hold > 0) global.weather_hold--;
 }
 
 // True if weather _w is one the profile _p permits. Used to clear weather that
@@ -71,15 +146,27 @@ function weather_allowed(_w, _p) {
 // One chance to start or stop the current area's weather. Run on a timer by
 // obj_weather_control, and once immediately on entering a new area.
 function weather_roll() {
-    var _target = weather_target(global.weather_profile);
+    var _p      = global.weather_profile;
+    var _target = weather_target(_p);
+
     if (_target == WEATHER_NONE) {
-        global.weather = WEATHER_NONE;                                  // CLEAR profile
-    } else if (weather_profile_permanent(global.weather_profile)) {
-        global.weather = _target;                                       // and it stays on
+        global.weather      = WEATHER_NONE;                             // CLEAR profile
+        global.weather_hold = 0;
+    } else if (weather_profile_permanent(_p)) {
+        global.weather      = _target;                                  // and it stays on
+        global.weather_hold = 0;
     } else if (global.weather == _target) {
-        if (random(1) < WEATHER_STOP_CHANCE)  global.weather = WEATHER_NONE;
+        // A spell runs its minimum before it is allowed to break up. Crossing
+        // into another area of the same profile re-rolls immediately, so without
+        // this check a long walk through rainy country could cut a shower short
+        // at every boundary.
+        if (global.weather_hold > 0) return;
+        if (random(1) < weather_stop_chance(_p)) global.weather = WEATHER_NONE;
     } else {
-        if (random(1) < WEATHER_START_CHANCE) global.weather = _target;
+        if (random(1) < weather_start_chance(_p)) {
+            global.weather      = _target;
+            global.weather_hold = weather_min_frames(_p);
+        }
     }
 }
 
@@ -114,6 +201,14 @@ function weather_profile_tint(_p) {
         case WEATHER_PROFILE_DESERT: return air_tint_make(0.85, 0.72, 0.48, AIR_DESERT_COVER);
         // Smoke and wet slate. Barely a colour -- mostly a loss of colour.
         case WEATHER_PROFILE_TOWN:   return air_tint_make(0.02, 0.03, 0.05, AIR_TOWN_COVER);
+        // Lava glows whether or not the sun is up, so unlike every other wash here
+        // its share of the air grows as the daylight goes instead of sitting still.
+        // That is what keeps it reading as something burning rather than as an
+        // orange filter: at noon it only warms what the sun has already lit, and by
+        // midnight it is brighter than the ground around it.
+        case WEATHER_PROFILE_LAVA:
+            return air_tint_make(1.00, 0.45, 0.18,
+                lerp(AIR_LAVA_COVER, AIR_LAVA_COVER_NIGHT, daylight_darkness()));
         default:                     return [0, 0, 0, 0];
     }
 }
@@ -124,9 +219,13 @@ function weather_tint(_w) {
     // Rain draws the warmth out of everything it falls on.
     if (_w == WEATHER_RAIN) return air_tint_make(0.42, 0.50, 0.60, AIR_RAIN_COVER);
 
-    // Snow and sandstorms have no wash of their own: a SNOW area reads cold from
-    // the flakes themselves, and a DESERT one already carries dust in its air.
-    // Give them one here if they should have it.
+    // A running sandstorm is thick with dust, well past the haze a desert
+    // carries on a calm day. This wash over the area's own is most of what makes
+    // the storm read as fog rather than as fast-moving grit.
+    if (_w == WEATHER_SANDSTORM) return air_tint_make(0.82, 0.70, 0.49, AIR_SAND_COVER);
+
+    // Snow has no wash of its own: a SNOW area reads cold from the flakes
+    // themselves. Give it one here if it should have one.
     return [0, 0, 0, 0];
 }
 

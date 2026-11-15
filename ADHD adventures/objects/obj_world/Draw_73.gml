@@ -15,7 +15,7 @@ if (variable_global_exists("current_area")) {
     draw_set_colour(c_lime);
     with (obj_area) draw_text(bbox_left + 4, bbox_top + 4, area_name);
 
-    var _profiles = ["clear", "rain", "desert", "snow", "town"];
+    var _profiles = ["clear", "rain", "desert", "snow", "town", "lava"];
     var _weathers = ["clear", "rain", "snow", "sandstorm"];
     var _in    = (global.current_area  != noone) ? global.current_area.area_name : "(open world)";
     var _theme = (global.current_theme != noone) ? audio_get_name(global.current_theme) : "-";
