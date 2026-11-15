@@ -1,4 +1,3 @@
-// one-time setup: the player is created again in every room it enters
 jump = 11;
 jump = 16;
 jumped = false;
@@ -8,7 +7,7 @@ if (!variable_global_exists("character"))
 	window_set_size(window_get_width() * 2, window_get_height() * 2)
 	global.character = "1"
 }
-mask_index = spr_player_mask // feet only, so the body can overlap scenery drawn behind it
+mask_index = spr_player_mask
 image_speed = 0.4
 image_xscale = 0.4
 image_yscale = 0.4
