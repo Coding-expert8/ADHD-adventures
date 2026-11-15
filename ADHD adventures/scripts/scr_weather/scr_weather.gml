@@ -17,7 +17,8 @@
 #macro WEATHER_PROFILE_DESERT 2   // sandstorms may come and go, never rain; dusty air
 #macro WEATHER_PROFILE_SNOW   3   // snow may come and go
 #macro WEATHER_PROFILE_TOWN   4   // rain that never lets up, over grey air
-#macro WEATHER_PROFILE_LAST   4   // highest profile there is, for obj_area to clamp to
+#macro WEATHER_PROFILE_LAVA   5   // no weather, but the air glows -- see weather_profile_tint
+#macro WEATHER_PROFILE_LAST   5   // highest profile there is, for obj_area to clamp to
 
 // How often the weather re-rolls its on/off state.
 #macro WEATHER_ROLL_FRAMES 240    // ~4s at 60fps
@@ -48,6 +49,12 @@
 #macro AIR_SAND_COVER   0.11
 #macro AIR_DESERT_COVER 0.14
 #macro AIR_TOWN_COVER   0.3
+
+// Lava is the one wash that is a light source rather than something in the way of
+// one, so it gets two covers and slides between them: a warm cast over a lit
+// landscape at noon, and the thing lighting the place at midnight.
+#macro AIR_LAVA_COVER       0.10
+#macro AIR_LAVA_COVER_NIGHT 0.26
 
 // How quickly the air tint eases towards the one it should be, per step. About a
 // second and a half to arrive, which is slow enough to read as walking into
@@ -194,6 +201,14 @@ function weather_profile_tint(_p) {
         case WEATHER_PROFILE_DESERT: return air_tint_make(0.85, 0.72, 0.48, AIR_DESERT_COVER);
         // Smoke and wet slate. Barely a colour -- mostly a loss of colour.
         case WEATHER_PROFILE_TOWN:   return air_tint_make(0.02, 0.03, 0.05, AIR_TOWN_COVER);
+        // Lava glows whether or not the sun is up, so unlike every other wash here
+        // its share of the air grows as the daylight goes instead of sitting still.
+        // That is what keeps it reading as something burning rather than as an
+        // orange filter: at noon it only warms what the sun has already lit, and by
+        // midnight it is brighter than the ground around it.
+        case WEATHER_PROFILE_LAVA:
+            return air_tint_make(1.00, 0.45, 0.18,
+                lerp(AIR_LAVA_COVER, AIR_LAVA_COVER_NIGHT, daylight_darkness()));
         default:                     return [0, 0, 0, 0];
     }
 }
