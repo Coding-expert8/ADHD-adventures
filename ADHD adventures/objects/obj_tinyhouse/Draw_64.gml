@@ -1,4 +1,4 @@
-draw_clear(make_color_rgb(40, 44, 52));
+
 draw_set_font(-1);
 
 var _light = make_color_rgb(240, 217, 181);
@@ -6,7 +6,7 @@ var _dark  = make_color_rgb(181, 136, 99);
 var _me = 1 - global.bot_color;
 var _my_turn = (!global.game_over && global.pending_promotion == noone && global.turn == _me);
 
-
+// Squares the current selection can move or drop to
 var _targets = [];
 if (_my_turn) {
     if (selected_hand_type != PieceType.NONE) {
@@ -45,13 +45,7 @@ for (var c = 0; c < 4; c++) {
     if (_p != noone) {
         var _cx = _x + cell_size / 2;
         var _cy = _y + cell_size / 2;
-        var _white = (_p.color == COLOR_WHITE);
-        draw_set_color(_white ? c_white : c_dkgray);
-        draw_circle(_cx, _cy, cell_size * 0.38, false);
-        draw_set_color(c_black);
-        draw_circle(_cx, _cy, cell_size * 0.38, true);
-        draw_set_color(_white ? c_black : c_white);
-        draw_text_transformed(_cx, _cy, scr_piece_letter(_p.type), 2, 2, 0);
+        scr_draw_piece(_p.type, _p.color, _cx, _cy, cell_size * 0.84);
     }
 }
 draw_set_color(c_black);
@@ -79,8 +73,7 @@ for (var _side = 0; _side < 2; _side++) {
         draw_rectangle(_hx, _hy, _hx + hand_size, _hy + hand_size, false);
         draw_set_color(c_black);
         draw_rectangle(_hx, _hy, _hx + hand_size, _hy + hand_size, true);
-        draw_set_color((_side == COLOR_WHITE) ? c_black : c_white);
-        draw_text_transformed(_hx + hand_size / 2, _hy + hand_size / 2, scr_piece_letter(_h[i]), 1.5, 1.5, 0);
+        scr_draw_piece(_h[i], _side, _hx + hand_size / 2, _hy + hand_size / 2, hand_size * 0.82);
     }
 }
 
@@ -94,7 +87,8 @@ if (global.pending_promotion != noone && global.pending_promotion.color == _me) 
         draw_rectangle(_px, _py, _px + promo_size, _py + promo_size, false);
         draw_set_color(c_black);
         draw_rectangle(_px, _py, _px + promo_size, _py + promo_size, true);
-        draw_text(_px + promo_size / 2, _py + promo_size / 2, scr_piece_name(_opts[i]));
+        scr_draw_piece(_opts[i], global.pending_promotion.color,
+            _px + promo_size / 2, _py + promo_size / 2, promo_size * 0.82);
     }
 }
 
@@ -112,14 +106,10 @@ if (global.game_over) {
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_color(c_white);
-draw_text_ext_transformed(board_x + 192, 20, _status, 15, 160, 1.5, 1.5, 0);
+draw_text_transformed(board_x, 24, _status, 1.5, 1.5, 0);
 
-
-
+// reset drawing state
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_color(c_white);
 draw_set_alpha(1);
-
-//No stalemate
-//The losing text goes over screen/overlaps with piece bank if you use draw_text_ext_transformed

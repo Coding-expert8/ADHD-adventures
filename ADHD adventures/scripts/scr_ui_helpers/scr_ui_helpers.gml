@@ -20,37 +20,71 @@ function scr_piece_name(_type) {
     return "?";
 }
 
+
+// Return the sprite that matches a piece type and colour.
+// These are direct asset references, so the names must match the
+// Sprite assets in the Asset Browser exactly.
+// Wazir uses the chess rook; Ferz uses the chess bishop; Horse uses the knight.
 function scr_piece_sprite(_type, _color) {
-    var _kind = "";
+    var _white = (_color == COLOR_WHITE);
 
     switch (_type) {
-        case PieceType.KING:  _kind = "king";   break;
-        case PieceType.PAWN:  _kind = "pawn";   break;
-        case PieceType.WAZIR: _kind = "rook";   break;
-        case PieceType.FERZ:  _kind = "bishop"; break;
-        case PieceType.HORSE: _kind = "knight"; break;
+        case PieceType.KING:
+            return _white ? spr_king_white : spr_king_black;
+
+        case PieceType.PAWN:
+            return _white ? spr_pawn_white : spr_pawn_black;
+
+        case PieceType.WAZIR:
+            return _white ? spr_rook_white : spr_rook_black;
+
+        case PieceType.FERZ:
+            return _white ? spr_bishop_white : spr_bishop_black;
+
+        case PieceType.HORSE:
+            return _white ? spr_knight_white : spr_knight_black;
     }
 
-    if (_kind == "") return -1;
-
-    var _side = (_color == COLOR_WHITE) ? "white" : "black";
-    var _spr = asset_get_index("spr_" + _kind + "_" + _side);
-
-    // Allow either spr_knight_white / spr_knight_black or
-    // spr_horse_white / spr_horse_black for the Horse piece.
-    if (_spr == -1 && _type == PieceType.HORSE) {
-        _spr = asset_get_index("spr_horse_" + _side);
-    }
-
-    return _spr;
+    // Reached only if _type is not one of the defined PieceType values.
+    return -1;
 }
 
+
+// Draw a piece using either the new sprite set or the classic circle-and-letter style.
+// global.tinyhouse_pieces == true  : use the image sprites.
+// global.tinyhouse_pieces == false : use the original circle with a letter.
+// _max_size controls the maximum width/height used by the piece.
 function scr_draw_piece(_type, _color, _cx, _cy, _max_size) {
+    var _white = (_color == COLOR_WHITE);
+
+    // Classic appearance. This is based on the original board drawing code,
+    // and is also used consistently for pieces in hand and promotion choices.
+    if (!global.tinyhouse_pieces) {
+        var _radius = _max_size * (0.38 / 0.84);
+        var _text_scale = _max_size / 26.88;
+
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_middle);
+
+        draw_set_color(_white ? c_white : c_dkgray);
+        draw_circle(_cx, _cy, _radius, false);
+        draw_set_color(c_black);
+        draw_circle(_cx, _cy, _radius, true);
+        draw_set_color(_white ? c_black : c_white);
+        draw_text_transformed(_cx, _cy, scr_piece_letter(_type), _text_scale, _text_scale, 0);
+        draw_set_color(c_white);
+        return;
+    }
+
+    // New sprite appearance.
     var _spr = scr_piece_sprite(_type, _color);
 
-    // A text fallback makes a missing or incorrectly named sprite obvious.
+    // A fallback indicates an unrecognised PieceType value.
+    // The sprite assets themselves are direct references above.
     if (_spr == -1) {
-        draw_set_color((_color == COLOR_WHITE) ? c_black : c_white);
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_middle);
+        draw_set_color(_white ? c_black : c_white);
         draw_text(_cx, _cy, scr_piece_letter(_type) + "?");
         draw_set_color(c_white);
         return;
