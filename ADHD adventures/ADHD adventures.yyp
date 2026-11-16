@@ -81,6 +81,7 @@
     {"id":{"name":"obj_enemy","path":"objects/obj_enemy/obj_enemy.yy",},},
     {"id":{"name":"obj_enemyspawn","path":"objects/obj_enemyspawn/obj_enemyspawn.yy",},},
     {"id":{"name":"obj_fish","path":"objects/obj_fish/obj_fish.yy",},},
+    {"id":{"name":"obj_fishing_cloud","path":"objects/obj_fishing_cloud/obj_fishing_cloud.yy",},},
     {"id":{"name":"obj_fishing_control","path":"objects/obj_fishing_control/obj_fishing_control.yy",},},
     {"id":{"name":"obj_fishing_hook","path":"objects/obj_fishing_hook/obj_fishing_hook.yy",},},
     {"id":{"name":"obj_game_space_rocks","path":"objects/obj_game_space_rocks/obj_game_space_rocks.yy",},},

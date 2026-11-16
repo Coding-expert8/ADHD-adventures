@@ -1,3 +1,11 @@
+// Clouds keep drifting, even on the results screen
+cloud_timer -= 1;
+if (cloud_timer <= 0) {
+    cloud_timer = irandom_range(360, 900);
+    var _cloud = instance_create_layer(0, 0, "Instances", obj_fishing_cloud);
+    _cloud.x = -_cloud.sprite_width; // start just off the left edge (size is random)
+}
+
 if (game_over) {
     if (keyboard_check_pressed(ord("R"))) room_restart();
     exit;
@@ -23,6 +31,9 @@ if (spawn_timer <= 0) {
     _fish.sprite_index = fish_sprite[_type];
     _fish.hspeed = _from_left ? fish_speed[_type] : -fish_speed[_type];
     _fish.image_xscale = _from_left ? 1 : -1; // sprites face right
+
+    // Some of the common fish (1, 2 and 5 points) bob up and down as they swim
+    _fish.wave = (_type <= 2 and random(1) < 0.3);
 }
 
 // Win: reached the goal
