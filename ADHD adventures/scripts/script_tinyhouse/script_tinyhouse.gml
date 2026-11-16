@@ -24,7 +24,7 @@ function scr_init_board() {
     global.win_reason = "";
 
     global.bot_color = COLOR_BLACK;//player plays white
-    global.bot_depth = 3;
+    global.bot_depth = 1;
 }
 
 
