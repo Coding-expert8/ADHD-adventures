@@ -1,4 +1,8 @@
-// one-time setup: the player is created again in every room it enters
+if (!variable_global_exists("won_answer"))
+global.won_answer = false
+
+if (!variable_global_exists("won_tinyhouse"))
+global.won_tinyhouse = false
 if (!variable_global_exists("character"))
 {
 	window_set_size(window_get_width() * 2, window_get_height() * 2)
