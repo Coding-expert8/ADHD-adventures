@@ -19,7 +19,7 @@ if (spawn_timer <= 0) {
     // Pick a fish type using the spawn chances
     var _roll = random(100);
     var _type = 0;
-    while (_type < 4 and _roll >= fish_weight[_type]) {
+    while (_type < array_length(fish_weight) - 1 and _roll >= fish_weight[_type]) {
         _roll -= fish_weight[_type];
         _type += 1;
     }
@@ -34,6 +34,11 @@ if (spawn_timer <= 0) {
 
     // Some of the common fish (1, 2 and 5 points) bob up and down as they swim
     _fish.wave = (_type <= 2 and random(1) < 0.6);
+
+    // Trash doesn't bob; it slowly spins one way or the other
+    if (_type == TRASH) {
+        _fish.spin = random_range(0.5, 3) * choose(-1, 1);
+    }
 }
 
 // Win: reached the goal
@@ -41,9 +46,13 @@ if (fish_score >= goal) {
     game_over = true;
     won = true;
     time_taken = (current_time - start_time) / 1000;
+    audio_stop_sound(music);
+    audio_play_sound(snd_minigame_win, 10, false);
 }
 // Lose: out of bait and the last cast is done
 else if (bait <= 0 and not obj_fishing_hook.falling) {
     game_over = true;
     time_taken = (current_time - start_time) / 1000;
+    audio_stop_sound(music);
+    audio_play_sound(snd_minigame_lose, 10, false);
 }
