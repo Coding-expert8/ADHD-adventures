@@ -150,3 +150,7 @@ if global.won_tinyhouse = true {
 	instance_create_layer(x+30, y, "Instances", obj_key)
 	global.won_tinyhouse = false
 }
+if global.won_snake = true {
+	instance_create_layer(x+30, y, "Instances", obj_key)
+	global.won_snake = false
+}

@@ -3,6 +3,10 @@ global.won_answer = false
 
 if (!variable_global_exists("won_tinyhouse"))
 global.won_tinyhouse = false
+
+if (!variable_global_exists("won_snake"))
+global.won_snake = false
+
 if (!variable_global_exists("character"))
 {
 	window_set_size(window_get_width() * 2, window_get_height() * 2)
