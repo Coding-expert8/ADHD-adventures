@@ -14,7 +14,7 @@ if (game_over) {
 // Spawn a fish every so often
 spawn_timer -= 1;
 if (spawn_timer <= 0) {
-    spawn_timer = irandom_range(30, 60);
+    spawn_timer = irandom_range(20, 60);
 
     // Pick a fish type using the spawn chances
     var _roll = random(100);
@@ -33,7 +33,7 @@ if (spawn_timer <= 0) {
     _fish.image_xscale = _from_left ? 1 : -1; // sprites face right
 
     // Some of the common fish (1, 2 and 5 points) bob up and down as they swim
-    _fish.wave = (_type <= 2 and random(1) < 0.3);
+    _fish.wave = (_type <= 2 and random(1) < 0.6);
 }
 
 // Win: reached the goal
