@@ -1,24 +1,12 @@
-if (boss_state == "defeated")
+if (boss_state == "defeated" || boss_state == "hurt")
 {
+    alarm[1] = 60;
     exit;
 }
 
-if (health > 50)
+if (health <= 50 && instance_exists(obj_player))
 {
-    alarm[1] = 180;
-    exit;
+    instance_create_layer(obj_player.x, obj_player.y, "Instances", obj_boss_shadow_circle);
 }
 
-// Target player's current position
-if (instance_exists(obj_player))
-{
-    instance_create_layer(
-        obj_player.x,
-        obj_player.y,
-        "Instances",
-        obj_boss_shadow_circle
-    );
-}
-
-// Schedule next shadow attack
 alarm[1] = 240;

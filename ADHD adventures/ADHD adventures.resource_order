@@ -1,9 +1,9 @@
 {
   "FolderOrderSettings":[
     {"name":"Backgrounds","order":5,"path":"folders/Backgrounds.yy",},
+    {"name":"bossfight","order":18,"path":"folders/bossfight.yy",},
     {"name":"Fonts","order":6,"path":"folders/Fonts.yy",},
     {"name":"group1","order":7,"path":"folders/group1.yy",},
-    {"name":"bossfight","order":18,"path":"folders/bossfight.yy",},
     {"name":"lava_parkour","order":17,"path":"folders/lava_parkour.yy",},
     {"name":"Music","order":8,"path":"folders/Music.yy",},
     {"name":"Objects","order":9,"path":"folders/Objects.yy",},
@@ -71,6 +71,7 @@
     {"name":"obj_tinyhouse","order":1,"path":"objects/obj_tinyhouse/obj_tinyhouse.yy",},
     {"name":"Object39","order":37,"path":"objects/Object39/Object39.yy",},
     {"name":"Object65","order":11,"path":"objects/Object65/Object65.yy",},
+    {"name":"Object71","order":14,"path":"objects/Object71/Object71.yy",},
     {"name":"path_enemy_route_space_rocks","order":29,"path":"paths/path_enemy_route_space_rocks/path_enemy_route_space_rocks.yy",},
     {"name":"room_answer_help","order":5,"path":"rooms/room_answer_help/room_answer_help.yy",},
     {"name":"room_answer_snake","order":7,"path":"rooms/room_answer_snake/room_answer_snake.yy",},
@@ -150,6 +151,7 @@
     {"name":"Sprite12","order":1,"path":"sprites/Sprite12/Sprite12.yy",},
     {"name":"Sprite23","order":12,"path":"sprites/Sprite23/Sprite23.yy",},
     {"name":"Sprite288","order":16,"path":"sprites/Sprite288/Sprite288.yy",},
+    {"name":"Sprite299","order":13,"path":"sprites/Sprite299/Sprite299.yy",},
     {"name":"TileSet13","order":27,"path":"tilesets/TileSet13/TileSet13.yy",},
   ],
 }

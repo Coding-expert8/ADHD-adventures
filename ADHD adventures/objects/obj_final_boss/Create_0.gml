@@ -1,33 +1,24 @@
-// Health
 health = 100;
 max_health = 100;
 
-// Movement
-move_speed = 2;
-move_direction = 1;
+move_speed = 0.5;
+move_state = 0;
+move_timer = 90;
 
-// Boss state
+move_target_x = x;
+move_target_y = y;
+
+dash_speed = 7;
+dash_timer = 0;
+
+orbit_distance = 180;
+orbit_direction = 1;
+
 boss_state = "idle";
-
-// Animation
 image_speed = 0.15;
 
-// Attack timing
 attack_cooldown = 90;
-alarm[0] = attack_cooldown;
+alarm[0] = 90;
+alarm[1] = 180;
 
-// Hurt timing
 hurt_timer = 0;
-
-// Shadow circle timing
-shadow_timer = 0;
-
-// Attack counter
-attack_count = 0;
-
-// Defeat transition
-defeat_started = false;
-
-// Position
-y = 150;
-alarm[1] = 180
