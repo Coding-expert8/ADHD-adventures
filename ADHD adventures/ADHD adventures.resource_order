@@ -51,6 +51,7 @@
     {"name":"obj_lava","order":3,"path":"objects/obj_lava/obj_lava.yy",},
     {"name":"obj_lifejacket","order":7,"path":"objects/obj_lifejacket/obj_lifejacket.yy",},
     {"name":"obj_loading","order":9,"path":"objects/obj_loading/obj_loading.yy",},
+    {"name":"obj_login","order":13,"path":"objects/obj_login/obj_login.yy",},
     {"name":"obj_npc","order":1,"path":"objects/obj_npc/obj_npc.yy",},
     {"name":"obj_platform","order":7,"path":"objects/obj_platform/obj_platform.yy",},
     {"name":"obj_player_larper","order":6,"path":"objects/obj_player_larper/obj_player_larper.yy",},

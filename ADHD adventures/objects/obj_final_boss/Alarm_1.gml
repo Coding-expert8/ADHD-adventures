@@ -1,12 +1,19 @@
-if (boss_state == "defeated" || boss_state == "hurt")
+if (boss_state == "defeated")
 {
-    alarm[1] = 60;
+    alarm[1] = -1;
     exit;
 }
 
-if (health <= 50 && instance_exists(obj_player))
+if (health <= 100 && instance_exists(obj_player))
 {
-    instance_create_layer(obj_player.x, obj_player.y, "Instances", obj_boss_shadow_circle);
-}
+    var shadow_x = obj_player.x;
+    var shadow_y = obj_player.bbox_bottom - 8;
 
-alarm[1] = 240;
+    instance_create_layer(shadow_x, shadow_y, "Instances", obj_boss_shadow_circle);
+
+    alarm[1] = 240;
+}
+else
+{
+    alarm[1] = 120;
+}

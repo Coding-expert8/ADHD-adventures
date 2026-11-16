@@ -1,8 +1,10 @@
-// Only damage when active
-if (active)
+if (active && instance_exists(obj_player))
 {
     if (place_meeting(x, y, obj_player))
     {
-        // Connect to player damage system here.
+        obj_player.hp -= 10
+
+        // Prevent repeated damage during this attack
+        instance_destroy();
     }
 }

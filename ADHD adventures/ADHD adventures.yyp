@@ -97,6 +97,7 @@
     {"id":{"name":"obj_lava","path":"objects/obj_lava/obj_lava.yy",},},
     {"id":{"name":"obj_lifejacket","path":"objects/obj_lifejacket/obj_lifejacket.yy",},},
     {"id":{"name":"obj_loading","path":"objects/obj_loading/obj_loading.yy",},},
+    {"id":{"name":"obj_login","path":"objects/obj_login/obj_login.yy",},},
     {"id":{"name":"obj_npc","path":"objects/obj_npc/obj_npc.yy",},},
     {"id":{"name":"obj_platform","path":"objects/obj_platform/obj_platform.yy",},},
     {"id":{"name":"obj_player_larper","path":"objects/obj_player_larper/obj_player_larper.yy",},},
