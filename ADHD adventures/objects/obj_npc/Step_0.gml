@@ -12,6 +12,15 @@ if (_talking)
 	else if (line + 1 < array_length(dialogue))     { line += 1; shown = 0; }  // next line
 	else                                            global.dialogue_npc = noone; // done
 	keyboard_clear(ord("Q")); // consume the press so no other NPC reacts to it this step
+
+	// a major NPC sends the player into its minigame once the talk is over
+	if (global.dialogue_npc == noone and target_room != noone)
+	{
+		// obj_player puts the player back here on returning to room_map
+		global.return_x = obj_player.x;
+		global.return_y = obj_player.y;
+		room_goto(target_room);
+	}
 }
 else if (!instance_exists(global.dialogue_npc) and array_length(dialogue) > 0
 	and instance_exists(obj_player) and distance_to_object(obj_player) <= talk_range)

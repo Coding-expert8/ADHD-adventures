@@ -1,8 +1,11 @@
 // Dialogue is set per instance in its Creation Code (runs after this event), e.g.
-//   speaker  = "Old Man";                        // optional, shown above the box
-//   dialogue = ["Hello there!", "Nice day, isn't it?"];
-dialogue   = [];
-speaker    = "";
+//   speaker     = "Old Man";                     // optional, shown above the box
+//   dialogue    = ["Hello there!", "Nice day, isn't it?"];
+//   target_room = room_fishing;                  // optional: go there when the talk ends
+// Major NPCs (the ones that start a minigame) set target_room; small NPCs only talk.
+dialogue    = [];
+speaker     = "";
+target_room = noone;
 talk_range = 24;   // px between the player's feet and this NPC
 text_speed = 1;    // characters revealed per step
 
@@ -20,7 +23,7 @@ if (!variable_global_exists("dialogue_font"))
 	font_sdf_spread(global.dialogue_font, 8);
 	font_enable_effects(global.dialogue_font, true, {
 		outlineEnable: true,
-		outlineDistance: 3,
+		outlineDistance: 1,
 		outlineColour: c_black,
 	});
 }

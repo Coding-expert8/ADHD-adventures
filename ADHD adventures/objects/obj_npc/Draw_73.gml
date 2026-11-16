@@ -1,6 +1,5 @@
-draw_self();
-
-// "Q" hint over the NPC while the player is close enough to talk
+// The NPC itself is drawn by obj_world in Y order (obj_npc is a par_ysort child).
+// The "Q" hint is drawn here, in Draw End, so props in front of the NPC never cover it.
 if (instance_exists(global.dialogue_npc) or array_length(dialogue) == 0) exit;
 if (!instance_exists(obj_player) or distance_to_object(obj_player) > talk_range) exit;
 

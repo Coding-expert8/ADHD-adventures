@@ -45,6 +45,7 @@ if (spawn_timer <= 0) {
 if (fish_score >= goal) {
     game_over = true;
     won = true;
+    global.fishing_beaten = true; // key collected: opens the fishing gates on room_map
     time_taken = (current_time - start_time) / 1000;
     audio_stop_sound(music);
     audio_play_sound(snd_minigame_win, 10, false);
