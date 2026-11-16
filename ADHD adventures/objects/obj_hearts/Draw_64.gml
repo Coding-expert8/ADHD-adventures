@@ -25,5 +25,6 @@ if room = room_map {
 	}
 	else {
 		draw_text(x+offset,y,"You died")
+		alarm[0] = 60;
 	}
 }
