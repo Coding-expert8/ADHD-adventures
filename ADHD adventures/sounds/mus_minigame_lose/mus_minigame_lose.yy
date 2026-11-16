@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_minigame_win",
+  "%Name":"mus_minigame_lose",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":2.0,
+  "duration":5.0,
   "exportDir":"",
-  "name":"snd_minigame_win",
+  "name":"mus_minigame_lose",
   "parent":{
-    "name":"Sound Effects",
-    "path":"folders/Sound Effects.yy",
+    "name":"Music",
+    "path":"folders/Music.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":22050,
-  "soundFile":"snd_minigame_win.mp3",
+  "sampleRate":32000,
+  "soundFile":"mus_minigame_lose.mp3",
   "volume":1.0,
 }
