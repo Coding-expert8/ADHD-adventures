@@ -31,10 +31,11 @@ if (popup_open)
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
 
+draw_set_font(Font7)
     draw_text_transformed(left + 270 * scale, top + 42 * scale,
         "ADHD ADVENTURES", scale, scale, 0);
 
-    // Divider
+draw_set_font(Font6)    // Divider
     draw_set_color(make_color_rgb(177, 138, 87));
     draw_line(left + 20 * scale, top + 92 * scale,
         left + 520 * scale, top + 92 * scale);

@@ -1,6 +1,6 @@
 {
   "FolderOrderSettings":[
-    {"name":"Backgrounds","order":5,"path":"folders/Backgrounds.yy",},
+    {"name":"shop","order":5,"path":"folders/shop.yy",},
     {"name":"bossfight","order":18,"path":"folders/bossfight.yy",},
     {"name":"Fonts","order":6,"path":"folders/Fonts.yy",},
     {"name":"group1","order":7,"path":"folders/group1.yy",},
@@ -26,6 +26,7 @@
     {"name":"fnt_space_rocks","order":35,"path":"fonts/fnt_space_rocks/fnt_space_rocks.yy",},
     {"name":"fnt_title","order":5,"path":"fonts/fnt_title/fnt_title.yy",},
     {"name":"Font6","order":1,"path":"fonts/Font6/Font6.yy",},
+    {"name":"Font7","order":2,"path":"fonts/Font7/Font7.yy",},
     {"name":"obj_accuracy","order":15,"path":"objects/obj_accuracy/obj_accuracy.yy",},
     {"name":"obj_asteroid","order":22,"path":"objects/obj_asteroid/obj_asteroid.yy",},
     {"name":"obj_block","order":3,"path":"objects/obj_block/obj_block.yy",},
@@ -36,6 +37,7 @@
     {"name":"obj_bullet","order":3,"path":"objects/obj_bullet/obj_bullet.yy",},
     {"name":"obj_chess_board","order":10,"path":"objects/obj_chess_board/obj_chess_board.yy",},
     {"name":"obj_coin","order":12,"path":"objects/obj_coin/obj_coin.yy",},
+    {"name":"obj_credits","order":14,"path":"objects/obj_credits/obj_credits.yy",},
     {"name":"obj_debris","order":16,"path":"objects/obj_debris/obj_debris.yy",},
     {"name":"obj_display_victory","order":2,"path":"objects/obj_display_victory/obj_display_victory.yy",},
     {"name":"obj_display","order":13,"path":"objects/obj_display/obj_display.yy",},
@@ -44,6 +46,7 @@
     {"name":"obj_gamegoing","order":10,"path":"objects/obj_gamegoing/obj_gamegoing.yy",},
     {"name":"obj_help_answer","order":6,"path":"objects/obj_help_answer/obj_help_answer.yy",},
     {"name":"obj_help_snake","order":8,"path":"objects/obj_help_snake/obj_help_snake.yy",},
+    {"name":"obj_help","order":15,"path":"objects/obj_help/obj_help.yy",},
     {"name":"obj_jump_fruit","order":16,"path":"objects/obj_jump_fruit/obj_jump_fruit.yy",},
     {"name":"obj_key","order":12,"path":"objects/obj_key/obj_key.yy",},
     {"name":"obj_larper_space_rocks","order":26,"path":"objects/obj_larper_space_rocks/obj_larper_space_rocks.yy",},
