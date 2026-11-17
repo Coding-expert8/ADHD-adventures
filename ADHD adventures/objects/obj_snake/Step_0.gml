@@ -27,3 +27,10 @@ if (move_timer >= _speed_frames) {
     move_timer = 0;
     scr_move_snake();
 }
+
+if score >= 30 {
+	room_goto(room_map)
+	global.won_snake = true
+}
+	
+

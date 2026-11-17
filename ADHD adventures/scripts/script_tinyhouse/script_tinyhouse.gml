@@ -285,6 +285,11 @@ function scr_check_game_end() {
         global.winner = _color;         // Tinyhouse's reversal
         global.win_reason = "stalemate";
     }
+
+    // The player is whichever colour the bot isn't
+    if (global.winner == 1 - global.bot_color) {
+        global.won_tinyhouse = true;
+	}
 }
 
 function scr_clone_board(_board) {

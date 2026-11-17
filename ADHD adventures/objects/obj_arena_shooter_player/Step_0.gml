@@ -108,7 +108,7 @@ if (l073E9977_0)
 		/// @DnDArgument : "objectid" "obj_bullet"
 		/// @DnDArgument : "layer" ""Bullets_Layer""
 		/// @DnDSaveInfo : "objectid" "obj_bullet"
-		instance_create_layer(x, y, "Bullets_Layer", obj_arena_shooter_bullet);
+		instance_create_layer(x, y, "Bullets_Layer", obj_bullet);
 	
 		/// @DnDAction : YoYo Games.Common.Variable
 		/// @DnDVersion : 1
