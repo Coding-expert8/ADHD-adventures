@@ -18,12 +18,12 @@ if (!variable_global_exists("dialogue_npc")) global.dialogue_npc = noone;
 // shared dialogue font: SDF so font_enable_effects can give it a black outline
 if (!variable_global_exists("dialogue_font"))
 {
-	global.dialogue_font = font_add("supersoft.ttf", 28, false, false, 32, 127);
+	global.dialogue_font = font_add("supersoft.ttf", 30, false, false, 32, 127);
 	font_enable_sdf(global.dialogue_font, true);
 	font_sdf_spread(global.dialogue_font, 8);
 	font_enable_effects(global.dialogue_font, true, {
 		outlineEnable: true,
-		outlineDistance: 1,
+		outlineDistance: 2,
 		outlineColour: c_black,
 	});
 }
@@ -36,7 +36,7 @@ if (!variable_global_exists("dialogue_text_font"))
 	font_sdf_spread(global.dialogue_text_font, 8);
 	font_enable_effects(global.dialogue_text_font, true, {
 		outlineEnable: true,
-		outlineDistance: 1,
+		outlineDistance: 2,
 		outlineColour: c_black,
 	});
 }
