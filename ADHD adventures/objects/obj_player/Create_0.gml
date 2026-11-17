@@ -1,4 +1,12 @@
-// one-time setup: the player is created again in every room it enters
+if (!variable_global_exists("won_answer"))
+global.won_answer = false
+
+if (!variable_global_exists("won_tinyhouse"))
+global.won_tinyhouse = false
+
+if (!variable_global_exists("won_snake"))
+global.won_snake = false
+
 if (!variable_global_exists("character"))
 {
 	window_set_size(window_get_width() * 2, window_get_height() * 2)
@@ -76,4 +84,12 @@ if (room == room_main or room == room_answer)
 	image_yscale = 1
 	sprite_index = spr_player_idle
 	image_speed = 0
+}
+
+if room = Room3 {
+max_health = 100;
+hp = 100;
+health_bar_width = 50;
+health_bar_height = 6;
+health_bar_offset = 35;
 }

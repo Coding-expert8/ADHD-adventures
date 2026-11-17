@@ -10,3 +10,11 @@ if (variable_global_exists("spawn_id"))
 		}
 	}
 }
+
+// back on the map after a minigame a major NPC sent us to (obj_npc): stand where we talked
+if (room == room_map and variable_global_exists("return_x") and global.return_x != undefined)
+{
+	x = global.return_x;
+	y = global.return_y;
+	global.return_x = undefined;
+}

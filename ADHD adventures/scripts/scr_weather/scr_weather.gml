@@ -53,8 +53,8 @@
 // Lava is the one wash that is a light source rather than something in the way of
 // one, so it gets two covers and slides between them: a warm cast over a lit
 // landscape at noon, and the thing lighting the place at midnight.
-#macro AIR_LAVA_COVER       0.10
-#macro AIR_LAVA_COVER_NIGHT 0.26
+#macro AIR_LAVA_COVER       0.13
+#macro AIR_LAVA_COVER_NIGHT 0.31
 
 // How quickly the air tint eases towards the one it should be, per step. About a
 // second and a half to arrive, which is slow enough to read as walking into
