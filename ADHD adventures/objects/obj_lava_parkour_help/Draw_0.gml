@@ -1,0 +1,14 @@
+draw_set_font(fnt_space_rocks_title);
+draw_text_colour(x,y,"Lava Parkour",c_aqua,c_aqua,c_fuchsia,c_fuchsia,0.9);
+draw_set_font(fnt_score);
+draw_set_colour(c_aqua);
+draw_text(x,y+200,"The lava is always rising");
+draw_text(x,y+250,"Parkour up to the top in order to escape");
+draw_text(x,y+300,"Reach the end");
+draw_text(x,y+350,"Steam geysers launch you up in the air");
+draw_text(x,y+400,"Ice balls increase your jump height");
+draw_text(x,y+450,"Warning platforms move, don't fall off");
+draw_text(x,y+500,"Collect coins to be accumulated in the map");
+draw_text(x,y+550,"");
+draw_text(x,y+600,"");
+draw_text(x,y+650,"");

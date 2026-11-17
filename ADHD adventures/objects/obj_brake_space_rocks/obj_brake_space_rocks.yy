@@ -1,11 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"Object39",
+  "%Name":"obj_brake_space_rocks",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Object39",
+  "name":"obj_brake_space_rocks",
   "overriddenProperties":[],
   "parent":{
     "name":"space_rocks",
