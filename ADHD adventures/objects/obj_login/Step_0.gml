@@ -46,6 +46,7 @@ if (mouse_check_button_pressed(mb_left))
             global.username = string_trim(username_input);
             popup_open = false;
             input_active = false;
+            save_game(); // keep the name in save.ini
         }
     }
 }

@@ -10,7 +10,7 @@ global.won_snake = false
 if (!variable_global_exists("character"))
 {
 	window_set_size(window_get_width() * 2, window_get_height() * 2)
-	global.character = "1"
+	global.character = global.save_character // "1" on a new game, or the one in save.ini
 }
 mask_index = spr_player_mask // feet only, so the body can overlap scenery drawn behind it
 image_speed = 0.4

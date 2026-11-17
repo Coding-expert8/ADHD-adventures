@@ -4,5 +4,6 @@ global.lava_parkour_beaten = false;
 global.bridge_beaten = false;
 global.snake_beaten = false;
 global.fishing_beaten = false;
+global.hearts = HEARTS_MAX; // start again with full hearts
 room_goto(room_map);
 room_restart();

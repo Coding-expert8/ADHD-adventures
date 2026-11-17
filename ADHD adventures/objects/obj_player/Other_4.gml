@@ -18,3 +18,6 @@ if (room == room_map and variable_global_exists("return_x") and global.return_x 
 	y = global.return_y;
 	global.return_x = undefined;
 }
+
+// autosave on every arrival on the map: minigame results, hearts and where the player stands
+if (room == room_map) save_game();

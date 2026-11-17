@@ -108,8 +108,8 @@ else
 }
 if (!variable_instance_exists(id, "facing")) facing = "down";
 
-// stand still while an NPC is talking (obj_npc handles the Q key)
-if (instance_exists(global.dialogue_npc))
+// stand still while an NPC is talking (obj_npc handles the Q key) or the name popup is open
+if (instance_exists(global.dialogue_npc) or (instance_exists(obj_login) and obj_login.popup_open))
 {
 	global.walking = "idle";
 	image_speed = 0.1;
