@@ -2,7 +2,6 @@
   "FolderOrderSettings":[
     {"name":"Backgrounds","order":7,"path":"folders/Backgrounds.yy",},
     {"name":"Fonts","order":19,"path":"folders/Fonts.yy",},
-    {"name":"Shop","order":20,"path":"folders/Shop.yy",},
     {"name":"lava_parkour","order":18,"path":"folders/lava_parkour.yy",},
     {"name":"Menu","order":8,"path":"folders/Menu.yy",},
     {"name":"Music","order":9,"path":"folders/Music.yy",},
@@ -10,6 +9,7 @@
     {"name":"Rooms","order":11,"path":"folders/Rooms.yy",},
     {"name":"Scripts","order":12,"path":"folders/Scripts.yy",},
     {"name":"Shaders","order":1,"path":"folders/Shaders.yy",},
+    {"name":"Shop","order":20,"path":"folders/Shop.yy",},
     {"name":"Sound Effects","order":13,"path":"folders/Sound Effects.yy",},
     {"name":"space_rocks","order":14,"path":"folders/space_rocks.yy",},
     {"name":"Sprites","order":15,"path":"folders/Sprites.yy",},
