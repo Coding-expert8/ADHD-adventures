@@ -85,3 +85,11 @@ if (room == room_main or room == room_answer)
 	sprite_index = spr_player_idle
 	image_speed = 0
 }
+
+if room = Room3 {
+max_health = 100;
+hp = 100;
+health_bar_width = 50;
+health_bar_height = 6;
+health_bar_offset = 35;
+}
