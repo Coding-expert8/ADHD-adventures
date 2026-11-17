@@ -25,7 +25,8 @@ if (_talking)
 		// obj_player puts the player back here on returning to room_map
 		global.return_x = obj_player.x;
 		global.return_y = obj_player.y;
-		room_goto(target_room);
+		if (fade) transition_to(target_room);
+		else      room_goto(target_room);
 	}
 }
 else if (!instance_exists(global.dialogue_npc) and array_length(dialogue) > 0

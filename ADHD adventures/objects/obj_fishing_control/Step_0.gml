@@ -7,7 +7,10 @@ if (cloud_timer <= 0) {
 }
 
 if (game_over) {
-    if (keyboard_check_pressed(ord("R"))) room_restart();
+    if (not transition_active()) {
+        if (keyboard_check_pressed(ord("R"))) transition_to(room);          // play again
+        else if (keyboard_check_pressed(ord("Q"))) transition_to(room_map); // back to the map (fishing_beaten is already set if you won)
+    }
     exit;
 }
 
