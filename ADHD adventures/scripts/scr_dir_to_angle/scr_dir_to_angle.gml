@@ -1,9 +1,9 @@
 function scr_dir_to_angle(dir) {
     switch (dir) {
-        case "right": return 0;
-        case "up":    return 90;
-        case "left":  return 180;
-        case "down":  return 270;
+        case "right": return 270;
+        case "up":    return 0;
+        case "left":  return 90;
+        case "down":  return 180;
     }
     return 0;
 }
