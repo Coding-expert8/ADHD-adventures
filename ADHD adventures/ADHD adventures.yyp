@@ -500,6 +500,7 @@
     {"id":{"name":"Sprite23","path":"sprites/Sprite23/Sprite23.yy",},},
     {"id":{"name":"Sprite288","path":"sprites/Sprite288/Sprite288.yy",},},
     {"id":{"name":"Sprite299","path":"sprites/Sprite299/Sprite299.yy",},},
+    {"id":{"name":"Sprite301","path":"sprites/Sprite301/Sprite301.yy",},},
     {"id":{"name":"TileSet13","path":"tilesets/TileSet13/TileSet13.yy",},},
     {"id":{"name":"ts_01_village","path":"tilesets/ts_01_village/ts_01_village.yy",},},
     {"id":{"name":"ts_02_town","path":"tilesets/ts_02_town/ts_02_town.yy",},},

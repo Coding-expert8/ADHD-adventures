@@ -156,6 +156,7 @@
     {"name":"Sprite23","order":12,"path":"sprites/Sprite23/Sprite23.yy",},
     {"name":"Sprite288","order":16,"path":"sprites/Sprite288/Sprite288.yy",},
     {"name":"Sprite299","order":13,"path":"sprites/Sprite299/Sprite299.yy",},
+    {"name":"Sprite301","order":1,"path":"sprites/Sprite301/Sprite301.yy",},
     {"name":"TileSet13","order":27,"path":"tilesets/TileSet13/TileSet13.yy",},
   ],
 }
