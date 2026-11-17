@@ -1,7 +1,8 @@
+
 var gw = display_get_gui_width();
 var gh = display_get_gui_height();
 
-// HELP button - top left
+// HELP button
 var button_x = 25;
 var button_y = 20;
 
@@ -55,7 +56,7 @@ if (help_open)
     draw_text(left + 115, tab_y - 5, "HOW TO PLAY");
     draw_text(left + 305, tab_y - 5, "TELEPORTATION");
 
-    // Close X
+    // Close button
     draw_set_color(make_color_rgb(120, 35, 30));
     draw_roundrect(left + board_w - 35, top + 10,
         left + board_w - 10, top + 35, false);
@@ -71,18 +72,15 @@ if (help_open)
     {
         draw_set_color(make_color_rgb(255, 225, 165));
 
-        // PAGE 1
         if (help_page == 1)
         {
             draw_text(left + 30, top + 65, "MOVEMENT & CONTROLS");
 
             draw_set_color(c_white);
-            draw_text(left + 30, top + 110, "ARROW KEYS / WASD  -  Move");
-            draw_text(left + 30, top + 150, "SHIFT  -  Sprint");
-            draw_text(left + 30, top + 190, "Q  -  Talk to NPCs");
+            draw_text(left + 30, top + 110, "ARROW KEYS / WASD - Move");
+            draw_text(left + 30, top + 150, "SHIFT - Sprint");
+            draw_text(left + 30, top + 190, "Q - Talk to NPCs");
         }
-
-        // PAGE 2
         else if (help_page == 2)
         {
             draw_text(left + 30, top + 65, "GAME PROGRESSION");
@@ -90,10 +88,10 @@ if (help_open)
             draw_set_color(c_white);
             draw_text_ext(left + 30, top + 110,
                 "Collect keys throughout your adventure to unlock the final boss.",
-                22, 340);
+                18, 340);
         }
 
-        // Navigation arrows
+        // Page arrows
         draw_set_halign(fa_center);
         draw_set_valign(fa_middle);
 
@@ -113,24 +111,29 @@ if (help_open)
         draw_text(left + 300, top + 250, ">");
     }
 
-    // TAB 2: TELEPORTATION
+    // TAB 2: TELEPORTATION MAP
     else if (active_tab == 2)
     {
-        draw_set_color(make_color_rgb(255, 225, 165));
-        draw_text(left + 30, top + 55, "TELEPORTATION GIMMICK");
-
-        draw_set_color(c_white);
-        draw_text_ext(left + 30, top + 95,
-            "PLACEHOLDER: Add your teleportation instructions here.",
-            18, 340);
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_middle);
 
         draw_set_color(make_color_rgb(255, 225, 165));
-        draw_text(left + 30, top + 165, "YOUR TELEPORTATION CODE");
+        draw_text(gw / 2, top + 48, "CLICK A LOCATION TO TELEPORT");
+
+        // Fixed map frame position
+        var map_x = left + 90;
+        var map_y = top + 65;
+
+        // Move only the image 27 pixels left
+        draw_sprite(spr_teleport_map, 0, map_x - 27, map_y);
+
+        // Border stays in its original position
+        draw_set_color(make_color_rgb(220, 180, 115));
+        draw_rectangle(map_x - 1, map_y - 1,
+            map_x + 240, map_y + 158, true);
 
         draw_set_color(c_white);
-        draw_text_ext(left + 30, top + 200,
-            "PLACEHOLDER: Add your own teleportation mechanics here.",
-            18, 340);
+        draw_text(gw / 2, top + 245, "Select any location on the island");
     }
 }
 
@@ -138,3 +141,4 @@ if (help_open)
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_color(c_white);
+draw_set_alpha(1);

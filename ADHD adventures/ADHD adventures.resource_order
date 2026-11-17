@@ -148,6 +148,7 @@
     {"name":"spr_snow_monster","order":30,"path":"sprites/spr_snow_monster/spr_snow_monster.yy",},
     {"name":"spr_space_rocks_bg","order":8,"path":"sprites/spr_space_rocks_bg/spr_space_rocks_bg.yy",},
     {"name":"spr_spaceship","order":10,"path":"sprites/spr_spaceship/spr_spaceship.yy",},
+    {"name":"spr_teleport_map","order":6,"path":"sprites/spr_teleport_map/spr_teleport_map.yy",},
     {"name":"spr_victory","order":11,"path":"sprites/spr_victory/spr_victory.yy",},
     {"name":"spr_vincent","order":15,"path":"sprites/spr_vincent/spr_vincent.yy",},
     {"name":"spr_wall","order":7,"path":"sprites/spr_wall/spr_wall.yy",},

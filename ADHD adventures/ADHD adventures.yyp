@@ -543,6 +543,7 @@
     {"id":{"name":"spr_space","path":"sprites/spr_space/spr_space.yy",},},
     {"id":{"name":"spr_spaceship","path":"sprites/spr_spaceship/spr_spaceship.yy",},},
     {"id":{"name":"spr_spawn","path":"sprites/spr_spawn/spr_spawn.yy",},},
+    {"id":{"name":"spr_teleport_map","path":"sprites/spr_teleport_map/spr_teleport_map.yy",},},
     {"id":{"name":"spr_terrain_atlas","path":"sprites/spr_terrain_atlas/spr_terrain_atlas.yy",},},
     {"id":{"name":"spr_trigger","path":"sprites/spr_trigger/spr_trigger.yy",},},
     {"id":{"name":"spr_victory","path":"sprites/spr_victory/spr_victory.yy",},},
