@@ -27,3 +27,16 @@ if (!variable_global_exists("dialogue_font"))
 		outlineColour: c_black,
 	});
 }
+
+// the words the NPC speaks: 1.5x the dialogue font (28 -> 42), same outline
+if (!variable_global_exists("dialogue_text_font"))
+{
+	global.dialogue_text_font = font_add("supersoft.ttf", 42, false, false, 32, 127);
+	font_enable_sdf(global.dialogue_text_font, true);
+	font_sdf_spread(global.dialogue_text_font, 8);
+	font_enable_effects(global.dialogue_text_font, true, {
+		outlineEnable: true,
+		outlineDistance: 1,
+		outlineColour: c_black,
+	});
+}

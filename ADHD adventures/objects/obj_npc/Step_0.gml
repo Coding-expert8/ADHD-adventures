@@ -3,6 +3,12 @@ var _talking = (global.dialogue_npc == id);
 // typewriter reveal
 if (_talking) shown = min(shown + text_speed, string_length(dialogue[line]));
 
+// talking sound: loops only while letters are still appearing, cut off (no fade) once the line is out
+if (_talking or global.dialogue_npc == noone)
+{
+	sfx_loop_set(snd_npc_talk, _talking and shown < string_length(dialogue[line]), 0, 1.2);
+}
+
 if (!keyboard_check_pressed(ord("Q"))) exit;
 
 if (_talking)
