@@ -2,7 +2,7 @@ if (global.game_over) exit;
 
 var _mx = device_mouse_x_to_gui(0);
 var _my = device_mouse_y_to_gui(0);
-
+// show_debug_message("click at " + string(_mx) + ", " + string(_my)); // uncomment to test that clicks arrive
 
 var _me = 1 - global.bot_color;   // the human's colour
 var _delay = round(game_get_speed(gamespeed_fps) * 0.4);

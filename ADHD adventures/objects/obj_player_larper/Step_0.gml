@@ -42,6 +42,12 @@ if (_movingPlatform && bbox_bottom <= _movingPlatform.bbox_top) {
 	
 }
 
+
+
+
+
+
+
 _platform = instance_place(x, y + max(1,vspeed), obj_platform);
 
 if (_platform && bbox_bottom-2 <= _platform.bbox_top)  and (_up)

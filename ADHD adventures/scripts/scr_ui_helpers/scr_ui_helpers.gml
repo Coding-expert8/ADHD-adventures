@@ -21,12 +21,14 @@ function scr_piece_name(_type) {
 }
 
 
-// Return the sprite that matches a piece type and colour.
-// These are direct asset references, so the names must match the
-// Sprite assets in the Asset Browser exactly.
-// Wazir uses the chess rook; Ferz uses the chess bishop; Horse uses the knight.
+// Return the sprite that matches a piece type, colour and selected style.
+// Style 0 is handled by scr_draw_piece and does not need sprites.
+// Style 1: standard chess sprites (rook = Wazir, bishop = Ferz).
+// Style 2: dedicated Wazir and Ferz sprites.
+// Style 3: special rook and bishop sprites.
 function scr_piece_sprite(_type, _color) {
     var _white = (_color == COLOR_WHITE);
+    var _style = global.tinyhouse_pieces;
 
     switch (_type) {
         case PieceType.KING:
@@ -36,9 +38,29 @@ function scr_piece_sprite(_type, _color) {
             return _white ? spr_pawn_white : spr_pawn_black;
 
         case PieceType.WAZIR:
+            if (_style == 2) {
+                return _white ? spr_wazir_white : spr_wazir_black;
+            }
+            if (_style == 3) {
+                // Only the white special sprite name was supplied.
+                // Keep the normal black rook sprite for black Wazirs.
+                return _white ? spr_rook_special_white : spr_rook_black;
+            }
+            // Styles 1 and any unrecognised style use the standard rook.
             return _white ? spr_rook_white : spr_rook_black;
 
         case PieceType.FERZ:
+            if (_style == 2) {
+                // Only spr_ferz_white was supplied. The black Ferz therefore
+                // keeps the standard black bishop until a black Ferz asset is added.
+                return _white ? spr_ferz_white : spr_ferz_black;
+            }
+            if (_style == 3) {
+                // Only the white special sprite name was supplied.
+                // Keep the normal black bishop sprite for black Ferz.
+                return _white ? spr_bishop_special_white : spr_bishop_special_black;
+            }
+            // Styles 1 and any unrecognised style use the standard bishop.
             return _white ? spr_bishop_white : spr_bishop_black;
 
         case PieceType.HORSE:
@@ -50,16 +72,18 @@ function scr_piece_sprite(_type, _color) {
 }
 
 
-// Draw a piece using either the new sprite set or the classic circle-and-letter style.
-// global.tinyhouse_pieces == true  : use the image sprites.
-// global.tinyhouse_pieces == false : use the original circle with a letter.
+// Draw a piece using one of the four styles:
+// 0 = original circle and letter
+// 1 = standard chess-piece sprites
+// 2 = dedicated Wazir and Ferz sprites
+// 3 = special rook and bishop sprites
 // _max_size controls the maximum width/height used by the piece.
 function scr_draw_piece(_type, _color, _cx, _cy, _max_size) {
     var _white = (_color == COLOR_WHITE);
+    var _style = global.tinyhouse_pieces;
 
-    // Classic appearance. This is based on the original board drawing code,
-    // and is also used consistently for pieces in hand and promotion choices.
-    if (!global.tinyhouse_pieces) {
+    // Style 0: original circle-and-letter appearance.
+    if (_style == 0) {
         var _radius = _max_size * (0.38 / 0.84);
         var _text_scale = _max_size / 26.88;
 
@@ -76,16 +100,15 @@ function scr_draw_piece(_type, _color, _cx, _cy, _max_size) {
         return;
     }
 
-    // New sprite appearance.
+    // Styles 1-3: draw the selected sprite set.
     var _spr = scr_piece_sprite(_type, _color);
 
-    // A fallback indicates an unrecognised PieceType value.
-    // The sprite assets themselves are direct references above.
+    // Fallback for an unrecognised PieceType value.
     if (_spr == -1) {
         draw_set_halign(fa_center);
         draw_set_valign(fa_middle);
         draw_set_color(_white ? c_black : c_white);
-        draw_text(_cx, _cy, scr_piece_letter(_type) + "?");
+        draw_text(_cx, _cy, scr_piece_letter(_type));
         draw_set_color(c_white);
         return;
     }
