@@ -1,15 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_key",
+  "%Name":"obj_exit_lava_parkour",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_player_larper","path":"objects/obj_player_larper/obj_player_larper.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_key",
+  "name":"obj_exit_lava_parkour",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"lava_parkour",
+    "path":"folders/lava_parkour.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -29,7 +29,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_portal_space_rocks",
+    "path":"sprites/spr_portal_space_rocks/spr_portal_space_rocks.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
