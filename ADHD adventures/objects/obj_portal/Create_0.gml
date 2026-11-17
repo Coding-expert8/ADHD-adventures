@@ -1,0 +1,1 @@
+global.won_answer = false

@@ -160,3 +160,18 @@ else last_step_frame = -1;
 
 // doors and other triggers under the player's feet
 with (instance_place(x, y, par_trigger)) event_user(0);
+
+
+if global.won_answer = true {
+	instance_create_layer(x+30, y, "Instances", obj_key)
+	global.won_answer = false
+}
+
+if global.won_tinyhouse = true {
+	instance_create_layer(x+30, y, "Instances", obj_key)
+	global.won_tinyhouse = false
+}
+if global.won_snake = true {
+	instance_create_layer(x+30, y, "Instances", obj_key)
+	global.won_snake = false
+}

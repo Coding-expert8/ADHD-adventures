@@ -36,3 +36,4 @@ else if (!instance_exists(global.dialogue_npc) and array_length(dialogue) > 0
 	shown = 0;
 	keyboard_clear(ord("Q"));
 }
+
