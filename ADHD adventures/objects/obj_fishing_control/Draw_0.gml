@@ -29,7 +29,7 @@ if (game_over) {
     draw_text(_cx, _cy - 20, "Total score: " + string(fish_score));
     draw_text(_cx, _cy + 2, "Fish caught: " + string(fish_caught));
     draw_text(_cx, _cy + 24, "Time taken: " + string_format(time_taken, 1, 1) + "s");
-    draw_text(_cx, _cy + 56, "Press R to play again");
+    draw_text(_cx, _cy + 56, "R - play again     Q - back to map");
 }
 
 draw_set_halign(fa_left);

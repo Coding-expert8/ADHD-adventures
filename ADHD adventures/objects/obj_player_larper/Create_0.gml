@@ -4,7 +4,6 @@ jumped = false;
 
 if (!variable_global_exists("character"))
 {
-	window_set_size(window_get_width() * 2, window_get_height() * 2)
 	global.character = "1"
 }
 mask_index = spr_player_mask

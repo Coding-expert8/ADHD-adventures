@@ -25,6 +25,6 @@ if room = room_map {
 	}
 	else {
 		draw_text(x+offset,y,"You died")
-		alarm[0] = 60;
+		if (alarm[0] < 0) alarm[0] = 60; // start the countdown once, not every frame
 	}
 }

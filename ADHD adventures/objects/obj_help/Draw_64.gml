@@ -2,8 +2,8 @@
 var gw = display_get_gui_width();
 var gh = display_get_gui_height();
 
-// HELP button
-var button_x = 25;
+// HELP button (top right, left of CREDITS, so it doesn't cover the hearts)
+var button_x = gw - 260;
 var button_y = 20;
 
 draw_set_halign(fa_center);
@@ -118,22 +118,53 @@ if (help_open)
         draw_set_valign(fa_middle);
 
         draw_set_color(make_color_rgb(255, 225, 165));
-        draw_text(gw / 2, top + 48, "CLICK A LOCATION TO TELEPORT");
+        draw_text(gw / 2, top + 48, "CLICK A STAR TO TELEPORT");
 
         // Fixed map frame position
         var map_x = left + 90;
         var map_y = top + 65;
 
         // Move only the image 27 pixels left
-        draw_sprite(spr_teleport_map, 0, map_x - 27, map_y);
+        var image_x = map_x - 27;
+        draw_sprite(spr_teleport_map, 0, image_x, map_y);
 
         // Border stays in its original position
         draw_set_color(make_color_rgb(220, 180, 115));
         draw_rectangle(map_x - 1, map_y - 1,
             map_x + 240, map_y + 158, true);
 
+        // Teleport points: a star once the area has been visited, a lock until then
+        var mx = device_mouse_x_to_gui(0);
+        var my = device_mouse_y_to_gui(0);
+        var hover = teleport_point_at(mx, my, image_x, map_y);
+
+        with (obj_teleport_point)
+        {
+            var px = teleport_map_x(x, image_x);
+            var py = teleport_map_y(y, map_y);
+            var on = area_is_discovered(area_name);
+
+            if (id == hover)
+            {
+                draw_set_color(c_white);
+                draw_set_alpha(0.5);
+                draw_circle(px, py, 9, false);
+                draw_set_alpha(1);
+            }
+            draw_teleport_icon(px, py, (id == hover) ? 8 : 7, on);
+        }
+
+        // Hint line: what the hovered point is
+        var hint = "Visit an area to unlock its teleport";
+        if (hover != noone)
+        {
+            hint = area_is_discovered(hover.area_name)
+                ? "Teleport to " + hover.label
+                : "Locked - explore to discover it";
+        }
+
         draw_set_color(c_white);
-        draw_text(gw / 2, top + 245, "Select any location on the island");
+        draw_text(gw / 2, top + 245, hint);
     }
 }
 

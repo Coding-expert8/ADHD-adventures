@@ -25,10 +25,12 @@ if (_talking)
 		// obj_player puts the player back here on returning to room_map
 		global.return_x = obj_player.x;
 		global.return_y = obj_player.y;
-		room_goto(target_room);
+		if (fade) transition_to(target_room);
+		else      room_goto(target_room);
 	}
 }
 else if (!instance_exists(global.dialogue_npc) and array_length(dialogue) > 0
+	and !(instance_exists(obj_login) and obj_login.popup_open) // Q is just a letter while typing a name
 	and instance_exists(obj_player) and distance_to_object(obj_player) <= talk_range)
 {
 	global.dialogue_npc = id;
