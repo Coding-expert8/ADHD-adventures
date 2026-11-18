@@ -1,4 +1,4 @@
-if room = room_map {
+if room = room_map or room_tinyhouse {
 	if global.hearts = 6 {
 		draw_sprite(spr_heart, 0, x, y-offset);
 		draw_sprite(spr_heart, 0, x+offset*2, y-offset);
@@ -23,8 +23,9 @@ if room = room_map {
 	else if global.hearts = 1 {
 		draw_sprite(spr_heart, 1, x, y-offset);
 	}
-	else {
+	else if global.hearts <= 0{
 		draw_text(x+offset,y,"You died")
 		alarm[0] = 60;
+		activated = false;
 	}
 }

@@ -53,6 +53,7 @@ _platform = instance_place(x, y + max(1,vspeed), obj_platform);
 if (_platform && bbox_bottom-2 <= _platform.bbox_top)  and (_up)
 {
 	motion_set(image_angle + 90, jump);
+	audio_play_sound(snd_jump,1,false);
 }
 else if (_platform) and sign(vspeed) = 1
 {

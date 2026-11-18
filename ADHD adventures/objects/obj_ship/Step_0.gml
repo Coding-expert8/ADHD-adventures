@@ -13,7 +13,7 @@ image_angle = image_angle - 5;
 
 if (keyboard_check(vk_up) or keyboard_check(ord("W")))
 {
-motion_add(image_angle, 0.05);
+motion_add(image_angle, pace);
 moving = true;
 }
 if (keyboard_check(vk_down) or keyboard_check(ord("S")))
