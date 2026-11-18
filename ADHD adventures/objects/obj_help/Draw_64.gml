@@ -2,8 +2,8 @@
 var gw = display_get_gui_width();
 var gh = display_get_gui_height();
 
-// HELP button
-var button_x = 25;
+// HELP button (top right, left of CREDITS, so it doesn't cover the hearts)
+var button_x = gw - 260;
 var button_y = 20;
 
 draw_set_halign(fa_center);

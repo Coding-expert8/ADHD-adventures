@@ -74,6 +74,20 @@ function typing_name() {
 	return instance_exists(obj_login) and obj_login.popup_open and obj_login.input_active;
 }
 
+/// @func menu_open()
+/// @desc True while the HELP or CREDITS board is open (the pause screen). The player
+///       stands still and the other menu button can't be opened underneath it.
+function menu_open() {
+	return (instance_exists(obj_help) and obj_help.help_open)
+		or (instance_exists(obj_credits) and obj_credits.credits_open);
+}
+
+/// @func play_select()
+/// @desc Click sound for menu buttons.
+function play_select() {
+	audio_play_sound(snd_select, 1, false);
+}
+
 // ---- runs at game start: every progress global, with its new-game value ----
 
 // One flag (and one key) per minigame. A gate on room_map opens when its flag is true
