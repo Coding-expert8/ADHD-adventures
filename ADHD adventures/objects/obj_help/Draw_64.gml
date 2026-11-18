@@ -20,6 +20,12 @@ if (help_open)
     var board_w = 420;
     var board_h = 280;
 
+    // the board is laid out for a MENU_BOARD_HEIGHT px tall screen and scaled up to the real GUI
+    var _s = menu_board_scale();
+    gw /= _s;
+    gh /= _s;
+    matrix_set(matrix_world, matrix_build(0, 0, 0, 0, 0, 0, _s, _s, 1));
+
     var left = (gw - board_w) / 2;
     var top = (gh - board_h) / 2;
 
@@ -134,8 +140,8 @@ if (help_open)
             map_x + 240, map_y + 158, true);
 
         // Teleport points: a star once the area has been visited, a lock until then
-        var mx = device_mouse_x_to_gui(0);
-        var my = device_mouse_y_to_gui(0);
+        var mx = device_mouse_x_to_gui(0) / _s;
+        var my = device_mouse_y_to_gui(0) / _s;
         var hover = teleport_point_at(mx, my, image_x, map_y);
 
         with (obj_teleport_point)
@@ -169,6 +175,7 @@ if (help_open)
 }
 
 // Reset drawing settings
+matrix_set(matrix_world, matrix_build_identity());
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_color(c_white);

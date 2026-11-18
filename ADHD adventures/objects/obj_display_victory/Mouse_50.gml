@@ -1,1 +1,1 @@
-room_goto(room_map);
+minigame_win("space_rocks_beaten");

@@ -95,7 +95,8 @@ if (global.pending_promotion != noone && global.pending_promotion.color == _me) 
 // --- Status line ---
 var _status;
 if (global.game_over) {
-    _status = ((global.winner == COLOR_WHITE) ? "White" : "Black") + " wins by " + global.win_reason + "!  Press R to restart.";
+    if (global.winner == _me) _status = "You win by " + global.win_reason + "!  Back to the map...";
+    else _status = ((global.winner == COLOR_WHITE) ? "White" : "Black") + " wins by " + global.win_reason + "!  Press R to restart.";
 } else if (global.pending_promotion != noone && global.pending_promotion.color == _me) {
     _status = "Choose a piece to promote to";
 } else if (global.turn == global.bot_color) {

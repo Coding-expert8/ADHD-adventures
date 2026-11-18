@@ -1,12 +1,3 @@
-if (!variable_global_exists("won_answer"))
-global.won_answer = false
-
-if (!variable_global_exists("won_tinyhouse"))
-global.won_tinyhouse = false
-
-if (!variable_global_exists("won_snake"))
-global.won_snake = false
-
 if (!variable_global_exists("character"))
 {
 	global.character = global.save_character // "1" on a new game, or the one in save.ini

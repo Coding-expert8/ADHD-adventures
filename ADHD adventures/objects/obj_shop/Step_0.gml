@@ -1,3 +1,13 @@
+// Open when the player steps onto the shop. Only on the first step of touching it,
+// otherwise it would reopen every step and could never be closed while standing here.
+var _touching = place_meeting(x, y, obj_player);
+if (_touching and !was_touching and !menu_open and !pause_menu_open())
+{
+    play_select();
+    menu_open = true;
+}
+was_touching = _touching;
+
 if (menu_open)
 {
     // GUI dimensions
@@ -15,12 +25,13 @@ if (menu_open)
     // Close with ESC
     if (keyboard_check_pressed(vk_escape))
     {
+        play_select();
         menu_open = false;
     }
 
-    // Close button
+    // Close button (same place Draw GUI draws it)
     var _close_x = _mx + menu_width - 40;
-    var _close_y = _my + 60;
+    var _close_y = _my + 25;
 
     if (mouse_check_button_pressed(mb_left))
     {
@@ -30,7 +41,9 @@ if (menu_open)
             _close_x + 15, _close_y + 15
         ))
         {
+            play_select();
             menu_open = false;
+            exit; // don't let the same click also buy an item
         }
     }
 
@@ -45,7 +58,7 @@ if (menu_open)
     var _grid_y = _my + 90;
 
     // Check item purchases
-    if (mouse_check_button_pressed(mb_left) && menu_open)
+    if (mouse_check_button_pressed(mb_left) and menu_open)
     {
         for (var i = 0; i < 6; i++)
         {
@@ -66,7 +79,7 @@ if (menu_open)
             ))
             {
                 // Make sure item exists and is affordable
-                if (_item.name != "" && _item.price > 0)
+                if (_item.name != "" and _item.price > 0)
                 {
                     if (global.coin >= _item.price)
                     {

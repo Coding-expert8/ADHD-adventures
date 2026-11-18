@@ -21,6 +21,7 @@ function save_game() {
 	ini_write_string("Player", "Character", variable_global_exists("character") ? global.character : global.save_character);
 	ini_write_real("Player", "Hearts", global.hearts);
 	ini_write_real("Player", "Keys", global.key_count);
+	ini_write_real("Player", "KeysToCollect", global.keys_pending);
 
 	for (var _i = 0; _i < array_length(global.beaten_flags); _i++) {
 		var _flag = global.beaten_flags[_i];
@@ -52,6 +53,7 @@ function load_game() {
 	global.hearts = ini_read_real("Player", "Hearts", global.hearts);
 	if (global.hearts <= 0) global.hearts = HEARTS_MAX;   // never load straight into "You died"
 	global.key_count = ini_read_real("Player", "Keys", global.key_count);
+	global.keys_pending = ini_read_real("Player", "KeysToCollect", global.keys_pending);
 
 	for (var _i = 0; _i < array_length(global.beaten_flags); _i++) {
 		var _flag = global.beaten_flags[_i];
@@ -69,6 +71,24 @@ function load_game() {
 	return true;
 }
 
+/// @func minigame_win(flag, [delay_seconds])
+/// @desc Call when the player wins a minigame, e.g. minigame_win("fishing_beaten").
+///       Sets that *_beaten flag (opening its gates), gives a key the first time the game is
+///       beaten (obj_player drops it next to the player on the map), and fades back to room_map
+///       after delay_seconds (time to read a "You win!" screen). Safe to call every step.
+function minigame_win(_flag, _delay = 0) {
+	if (global.minigame_leaving) return;   // already on the way back to the map
+	global.minigame_leaving = true;
+
+	if (!variable_global_get(_flag)) global.keys_pending += 1;   // first win only
+	variable_global_set(_flag, true);
+
+	if (_delay <= 0) transition_to(room_map);
+	else call_later(_delay, time_source_units_seconds, function() {
+		if (global.minigame_leaving) transition_to(room_map);   // unless already back on the map
+	});
+}
+
 /// @func typing_name()
 /// @desc True while the player is typing in the name popup (obj_login). Letter and number
 ///       hotkeys check this so typing a name doesn't also trigger them.
@@ -76,12 +96,23 @@ function typing_name() {
 	return instance_exists(obj_login) and obj_login.popup_open and obj_login.input_active;
 }
 
-/// @func menu_open()
-/// @desc True while the HELP or CREDITS board is open (the pause screen). The player
-///       stands still and the other menu button can't be opened underneath it.
-function menu_open() {
+/// @func pause_menu_open()
+/// @desc True while the HELP or CREDITS board or the shop is open (the pause screen). The
+///       player stands still and the other menu buttons can't be opened underneath it.
+///       (Not called menu_open: obj_shop has an instance variable with that name, and a
+///       script function would hide it.)
+function pause_menu_open() {
 	return (instance_exists(obj_help) and obj_help.help_open)
-		or (instance_exists(obj_credits) and obj_credits.credits_open);
+		or (instance_exists(obj_credits) and obj_credits.credits_open)
+		or (instance_exists(obj_shop) and obj_shop.menu_open);
+}
+
+/// @func menu_board_scale()
+/// @desc Scale for the HELP and CREDITS boards: they are laid out for a MENU_BOARD_HEIGHT px
+///       tall GUI and drawn (and clicked) scaled up to the real GUI height.
+#macro MENU_BOARD_HEIGHT 480
+function menu_board_scale() {
+	return max(1, display_get_gui_height() / MENU_BOARD_HEIGHT);
 }
 
 /// @func play_select()
@@ -108,6 +139,8 @@ for (var _i = 0; _i < array_length(global.beaten_flags); _i++) {
 
 global.hearts         = HEARTS_MAX;
 global.key_count      = 0;
+global.keys_pending   = 0;     // keys won but not picked up yet (obj_player drops them on the map)
+global.minigame_leaving = false; // true from minigame_win() until room_map starts
 global.username       = "";    // set by obj_login
 global.save_character = "1";   // obj_player copies this into global.character when it first starts
 global.discovered_areas = {};  // area_name -> true, filled by obj_area_control (see scr_teleport)

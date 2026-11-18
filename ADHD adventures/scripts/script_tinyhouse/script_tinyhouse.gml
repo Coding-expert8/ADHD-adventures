@@ -288,7 +288,7 @@ function scr_check_game_end() {
 
     // The player is whichever colour the bot isn't
     if (global.winner == 1 - global.bot_color) {
-        global.won_tinyhouse = true;
+        minigame_win("tinyhouse_beaten", 3); // key + open the gates, back to the map in 3 s
 	}
 }
 
