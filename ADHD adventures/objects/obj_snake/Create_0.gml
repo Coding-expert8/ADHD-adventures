@@ -12,6 +12,7 @@ move_timer = 0;
 
 score = 0;
 game_over = false;
+won = false;
 
 active_powerup = "none";
 powerup_timer = 0;

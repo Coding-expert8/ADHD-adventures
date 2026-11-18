@@ -110,7 +110,7 @@ if (!variable_instance_exists(id, "facing")) facing = "down";
 
 // stand still while an NPC is talking (obj_npc handles the Q key), the name popup is open,
 // or the HELP / CREDITS board (pause screen) is open
-if (instance_exists(global.dialogue_npc) or (instance_exists(obj_login) and obj_login.popup_open) or menu_open())
+if (instance_exists(global.dialogue_npc) or (instance_exists(obj_login) and obj_login.popup_open) or pause_menu_open())
 {
 	global.walking = "idle";
 	image_speed = 0.1;
@@ -163,16 +163,7 @@ else last_step_frame = -1;
 with (instance_place(x, y, par_trigger)) event_user(0);
 
 
-if global.won_answer = true {
-	instance_create_layer(x+30, y, "Instances", obj_key)
-	global.won_answer = false
-}
-
-if global.won_tinyhouse = true {
-	instance_create_layer(x+30, y, "Instances", obj_key)
-	global.won_tinyhouse = false
-}
-if global.won_snake = true {
-	instance_create_layer(x+30, y, "Instances", obj_key)
-	global.won_snake = false
+// a key won in a minigame (minigame_win) appears next to the player, one at a time
+if (room == room_map and global.keys_pending > 0 and !instance_exists(obj_key)) {
+	instance_create_layer(x + 30, y, "Instances", obj_key);
 }

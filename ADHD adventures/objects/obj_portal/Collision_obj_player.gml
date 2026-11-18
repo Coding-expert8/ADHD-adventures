@@ -1,5 +1,3 @@
-global.spacing = 0
-with (obj_player) {
-room_goto(room_map)
-global.won_answer = true
-}
+// reached the other side of the bridge
+global.spacing = 0;
+minigame_win("bridge_beaten");

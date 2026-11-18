@@ -8,7 +8,7 @@ if (cloud_timer <= 0) {
 
 if (game_over) {
     if (not transition_active()) {
-        if (keyboard_check_pressed(ord("R"))) transition_to(room);          // play again
+        if (not won and keyboard_check_pressed(ord("R"))) transition_to(room); // play again (a win goes back to the map)
         else if (keyboard_check_pressed(ord("Q"))) transition_to(room_map); // back to the map (fishing_beaten is already set if you won)
     }
     exit;
@@ -48,7 +48,7 @@ if (spawn_timer <= 0) {
 if (fish_score >= goal) {
     game_over = true;
     won = true;
-    global.fishing_beaten = true; // key collected: opens the fishing gates on room_map
+    minigame_win("fishing_beaten", 4); // key + open the gates, back to the map after the results
     time_taken = (current_time - start_time) / 1000;
     audio_stop_sound(music);
     audio_play_sound(snd_minigame_win, 10, false);

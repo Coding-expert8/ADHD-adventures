@@ -35,3 +35,12 @@ draw_text(50, 80, string(score));
 //draw_set_color(c_white);
 //draw_text(right_x + panel_w/2 - 30, 20, "OPPONENT");
 //draw_text(right_x + panel_w/2 - 40, 60, "(coming soon)");
+
+if (won) {
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
+	draw_set_color(c_white);
+	draw_text_transformed(board_offset_x + grid_w*cell_size/2, grid_h*cell_size/2, "You win!  Back to the map...", 1.5, 1.5, 0);
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_top);
+}

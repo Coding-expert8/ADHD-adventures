@@ -28,9 +28,11 @@ if (move_timer >= _speed_frames) {
     scr_move_snake();
 }
 
-if score >= 30 {
-	room_goto(room_map)
-	global.won_snake = true
+// win: 30 points -> stop the snake, show "You win!", back to the map
+if (score >= 30) {
+	game_over = true;
+	won = true;
+	minigame_win("snake_beaten", 2);
 }
 	
 
