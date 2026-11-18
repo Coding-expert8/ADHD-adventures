@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_portal_space_rocks",
-    "path":"sprites/spr_portal_space_rocks/spr_portal_space_rocks.yy",
+    "name":"spr_doorway",
+    "path":"sprites/spr_doorway/spr_doorway.yy",
   },
   "spriteMaskId":null,
   "visible":true,

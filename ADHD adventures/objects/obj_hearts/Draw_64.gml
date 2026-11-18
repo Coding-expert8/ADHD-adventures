@@ -1,4 +1,4 @@
-if room = room_map {
+if room = room_map or room_tinyhouse {
 	if global.hearts = 6 {
 		draw_sprite(spr_heart, 0, x, y-offset);
 		draw_sprite(spr_heart, 0, x+offset*2, y-offset);

@@ -1,0 +1,1 @@
+compass_arrow_active = false;

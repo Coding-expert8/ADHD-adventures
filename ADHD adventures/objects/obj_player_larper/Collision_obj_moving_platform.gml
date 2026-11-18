@@ -1,6 +1,7 @@
 if place_meeting(x,y,obj_moving_platform)  and (_up)
 {
 	motion_set(image_angle + 90, jump);
+	audio_play_sound(snd_jump,1,false);
 }
 else if place_meeting(x,y,obj_moving_platform)
 {
