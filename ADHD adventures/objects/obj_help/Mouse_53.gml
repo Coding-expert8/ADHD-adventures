@@ -80,25 +80,17 @@ else
         // Image shifted 27 pixels left
         var image_x = map_x - 27;
 
-        // Only allow clicks inside the fixed frame
-        if (mx >= map_x and mx <= map_x + 240 and
-            my >= map_y and my <= map_y + 158)
+        // Only the teleport points can be clicked, and only once their area is discovered
+        var tp = teleport_point_at(mx, my, image_x, map_y);
+
+        if (tp != noone and area_is_discovered(tp.area_name)
+            and instance_exists(obj_player))
         {
-            var map_click_x = mx - image_x;
-            var map_click_y = my - map_y;
+            play_select();
+            obj_player.x = tp.x;
+            obj_player.y = tp.y;
 
-            // Convert image coordinates into room coordinates
-            var destination_x = (map_click_x / 240) * 18000;
-            var destination_y = (map_click_y / 158) * 12000;
-
-            if (instance_exists(obj_player))
-            {
-                play_select();
-                obj_player.x = destination_x;
-                obj_player.y = destination_y;
-
-                help_open = false;
-            }
+            help_open = false;
         }
     }
 }

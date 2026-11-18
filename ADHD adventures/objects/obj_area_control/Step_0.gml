@@ -19,6 +19,9 @@ if (_area != noone) {
 }
 if (_key == global.current_area_key) exit;
 
+// first visit: unlocks this area's teleport point (obj_teleport_point) and saves it right away
+if (_area != noone and area_discover(_area.area_name)) save_game();
+
 // --- weather: open world allows rain; otherwise take the area's profile -------
 var _profile = (_area != noone) ? _area.area_profile : WEATHER_PROFILE_RAIN;
 global.weather_profile = _profile;

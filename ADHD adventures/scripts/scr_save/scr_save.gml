@@ -26,6 +26,7 @@ function save_game() {
 		var _flag = global.beaten_flags[_i];
 		ini_write_real("Progress", _flag, variable_global_get(_flag) ? 1 : 0);
 	}
+	ini_write_string("Progress", "discovered_areas", discovered_areas_to_string());
 
 	if (room == room_map and instance_exists(obj_player)) {
 		ini_write_real("Map", "X", obj_player.x);
@@ -56,6 +57,7 @@ function load_game() {
 		var _flag = global.beaten_flags[_i];
 		variable_global_set(_flag, ini_read_real("Progress", _flag, 0) == 1);
 	}
+	discovered_areas_from_string(ini_read_string("Progress", "discovered_areas", ""));
 
 	// obj_player's Room Start puts the player here when room_map starts
 	if (ini_key_exists("Map", "X") and ini_key_exists("Map", "Y")) {
@@ -108,3 +110,4 @@ global.hearts         = HEARTS_MAX;
 global.key_count      = 0;
 global.username       = "";    // set by obj_login
 global.save_character = "1";   // obj_player copies this into global.character when it first starts
+global.discovered_areas = {};  // area_name -> true, filled by obj_area_control (see scr_teleport)
