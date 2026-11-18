@@ -6,7 +6,7 @@ if score >= 100000
 	}
 if lives <= 0 and (!activated)
 	{
-		alarm[2] = room_speed;
+		alarm[2] = 60;
 		activated = true;
 	}
 }

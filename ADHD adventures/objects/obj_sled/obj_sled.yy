@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_ship",
-    "path":"sprites/spr_ship/spr_ship.yy",
+    "name":"spr_sled",
+    "path":"sprites/spr_sled/spr_sled.yy",
   },
   "spriteMaskId":null,
   "visible":true,
