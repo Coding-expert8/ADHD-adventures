@@ -3,7 +3,7 @@
 // global.discovered_areas is a struct of area_name -> true. obj_area_control adds an area the
 // first time the player walks into it, and scr_save keeps the list in save.ini. A teleport point
 // shows a star (can teleport there) once its area is discovered, and a lock until then.
-// The HELP board's TELEPORTATION tab draws the same points on the minimap (spr_teleport_map).
+// The pause board's TELEPORT tab draws the same points on the minimap (spr_teleport_map).
 
 // room_map size the minimap image (240 x 158) was made from
 #macro TELEPORT_WORLD_W 18000
@@ -46,24 +46,24 @@ function discovered_areas_from_string(_s) {
 	}
 }
 
-/// @func teleport_map_x(world_x, image_x)
-/// @desc GUI x of a room_map position on the minimap drawn at image_x.
-function teleport_map_x(_wx, _image_x) {
-	return _image_x + _wx / TELEPORT_WORLD_W * TELEPORT_MAP_W;
+/// @func teleport_map_x(world_x, image_x, [scale])
+/// @desc GUI x of a room_map position on the minimap drawn at image_x, scale times its size.
+function teleport_map_x(_wx, _image_x, _scale = 1) {
+	return _image_x + _wx / TELEPORT_WORLD_W * TELEPORT_MAP_W * _scale;
 }
 
-/// @func teleport_map_y(world_y, image_y)
-function teleport_map_y(_wy, _image_y) {
-	return _image_y + _wy / TELEPORT_WORLD_H * TELEPORT_MAP_H;
+/// @func teleport_map_y(world_y, image_y, [scale])
+function teleport_map_y(_wy, _image_y, _scale = 1) {
+	return _image_y + _wy / TELEPORT_WORLD_H * TELEPORT_MAP_H * _scale;
 }
 
-/// @func teleport_point_at(mx, my, image_x, image_y)
+/// @func teleport_point_at(mx, my, image_x, image_y, [scale])
 /// @desc The obj_teleport_point whose minimap icon is under (mx, my), or noone.
-function teleport_point_at(_mx, _my, _image_x, _image_y) {
+function teleport_point_at(_mx, _my, _image_x, _image_y, _scale = 1) {
 	var _best = noone;
-	var _best_d = TELEPORT_ICON_HIT;
+	var _best_d = TELEPORT_ICON_HIT * _scale;
 	with (obj_teleport_point) {
-		var _d = point_distance(_mx, _my, teleport_map_x(x, _image_x), teleport_map_y(y, _image_y));
+		var _d = point_distance(_mx, _my, teleport_map_x(x, _image_x, _scale), teleport_map_y(y, _image_y, _scale));
 		if (_d <= _best_d) {
 			_best = id;
 			_best_d = _d;

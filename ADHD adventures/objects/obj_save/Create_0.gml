@@ -9,4 +9,8 @@ if (instance_number(obj_save) > 1)
 
 load_game();
 
+// settings.ini was read at game start (scr_save): turn the volumes and fullscreen on now
+settings_apply_audio();
+window_set_fullscreen(global.settings.fullscreen);
+
 saved_timer = 0;   // steps left to show "Game saved" after pressing F5

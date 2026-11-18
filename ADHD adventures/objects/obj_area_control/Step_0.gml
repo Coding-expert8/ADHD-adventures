@@ -52,7 +52,7 @@ if (_theme != global.current_theme) {
     if (_theme != noone) {
         audio_play_sound(_theme, 10, true); // looping
         audio_sound_gain(_theme, 0, 0);
-        audio_sound_gain(_theme, 1, FADE_MS);
+        audio_sound_gain(_theme, global.settings.music, FADE_MS); // up to the MUSIC setting
     }
 
     global.current_theme = _theme;
