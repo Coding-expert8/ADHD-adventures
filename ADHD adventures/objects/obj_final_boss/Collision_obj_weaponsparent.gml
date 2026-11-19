@@ -16,7 +16,7 @@ if (boss_state == "hurt")
 }
 
 // Reduce health
-health -= 5;
+health -= other.damage;
 
 // Spawn impact effect
 instance_create_layer(x, y,"Instances", obj_boss_hit_effect);

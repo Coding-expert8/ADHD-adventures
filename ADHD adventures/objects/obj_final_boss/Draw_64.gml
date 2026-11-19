@@ -28,7 +28,7 @@ draw_rectangle(
 
 // Boss name
 draw_set_color(c_white);
-
+draw_set_font(Font6)
 draw_text(
     bar_x,
     bar_y - 22,
