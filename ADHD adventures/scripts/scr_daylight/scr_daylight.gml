@@ -1,15 +1,15 @@
 // The day/night cycle obj_daylight_control plays through shd_daylight.
 
-// One full day -- midnight to midnight -- takes ten minutes of real time.
-#macro DAYLIGHT_CYCLE_MINUTES 10
-#macro DAYLIGHT_CYCLE_FRAMES  (DAYLIGHT_CYCLE_MINUTES * 60 * 60)   // 36000 steps at 60fps
+// One full day -- midnight to midnight -- takes five minutes of real time.
+#macro DAYLIGHT_CYCLE_MINUTES 5
+#macro DAYLIGHT_CYCLE_FRAMES  (DAYLIGHT_CYCLE_MINUTES * 60 * 60)   // 18000 steps at 60fps
 
 // Time of day the cycle starts at, so the map opens in clear mid-morning light
 // rather than halfway through the night.
 #macro DAYLIGHT_START_HOUR 8
 
-// Holding D runs the clock this much faster -- a whole day in 30 seconds instead
-// of ten minutes -- so you can see how somewhere reads at dusk without waiting.
+// Holding D runs the clock this much faster -- a whole day in 15 seconds instead
+// of five minutes -- so you can see how somewhere reads at dusk without waiting.
 #macro DAYLIGHT_FAST_KEY   ord("D")
 #macro DAYLIGHT_FAST_SCALE 20
 

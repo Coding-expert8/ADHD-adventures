@@ -34,6 +34,7 @@ function save_game() {
 		ini_write_real("Progress", _flag, variable_global_get(_flag) ? 1 : 0);
 	}
 	ini_write_string("Progress", "discovered_areas", discovered_areas_to_string());
+	ini_write_string("Progress", "chests_opened", chests_to_string());
 
 	if (room == room_map and instance_exists(obj_player)) {
 		ini_write_real("Map", "X", obj_player.x);
@@ -76,6 +77,7 @@ function load_game() {
 		variable_global_set(_flag, ini_read_real("Progress", _flag, 0) == 1);
 	}
 	discovered_areas_from_string(ini_read_string("Progress", "discovered_areas", ""));
+	chests_from_string(ini_read_string("Progress", "chests_opened", ""));
 
 	// obj_player's Room Start puts the player here when room_map starts
 	if (ini_key_exists("Map", "X") and ini_key_exists("Map", "Y")) {
@@ -106,6 +108,7 @@ function new_game_state() {
 	global.username         = "";    // set by obj_login (an empty name shows the name popup again)
 	global.save_character   = "1";   // obj_player copies this into global.character when it first starts
 	global.character        = "1";
+	global.chests_opened    = {};    // chest_id -> true for every chest opened on the map (obj_chest)
 	global.discovered_areas = {};    // area_name -> true, filled by obj_area_control (see scr_teleport)
 	global.return_x         = undefined; // no saved map position: obj_player starts at its room spot
 	global.return_y         = undefined;
@@ -180,6 +183,31 @@ function pause_menu_open() {
 	return (instance_exists(obj_help) and obj_help.help_open)
 		or (instance_exists(obj_credits) and obj_credits.credits_open)
 		or (instance_exists(obj_shop) and obj_shop.menu_open);
+}
+
+/// @func chest_opened(id)
+/// @desc Has the map chest with this chest_id (set in its Creation Code) been opened?
+function chest_opened(_id) {
+	return variable_struct_exists(global.chests_opened, _id);
+}
+
+/// @func chests_to_string() / chests_from_string(s)
+/// @desc "chest_town,chest_lake,..." for save.ini
+function chests_to_string() {
+	var _names = variable_struct_get_names(global.chests_opened);
+	var _s = "";
+	for (var _i = 0; _i < array_length(_names); _i++) {
+		if (_i > 0) _s += ",";
+		_s += _names[_i];
+	}
+	return _s;
+}
+function chests_from_string(_s) {
+	global.chests_opened = {};
+	var _names = string_split(_s, ",", true);
+	for (var _i = 0; _i < array_length(_names); _i++) {
+		global.chests_opened[$ string_trim(_names[_i])] = true;
+	}
 }
 
 /// @func menu_board_scale()

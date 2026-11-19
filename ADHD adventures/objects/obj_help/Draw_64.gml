@@ -207,6 +207,12 @@ if (help_open)
 
 		ui_button(L, delete_rect(L), "DELETE SAVE", col_red, col_red_hover);
 
+		// under the button: the save looks after itself
+		draw_set_halign(fa_center);
+		draw_set_valign(fa_middle);
+		draw_set_color(col_dim);
+		ui_text_fit(cx, top + 287, "Your game autosaves whenever you return to the map.", L.right - left - 80);
+
 		// "Are you sure?" on top of the stats
 		if (confirm_delete)
 		{
