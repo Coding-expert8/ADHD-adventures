@@ -4,7 +4,7 @@
   "bboxMode":0,
   "bbox_bottom":63,
   "bbox_left":0,
-  "bbox_right":63,
+  "bbox_right":62,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -12,14 +12,14 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"d5798d62-1ea8-4689-9640-600a83307573","name":"d5798d62-1ea8-4689-9640-600a83307573","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f135e5be-c9e4-4f9a-91aa-ccfb182fea9a","name":"f135e5be-c9e4-4f9a-91aa-ccfb182fea9a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":64,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"c8f9771f-f18f-47a9-a1c0-8ccb485acea3","blendMode":0,"displayName":"default","isLocked":false,"name":"c8f9771f-f18f-47a9-a1c0-8ccb485acea3","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"7f32771b-f5e0-43ba-bf8f-59d324cbd8cb","blendMode":0,"displayName":"default","isLocked":false,"name":"7f32771b-f5e0-43ba-bf8f-59d324cbd8cb","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_snake_head",
   "nineSlice":null,
@@ -69,13 +69,13 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d5798d62-1ea8-4689-9640-600a83307573","path":"sprites/spr_snake_head/spr_snake_head.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"8cb9d6df-8e6f-4756-9fff-64fd77159d53","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f135e5be-c9e4-4f9a-91aa-ccfb182fea9a","path":"sprites/spr_snake_head/spr_snake_head.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"586eefd3-bd6b-4b09-8351-c2dab0c93a02","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":32,
+    "xorigin":31,
     "yorigin":32,
   },
   "swatchColours":null,
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":64,
+  "width":63,
 }
