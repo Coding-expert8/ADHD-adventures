@@ -8,7 +8,10 @@ if (cloud_timer <= 0) {
 
 if (game_over) {
     if (not transition_active()) {
-        if (not won and keyboard_check_pressed(ord("R"))) transition_to(room); // play again (a win goes back to the map)
+        if (not won and keyboard_check_pressed(ord("R"))) { // play again (a win goes back to the map)
+            global.fishing_skip_intro = true;
+            transition_to(room);
+        }
         else if (keyboard_check_pressed(ord("Q"))) transition_to(room_map); // back to the map (fishing_beaten is already set if you won)
     }
     exit;
@@ -42,6 +45,18 @@ if (spawn_timer <= 0) {
     if (_type == TRASH) {
         _fish.spin = random_range(0.5, 3) * choose(-1, 1);
     }
+}
+
+// Intro showing: fish swim behind it, but nothing counts until the player starts
+if (intro) {
+    if (not transition_active() and (keyboard_check_pressed(vk_space) or keyboard_check_pressed(ord("Q")))) {
+        intro = false;
+        start_time = current_time;
+        // consume the press so the hook doesn't cast on the same step
+        keyboard_clear(vk_space);
+        keyboard_clear(ord("Q"));
+    }
+    exit;
 }
 
 // Win: reached the goal

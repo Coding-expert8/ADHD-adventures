@@ -8,8 +8,19 @@ goal = 100;
 
 game_over = false;
 won = false;
-start_time = current_time;
+start_time = current_time; // reset when the intro closes, so the clock starts with the game
 time_taken = 0;
+
+// Intro: instructions and tips over the (already swimming) scene until SPACE or Q.
+// "Play again" (R on the results screen) skips it, the player has just read it.
+intro = not (variable_global_exists("fishing_skip_intro") and global.fishing_skip_intro);
+global.fishing_skip_intro = false;
+
+/// Draw text centred on x, shrunk (never stretched) so it is at most _max_w wide.
+text_fit = function(_x, _y, _str, _scale, _max_w) {
+    var _sc = min(_scale, _max_w / max(1, string_width(_str)));
+    draw_text_transformed(_x, _y, _str, _sc, _sc, 0);
+}
 
 // Background music, looped until the game finishes (Step stops it and plays the win/lose sound)
 music = audio_play_sound(mus_minigame_1, 10, true);
