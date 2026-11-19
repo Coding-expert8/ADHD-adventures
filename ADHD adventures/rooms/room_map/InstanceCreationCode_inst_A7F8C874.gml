@@ -7,4 +7,3 @@ dialogue     = [
 	"Answer my questions right and we'll have it up in no time!",
 ];
 target_room  = room_answer_help;
-star_colour  = make_color_rgb(255, 205, 60); // gold: bridge building

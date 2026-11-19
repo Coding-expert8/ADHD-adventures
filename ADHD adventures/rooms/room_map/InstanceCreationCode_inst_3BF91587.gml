@@ -7,4 +7,3 @@ dialogue     = [
 	"Help it gobble up the fruit for me!",
 ];
 target_room  = room_answer_snake;
-star_colour  = make_color_rgb(110, 220, 70); // green: snake
