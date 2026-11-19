@@ -15,11 +15,13 @@ if (instance_exists(obj_player))
 
     if (health > 50)
     {
+		audio_play_sound(snd_bossfire, 1, false)
         var b1 = instance_create_layer(x, y + 40, "Instances", obj_boss_fireball);
         b1.direction = target_direction;
     }
     else
     {
+		audio_play_sound(snd_bossfire, 1, false)
         var b1 = instance_create_layer(x, y + 40, "Instances", obj_boss_fireball);
         b1.direction = target_direction - 20;
 
