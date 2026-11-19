@@ -114,3 +114,66 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_color(c_white);
 draw_set_alpha(1);
+
+
+var _rook_id = instance_find(obj_rook, 0);
+if (_rook_id != noone) {
+    var _gui_w = display_get_gui_width();
+    var _gui_h = display_get_gui_height();
+
+    // Draw Rook in the lower-right area, scaled without changing proportions.
+    var _rook_sw = sprite_get_width(spr_rook_npc);
+    var _rook_sh = sprite_get_height(spr_rook_npc);
+    var _rook_scale = min(1.0,
+        min((_gui_h * 0.75) / _rook_sh,
+            (_gui_w * 0.40) / _rook_sw));
+
+    var _rook_cx = _gui_w - 250;
+    var _rook_cy = _gui_h - 250;
+    var _rook_x = _rook_cx - (_rook_sw * _rook_scale * 0.5)
+        + sprite_get_xoffset(spr_rook_npc) * _rook_scale;
+    var _rook_y = _rook_cy - (_rook_sh * _rook_scale * 0.5)
+        + sprite_get_yoffset(spr_rook_npc) * _rook_scale;
+
+    draw_sprite_ext(spr_rook_npc, 0,
+        _rook_x, _rook_y, _rook_scale, _rook_scale, 0, c_white, 1);
+
+    // Draw the bubble only while a dialogue line is active.
+    if (global.rook_speech_timer > 0 && global.rook_speech_text != "") {
+        var _bubble_w = min(410, _gui_w * 0.34);
+        var _bubble_x = _gui_w - _bubble_w - 34;
+        var _bubble_y = 100;
+        var _text_x = _bubble_x + 23;
+        var _text_y = _bubble_y + 57;
+        var _text_w = _bubble_w - 46;
+
+        // draw_text_ext's sep argument is the line-to-line distance in pixels.
+        // The previous value of 4 pixels was far too small and caused overlap.
+        var _line_sep = max(22, string_height("M") + 8);
+        var _text_h = string_height_ext(
+            global.rook_speech_text, _line_sep, _text_w);
+
+        // Give longer messages extra vertical room, within a sensible limit.
+        var _bubble_h = clamp(75 + _text_h, 175, 260);
+
+        draw_sprite_stretched(spr_speech_bubble, 0,
+            _bubble_x, _bubble_y, _bubble_w, _bubble_h);
+
+        draw_set_font(-1);
+        draw_set_color(c_black);
+        draw_set_halign(fa_left);
+        draw_set_valign(fa_top);
+        draw_text(_text_x+150, _bubble_y + 13, "Rook");
+        draw_line(_bubble_x + 22, _bubble_y + 40,
+            _bubble_x + _bubble_w - 22, _bubble_y + 40);
+
+        draw_text_ext(_text_x, _text_y,
+            global.rook_speech_text, _line_sep, _text_w);
+    }
+}
+
+// Restore drawing state for other GUI drawing code.
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
+draw_set_color(c_white);
+draw_set_alpha(1);

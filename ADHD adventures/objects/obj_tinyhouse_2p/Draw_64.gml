@@ -1,4 +1,6 @@
+if false {
 draw_clear(make_color_rgb(40, 44, 52));
+}
 draw_set_font(-1);
  
 var _light = make_color_rgb(240, 217, 181);
@@ -76,7 +78,8 @@ for (var _hand_side = 0; _hand_side < 2; _hand_side++) {
     draw_set_halign(fa_left);
     draw_set_valign(fa_bottom);
     draw_set_color(c_white);
-    draw_text(board_x, _hy - 4,
+	draw_set_font(fnt_score);
+    draw_text(board_x, _hy+4,
         (_hand_side == COLOR_WHITE ? "White" : "Black") + " hand");
  
     draw_set_halign(fa_center);
@@ -125,7 +128,8 @@ if (global.pending_promotion != noone) {
 // Status line: clearly identify which colour the one human player controls next.
 var _status;
 var _side_name = (_side == COLOR_WHITE) ? "White" : "Black";
- 
+draw_set_font(fnt_title);
+draw_set_colour(c_red);
 if (global.game_over) {
     if (global.winner == COLOR_WHITE) {
         _status = "White wins by " + string(global.win_reason) + "!  Press R to restart.";
@@ -135,7 +139,7 @@ if (global.game_over) {
         _status = "Game over: " + string(global.win_reason) + ".  Press R to restart.";
     }
 } else if (global.pending_promotion != noone) {
-    _status = _side_name + " - choose a promotion piece";
+    _status = _side_name + " - choose promotion piece";
 } else {
     _status = _side_name + " to move";
     if (scr_in_check(global.turn)) {

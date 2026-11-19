@@ -22,14 +22,14 @@ selected_hand_type = PieceType.NONE;
 
  
 
-cell_size = 64;
+cell_size = 91;
 
-board_x = 120;
+board_x = 150;
 
-board_y = 128;
+board_y = 248;
 
-hand_size = 48;
+hand_size = 96;
 
-hand_gap = 8;
+hand_gap = 16;
 
-promo_size = 56;
+promo_size = 91;

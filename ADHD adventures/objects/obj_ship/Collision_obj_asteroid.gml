@@ -3,6 +3,8 @@ repeat(10)
 	{
 		instance_create_layer(x, y, "Instances", obj_debris);
 	}
+audio_stop_all();
+audio_play_sound(snd_car_crash, 1, false);
 
 lives -= 1
 

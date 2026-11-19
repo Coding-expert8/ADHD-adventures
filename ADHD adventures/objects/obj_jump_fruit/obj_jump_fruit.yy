@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_asteroid_medium",
-    "path":"sprites/spr_asteroid_medium/spr_asteroid_medium.yy",
+    "name":"spr_jump_fruit",
+    "path":"sprites/spr_jump_fruit/spr_jump_fruit.yy",
   },
   "spriteMaskId":null,
   "visible":true,

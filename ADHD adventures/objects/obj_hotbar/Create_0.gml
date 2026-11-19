@@ -62,6 +62,7 @@ hotbar_items = [
 // COMPASS SETTINGS
 compass_arrow_length = 300;
 compass_arrow_active = false;
+compass_changed = false;
 
 // MAP SETTINGS
 map_open = false;
