@@ -8,7 +8,8 @@ draw_text(x,y+300,"Trampolines bounce you up, with a fraction of your speed");
 draw_text(x,y+350,"Steam geysers launch you up in the air");
 draw_text(x,y+400,"Jump fruit increase your jump height");
 draw_text(x,y+450,"Warning: large platforms move, don't fall off");
-draw_text(x,y+500,"Collect coins to be accumulated in the map");
-draw_text(x,y+550,"Reach the end and go through the portal");
-draw_text(x,y+600,"");
+draw_text(x,y+500,"Hold shift to sprint");
+draw_text(x,y+550,"Collect coins to be accumulated in the map");
+draw_text(x,y+600,"Reach the end and go through the portal");
+
 draw_text(x,y+650,"");

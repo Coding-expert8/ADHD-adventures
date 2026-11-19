@@ -1,3 +1,5 @@
+audio_stop_all();
+audio_play_sound(snd_car_crash, 1, false);
 instance_destroy();
 repeat(10)
 	{

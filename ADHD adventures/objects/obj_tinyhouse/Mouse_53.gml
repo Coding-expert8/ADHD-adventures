@@ -1,5 +1,13 @@
 if (global.game_over) exit;
 
+if (variable_global_exists("rook_speech_timer")
+    && variable_global_exists("rook_speech_text")
+    && global.rook_speech_timer > 0
+    && global.rook_speech_text != "") {
+    exit; // Wait until Rook has finished speaking.
+}
+
+
 var _mx = device_mouse_x_to_gui(0);
 var _my = device_mouse_y_to_gui(0);
 // show_debug_message("click at " + string(_mx) + ", " + string(_my)); // uncomment to test that clicks arrive
@@ -16,7 +24,9 @@ if (global.pending_promotion != noone) {
             var _py = board_y + i * (promo_size + 8);
             if (point_in_rectangle(_mx, _my, _px, _py, _px + promo_size, _py + promo_size)) {
                 scr_promote(_opts[i]);
-                if (!global.game_over && global.turn == global.bot_color) alarm[0] = _delay;
+                if (!global.game_over && global.turn == global.bot_color) {
+					alarm[0] = _delay;
+				}
                 break;
             }
         }
@@ -84,6 +94,6 @@ if (!_acted) {
 
 // Hand off to the bot once the human's turn is completely finished
 if (_acted && !global.game_over && global.pending_promotion == noone
-    && global.turn == global.bot_color) {
-    alarm[0] = _delay;
-}
+	&& global.turn == global.bot_color) {
+	alarm[0] = _delay;
+	}
