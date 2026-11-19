@@ -36,19 +36,18 @@ if (intro) {
 
     // title
     draw_set_colour(c_white);
-    text_fit(_cx, 34, "GONE FISHING", 1.3, _w);
+    text_fit(_cx, 34, "FISHING", 1.3, _w);
 
     // how to play
     draw_set_colour(_col_head);
     text_fit(_cx, 66, "HOW TO PLAY", 0.8, _w);
     draw_set_colour(c_white);
     text_fit(_cx, 86,  "Press SPACE to drop your hook straight down", 0.65, _w);
-    text_fit(_cx, 104, "Every cast uses 1 bait - you have " + string(bait), 0.65, _w);
+    text_fit(_cx, 104, "Every cast uses 1 bait, you start with" + string(bait), 0.65, _w);
     text_fit(_cx, 122, "Score " + string(goal) + " points before your bait runs out to win a key", 0.65, _w);
 
     // what's in the water: each sprite with its points under it
     draw_set_colour(_col_head);
-    text_fit(_cx, 150, "WHAT'S IN THE WATER", 0.8, _w);
     var _n = array_length(fish_sprite);
     var _slot = _w / _n;
     for (var _i = 0; _i < _n; _i++) {
@@ -64,8 +63,7 @@ if (intro) {
     text_fit(_cx, 230, "TIPS", 0.8, _w);
     draw_set_colour(c_white);
     text_fit(_cx, 250, "Rare fish swim deeper and faster, so drop early", 0.65, _w);
-    text_fit(_cx, 268, "Trash floats near the surface - let it pass", 0.65, _w);
-    text_fit(_cx, 286, "A miss still costs bait, so wait for a good shot", 0.65, _w);
+    text_fit(_cx, 270, "A miss still costs bait, so wait for a good shot", 0.65, _w);
 
     // start prompt, bobbing
     draw_set_colour(_col_gold);
