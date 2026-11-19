@@ -7,3 +7,4 @@ dialogue     = [
 	"Beat me and the town key is yours!",
 ];
 target_room  = room_tinyhouse_help;
+star_colour  = make_color_rgb(185, 110, 255); // purple: chess

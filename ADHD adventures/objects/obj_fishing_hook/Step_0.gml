@@ -1,5 +1,5 @@
 var _ctrl = obj_fishing_control;
-if (_ctrl.game_over) exit;
+if (_ctrl.game_over or _ctrl.intro) exit;
 
 // Waiting: SPACE uses one bait and drops the hook
 if (not falling) {

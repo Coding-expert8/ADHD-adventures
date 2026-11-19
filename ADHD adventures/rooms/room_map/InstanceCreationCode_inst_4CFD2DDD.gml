@@ -7,4 +7,5 @@ dialogue     = [
 	"Watch out for the trash, it costs you points.",
 ];
 target_room  = room_fishing;
+star_colour  = make_color_rgb(40, 120, 255); // ocean blue: fishing
 fade         = true;
