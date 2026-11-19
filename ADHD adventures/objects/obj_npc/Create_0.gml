@@ -3,14 +3,11 @@
 //   dialogue    = ["Hello there!", "Nice day, isn't it?"];
 //   target_room = room_fishing;                  // optional: go there when the talk ends
 //   fade        = true;                          // optional: fade-out/in transition (scr_transition)
-//   star_colour = make_color_rgb(60, 140, 255);  // optional: colour of the star over a major NPC
-// Major NPCs (the ones that start a minigame) set target_room and get a floating star
-// in their minigame's colour; small NPCs only talk.
+// Major NPCs (the ones that start a minigame) set target_room; small NPCs only talk.
 dialogue    = [];
 speaker     = "";
 target_room = noone;
 fade        = false;
-star_colour = make_color_rgb(255, 205, 60); // gold unless the instance picks a theme colour
 talk_range = 24;   // px between the player's feet and this NPC
 text_speed = 1;    // characters revealed per step
 

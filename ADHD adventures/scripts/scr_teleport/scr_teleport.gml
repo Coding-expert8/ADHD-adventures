@@ -75,15 +75,9 @@ function teleport_point_at(_mx, _my, _image_x, _image_y, _scale = 1) {
 /// @func draw_teleport_star(x, y, r)
 /// @desc Gold five-pointed star of outer radius r.
 function draw_teleport_star(_x, _y, _r) {
-	draw_star(_x, _y, _r, make_color_rgb(255, 205, 60), make_color_rgb(140, 85, 20));
-}
-
-/// @func draw_star(x, y, r, fill, outline)
-/// @desc Five-pointed star of outer radius r, filled and outlined.
-function draw_star(_x, _y, _r, _fill, _outline) {
 	var _inner = _r * 0.45;
 
-	draw_set_color(_fill);
+	draw_set_color(make_color_rgb(255, 205, 60));
 	draw_primitive_begin(pr_trianglefan);
 	draw_vertex(_x, _y);
 	for (var _i = 0; _i <= 10; _i++) {
@@ -93,7 +87,7 @@ function draw_star(_x, _y, _r, _fill, _outline) {
 	}
 	draw_primitive_end();
 
-	draw_set_color(_outline);
+	draw_set_color(make_color_rgb(140, 85, 20));
 	draw_primitive_begin(pr_linestrip);
 	for (var _i = 0; _i <= 10; _i++) {
 		var _a = 90 + _i * 36;
