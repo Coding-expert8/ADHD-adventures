@@ -3,7 +3,7 @@ if (!popup_open) exit;
 var gw = display_get_gui_width();
 var gh = display_get_gui_height();
 
-var scale = 0.7;
+var scale = 0.8 * menu_board_scale(); // grows with the screen, like the HELP and CREDITS boards
 
 var board_w = 540 * scale;
 var board_h = 350 * scale;

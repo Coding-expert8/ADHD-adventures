@@ -101,6 +101,8 @@ function new_game_state() {
 	global.coin             = 0;     // shop money (obj_shop)
 	global.play_time        = 0;     // seconds played on this save (counted by obj_save)
 	global.minigame_leaving = false; // true from minigame_win() until room_map starts
+	global.last_minigame_room = noone;     // room the last minigame portal led to (obj_minigame_portal)
+	global.boss_message_pending = false;   // all six just beaten: that NPC says to go fight the boss
 	global.username         = "";    // set by obj_login (an empty name shows the name popup again)
 	global.save_character   = "1";   // obj_player copies this into global.character when it first starts
 	global.character        = "1";
@@ -138,13 +140,28 @@ function minigame_win(_flag, _delay = 0) {
 	if (global.minigame_leaving) return;   // already on the way back to the map
 	global.minigame_leaving = true;
 
-	if (!variable_global_get(_flag)) global.keys_pending += 1;   // first win only
+	var _first = !variable_global_get(_flag);
+	if (_first) global.keys_pending += 1;   // first win only
 	variable_global_set(_flag, true);
+
+	// that was the last of the six: the NPC who sent the player here points them to the boss
+	// (obj_npc, using global.last_minigame_room) once they are back on the map
+	if (_first and beaten_count() == array_length(global.beaten_flags)) global.boss_message_pending = true;
 
 	if (_delay <= 0) transition_to(room_map);
 	else call_later(_delay, time_source_units_seconds, function() {
 		if (global.minigame_leaving) transition_to(room_map);   // unless already back on the map
 	});
+}
+
+/// @func beaten_count()
+/// @desc How many of the six minigames have been beaten (the lit pills on obj_boss_pad).
+function beaten_count() {
+	var _n = 0;
+	for (var _i = 0; _i < array_length(global.beaten_flags); _i++) {
+		if (variable_global_get(global.beaten_flags[_i])) _n += 1;
+	}
+	return _n;
 }
 
 /// @func typing_name()
