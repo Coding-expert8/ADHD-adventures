@@ -1,2 +1,1 @@
-// Open shop when player collides
-menu_open = true;
+// The shop opens from Step when the player first steps onto it (see Step_0).

@@ -19,6 +19,9 @@ if (_area != noone) {
 }
 if (_key == global.current_area_key) exit;
 
+// first visit: unlocks this area's teleport point (obj_teleport_point) and saves it right away
+if (_area != noone and area_discover(_area.area_name)) save_game();
+
 // --- weather: open world allows rain; otherwise take the area's profile -------
 var _profile = (_area != noone) ? _area.area_profile : WEATHER_PROFILE_RAIN;
 global.weather_profile = _profile;
@@ -49,7 +52,7 @@ if (_theme != global.current_theme) {
     if (_theme != noone) {
         audio_play_sound(_theme, 10, true); // looping
         audio_sound_gain(_theme, 0, 0);
-        audio_sound_gain(_theme, 1, FADE_MS);
+        audio_sound_gain(_theme, global.settings.music, FADE_MS); // up to the MUSIC setting
     }
 
     global.current_theme = _theme;

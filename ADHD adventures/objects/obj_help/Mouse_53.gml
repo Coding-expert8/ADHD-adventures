@@ -1,93 +1,133 @@
+// Global Left Pressed: the PAUSE button, and everything on the pause board.
+// Positions come from the layout functions in Create, the same ones Draw GUI uses.
 
-var mx = device_mouse_x_to_gui(0);
-var my = device_mouse_y_to_gui(0);
-
-var gw = display_get_gui_width();
-var gh = display_get_gui_height();
-
-// HELP button
+// PAUSE button (top right, left of CREDITS)
 if (!help_open)
 {
-    if (mx >= 25 && mx <= 135 &&
-        my >= 20 && my <= 55)
-    {
-        help_open = true;
-        active_tab = 1;
-        help_page = 1;
-    }
+	var _gw = display_get_gui_width();
+	var _mx = device_mouse_x_to_gui(0);
+	var _my = device_mouse_y_to_gui(0);
+	var button_x = _gw - 260;
+	var button_y = 20;
+
+	if (!pause_menu_open() and
+		_mx >= button_x and _mx <= button_x + 110 and
+		_my >= button_y and _my <= button_y + 35)
+	{
+		play_select();
+		help_open = true;
+		active_tab = 1;
+		help_page = 1;
+		confirm_delete = false;
+		dragging = "";
+	}
+	exit;
 }
-else
+
+var L = layout();
+var mx = L.mx;
+var my = L.my;
+
+// Close button
+if (in_rect(mx, my, close_rect(L)))
 {
-    var board_w = 420;
-    var board_h = 280;
+	play_select();
+	help_open = false;
+	confirm_delete = false;
+	dragging = "";
+	exit;
+}
 
-    var left = (gw - board_w) / 2;
-    var top = (gh - board_h) / 2;
+// "Delete your save?" is showing: only its two buttons answer
+if (confirm_delete)
+{
+	if (in_rect(mx, my, confirm_yes(L)))
+	{
+		play_select();
+		confirm_delete = false;
+		help_open = false;
+		reset_save();       // wipes save.ini and every progress global (settings are kept)
+		restart_on_map();   // new game, in the village
+	}
+	else if (in_rect(mx, my, confirm_no(L)))
+	{
+		play_select();
+		confirm_delete = false;
+	}
+	exit;
+}
 
-    // Close button
-    if (mx >= left + board_w - 35 && mx <= left + board_w - 10 &&
-        my >= top + 10 && my <= top + 35)
-    {
-        help_open = false;
-    }
+// Tabs
+for (var i = 0; i < tab_count; i++)
+{
+	if (in_rect(mx, my, tab_rect(L, i)))
+	{
+		if (active_tab != i + 1) play_select();
+		active_tab = i + 1;
+		exit;
+	}
+}
 
-    // HOW TO PLAY TAB
-    else if (mx >= left + 25 && mx <= left + 205 &&
-             my >= top - 27 && my <= top + 15)
-    {
-        active_tab = 1;
-    }
+switch (active_tab)
+{
+	// HOW TO PLAY: page arrows
+	case 1:
+		if (in_rect(mx, my, page_prev(L)))
+		{
+			play_select();
+			help_page = max(1, help_page - 1);
+		}
+		else if (in_rect(mx, my, page_next(L)))
+		{
+			play_select();
+			help_page = min(help_pages, help_page + 1);
+		}
+		break;
 
-    // TELEPORTATION TAB
-    else if (mx >= left + 215 && mx <= left + 395 &&
-             my >= top - 27 && my <= top + 15)
-    {
-        active_tab = 2;
-    }
+	// TELEPORT: only discovered teleport points can be clicked
+	case 2:
+		var tp = teleport_point_at(mx, my, map_image_x(L), map_y(L), map_scale);
 
-    // HOW TO PLAY PAGE ARROWS
-    else if (active_tab == 1)
-    {
-        if (mx >= left + 100 && mx <= left + 140 &&
-            my >= top + 235 && my <= top + 265)
-        {
-            help_page = max(1, help_page - 1);
-        }
-        else if (mx >= left + 280 && mx <= left + 320 &&
-                 my >= top + 235 && my <= top + 265)
-        {
-            help_page = min(2, help_page + 1);
-        }
-    }
+		if (tp != noone and area_is_discovered(tp.area_name) and instance_exists(obj_player))
+		{
+			play_select();
+			obj_player.x = tp.x;
+			obj_player.y = tp.y;
+			help_open = false;
+		}
+		break;
 
-    // TELEPORTATION MAP CLICK
-    else if (active_tab == 2)
-    {
-        // Fixed outer frame
-        var map_x = left + 90;
-        var map_y = top + 65;
+	// STATS: delete save asks first
+	case 3:
+		if (in_rect(mx, my, delete_rect(L)))
+		{
+			play_select();
+			confirm_delete = true;
+		}
+		break;
 
-        // Image shifted 27 pixels left
-        var image_x = map_x - 27;
-
-        // Only allow clicks inside the fixed frame
-        if (mx >= map_x && mx <= map_x + 240 &&
-            my >= map_y && my <= map_y + 158)
-        {
-            var map_click_x = mx - image_x;
-            var map_click_y = my - map_y;
-
-            // Convert image coordinates into room coordinates
-            var destination_x = (map_click_x / 240) * 18000;
-            var destination_y = (map_click_y / 158) * 12000;
-
-            if (instance_exists(obj_player))
-            {
-                obj_player.x = destination_x;
-                obj_player.y = destination_y;
-
-                help_open = false;
-            }
-        }
-    }
+	// SETTINGS: grab a slider (Step drags it) or pick windowed / fullscreen
+	case 4:
+		for (var j = 0; j < array_length(settings_sliders); j++)
+		{
+			if (in_rect(mx, my, slider_hit(L, j)))
+			{
+				var key = settings_sliders[j].key;
+				dragging = key;
+				global.settings[$ key] = slider_value(L, mx);
+				settings_apply_audio();
+				exit;
+			}
+		}
+		if (in_rect(mx, my, windowed_rect(L)) and global.settings.fullscreen)
+		{
+			play_select();
+			settings_set_fullscreen(false);
+		}
+		else if (in_rect(mx, my, fullscreen_rect(L)) and !global.settings.fullscreen)
+		{
+			play_select();
+			settings_set_fullscreen(true);
+		}
+		break;
 }

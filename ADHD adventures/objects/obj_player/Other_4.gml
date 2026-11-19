@@ -18,3 +18,23 @@ if (room == room_map and variable_global_exists("return_x") and global.return_x 
 	y = global.return_y;
 	global.return_x = undefined;
 }
+
+// new game after losing all hearts or deleting the save (reset_save): start in the village
+if (room == room_map and global.respawn_village)
+{
+	with (obj_teleport_point)
+	{
+		if (area_name == "village")
+		{
+			other.x = x
+			other.y = y
+		}
+	}
+	global.respawn_village = false
+}
+
+// back on the map: a new minigame win can start a return again (minigame_win)
+if (room == room_map) global.minigame_leaving = false;
+
+// autosave on every arrival on the map: minigame results, hearts and where the player stands
+if (room == room_map) save_game();

@@ -17,18 +17,20 @@ var my = device_mouse_y_to_gui(0);
 if (mouse_check_button_pressed(mb_left))
 {
     // Close button
-    if (mx >= left + 485 * scale && mx <= left + 525 * scale &&
-        my >= top + 12 * scale && my <= top + 52 * scale)
+    if (mx >= left + 485 * scale and mx <= left + 525 * scale and
+        my >= top + 12 * scale and my <= top + 52 * scale)
     {
+        play_select();
         popup_open = false;
         input_active = false;
         exit;
     }
 
     // Username box
-    if (mx >= left + 20 * scale && mx <= left + 520 * scale &&
-        my >= top + 183 * scale && my <= top + 247 * scale)
+    if (mx >= left + 20 * scale and mx <= left + 520 * scale and
+        my >= top + 183 * scale and my <= top + 247 * scale)
     {
+        if (!input_active) play_select();
         input_active = true;
         keyboard_string = username_input;
     }
@@ -38,14 +40,16 @@ if (mouse_check_button_pressed(mb_left))
     }
 
     // SAVE button
-    if (mx >= left + 20 * scale && mx <= left + 520 * scale &&
-        my >= top + 263 * scale && my <= top + 327 * scale)
+    if (mx >= left + 20 * scale and mx <= left + 520 * scale and
+        my >= top + 263 * scale and my <= top + 327 * scale)
     {
         if (string_length(string_trim(username_input)) > 0)
         {
+            play_select();
             global.username = string_trim(username_input);
             popup_open = false;
             input_active = false;
+            save_game(); // keep the name in save.ini
         }
     }
 }

@@ -7,3 +7,4 @@ dialogue     = [
 	"Watch out for the trash, it costs you points.",
 ];
 target_room  = room_fishing;
+fade         = true;

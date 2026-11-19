@@ -1,3 +1,4 @@
+draw_set_font(fnt_default); // same font as the PAUSE button, whatever was drawn before this
 var gw = display_get_gui_width();
 var gh = display_get_gui_height();
 
@@ -17,6 +18,12 @@ if (credits_open)
 {
     var board_w = 420;
     var board_h = 340;
+
+    // the board is laid out for a MENU_BOARD_HEIGHT px tall screen and scaled up to the real GUI
+    var _s = menu_board_scale();
+    gw /= _s;
+    gh /= _s;
+    matrix_set(matrix_world, matrix_build(0, 0, 0, 0, 0, 0, _s, _s, 1));
 
     var left = (gw - board_w) / 2;
     var top = (gh - board_h) / 2;
@@ -70,6 +77,7 @@ if (credits_open)
 }
 
 // Reset drawing settings
+matrix_set(matrix_world, matrix_build_identity());
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_color(c_white);

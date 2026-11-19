@@ -1,5 +1,6 @@
 // SHOP SETTINGS
 menu_open = false;
+was_touching = false; // player was on the shop last step (it opens on stepping on, not every step)
 
 // Menu dimensions
 menu_width = 650;

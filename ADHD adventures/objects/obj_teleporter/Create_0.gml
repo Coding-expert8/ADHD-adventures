@@ -1,4 +1,4 @@
-full_screen = false;
+// fullscreen is global.settings.fullscreen (scr_save), applied by obj_save
 room_goto(room_loading);
 
 

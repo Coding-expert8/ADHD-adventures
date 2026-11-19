@@ -2,10 +2,12 @@
 //   speaker     = "Old Man";                     // optional, shown above the box
 //   dialogue    = ["Hello there!", "Nice day, isn't it?"];
 //   target_room = room_fishing;                  // optional: go there when the talk ends
+//   fade        = true;                          // optional: fade-out/in transition (scr_transition)
 // Major NPCs (the ones that start a minigame) set target_room; small NPCs only talk.
 dialogue    = [];
 speaker     = "";
 target_room = noone;
+fade        = false;
 talk_range = 24;   // px between the player's feet and this NPC
 text_speed = 1;    // characters revealed per step
 

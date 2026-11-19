@@ -1,2 +1,2 @@
-window_set_fullscreen(false);
-full_screen = false;
+// Esc: leave fullscreen
+if (global.settings.fullscreen) settings_set_fullscreen(false);
