@@ -1,3 +1,4 @@
+audio_play_sound(global.tiki, 100, true)
 if (game_over) exit;
 
 if (keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"))) {

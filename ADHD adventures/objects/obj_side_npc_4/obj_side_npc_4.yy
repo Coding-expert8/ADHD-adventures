@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_side_npc_5",
+    "path":"sprites/spr_side_npc_5/spr_side_npc_5.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
