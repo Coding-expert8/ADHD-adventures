@@ -16,5 +16,13 @@ if (_inside)
 	global.return_x = obj_player.x;
 	global.return_y = obj_player.y;
 	global.last_minigame_room = target_room;   // the NPC who sent us (see obj_npc boss message)
+	if (target_room == room_space_rocks_help)
+	{
+		// ice rocks uses the built-in lives and score (default -1 lives counts as a loss). Its help
+		// screen sets lives too; this also clears an old score.
+		lives = 3;
+		score = 0;
+		global.can_fire = true;
+	}
 	transition_to(target_room);
 }

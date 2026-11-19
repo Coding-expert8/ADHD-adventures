@@ -20,7 +20,10 @@ if (show > 0 and instance_exists(obj_player))
 		}
 		else
 		{
-			// not yet: an empty pill outline
+			// not yet: a dark see-through pill with a white outline
+			draw_set_colour(make_colour_rgb(40, 40, 40));
+			draw_set_alpha(0.55 * show);
+			draw_roundrect_ext(_px - _w / 2, _py - _h / 2, _px + _w / 2, _py + _h / 2, _h, _h, false);
 			draw_set_colour(c_white);
 			draw_set_alpha(0.9 * show);
 			draw_roundrect_ext(_px - _w / 2, _py - _h / 2, _px + _w / 2, _py + _h / 2, _h, _h, true);
