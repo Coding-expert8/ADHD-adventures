@@ -5,4 +5,6 @@ global.bridge_beaten = false;
 global.snake_beaten = false;
 global.fishing_beaten = false;
 room_goto(room_map);
+global.hearts = 6;
+activated = false;
 room_restart();
