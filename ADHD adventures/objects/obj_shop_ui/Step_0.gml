@@ -130,12 +130,12 @@ if (mouse_check_button_pressed(mb_left))
             break;
 
             case 3:
-                if (global.heart >= 6)
+                if (global.hearts >= 6)
                     can_buy = false;
             break;
 
             case 4:
-                if (global.heart >= 6)
+                if (global.hearts >= 6)
                     can_buy = false;
             break;
 
@@ -176,11 +176,11 @@ if (mouse_check_button_pressed(mb_left))
                 break;
 
                 case 3:
-                    global.heart = min(6, global.heart + 1);
+                    global.hearts = min(6, global.hearts + 1);
                 break;
 
                 case 4:
-                    global.heart = 6;
+                    global.hearts = 6;
                 break;
 
                 case 5:

@@ -93,3 +93,21 @@ health_bar_width = 50;
 health_bar_height = 6;
 health_bar_offset = 35;
 }
+
+// SIDEQUEST DATA
+
+/// SIDEQUEST INITIALISATION
+
+global.sidequest_accepted = array_create(30, false);
+global.sidequest_complete = array_create(30, false);
+global.sidequest_paid = array_create(30, false);
+
+if (!variable_global_exists("coins"))
+{
+    global.coins = 0;
+}
+
+if (!variable_global_exists("dialogue_npc"))
+{
+    global.dialogue_npc = noone;
+}

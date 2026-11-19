@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_sidequest_data",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_sidequest_data",
+  "parent":{
+    "name":"shop",
+    "path":"folders/shop.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
