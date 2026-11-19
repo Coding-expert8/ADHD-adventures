@@ -23,8 +23,9 @@ if (room == room_map or room == room_tinyhouse) { // only the map and the chess 
 	else if global.hearts = 1 {
 		draw_sprite(spr_heart, 1, x, y-offset);
 	}
-	else if global.hearts <= 0{
+	else if global.hearts <= 0 and activated = false {
 		draw_text(x+offset,y,"You died")
-		if (alarm[0] < 0) alarm[0] = 60; // start the countdown once, not every frame
+		alarm[0] = 60;
+		activated = true;
 	}
 }

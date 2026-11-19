@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_moving_platform",
-    "path":"sprites/spr_moving_platform/spr_moving_platform.yy",
+    "name":"spr_platform_moving",
+    "path":"sprites/spr_platform_moving/spr_platform_moving.yy",
   },
   "spriteMaskId":null,
   "visible":true,

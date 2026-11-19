@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_fire_crackling",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":79.53599,
+  "exportDir":"",
+  "name":"snd_fire_crackling",
+  "parent":{
+    "name":"lava_parkour",
+    "path":"folders/lava_parkour.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_fire_crackling.mp3",
+  "volume":1.0,
+}

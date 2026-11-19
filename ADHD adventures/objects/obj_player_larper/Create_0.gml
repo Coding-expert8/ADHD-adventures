@@ -65,5 +65,5 @@ character_sprites = {
 }
 gravity = 0.3;
 
-
+audio_play_sound(snd_fire_crackling,1,true);
 
