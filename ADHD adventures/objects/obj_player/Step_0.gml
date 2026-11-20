@@ -1,60 +1,56 @@
+// remember the player's native scale once, so other rooms keep whatever it already is
+if (!variable_instance_exists(id, "base_xscale")) {
+	base_xscale = image_xscale
+	base_yscale = image_yscale
+}
+if (!variable_instance_exists(id, "facing")) facing = "down";
+
 // answer-block minigame rooms keep their own movement, sprites and falling logic
-if (room == room_main or room == room_answer)
+if room == room_answer
 {
 	image_speed = 0
+
+	// new sprites have real left/right art, so no mirroring
+	// only room_answer is shrunk (0.7 of the native size)
+	var _mult = (room == room_answer) ? 0.7 : 1
+	image_xscale = base_xscale * _mult
+	image_yscale = base_yscale * _mult
 
 	var _spd = 4
 	if keyboard_check(vk_shift) {
 		_spd = 12
 	}
 
+	// room_answer is side-on only, so never use up/down facing there
+	if (room == room_answer and (facing == "up" or facing == "down")) facing = "right"
+
 	if keyboard_check(vk_right) {
-		image_xscale = 1
+		facing = "right"
 		x += _spd
 	}
 	if keyboard_check(vk_left) {
-		image_xscale = -1
+		facing = "left"
 		x -= _spd
 	}
 
-	if (room == room_main) {
-		if keyboard_check(vk_up) {
-			y -= _spd
-		}
-		if keyboard_check(vk_down) {
-			y += _spd
-		}
-	}
 
-	if (room == room_main) {
-		if (keyboard_check(vk_up)) {
-			image_speed = 1
-			sprite_index = spr_player_walk_up
-		} else if (keyboard_check(vk_down)) {
-			image_speed = 1
-			sprite_index = spr_player_walk_down
-		} else if (keyboard_check(vk_right) or keyboard_check(vk_left)) {
-			image_speed = 1
-			if keyboard_check(vk_shift) {
-				sprite_index = spr_player_run
-			} else {
-				sprite_index = spr_player_walk
-			}
-		} else {
-			sprite_index = spr_player_idle
-		}
-	}
+	var _moving = keyboard_check(vk_right) or keyboard_check(vk_left)
 
-	if room == room_answer {
-		if (keyboard_check(vk_right) or keyboard_check(vk_left)) {
-			image_speed = 1
-			if keyboard_check(vk_shift) {
-				sprite_index = spr_player_run
-			} else {
-				sprite_index = spr_player_walk
-			}
-		} else {
-			sprite_index = spr_player_idle
+	if (_moving) {
+		// no run sprite in the new set, so shift just speeds up the walk cycle
+		image_speed = keyboard_check(vk_shift) ? 1.5 : 1
+		switch (facing) {
+			case "up":    sprite_index = spr_char_1_walk_up;    break
+			case "down":  sprite_index = spr_char_1_walk_down;  break
+			case "left":  sprite_index = spr_char_1_walk_left;  break
+			case "right": sprite_index = spr_char_1_walk_right; break
+		}
+	} else {
+		switch (facing) {
+			case "up":    sprite_index = spr_char_1_idle_up;    break
+			case "down":  sprite_index = spr_char_1_idle_down;  break
+			case "left":  sprite_index = spr_char_1_idle_left;  break
+			case "right": sprite_index = spr_char_1_idle_right; break
 		}
 	}
 
@@ -92,11 +88,16 @@ if (room == room_main or room == room_answer)
 		global.spacing = 0
 		ds_list_clear(global.block_order)
 		global.collapse_chunk_size = 4
-		room_goto(room_main)
+		global.hearts -= 1
+		room_goto(room_map)
 		}
 	}
 	exit;
 }
+
+// every other room: back to the player's native scale
+image_xscale = base_xscale
+image_yscale = base_yscale
 
 if global.walking = "walk"
 {
@@ -106,7 +107,6 @@ else
 {
 	image_speed = 0.1
 }
-if (!variable_instance_exists(id, "facing")) facing = "down";
 
 // stand still while an NPC is talking (obj_npc handles the Q key), the name popup is open,
 // or the PAUSE / CREDITS board is open
