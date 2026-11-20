@@ -73,7 +73,7 @@
     {"name":"inst_3615C513","path":"rooms/room_lava_parkour/room_lava_parkour.yy",},
     {"name":"inst_6064AECE","path":"rooms/room_lava_parkour/room_lava_parkour.yy",},
     {"name":"inst_6D8A3FCD","path":"rooms/room_lava_parkour/room_lava_parkour.yy",},
-    {"name":"inst_25C4C557","path":"rooms/room_lava_parkour/room_lava_parkour.yy",},
+    {"name":"inst_4995D6F4","path":"rooms/room_lava_parkour/room_lava_parkour.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -108,7 +108,7 @@
         {"$GMRInstance":"v4","%Name":"inst_353ED47F","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_353ED47F","objectId":{"name":"obj_spike","path":"objects/obj_spike/obj_spike.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1472.0,"y":9856.0,},
         {"$GMRInstance":"v4","%Name":"inst_163296B6","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_163296B6","objectId":{"name":"obj_geyser","path":"objects/obj_geyser/obj_geyser.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":192.0,"y":1568.0,},
         {"$GMRInstance":"v4","%Name":"inst_3615C513","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3615C513","objectId":{"name":"obj_coin","path":"objects/obj_coin/obj_coin.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1856.0,"y":7360.0,},
-        {"$GMRInstance":"v4","%Name":"inst_25C4C557","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_25C4C557","objectId":{"name":"obj_portal_lava_parkour","path":"objects/obj_portal_lava_parkour/obj_portal_lava_parkour.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":736.0,"y":6528.0,},
+        {"$GMRInstance":"v4","%Name":"inst_4995D6F4","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4995D6F4","objectId":{"name":"obj_portal_lava_parkour","path":"objects/obj_portal_lava_parkour/obj_portal_lava_parkour.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":352.0,"y":5280.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"Assets_1","assets":[
         {"$GMRParticleSystem":"v1","%Name":"particle_20A574F","colour":4294967295,"frozen":false,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"particle_20A574F","particleSystemId":{"name":"ParticleSystem1","path":"particles/ParticleSystem1/ParticleSystem1.yy",},"resourceType":"GMRParticleSystem","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":160.0,"y":1504.0,},

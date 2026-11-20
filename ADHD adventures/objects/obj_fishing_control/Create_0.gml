@@ -59,3 +59,5 @@ fish_sprite = [spr_fish_1, spr_fish_2, spr_fish_5, spr_fish_10, spr_fish_50, spr
 // Trash floats just under the surface.
 fish_y_min  = [105, 115, 160, 220, 255, 105];
 fish_y_max  = [220, 260, 285, 325, 330, 140];
+
+heart_lost = false;
