@@ -256,7 +256,7 @@ draw_set_valign(fa_middle);
 draw_text_ext_transformed(
     134 * sx,
     142 * sy,
-    "Welcome to the Island Shop!",
+    "Welcome to the Island Shop " + global.username + "!",
     -1,
     (84 * sx) / 0.85,
     0.85, 0.85, 0
