@@ -134,18 +134,18 @@ if (help_open)
 		}
 
 		// Hint line: what the hovered point is
-		var hint = "Click a star to teleport  -  visit an area to unlock it";
+		var hint = "Click a star to teleport  -  visit an area to unlock it"
 		if (hover != noone)
 		{
 			hint = area_is_discovered(hover.area_name)
 				? "Teleport to " + hover.label
-				: "Locked - explore to discover it";
+				: "Locked - explore to discover it"
 		}
 
-		draw_set_halign(fa_center);
-		draw_set_valign(fa_middle);
-		draw_set_color(c_white);
-		ui_text_fit(cx, top + 262, hint, board_w - 60);
+		draw_set_halign(fa_center)
+		draw_set_valign(fa_middle)
+		draw_set_color(c_white)
+		ui_text_fit(cx, top + 262, hint, board_w - 60)
 	}
 
 	// TAB 3: STATS of this playthrough
