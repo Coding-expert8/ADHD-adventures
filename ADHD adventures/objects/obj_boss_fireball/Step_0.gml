@@ -1,4 +1,5 @@
 // Destroy outside room
+audio_play_sound(snd_fire, 2, false)
 if (x < 0 || x > room_width ||
     y < 0 || y > room_height)
 {
