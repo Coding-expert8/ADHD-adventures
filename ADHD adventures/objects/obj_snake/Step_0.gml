@@ -1,4 +1,11 @@
-if (game_over) exit;
+if (game_over) and (!won) and (!heart_loss) {
+	hearts -= 1;
+	heart_loss = true;
+	exit;
+}
+if (game_over) {
+	exit;
+}
 
 if (keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"))) {
     if (direction_move != "down") next_direction = "up";

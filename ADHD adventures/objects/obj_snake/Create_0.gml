@@ -31,4 +31,6 @@ direction_move = "right";
 next_direction = "right";
 grow_pending = 0;
 
+heart_loss = false;
+
 scr_spawn_fruit();
