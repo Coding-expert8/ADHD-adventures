@@ -1,0 +1,1 @@
+audio_play_sound(snd_boss, 100, true, 0.6)
