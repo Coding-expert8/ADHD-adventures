@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_intro_animation",
-    "path":"sprites/spr_intro_animation/spr_intro_animation.yy",
+    "name":"spr_final_animation",
+    "path":"sprites/spr_final_animation/spr_final_animation.yy",
   },
   "spriteMaskId":null,
   "visible":true,
