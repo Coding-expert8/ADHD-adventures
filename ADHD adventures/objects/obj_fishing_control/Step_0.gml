@@ -6,6 +6,10 @@ if (cloud_timer <= 0) {
     _cloud.x = -_cloud.sprite_width; // start just off the left edge (size is random)
 }
 
+if (game_over) and (!won) and (!heart_lost) {
+	global.hearts -= 1;
+	heart_lost = true;
+}
 if (game_over) {
     if (not transition_active()) {
         if (not won and keyboard_check_pressed(ord("R"))) { // play again (a win goes back to the map)
